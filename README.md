@@ -1,8 +1,24 @@
-# KENUXA Internet v0.2 — atoms, DNA, molecules and cells
+# KENUXA Internet v0.3 — research and reusable method learning
 
 A fresh reconstruction from your surviving semantic-internet specification. This is not a recovered copy of the lost laptop's code. The existing Supabase project is not modified or required.
 
-## New: a growing semantic organism
+## Question-driven research and method memory
+
+Ask Kenuxa an unfamiliar question. It first checks local memory and its small trained model. It then discovers at most five candidate URLs and reads at most three public pages with the existing HTTPS, DNS pinning, robots and redirect controls. Without a search key, discovery searches Wikipedia only. Add your own Brave Search key in Web learning or BRAVE_SEARCH_API_KEY for broader public-web discovery. Search terms leave this node; configured teachers receive the question and bounded source excerpts. No whole-web coverage is claimed.
+
+The configured primary teacher can inspect a task-family example and teach a validated research recipe: discover, read, rank, extract and critique, with ranking weight and output size. Kenuxa executes this bounded procedure locally against NEW evidence for related explanation, comparison or procedure questions. This is executable method reuse, not memorizing a previous subject's answer. It is an initial extractive learning system, not general reasoning or arbitrary skill acquisition. Teacher output cannot add code or tool execution. Procedure tasks return research passages; they do not guarantee a complete actionable solution.
+
+Successful teacher responses are hashed and persisted privately so identical requests reuse the original lesson even after restart. Concurrent identical requests share one upstream call. Research teaching attempts are persisted before dispatch; each of the three task families gets at most one automatic teaching attempt. Failure or interruption suppresses automatic retries. No key means a clearly identified built-in extraction recipe is used; add a key and choose Research further to obtain the first teaching attempt. The default primary is Groq, which is distinct from xAI's Grok. Provider availability, free tiers and quotas depend on the account; no provider is assumed permanently free.
+
+Each researched answer stores exact source passages, retrieval times, method reference and a pending atom. Owner review is required before it trains the answer model or joins approved formations. Approved parent molecules and cells inherit method references. A researched answer may be reused provisionally before approval, with its review status displayed; rejecting the atom blocks that answer cache. Repeating the question uses saved evidence and local critique without another teacher call. The cache preserves word order to avoid confusing reversed relationships. The model also abstains when too much question vocabulary is unseen.
+
+Learning & self-review shows execution steps, coverage and unresolved gaps. Known approved answers retain their supported wording when there is no evidenced improvement. Research further explicitly checks fresh sources, reuses the procedure, saves the new source version and retains the preceding answer for comparison. A changed answer is not labeled more accurate merely because it changed. Evidence older than 24 hours is flagged. Exact quotations prove source correspondence, not truth, relevance or completeness; every answer is not guaranteed to improve.
+
+Memory limits are 500 researched questions and 1,000 successful teacher responses, without automatic eviction of learned teacher lessons. Store and back up the ignored data directory on persistent storage: Render instances without a disk lose local learning on redeploy. API configuration keys stay in server memory until restart; environment keys persist through your host configuration. Private question/method/teacher memory is excluded from federation snapshots. Full trusted state restoration preserves methods; lesson-only UI import does not restore them.
+
+Search API documentation: [MediaWiki Search](https://www.mediawiki.org/wiki/API:Search), [Brave Web Search](https://api-dashboard.search.brave.com/api-reference/web/search/get).
+
+## A growing semantic organism
 
 The source design is the shared [Building a New Internet conversation](https://chatgpt.com/share/6ae9f7be-f968-83e9-96bf-5dbfe23b34b1), extended by the atom/DNA → molecule → cell requirements. That conversation establishes immutable identity, meaning, graph connections, evidence, trust, context, attachments, capabilities, outcomes and version history. It is a conceptual design, not proof of an existing trained transformer.
 
@@ -24,7 +40,7 @@ You can **teach new native capabilities** to an approved atom in its DNA screen:
 
 **Web learning** starts enabled, with a first cycle after roughly one minute and later cycles every 10 minutes while this process is awake. It checks at most two pages per cycle. The initial sources are Wikipedia articles on solar energy, photosynthesis and knowledge graphs. Configure 1–20 source URLs and the interval in the UI, pause it there, or set `CRAWLER_ENABLED=false` to force a pause at startup. Optional link discovery stays on configured source origins and caps the queue at 20 URLs.
 
-The crawler obeys its parsed robots.txt rules, validates public HTTPS destinations, pins validated DNS addresses, rejects private/reserved addresses and credentials, checks redirected destinations, bounds HTML to 3 MB and captured excerpts to 12,000 characters, and records source URLs, capture times and content fingerprints. It has a deliberately small HTML/text extractor; paywalls, authenticated sites, JS-only pages, PDFs, videos and comprehensive robots protocol support are outside v0.2. Unavailable/disallowed sources are recorded as failures rather than fabricated captures. Unchanged captures do not generate duplicate atoms or teacher calls.
+The crawler obeys its parsed robots.txt rules, validates public HTTPS destinations, pins validated DNS addresses, rejects private/reserved addresses and credentials, checks redirected destinations, bounds HTML to 3 MB and captured excerpts to 12,000 characters, and records source URLs, capture times and content fingerprints. It has a deliberately small HTML/text extractor; paywalls, authenticated sites, JS-only pages, PDFs, videos and comprehensive robots protocol support are outside this prototype. Unavailable/disallowed sources are recorded as failures rather than fabricated captures. Unchanged captures do not generate duplicate atoms or teacher calls.
 
 Without a teacher, new source-grounded atoms remain pending. With a configured primary teacher, the teacher compares the proposed answer with the captured source and returns supported/uncertain/contradicted plus an exact supporting quote. “Supported” is downgraded to uncertain if the quote is missing or does not occur in the capture. You may enable automatic training on supported candidates; it is off by default. Unresolved contradictions block automatic training. Inspection can also be requested with any other configured teacher; all opinions are retained. There is no silent multi-provider voting loop.
 
@@ -62,7 +78,7 @@ This is a small **answer-selection model**, not a pretrained LLM or an original 
 | M-Atoms | Stable IDs, question/answer examples, tags, provenance, visibility, approval state |
 | Meaning addressing | `meaning://solar` resolves stored topics through the UI/API |
 | Meaning graph | Relationships derived from shared tags, rendered as a graph and accessible cards |
-| Teacher | Optional Groq curriculum proposals; never used by ordinary answering |
+| Teacher | Optional primary teacher for curriculum, inspection and first-time research-method teaching |
 | Evolution | Draft → review → approval → local model retraining; rejected drafts are retained |
 | Capabilities | Listed implemented operations, no arbitrary code execution |
 | Outcomes/memory | Local answer history, user feedback, learning and sync events |
@@ -125,4 +141,4 @@ Live Groq access requires your own configured key. Live cross-account Render dep
 - Mistral: https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request
 - OpenRouter: https://openrouter.ai/docs/api/reference/overview
 
-The foundation is built around Meaning → Capability → Outcome → Evolution. Real general reasoning, autonomous capability execution, source-validated knowledge, private federation, distributed parameter training and trained attention routing are future work, not hidden features of this prototype.
+The foundation is built around Meaning → Capability → Outcome → Evolution. General reasoning, arbitrary autonomous actions, independently validated truth, distributed parameter training and trained attention routing are future work, not hidden features of this prototype.

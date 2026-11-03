@@ -11,7 +11,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const admin='integration-test-admin-token-1234567890', secret='integration-test-network-secret-1234567890';
 async function port(){const s=net.createServer();await new Promise(r=>s.listen(0,'127.0.0.1',r));const p=s.address().port;await new Promise(r=>s.close(r));return p;}
 async function start(id,p,peers='',dir=fs.mkdtempSync(path.join(os.tmpdir(),'kenuxa-test-'))){
- const child=spawn(process.execPath,['server.mjs'],{cwd:root,env:{...process.env,HOST:'127.0.0.1',RENDER:'',PORT:String(p),NODE_ID:id,DATA_DIR:dir,ADMIN_TOKEN:admin,NETWORK_SECRET:secret,PEER_URLS:peers,ALLOW_LOCAL_PEERS:'true',GROQ_API_KEY:'',CRAWLER_ENABLED:'false'},stdio:'pipe'});
+ const child=spawn(process.execPath,['server.mjs'],{cwd:root,env:{...process.env,HOST:'127.0.0.1',RENDER:'',PORT:String(p),NODE_ID:id,DATA_DIR:dir,ADMIN_TOKEN:admin,NETWORK_SECRET:secret,PEER_URLS:peers,ALLOW_LOCAL_PEERS:'true',GROQ_API_KEY:'',CRAWLER_ENABLED:'false',RESEARCH_ENABLED:'false'},stdio:'pipe'});
  let output='';child.stdout.on('data',b=>output+=b);child.stderr.on('data',b=>output+=b);
  const origin=`http://127.0.0.1:${p}`;
  for(let i=0;i<100;i++){if(child.exitCode!==null)throw new Error(output);try{const r=await fetch(origin+'/health');if(r.ok)return {child,origin,dir};}catch{}await new Promise(r=>setTimeout(r,100));}

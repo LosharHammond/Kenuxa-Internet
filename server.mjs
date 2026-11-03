@@ -1,4 +1,5 @@
 import http from 'node:http';
+import {Discovery,LearningEngine} from './lib/learning.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -49,6 +50,8 @@ function addLesson(x,{source='Manual lesson',status='approved',visibility='priva
  const atom={...clean,id:`${NODE}:${randomUUID()}`,hash,source,status,visibility,origin,upstreamId,createdAt:new Date().toISOString()};hydrateAtom(atom);state.atoms.push(atom);return atom;
 }
 const crawler=new CrawlEngine(state,{registry:teachers,addLesson,save,train,event});
+const discovery=new Discovery();
+const learning=new LearningEngine(state,{discovery,crawler,teachers,predict:q=>model.predict(q),addLesson,save,event});
 function publicAtom(a){return {id:a.id,title:a.title,answer:a.answer,questions:a.questions,tags:a.tags,source:a.source,visibility:a.visibility,status:a.status,origin:a.origin,createdAt:a.createdAt,revision:a.dna.evolution.revision};}
 async function sync(){
  if(syncing)return {busy:true}; if(!SECRET)return {disabled:true,reason:'NETWORK_SECRET is not configured'};
@@ -102,6 +105,7 @@ export const server=http.createServer(async(req,res)=>{
     if(route==='/api/organism')return reply(200,{atoms:state.atoms.map(a=>({id:a.id,title:a.title,status:a.status,dna:a.dna})),...state.organism});
     if(route==='/api/entity'){const e=entity(state,url.searchParams.get('id'));return reply(e?200:404,e||{error:'Entity not found'});}
     if(route==='/api/providers')return reply(200,{providers:teachers.list(),usage:state.teacherUsage,maxTeacherCallsPerDay:state.settings.maxTeacherCallsPerDay});
+    if(route==='/api/research')return reply(200,learning.status());
     if(route==='/api/crawler')return reply(200,state.crawler);
     if(route==='/api/knowledge')return reply(200,{atoms:state.atoms});
     if(route==='/api/graph')return reply(200,graph());
@@ -113,9 +117,8 @@ export const server=http.createServer(async(req,res)=>{
    if(!req.headers['content-type']?.startsWith('application/json'))return reply(415,{error:'Send application/json'});
    const body=JSON.parse(await readBody(req)||'{}');
    if(route==='/api/ask'){
-    const question=text(body.question,1000);const prediction=model.predict(question);
-    const result=prediction?{answer:prediction.atom.answer,engine:'KENUXA own model',confidence:Math.round(prediction.score*100),evidence:[{id:prediction.atom.id,title:prediction.atom.title,source:prediction.atom.source}],tags:prediction.atom.tags}:{answer:'I do not have a reliable learned answer yet. Add a lesson or ask the Groq teacher to propose one, then review and train me.',engine:'KENUXA own model',confidence:0,evidence:[],tags:[]};
-    result.id=randomUUID();if(prediction){addAnswerOutcome(prediction.atom,result.id);touchAtom(prediction.atom,'Answer experience recorded');result.dnaRevision=prediction.atom.dna.evolution.revision;result.inspection=inspectAtom(prediction.atom);}state.memory.unshift({id:result.id,question,answer:result.answer,at:new Date().toISOString()});state.memory=state.memory.slice(0,100);event('answer',prediction?'Answered from learned knowledge':'Abstained: no reliable answer');save();return reply(200,result);
+    const question=text(body.question,1000);const result=await learning.ask(question,{refresh:body.refresh===true});
+    result.id=randomUUID();state.memory.unshift({id:result.id,question,answer:result.answer,at:new Date().toISOString()});state.memory=state.memory.slice(0,100);event('answer',result.engine);save();return reply(200,result);
    }
    if(route==='/api/lessons'){const a=addLesson(body,{visibility:body.visibility==='public'?'public':'private'});if(a){event('learn',`Approved manual lesson: ${a.title}`);train();}return reply(200,{atom:a,duplicate:!a});}
    if(route==='/api/atoms'){const name=text(body.name,100);const a=addLesson({title:name,answer:text(body.definition,4000),questions:[`What is ${name}?`,`Explain ${name}`,...(Array.isArray(body.questions)?body.questions:[])],tags:Array.isArray(body.tags)?body.tags:[name.toLowerCase()]},{visibility:body.visibility==='public'?'public':'private'});if(a){a.dna.identity.type='domain-atom';touchAtom(a,'Domain atom generated its native agent and expert');event('birth',`${name} atom developed native specialists`);train();}return reply(200,{atom:a,duplicate:!a});}
@@ -137,6 +140,7 @@ export const server=http.createServer(async(req,res)=>{
     }finally{save();}
    }
    if(route==='/api/capabilities/review'){const a=state.atoms.find(a=>a.id===body.id);if(!a)throw new Error('Atom not found');const proposed=a.dna.pendingPrograms.find(p=>p.proposalId===body.proposalId);if(!proposed)throw new Error('Capability proposal not found');if(body.approve===true)learnProgram(a,proposed,`owner-reviewed teacher proposal: ${proposed.source}`);a.dna.pendingPrograms=a.dna.pendingPrograms.filter(p=>p.proposalId!==body.proposalId);touchAtom(a,body.approve===true?'Capability approved':'Capability rejected');save();return reply(200,{saved:true});}
+   if(route==='/api/research/config'){discovery.configure(body.key);return reply(200,learning.status());}
    if(route==='/api/providers'){const providers=teachers.configure(body);save();return reply(200,{providers});}
    if(route==='/api/budget'){const value=Number(body.maxTeacherCallsPerDay);if(!Number.isInteger(value)||value<0||value>500)throw new Error('Teacher budget must be 0 to 500 calls per UTC day');state.settings.maxTeacherCallsPerDay=value;save();return reply(200,{saved:true});}
    if(route==='/api/crawler/config'){

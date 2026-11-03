@@ -10,6 +10,7 @@ test('own model learns starter answers, generalizes a paraphrase and abstains',(
  assert.match(model.predict('Which city is the capital of Ghana?').atom.answer,/Accra/);
  assert.match(model.predict('Explain solar energy').atom.answer,/sunlight/);
  assert.equal(model.predict('Describe quantum chromodynamics confinement'),null);
+ assert.equal(model.predict('What is the capital of Nigeria?'),null);
  assert.ok(model.loss<0.2); assert.ok(model.snapshot().weights.some(w=>Object.keys(w).length));
 });
 test('teacher is isolated and drafts structured lessons through Groq',async()=>{

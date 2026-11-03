@@ -1,5 +1,15 @@
 # Delivery verification — 3 November 2026
 
+## v0.3 research and method learning
+
+- Fifteen automated test groups pass. New coverage includes first-time method teaching, transfer from Venus to Saturn using new evidence rather than copied answers, parallel request deduplication, method persistence, source-reference inheritance through molecules/cells, blocked reuse of rejected lessons, suppressed failed-teacher retries, teacher response cache reuse across restart without credentials or additional quota use, search-key routing, and citation/coverage critique. Provider and Brave calls use fixtures, not live credentials.
+- In the actual local browser, asked the previously unknown question What is bioluminescence? The service discovered Wikipedia results, read three public pages and returned three exact cited passages. The UI displayed source links, pending review status, search coverage and self-review gaps.
+- Repeating the question returned Answer memory reused with no new search or teacher call. Restarted the actual service, reloaded v0.3, and verified that the saved answer still returned from memory with citation review.
+- A live fresh-source request read three pages again and reported wordingChanged=false. The original supported wording was retained, and the preceding answer version was saved for comparison.
+- Local research status confirmed one saved researched question and zero teacher attempts. No teacher or Brave API key is installed, so live method teaching and broad Brave search were NOT verified. The live method was builtin:explanation; teacher-trained methods are verified by mocked integration tests only.
+- Researched atoms remain pending until owner approval. Local answer reuse is explicitly provisional. Private research/teacher data remains in ignored local state; no credentials or runtime learning files are committed.
+- Screenshot proof: kenuxa-research-v03.png in the Codex visualization output directory. This is bounded extractive evidence processing and reusable parameterized research procedures, not a generally reasoning model, whole-web crawler, or hallucination-free answer system.
+
 ## v0.2 upgrade verification
 
 - Ten automated test groups pass, including the original two-node HTTP test and the new DNA, hierarchy, native capability, provider and crawler checks.
