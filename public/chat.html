@@ -23,6 +23,7 @@
     <nav class="history" id="history" aria-label="Previous chats"></nav>
     <div class="side-foot">
       <button class="foot-btn" id="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span id="theme-label">Theme</span></button>
+      <button class="foot-btn" id="account-btn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.4-3.3 4-5 7-5s5.6 1.7 7 5"/></svg><span id="account-label">Sign in</span></button>
       <a class="foot-btn hidden" id="studio-link" href="/studio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/></svg><span>Research studio</span></a>
     </div>
   </aside>
@@ -52,6 +53,26 @@
     </div>
   </main>
 </div>
+<dialog class="acct" id="acct" aria-labelledby="acct-title">
+  <form method="dialog" class="acct-card" id="acct-form">
+    <div class="acct-head"><h2 id="acct-title">Your KENUXA account</h2><button class="icon-btn" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div id="acct-out">
+      <p class="acct-note">Sign in so KENUXA can remember what you ask it to — across conversations and devices. Your memory stays private to your account and never becomes shared network knowledge. Signing out on a shared device ends the session.</p>
+      <label>Username<input id="acct-user" autocomplete="username" maxlength="32" spellcheck="false"></label>
+      <label>Passphrase<input id="acct-pass" type="password" autocomplete="current-password" maxlength="200"></label>
+      <div class="acct-row"><button type="button" class="btn primary" id="acct-login">Sign in</button><button type="button" class="btn" id="acct-create">Create account</button></div>
+    </div>
+    <div id="acct-in" class="hidden">
+      <p class="acct-note">Signed in as <b id="acct-name"></b>.</p>
+      <label class="acct-toggle"><input type="checkbox" id="acct-loc"> Use my approximate location when it helps (you can turn this off any time)</label>
+      <p class="acct-small" id="acct-loc-state"></p>
+      <div class="acct-mem" id="acct-mem"></div>
+      <div class="acct-row"><button type="button" class="btn" id="acct-forget">Erase my memory</button><button type="button" class="btn" id="acct-export">Download my data</button><button type="button" class="btn" id="acct-logout">Sign out</button></div>
+      <details class="acct-danger"><summary>Delete account</summary><label>Passphrase<input id="acct-del-pass" type="password" autocomplete="current-password"></label><button type="button" class="btn danger" id="acct-delete">Delete my account and memory</button></details>
+    </div>
+    <p class="acct-err" id="acct-err" role="alert"></p>
+  </form>
+</dialog>
 <div class="toast hidden" id="toast" role="status"></div>
 </body>
 </html>

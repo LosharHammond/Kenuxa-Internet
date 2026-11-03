@@ -1,6 +1,6 @@
 {
  "name": "kenuxa-internet",
- "version": "0.6.0",
+ "version": "1.1.0",
  "private": true,
  "description": "KENUXA Internet: living semantic graph, own 9-layer/81-head transformer, multi-teacher learning, Supabase storage and cross-host MTP federation",
  "type": "module",

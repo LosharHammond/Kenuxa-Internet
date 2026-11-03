@@ -16,7 +16,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const admin = 'platform-test-admin-token-123456789012345', secret = 'platform-test-network-secret-12345678901234';
 const ENTITY_TYPES = ['Knowledge', 'Capability', 'Agent', 'Organization', 'Person', 'Location', 'Document', 'Media', 'Goal', 'Action', 'Event', 'Concept', 'Custom'];
 const REL_TYPES = ['LIVES_IN', 'REQUIRES', 'HANDLED_BY', 'USES', 'CAN_EXECUTE', 'BELONGS_TO', 'CREATED_BY', 'CONNECTED_TO', 'DEPENDS_ON', 'ENABLES', 'PART_OF', 'SIMILAR_TO', 'OPPOSES', 'PRODUCES', 'CONSUMES', 'GOVERNS', 'OWNED_BY', 'REFERENCES', 'LEADS_TO', 'CUSTOM'];
-const baseEnv = { HOST: '127.0.0.1', RENDER: '', VERCEL: '', NETLIFY: '', RAILWAY_ENVIRONMENT: '', CRAWLER_ENABLED: 'false', TRANSFORMER_TRAINING: 'false', RESEARCH_ENABLED: 'false', GROQ_API_KEY: '', SUPABASE_URL: '', SUPABASE_SERVICE_ROLE_KEY: '' };
+const baseEnv = { HOST: '127.0.0.1', RENDER: '', VERCEL: '', NETLIFY: '', RAILWAY_ENVIRONMENT: '', CRAWLER_ENABLED: 'false', TRANSFORMER_TRAINING: 'false', RESEARCH_ENABLED: 'false', GROQ_API_KEY: '', SUPABASE_URL: '', SUPABASE_SERVICE_ROLE_KEY: '', KENUXA_NETWORK: 'off' };
 
 test('Supabase store mirrors the graph into the original v1.1 tables within their CHECK constraints', async () => {
   const calls = [], db = new Map();

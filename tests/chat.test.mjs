@@ -6,7 +6,7 @@ import path from 'node:path';
 import { createNode } from '../lib/node.mjs';
 import { webRequest } from '../lib/adapters.mjs';
 
-const env = { HOST: '0.0.0.0', RENDER: 'true', NODE_ID: 'chat-node', ADMIN_TOKEN: 'chat-test-admin-token-1234567890-abcdef', CRAWLER_ENABLED: 'false', TRANSFORMER_TRAINING: 'false', RESEARCH_ENABLED: 'false', GROQ_API_KEY: '', SUPABASE_URL: '', PUBLIC_QUESTIONS_PER_MINUTE: '4' };
+const env = { HOST: '0.0.0.0', RENDER: 'true', NODE_ID: 'chat-node', ADMIN_TOKEN: 'chat-test-admin-token-1234567890-abcdef', CRAWLER_ENABLED: 'false', TRANSFORMER_TRAINING: 'false', RESEARCH_ENABLED: 'false', GROQ_API_KEY: '', SUPABASE_URL: '', PUBLIC_QUESTIONS_PER_MINUTE: '4', KENUXA_NETWORK: 'off' };
 
 test('hosted nodes serve a public chat; the research studio stays behind the admin token', async () => {
   const node = await createNode({ env: { ...env, DATA_DIR: fs.mkdtempSync(path.join(os.tmpdir(), 'kenuxa-chat-')) }, log: () => {} });

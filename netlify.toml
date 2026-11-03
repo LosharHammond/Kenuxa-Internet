@@ -3,7 +3,7 @@
   publish = "public"
 
 [functions]
-  included_files = ["public/**", "lib/**"]
+  included_files = ["public/**", "lib/**", "network/**"]
 
 [build.environment]
   NODE_VERSION = "22"

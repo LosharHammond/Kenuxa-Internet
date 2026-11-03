@@ -1,8 +1,136 @@
-# KENUXA Internet v0.6: a public chat for everyone, a studio for researchers
+# KENUXA Internet v1.1: an atom-native cognitive network that remembers the conversation, reasons, verifies and learns
 
 A fresh reconstruction from your surviving semantic-internet specification. It is not a recovered copy of the lost laptop's code. v0.4 reconnects to the original **INTERNET** Supabase project and reuses its v1.1 *Semantic Graph Entity Schema* tables: entities, relationships, attachments, capabilities, embeddings and resolutions.
 
 Every component serves **Meaning → Capability → Outcome → Evolution**. The graph is the intelligence layer. The transformer is a component inside the network; it is not the centre. Storage is not intelligence.
+
+## New in v1.1: context continuity, verified answers, learning from a teacher, accounts and memory
+
+The full report is in [docs/COGNITIVE-ARCHITECTURE.md](docs/COGNITIVE-ARCHITECTURE.md). It covers the audit, the design, the before/after measurements, security, deployment and limitations.
+
+- **Follow-ups are understood, on any node.** "What if I don't have money?", "Which one should I start with?", "What about the licenses?" and "What happens if two nodes disappear?" are resolved against the conversation's topic, options and situation. Every answer carries a small context capsule that the chat sends back, so a *different* node, or the same node after a restart, continues the conversation. Measured: 0 of 4 follow-ups were bound correctly before, 4 of 4 now.
+- **Verified knowledge packs with real citations.** The solar-business-in-Ghana answer now:
+  - distinguishes six business models
+  - cites the Energy Commission, Act 832, the 2023 licence guideline, ORC and GRA
+  - flags figures that may have changed
+  - adapts to a small or zero budget
+- **Every answer is verified before delivery.** Internal errors never reach users, citations are deduplicated and valid, repetition and agreement errors are fixed, and relevance and uncertainty are checked.
+- **Emotional context.** KENUXA recognises excitement, frustration, sadness, loneliness and other emotions from wording, says that this is an inference, and adapts its tone without claiming feelings.
+- **Teacher–student learning.** KENUXA answers a gap question first, offline. The teacher (Groq or Grok) then answers, and the Atomic Dissection Engine compares both claim by claim. Errors are verified, their root cause is found, and teacher claims are promoted only as provisional knowledge. The teacher can be wrong and is caught. Tasks are leased so nodes don't duplicate work, a scheduler keeps background work out of the way of users, and a privacy-safe dataset is exported.
+- **Accounts and private memory.** Users can say "Remember that…" and "Forget…", download their data, delete their account, and use approximate location only with consent. Sign-out separates people on a shared device, and private memory never becomes network knowledge.
+- **Atomic correctness audit and a repository snapshot.** Public atoms can be backed up into the repository, which matters because Render free disks are ephemeral.
+
+```bash
+npm test                        # 87 tests
+node bench/cognition.eval.mjs   # before/after conversation evaluation
+```
+
+## New in v1.0: learning from people, corroboration, multilingual understanding, encrypted private atoms
+
+- **KENUXA learns from what it is told, carefully.**
+  - Say "A kente is a cloth." and later ask "Is a kente a cloth?". The answer is yes, together with a note that this rests on an unverified statement.
+  - Confidence grows only when *independent* sources agree.
+  - Curated knowledge cannot be overwritten by a statement.
+  - Contradictory statements make the question **disputed** instead of silently replacing anything.
+- **Corroboration.** A meaning proposed by one node or teacher stays *provisional* until a second independent node agrees, or the node's own teacher does. It then becomes *corroborated*. Persistent disagreement marks it *disputed*.
+- **Any language in, KENUXA reasoning out.** Words in any language become atoms natively. When a teacher is configured, it supplies a labelled analysis and an English rendering, which KENUXA then reasons over with its own rules. For example, "Le serpent est-il un animal ?" gets "Yes. A snake is a reptile, a reptile is an animal…".
+- **Encrypted private atoms.** Set `KENUXA_DEDUP_DOMAIN` and `KENUXA_DOMAIN_KEY` (a 32-byte key). The node's atoms are then sealed with AES-256-GCM before they are spread over the network, and the index hides which atoms exist.
+- **Wider codes on bigger networks.** From 12 nodes, segments use 8+4 coding, which survives 4 node losses at the same 1.5× overhead. Critical data gets an extra parity fragment.
+
+```bash
+npm test                       # 71 tests
+```
+
+## New in v0.9: reasoning, ellipsis, idioms, plans and a gated training pipeline
+
+The full report is in [docs/ATOMIC-ARCHITECTURE.md](docs/ATOMIC-ARCHITECTURE.md); section K covers v0.9.
+
+- **Reasoning over atoms.** Shared concept atoms form an IS_A taxonomy. Asked "Is a python an animal?", KENUXA works through each sense of the word. It answers that it **depends on the sense**: a python is a snake, a snake is a reptile, and a reptile is an animal. Each answer comes with its confidence and assumptions. A missing link is reported as "not established", never as "no". A proven inference is stored as a derived, provisional relationship atom.
+- **Richer language.** It handles ellipsis ("I am learning." → "Are you?" / "So am I." / "Neither can she.") and idioms ("kick the bucket" means *die*, while "kicked the bucket of water" stays literal). It follows "What is Python?" → "How do I install it?" → "Can I use it on Windows?".
+- **Every answer has a structured plan.** The plan records the intent, entities, references, where the answer came from (own node → network → web → teacher), the facts and reasoning used, the uncertainty, and validation checks.
+- **Conversation memory.** Public chat keeps per-conversation discourse in memory only, for 30 minutes, keyed by a hash of the conversation id and the visitor's address. A device is never treated as a person.
+- **Stronger preservation:**
+  - metadata 10× smaller (compressed index)
+  - private deduplication domains
+  - backpressure and retry backoff
+  - automatic rebalancing onto new hosts
+  - safe garbage collection, alerts, and a REPAIRING state
+- **Training is separate and gated.** Atom updates never touch weights. The transformer trains a *candidate*, and the served model changes only when a candidate:
+  - beats it on held-out data
+  - stays stable on a frozen regression set
+  - passes the release policy (`TRANSFORMER_PROMOTION=gated|manual|off`)
+
+  Versions can be rolled back. Training data is deduplicated and privacy-scrubbed first.
+
+```bash
+npm test                       # 63 tests
+node bench/atoms.bench.mjs     # real timings on your machine
+```
+
+## New in v0.8: universal atoms and decentralized preservation
+
+The full report is in [docs/ATOMIC-ARCHITECTURE.md](docs/ATOMIC-ARCHITECTURE.md). It covers the audit, the DNA schema, a pipeline demo, the measured efficiency, recovery, the tests and the limitations.
+
+- **Every word, punctuation mark and number becomes an atom.**
+  - Each has a stable logical ID (`lex:en:learning`, `sense:en:bank#river`, `sym:2e`) and content-hashed immutable revisions.
+  - Each atom's DNA has six sections: identity, linguistic, semantic, functional, relational and epistemic.
+  - Words never seen before become *provisional* atoms with `meaningStatus: unknown`. Meanings are never invented.
+  - Segmentation is Unicode-aware, so Chinese and Thai, which have no spaces, also work.
+- **Sentences are interpreted, not concatenated.**
+  - The pipeline produces tense, aspect, negation, questions, modality, copular types and semantic roles. It also detects because-clauses as causes.
+  - "it" is resolved from earlier turns, and "bank" is disambiguated from context.
+  - Each node's answer cascade uses this interpretation and answers in this order: **its own knowledge → all other nodes → the web**, with the teacher guiding throughout.
+- **Atoms survive their creator.**
+  - Atoms are batched into content-addressed segments, either Reed–Solomon 4-of-6 coded or held as 3 replicas.
+  - Placement spreads segments across different hosts (Render, Railway, Vercel, Netlify, Fly, home servers).
+  - Metadata is signed and quorum-replicated, so the registry has no single point of failure.
+  - Nothing is reported COMMITTED until enough copies exist; otherwise the atom stays PENDING_DURABILITY with the reason.
+  - Repair rebuilds lost fragments automatically.
+  - Tested by SIGKILLing the creating node among six real processes.
+- **Measured:** 93 % less storage than copying everything everywhere, and 100 of 100 degraded segments restored after 2 of 8 nodes died. Run it yourself:
+
+```bash
+npm test                       # 49 tests, including A–O
+node bench/atoms.bench.mjs     # real timings on your machine
+```
+
+Studio APIs: `POST /api/interpret {text}`, `GET /api/lexicon`, `GET /api/lexicon/atom?id=`, `POST /api/atoms/fetch {id, network}`, `POST /api/preserve` and `GET /api/preservation`.
+
+## New in v0.7: the network joins itself
+
+KENUXA is a network, not a single app. **Every node that is hosted online joins the KENUXA network automatically**: on Render, Railway, Vercel, Netlify, Fly or any server with a public address. Nobody has to set `NETWORK_SECRET` or `PEER_URLS`.
+
+A node running on your own machine stays private. To join from your PC anyway, set `KENUXA_NETWORK=on`.
+
+How joining works (`lib/mesh.mjs`, protocol **MTP/0.5-open**):
+
+1. **Identity.** On first start a node creates its own Ed25519 key pair. Its network identity is the key's fingerprint. Every request and response is signed with it, timestamped and protected against replay, and each fingerprint is bound to exactly one key.
+2. **First contact.** The node reads the bundled genesis seeds and the living directory in `network/seeds.json`, which it fetches again from the public repo, so the list can grow without code changes. It then says hello. The receiving node checks the announced URL by fetching the sender's signed `/mtp/info`.
+3. **Gossip.** Every node tells its peers about the peers it knows, so the network spreads node to node. Learned peers are saved, so the network survives even if the genesis seed goes offline.
+4. **Knowledge spreads.** Nodes pull each other's shareable atoms (`/mtp/snapshot`), deduplicated by content hash. They are shared:
+   - knowledge learned from the public web, research, teachers or the network
+   - anything the owner marked public
+
+   Owner-written manual lessons stay private unless marked public, or unless you set `NETWORK_SHARE=all`.
+5. **Ask the network.** When a node doesn't know something, it asks the network (`/mtp/query`) before calling a teacher. The answer cites the node it came from, and the atom is kept for review.
+6. **The network adapts:**
+   - every peer has a trust score that rises when its exchanges succeed and falls when they fail
+   - unreachable peers are contacted less and less often
+   - dead or hostile peers are eventually forgotten
+   - knowledge held independently by several nodes is approved automatically by **network consensus**; the number of nodes required grows with the network
+   - the evolution rhythm speeds up while the network is changing and slows when it's quiet
+
+The original secret-based federation still works alongside this as an optional private overlay.
+
+| Setting | Effect |
+| --- | --- |
+| `KENUXA_NETWORK=on/off` | Force joining or leaving the public network (default: on when hosted, off on your PC) |
+| `KENUXA_SEEDS` | Extra first-contact URLs, comma-separated |
+| `NETWORK_SHARE=all` | Also share owner-written lessons |
+| `NETWORK_CONSENSUS` | Fix the number of confirming nodes instead of letting it adapt |
+| `NETWORK_CONSENSUS_APPROVE=false` | Keep network-received atoms pending until the owner reviews them |
+
+To help others find the network, add your node's URL to `network/seeds.json` with a pull request. Nodes only need the list for their first contact.
 
 ## New in v0.6: public chat and research studio
 

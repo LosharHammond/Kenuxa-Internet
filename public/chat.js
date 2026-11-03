@@ -94,7 +94,7 @@
   function actions(m) {
     const bar = h('div', 'actions'), btn = (icon, label, fn) => { const b = h('button', 'act'); b.type = 'button'; b.title = label; b.setAttribute('aria-label', label); b.append(svg(icon)); b.addEventListener('click', () => fn(b)); bar.append(b); return b; };
     btn(ICON.copy, 'Copy', async b => { try { await navigator.clipboard.writeText(m.content); b.replaceChildren(svg(ICON.ok)); setTimeout(() => b.replaceChildren(svg(ICON.copy)), 1500); } catch { toast('Copy is not available here'); } });
-    const fb = helpful => async b => { bar.querySelectorAll('.on').forEach(x => x.classList.remove('on')); b.classList.add('on'); try { await post('/chat/feedback', { helpful, entityIds: m.entityIds || [] }); toast(helpful ? 'Thanks for the feedback' : "Thanks — I'll use this to improve"); } catch {} };
+    const fb = helpful => async b => { bar.querySelectorAll('.on').forEach(x => x.classList.remove('on')); b.classList.add('on'); try { await post('/chat/feedback', { helpful, entityIds: m.entityIds || [], question: m.question || '' }); toast(helpful ? 'Thanks for the feedback' : "Thanks — I'll use this to improve"); } catch {} };
     btn(ICON.up, 'Good response', fb(true)); btn(ICON.down, 'Bad response', fb(false));
     btn(ICON.redo, 'Regenerate', () => regenerate(m));
     return bar;
@@ -107,10 +107,10 @@
     showEmpty(false); document.querySelectorAll('.followups').forEach(f => f.remove());
     if (!refresh) { current.messages.push({ role: 'user', content: text, at: Date.now() }); addUser(text); }
     scrollDown(); const think = thinking(); scrollDown();
-    const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [] }); }
+    const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
-    try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh });
-      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, at: Date.now(), question: text };
+    try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) });
+      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
     addAI(msg); busy = false; updateSend(); scrollDown();
@@ -126,6 +126,29 @@
   $('#composer').addEventListener('submit', e => { e.preventDefault(); const v = input.value; if (!v.trim() || busy) return; input.value = ''; grow(); updateSend(); send(v); });
   for (const b of ['#new-chat', '#new-chat-top']) $(b).addEventListener('click', () => { newChat(); if (small()) shell.classList.add('closed'); });
   addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'o') { e.preventDefault(); newChat(); } if (e.key === 'Escape' && stopTyping) stopTyping(); });
+
+  // ---------- account, private memory and consented location ----------
+  let me = null; const dlg = $('#acct'), err = t => { $('#acct-err').textContent = t || ''; };
+  const locOn = () => { try { return localStorage.getItem('kx_loc') === '1'; } catch { return false; } };
+  let lastLoc = null;
+  function readLocation() { const tz = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { return null; } })(); lastLoc = { timeZone: tz }; if (!navigator.geolocation) return Promise.resolve(lastLoc);
+    return new Promise(res => navigator.geolocation.getCurrentPosition(p => { lastLoc = { timeZone: tz, lat: p.coords.latitude, lon: p.coords.longitude, accuracy: p.coords.accuracy }; res(lastLoc); }, () => res(lastLoc), { maximumAge: 3600000, timeout: 8000, enableHighAccuracy: false })); }
+  async function account(action, extra = {}) { err(''); try { const r = await post('/chat/account', { action, ...extra }); return r; } catch (e) { err(e.message); throw e; } }
+  function renderAccount() {
+    $('#account-label').textContent = me ? me.username : 'Sign in'; $('#acct-out').classList.toggle('hidden', !!me); $('#acct-in').classList.toggle('hidden', !me);
+    if (me) { $('#acct-name').textContent = me.username; $('#acct-loc').checked = locOn(); $('#acct-loc-state').textContent = locOn() ? (me.settings?.location ? `Using: ${me.settings.location.country || 'nearby area'} (${me.settings.location.accuracy || me.settings.location.source})` : 'Location sharing is on.') : 'Location is not shared.'; }
+  }
+  async function refreshMe() { try { me = (await (await fetch('/chat/me')).json()).user; } catch { me = null; } renderAccount(); }
+  $('#account-btn').addEventListener('click', async () => { renderAccount(); if (me) { try { const m = await account('memory'); const box = $('#acct-mem'); box.replaceChildren(); box.append(h('b', '', m.facts.length ? 'What you asked me to remember' : 'Nothing remembered yet — say “remember that …” in a chat.')); if (m.facts.length) { const ul = h('ul'); for (const f of m.facts) ul.append(h('li', '', f.text)); box.append(ul); } } catch {} } dlg.showModal(); });
+  $('#acct-login').addEventListener('click', async () => { try { const r = await account('login', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); toast('Signed in'); } catch {} });
+  $('#acct-create').addEventListener('click', async () => { try { const r = await account('create', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); toast('Account created'); } catch {} });
+  $('#acct-logout').addEventListener('click', async () => { try { await account('logout'); } catch {} me = null; renderAccount(); toast('Signed out'); });
+  $('#acct-forget').addEventListener('click', async () => { try { await account('forget-all'); $('#acct-mem').replaceChildren(h('b', '', 'Memory erased.')); toast('Memory erased'); } catch {} });
+  $('#acct-export').addEventListener('click', async () => { try { const d = await account('export'); const a = h('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' })); a.download = 'kenuxa-my-data.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); } catch {} });
+  $('#acct-delete').addEventListener('click', async () => { try { await account('delete', { passphrase: $('#acct-del-pass').value }); me = null; renderAccount(); dlg.close(); toast('Account deleted'); } catch {} });
+  $('#acct-loc').addEventListener('change', async e => { try { localStorage.setItem('kx_loc', e.target.checked ? '1' : '0'); } catch {} if (e.target.checked) { const l = await readLocation(); try { const r = await account('location', { location: l }); me.settings = { ...me.settings, location: r.location }; } catch {} if (l && l.lat == null) toast('Using your time zone only (approximate)'); } else { lastLoc = null; try { await account('location', { enabled: false }); me.settings = { ...me.settings, location: null }; } catch {} } renderAccount(); });
+  if (locOn()) readLocation();
+  refreshMe();
 
   // ---------- start ----------
   $('#greet').textContent = greet();

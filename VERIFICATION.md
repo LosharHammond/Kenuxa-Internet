@@ -1,5 +1,88 @@
 # Delivery verification, 3 November 2026
 
+## v1.1: cognitive network (context, verified answers, teacher dissection, identity)
+
+Checks that passed:
+
+- **Tests:** 87 automated tests pass. These suites are new:
+  - `tests/cognition.test.mjs`: the PART 12 solar regression across two nodes, plus restart, context, packs, verification and affect
+  - `tests/learning-loop.test.mjs`
+  - `tests/identity.test.mjs`
+  - `tests/integrity.test.mjs`
+- **Before and after** (`node bench/cognition.eval.mjs`, offline):
+
+  | | v1.0 | v1.1 |
+  |---|---|---|
+  | Follow-ups bound to their topic | 0 / 4 | 4 / 4 |
+  | Leaked internal errors | 3 | 0 |
+
+- **Browser check:** a Chromium run of the chat (solar conversation and account dialog) showed no page or console errors.
+- **Regulatory claims** in the Ghana solar pack were checked against the Energy Commission pages, the June 2023 guideline, GNA and Pulse on 3 November 2026.
+- **Not verified here:** live Groq or Grok calls, because the sandbox has no internet access (the teacher paths are tested with a stand-in provider), and accounts across multiple real Render services.
+
+## v1.0: statement learning, corroboration, teacher path, multilingual analysis, encrypted domains, adaptive stripes
+
+Checks that passed:
+
+- **Tests:** 71 automated tests pass. `tests/v1.test.mjs` adds 8 of them:
+  - statement learning with sources, contradictions and curated protection
+  - a running node learning a statement and then reasoning with it
+  - corroboration and disputes
+  - the teacher lexicon path, end to end, with a stand-in provider
+  - a French question answered through a labelled teacher analysis
+  - encrypted private domains (no plaintext and no atom ids at peers, wrong key finds nothing)
+  - 8+4 stripes surviving 4 losses, then repaired
+  - the per-peer storage budget
+- **Benchmark:** results are in `docs/ATOMIC-ARCHITECTURE.md` §L.
+- **Not verified here:** live Groq (the sandbox has no internet access), and preservation and corroboration across real hosted nodes. Both are implemented, but they must be checked after deploying.
+
+## v0.9: reasoning, ellipsis, idioms, response plans, gated training releases
+
+Checks that passed:
+
+- **Tests:** 63 automated tests pass. The 14 new ones are:
+  - **`tests/atoms-advanced.test.mjs` (8):**
+    - Python/Windows context, ellipsis and idioms
+    - IS_A reasoning
+    - genesis migration from v0.8
+    - tenant-scoped deduplication with compressed index metadata
+    - backpressure and retry backoff
+    - rebalancing, orphan GC, alerts and the REPAIRING state
+  - **`tests/pipeline.test.mjs` (4):**
+    - dataset curation and the privacy scrub
+    - the promotion gate
+    - candidate training that never changes the served model until it passes, with versioned rollback
+    - manual approval
+  - **`tests/reasoning-node.test.mjs` (2):**
+    - a running node answers "Is a python an animal?" by inference, with a response plan
+    - public chat keeps per-conversation discourse
+- **Benchmark** (`node bench/atoms.bench.mjs`): at about 20.5k atoms, metadata fell from 5.80 MB (v0.8) to 0.57 MB, and remote retrieval from 4.9 ms to 0.7 ms. Recovery after 2 of 8 nodes died restored 97 of 97 segments, leaving 0 degraded.
+- **Not verified here:** teacher (Groq) sense proposals and preservation across real hosted nodes, because the sandbox has no internet access. The per-peer storage rate limit was reviewed but has no automated test.
+
+## v0.8: universal atoms, Atomic DNA, decentralized preservation
+
+Checks that passed:
+
+- **Tests:** 49 automated tests pass. The 16 new ones are:
+  - A–O from the master prompt, in `tests/atoms.test.mjs`
+  - a real-process test with six `server.mjs` nodes: node alpha commits newly discovered atoms across the mesh and is killed with SIGKILL, then delta and zeta, which never saw the words, retrieve them from the network
+- **Benchmarks:** the figures in `docs/ATOMIC-ARCHITECTURE.md` §G come from `node bench/atoms.bench.mjs` on the build machine. The benchmark runs in memory on one machine, so cross-host latency will be higher.
+- **Not verified here:** teacher (Groq) sense proposals and preservation across real hosted nodes. The sandbox has no internet access, so both are implemented but must be checked after deploying.
+
+## v0.7: automatic open network
+
+Checks that passed:
+
+- **Tests:** 33 automated tests pass. The new ones cover:
+  - **Signatures:** a fingerprint is bound to one key, replays are rejected, a signature only works for its own path, and swapping in another key is rejected.
+  - **Joining:** four real node processes, with no shared secret and no peer list, joined starting from one seed:
+    - B joined A, and A learned B from B's hello
+    - C learned A by gossip through B
+    - a lesson held independently by A and B reached C and was approved there by network consensus
+    - a brand-new node D answered a question it had never learned by asking the network
+  - **Defaults:** a node hosted on Render is on the network with the bundled seed, and a node on a PC is private.
+- **Genesis seed:** `https://kenuxa-internet.onrender.com` responded to `/health` on 3 November 2026. It was still running v0.4, so it starts acting as the seed once v0.7 is deployed there.
+
 ## v0.6: public chat and research studio
 
 Checks that passed:
