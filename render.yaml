@@ -30,3 +30,5 @@ services:
         sync: false
       - key: GROQ_MODEL
         value: openai/gpt-oss-20b
+      - key: CRAWLER_ENABLED
+        value: "true"

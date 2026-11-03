@@ -1,5 +1,26 @@
 # Delivery verification — 3 November 2026
 
+## v0.2 upgrade verification
+
+- Ten automated test groups pass, including the original two-node HTTP test and the new DNA, hierarchy, native capability, provider and crawler checks.
+- The original local state was migrated to version 2 with a pre-DNA backup in the ignored data directory. Existing learned knowledge remained available.
+- In the actual browser, created Dolphin, Shoe, Dress, Perfume, Homemade and Body spray as six domain atoms. Each developed its own native agent/expert records from its DNA.
+- In the browser, combined Dolphin/Shoe/Dress into Outfit molecule and Perfume/Homemade/Body spray into Scent molecule, then formed Fashion cell from those molecules. The cell displayed advanced native specialists, its evidence/consistency/domain council, six unique atom members and inherited outfit/brand/scent capabilities.
+- Executed the Fashion cell's outfit capability in the browser. Then grew Shoe's meaning and example questions, taught Shoe a new shoe-fit text workflow, and observed Fashion cell's DNA revision and inherited capability update.
+- Executed that newly inherited workflow through Fashion cell. Output included the supplied Accra walking brief, learned steps/checks and the relevant Shoe DNA claims.
+- Restarted the service and repeated that learned capability execution successfully. The structures, DNA and learned program persisted. Council output clearly identified local rule-based checks and the absence of external evidence for the manually created examples.
+- Real outbound HTTPS crawling successfully captured Wikipedia's Knowledge graph and Solar energy pages and produced pending atoms with source URLs, timestamps, excerpts and SHA-256 fingerprints. The initial 600 KB page limit proved too small; the final extractor uses a bounded 3 MB response limit. Failures were recorded rather than represented as successful atoms.
+- Source-grounded atoms stayed pending because no teacher keys were configured. The crawler remains enabled on the running local node. Automatic acceptance/training is off by default and can be enabled explicitly in Web learning.
+- Verified the AI teachers screen shows Groq as primary, all eight provider presets, the compatible-provider option, a daily call budget and no configured credentials.
+- Automated tests cover every provider adapter with synthetic responses; runtime keys are absent from serialized state, exports and metadata. No provider was called live and no key was created.
+- Automated crawler tests cover missing teachers, matching/mismatched quotations, newly configured teachers inspecting old captures, unchanged-source deduplication, source-change proposals and rejection of automatic acceptance with unresolved source conflicts.
+- HTTP tests exercise domain creation, manual molecule/cell formation, DNA growth, learned-capability inheritance/execution and blocking private-address source URLs. Existing private DNA, lessons, conversations and credentials remain excluded from peer payloads.
+- The native specialists are local graph/procedural runtimes. They are not independent general-purpose LLMs, professional experts or proof that all subject tasks can be completed. The own answer model remains the small supervised answer-selection model.
+
+The v0.2 source is prepared for the existing public GitHub repository. Git upload is verified separately by checking the remote commit against the local commit. Local learned state and secrets are excluded.
+
+## Original v0.1 delivery record
+
 Location: `C:\Users\Procus\Desktop\KENUXA\kenuxa-internet`
 
 ## Completed

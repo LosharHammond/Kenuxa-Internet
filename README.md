@@ -1,6 +1,44 @@
-# KENUXA Internet — first working foundation
+# KENUXA Internet v0.2 — atoms, DNA, molecules and cells
 
 A fresh reconstruction from your surviving semantic-internet specification. This is not a recovered copy of the lost laptop's code. The existing Supabase project is not modified or required.
+
+## New: a growing semantic organism
+
+The source design is the shared [Building a New Internet conversation](https://chatgpt.com/share/6ae9f7be-f968-83e9-96bf-5dbfe23b34b1), extended by the atom/DNA → molecule → cell requirements. That conversation establishes immutable identity, meaning, graph connections, evidence, trust, context, attachments, capabilities, outcomes and version history. It is a conceptual design, not proof of an existing trained transformer.
+
+Open **Atoms & DNA** to create a domain such as Shoe, Dress, Wisdom or Perfume. Each atom generates its native agent and expert from its own current DNA. The specialist records are developed locally from the atom's domain, claims, examples, evidence, learned programs and outcomes. No external expert is assigned to the atom. Their development index measures recorded knowledge/experience, not independently evaluated intelligence.
+
+Combine any two or more approved atoms into a named molecule. Combine two or more molecules into a cell. A molecule develops medium specialists; a cell develops advanced specialists plus an evidence/consistency/domain council. The council runs distinct local inspections rather than pretending to be multiple independently trained language models. Automatic topic clusters also form, alongside your explicit structures.
+
+DNA includes immutable identity, meaning/claims, domain context, relationship references, attachments, captured evidence, trust/reviews/contradictions, native capabilities, outcomes, memory, version history, own-model kernel metadata, and its native agent/expert. Runtime JSON files are serialization of this graph; the graph's typed entities and referenced relationships define the domain model. DNA is a bounded extensible record, not a claim to contain every fact about a topic.
+
+When you add meaning, context, examples or a capability to an atom, its identity remains stable and its DNA revision grows. Its native specialists regenerate from the enriched DNA, and parent molecule/cell revisions and inherited capabilities update. Historical meaning snapshots are retained (last 50). Old local data is backed up in `data/pre-dna-backup-*.json` before its first v2 migration. Do not commit that backup.
+
+### Native capabilities that run
+
+The own runtime can retrieve scoped member knowledge, inspect evidence, compare members and create grounded task plans. Starter domain procedures include outfit direction, fashion-brand blueprints, scent concept briefs and decision frameworks. These are local procedural generators and do not call an LLM at execution time. They do not physically dress people, formulate safe cosmetics, execute purchases or guarantee professional expertise.
+
+You can **teach new native capabilities** to an approved atom in its DNA screen: a named declarative workflow, steps and expert checks. Templates can use `{{brief}}` and `{{domain}}`. Parent molecules and cells inherit it. These programs produce structured proposals; they cannot execute JavaScript, shell commands or arbitrary remote tools. The primary teacher can draft new capabilities, but those proposals require owner review before learning. This extends domains beyond the starter procedures without pretending a new atom instantly knows everything about its subject.
+
+### Continuous public-web ingestion
+
+**Web learning** starts enabled, with a first cycle after roughly one minute and later cycles every 10 minutes while this process is awake. It checks at most two pages per cycle. The initial sources are Wikipedia articles on solar energy, photosynthesis and knowledge graphs. Configure 1–20 source URLs and the interval in the UI, pause it there, or set `CRAWLER_ENABLED=false` to force a pause at startup. Optional link discovery stays on configured source origins and caps the queue at 20 URLs.
+
+The crawler obeys its parsed robots.txt rules, validates public HTTPS destinations, pins validated DNS addresses, rejects private/reserved addresses and credentials, checks redirected destinations, bounds HTML to 3 MB and captured excerpts to 12,000 characters, and records source URLs, capture times and content fingerprints. It has a deliberately small HTML/text extractor; paywalls, authenticated sites, JS-only pages, PDFs, videos and comprehensive robots protocol support are outside v0.2. Unavailable/disallowed sources are recorded as failures rather than fabricated captures. Unchanged captures do not generate duplicate atoms or teacher calls.
+
+Without a teacher, new source-grounded atoms remain pending. With a configured primary teacher, the teacher compares the proposed answer with the captured source and returns supported/uncertain/contradicted plus an exact supporting quote. “Supported” is downgraded to uncertain if the quote is missing or does not occur in the capture. You may enable automatic training on supported candidates; it is off by default. Unresolved contradictions block automatic training. Inspection can also be requested with any other configured teacher; all opinions are retained. There is no silent multi-provider voting loop.
+
+These checks reduce errors; they do not eliminate hallucinations, establish source truth or justify global/verified status. A single source and a model agreeing are not independent verification. Source changes preserve prior meaning and raise a contradiction for review. Global canonical identity governance remains future work.
+
+### Bring your own teachers and models
+
+**AI teachers** supports Groq (default), OpenAI, Anthropic/Claude, DeepSeek, Google/Gemini, xAI/Grok, Mistral and OpenRouter, plus arbitrary public HTTPS OpenAI-compatible endpoints. Groq and Grok are different providers. A finite catalogue cannot honestly promise every known model; the extension path supports models sharing the implemented API protocols. New proprietary protocols require an adapter. Enter an exact model ID available to your own account; only Groq has a prefilled default.
+
+Select any configured provider as primary. Provider failures do not silently send data to a different provider. Entered keys stay only in this server process's memory until restart, never in state.json, model.json, exports, DNA, peers or Git. For persistence use the corresponding `*_API_KEY` and `*_MODEL` environment variables in `.env.example` or Render's environment settings. This is a single-owner installation: the node admin can use configured teachers; there is no multi-user key isolation.
+
+Teacher calls send the explicit topic, captured excerpt/answer under inspection, or the domain definition and requested capability for a capability-drafting request. Provider keys are sent only to that provider's endpoint using HTTPS. Custom endpoints must be providers you trust. The UI has an explicit default limit of 30 teacher calls per UTC day (including failed attempts), configurable from 0–500. This is a per-process/node request cap, not a currency spending limit or a replacement for provider billing controls. Groq's free tier has quotas; free usage is not guaranteed.
+
+The local startup, Render instructions and foundational model details below still apply. No API key was provisioned for this project.
 
 ## Start on Windows
 
@@ -38,7 +76,7 @@ Copy `.env.example` to `.env`. Set `GROQ_API_KEY` there and restart. Never commi
 
 In **Learning studio**, request a topic. Only the topic and a fixed teacher instruction are sent to Groq. Each request proposes at most five lessons and is a billable/rate-limited Groq call. Conversations, existing private lessons, admin tokens and network secrets are not sent. The teacher endpoint is fixed to `https://api.groq.com/openai/v1/chat/completions`.
 
-Review each draft's factual accuracy, then click **Approve & train**. Approval is human review, not independent source verification; teacher-generated lessons retain their unverified-draft provenance. Once approved, ask its questions with the teacher disconnected: KENUXA answers with its own trained weights. This is teacher-generated supervised data, not full logit-level model distillation. There is no unattended paid training loop.
+Review each draft's factual accuracy, then click **Approve & train**. Approval is human review, not independent source verification; teacher-generated lessons retain their unverified-draft provenance. Once approved, ask its questions with the teacher disconnected: KENUXA answers with its own trained weights. This is teacher-generated supervised data, not full logit-level model distillation. The configured crawler can make background inspection calls under the explicit daily call cap; automatic answer-model learning remains opt-in.
 
 ## Deploy separate nodes to Render
 
@@ -57,7 +95,7 @@ Federation does not pool Render resources, bypass service limits, keep free serv
 - Every API operation requires the node admin token on public hosts, including chat and exports. Tokens stay only in browser tab memory. This is a single-owner prototype, not a multi-user service.
 - Peers authenticate using HMAC-SHA256 over method, path, timestamp, nonce and body. Requests expire after 60 seconds, used nonces are rejected, redirects are disallowed, and responses are signed. Use HTTPS in production. Nonce state is process-local and resets on restart; bounded timestamp replay remains possible across restarts or replicas. One process per node is the supported topology.
 - Shared-secret members can impersonate a network member. Signatures prove possession of the shared secret, not factual truth or cryptographic per-node identity. Revoke a compromised peer by rotating NETWORK_SECRET on retained nodes and removing its URL. Per-node public-key identities remain future work.
-- Only approved public originals are exposed to authenticated peers. Private lessons, imported peer lessons, drafts, memory, goals and credentials are excluded. Changing an exported lesson later does not recall existing copies; update/revocation propagation is not implemented.
+- Only approved public originals are exposed to authenticated peers. The payload includes question/answer content and public provenance, not full private DNA, learned programs, context layers, memory, goals or credentials. Imported atoms develop new local DNA. Parent structures and capabilities are currently local. Changing an exported lesson later does not recall existing copies; update/revocation propagation is not implemented.
 - Network inputs have limits and enter review. Local server state and API response sizes are bounded for a small prototype: 500 lesson records, 100 memory entries, 300 events, 100 goals. Graph links are based on shared tags, not a transformer attention-routing protocol.
 - The UI renders untrusted text using textContent. There is no shell/tool execution, public signup or automatic external publishing. This is not an audited production security product.
 
@@ -69,7 +107,7 @@ UI import restores lesson content into the review queue with new IDs; it does no
 
 ## Verification
 
-Run `npm test`. Tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise the Groq adapter with a mock (no spending), reject unsafe peers, invalid signatures and replays, then launch two real HTTP node processes. The integration test teaches A a new public lesson, pulls it into B's review queue, verifies B cannot answer before approval, approves/trains B, checks B answers without Groq, verifies private data stays off the wire, and restarts B to check persistence.
+Run `npm test`. Tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise provider adapters with mocks (no spending), reject unsafe peers, invalid signatures and replays, verify source-quote checks, robots exclusions, DNA growth and parent propagation, inherited learned capabilities and absence of provider secrets in state/export. An integration test launches two real HTTP node processes, teaches A a public lesson, reviews/trains B, checks B answers independently, verifies private DNA stays off the wire, and restarts B to check persistence.
 
 Live Groq access requires your own configured key. Live cross-account Render deployments are not established by local tests. See `VERIFICATION.md` for the checks actually completed during delivery.
 
@@ -79,5 +117,12 @@ Live Groq access requires your own configured key. Live cross-account Render dep
 - Groq current models: https://console.groq.com/docs/models
 - Render Blueprint specification: https://render.com/docs/blueprint-spec
 - Render free-service storage and sleep limits: https://render.com/docs/free
+- OpenAI Responses/text: https://developers.openai.com/api/docs/guides/text
+- Anthropic Messages: https://platform.claude.com/docs/en/api/messages/create
+- DeepSeek chat: https://api-docs.deepseek.com/api/create-chat-completion/
+- Google GenerateContent: https://ai.google.dev/api/generate-content
+- xAI API: https://docs.x.ai/developers/rest-api-reference/inference/chat-completions
+- Mistral: https://docs.mistral.ai/getting-started/quickstarts/developer/first-api-request
+- OpenRouter: https://openrouter.ai/docs/api/reference/overview
 
 The foundation is built around Meaning → Capability → Outcome → Evolution. Real general reasoning, autonomous capability execution, source-validated knowledge, private federation, distributed parameter training and trained attention routing are future work, not hidden features of this prototype.
