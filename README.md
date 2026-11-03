@@ -1,8 +1,64 @@
-# KENUXA Internet v0.4: own transformer, 7-part answers, Supabase and cross-host federation
+# KENUXA Internet v0.6: a public chat for everyone, a studio for researchers
 
 A fresh reconstruction from your surviving semantic-internet specification. It is not a recovered copy of the lost laptop's code. v0.4 reconnects to the original **INTERNET** Supabase project and reuses its v1.1 *Semantic Graph Entity Schema* tables: entities, relationships, attachments, capabilities, embeddings and resolutions.
 
 Every component serves **Meaning → Capability → Outcome → Evolution**. The graph is the intelligence layer. The transformer is a component inside the network; it is not the centre. Storage is not intelligence.
+
+## New in v0.6: public chat and research studio
+
+**Hosted nodes show a clean chat by default.** On Render, Railway, Vercel or Netlify, visitors see a chat page (`public/chat.html`) with:
+
+- chat history on the left (New chat, search, grouped by day, delete)
+- light, dark and system themes
+- answers that type out in clean formatting: paragraphs, bold, numbered steps, comparison tables and numbered citations linked to their sources
+- a subtle "understood as…" line under each answer, which expands to show how KENUXA read the question
+- copy, regenerate, 👍/👎 and suggested follow-up questions
+- a layout that works on phones
+
+Visitors need no account. Their conversations stay in their own browser (localStorage); the node keeps only anonymous outcome events and whatever it learns from research. Public questions go through `POST /chat/ask`, which is limited per visitor (`PUBLIC_QUESTIONS_PER_MINUTE`, default 12) and per node (`PUBLIC_QUESTIONS_PER_DAY`, default 1000).
+
+**The research studio is for owners.** Atoms & DNA, the meaning graph, learning studio, web learning, AI teachers, core & evolution, connected nodes, and memory & outcomes all live at `/studio`, behind the admin token. Public visitors never see them.
+
+| Setting | Effect |
+| --- | --- |
+| `KENUXA_MODE=chat` | `/` is the public chat (default on hosted platforms) |
+| `KENUXA_MODE=studio` | `/` is the research studio (default when self-hosted on your PC); the chat stays at `/chat` |
+| `STUDIO_ENABLED=false` | Removes `/studio` entirely |
+| `KENUXA_NAME` | Display name in the chat (default KENUXA) |
+
+## New in v0.5
+
+### Comprehension before answering (`lib/comprehension.mjs`)
+
+Before KENUXA answers, it works out what the message means:
+
+- **Speech act and intent:** 17 intent families, including define, explain, achieve a goal, how-to, compare, why, who/where/when, how many, list, recommend, yes/no, make something, go deeper and greeting.
+- **Underlying goal:** what the person is trying to achieve, plus the qualities a good answer needs.
+- **Focus and action:** what the message is about, and the verb when there is one (for example "start").
+- **Linked meaning atoms:** words are matched to atoms by exact label, alias, value, partial match or tag.
+- **Constraints:** location, time, budget, audience, format and tone.
+- **References:** "it", "this" and "they" resolve to what the conversation was just about.
+- **Ambiguity and score:** ambiguities are flagged, and the whole reading gets an understanding score.
+
+The understanding guides research: the search uses the understood focus, not the raw words.
+
+The answer is then **constructed for the shape the person needs**: a definition, an explanation, a staged plan, a comparison, reasons, a list, a fact or a yes/no answer. It is built from meaning frames, approved claims and captured evidence. When KENUXA has no grounded knowledge, it says so instead of inventing an answer.
+
+Plans for goals it has no verified facts about are labelled as a general framework. If a teacher is configured and KENUXA's own knowledge cannot fully serve the goal, the teacher composes the answer. That answer is saved as a pending atom, so the same question is never sent to a teacher twice. Set `TEACHER_COMPOSE=false` to turn this off.
+
+`POST /api/understand` returns the understanding alone. The app shows it live while you type, and on every answer as "How KENUXA understood you".
+
+### Every atom has explicit meaning (`lib/meaning.mjs`)
+
+Each atom's DNA now holds a **meaning frame** (`dna.meaning.frame`) with these slots: label, essence, kind, category (genus), value, distinguishing traits, purposes, causes, effects, parts, examples, places and domains. Each frame also records its depth and provenance. Frames are extracted from the atom's own definition, claims and evidence, and they regrow whenever the DNA grows. Molecules and cells compose frames from their members.
+
+A teacher can **enrich** a frame (`POST /api/meaning/enrich`). Enrichments are validated, merged with their source recorded, and never silently replace what was extracted.
+
+### Premium interface
+
+- **Public landing page:** a live 3D "meaning cosmos" drawn from the node's public atoms, live counters from the public `/pulse` endpoint (aggregate data only), an animated comprehension demo, and the atom → molecule → cell story.
+- **App:** a glass interface with a live understanding preview, a command palette (Ctrl/⌘K, or `/` to jump to the question box), an animated force-directed meaning graph (hover, drag, zoom, click to open an atom), meaning-frame cards on atoms, and a live status pill.
+- **Accessibility and security:** layouts work on phones, reduced-motion is respected, and the strict CSP is unchanged (no external scripts, fonts or images).
 
 ## New in v0.4
 
@@ -202,7 +258,7 @@ UI import restores lesson content into the review queue with new IDs; it does no
 
 ## Verification
 
-Run `npm test` (25 tests). v0.4 adds numerical gradient checks for the transformer, KV-cache equivalence, identity-preserving layer stacking, checkpoint round-trips, Supabase mirroring against the v1.1 CHECK constraints (using a mock), a serverless Netlify/Vercel-style node with a 7-part answer and cron tick, and three real node processes that discover one another through hello and gossip. Earlier tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise provider adapters with mocks (no spending), reject unsafe peers, invalid signatures and replays, verify source-quote checks, robots exclusions, DNA growth and parent propagation, inherited learned capabilities and absence of provider secrets in state/export. An integration test launches two real HTTP node processes, teaches A a public lesson, reviews/trains B, checks B answers independently, verifies private DNA stays off the wire, and restarts B to check persistence.
+Run `npm test` (28 tests). v0.5 adds meaning-frame extraction, comprehension (intent, goal, constraints, references, value linking) and grounded construction tests. v0.4 adds numerical gradient checks for the transformer, KV-cache equivalence, identity-preserving layer stacking, checkpoint round-trips, Supabase mirroring against the v1.1 CHECK constraints (using a mock), a serverless Netlify/Vercel-style node with a 7-part answer and cron tick, and three real node processes that discover one another through hello and gossip. Earlier tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise provider adapters with mocks (no spending), reject unsafe peers, invalid signatures and replays, verify source-quote checks, robots exclusions, DNA growth and parent propagation, inherited learned capabilities and absence of provider secrets in state/export. An integration test launches two real HTTP node processes, teaches A a public lesson, reviews/trains B, checks B answers independently, verifies private DNA stays off the wire, and restarts B to check persistence.
 
 Live Groq access requires your own configured key. Live cross-account Render deployments are not established by local tests. See `VERIFICATION.md` for the checks actually completed during delivery.
 

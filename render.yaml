@@ -34,3 +34,7 @@ services:
         value: "true"
       - key: TRANSFORMER_PROFILE
         value: nano
+      - key: KENUXA_MODE
+        value: chat
+      - key: PUBLIC_QUESTIONS_PER_DAY
+        value: "1000"

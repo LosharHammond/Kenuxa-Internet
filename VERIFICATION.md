@@ -1,5 +1,34 @@
 # Delivery verification, 3 November 2026
 
+## v0.6: public chat and research studio
+
+Checks that passed:
+
+- **Tests:** 30 automated tests pass. The new chat test runs a node flagged as hosted on Render and checks that:
+  - `/` serves the chat with no studio navigation
+  - `/studio` serves the studio, while `/api/status` still needs the admin token
+  - the public `/chat/ask` answers without exposing internal sections or traces
+  - "Tell me more about it" resolves against the conversation history
+  - the per-visitor rate limit triggers, and cross-origin posts are refused
+- **Browser:** Chromium screenshots (desktop dark and light, iPhone 13) of the empty state, a staged plan, a comparison table, a follow-up, an unknown topic and a mobile answer. There were no page or console errors.
+
+## v0.5: comprehension, meaning frames and premium interface
+
+Checks that passed:
+
+- **Tests:** 28 automated tests pass. The new ones cover meaning frames on every atom (category, purposes, examples, parts, value, enrichment merge) and comprehension:
+  - "How do I start a solar company in Ghana with $5000?" → intent: plan, action: start, focus: solar company, location: Ghana, budget: $5000, linked atom: solar energy.
+  - Two-sided comparison, cause, greeting and yes/no questions are recognised.
+  - "Where is Accra?" links through a value match.
+  - "Tell me more about it" resolves "it" to the previous concept.
+  - Answers are grounded, and an unknown topic returns an honest "not invented" reply.
+- **Real data:** on the user's real v0.3 data, the live server built a 6-step plan that respects the stated constraints, a comparison of footwear and garment from the meaning frames, a greeting, a value lookup ("Where is Accra?") and a pronoun follow-up. An unknown topic got an honest reply.
+- **Browser:** Chromium screenshots of the landing page (desktop and iPhone 13), the chat with the live understanding preview and the comprehension card, the force-directed graph, the meaning-frame card and the command palette showed no page errors. The only console error was the expected 401 from the status check before login.
+
+Not verified:
+
+- **Teacher composition** and **meaning enrichment** depend on a configured teacher key. They were not exercised live.
+
 ## v0.4: transformer, 7-part responses, Supabase, cross-host federation
 
 Checks that passed:
