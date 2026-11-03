@@ -1,0 +1,32 @@
+# One independent node per Render account. This blueprint uses a paid persistent disk.
+services:
+  - type: web
+    name: kenuxa-internet
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --ignore-scripts
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: kenuxa-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: /var/data/kenuxa
+      - key: NODE_ID
+        sync: false
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: NETWORK_SECRET
+        sync: false
+      - key: PEER_URLS
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
