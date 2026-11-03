@@ -1,6 +1,80 @@
-# KENUXA Internet v0.3 — research and reusable method learning
+# KENUXA Internet v0.4: own transformer, 7-part answers, Supabase and cross-host federation
 
-A fresh reconstruction from your surviving semantic-internet specification. This is not a recovered copy of the lost laptop's code. The existing Supabase project is not modified or required.
+A fresh reconstruction from your surviving semantic-internet specification. It is not a recovered copy of the lost laptop's code. v0.4 reconnects to the original **INTERNET** Supabase project and reuses its v1.1 *Semantic Graph Entity Schema* tables: entities, relationships, attachments, capabilities, embeddings and resolutions.
+
+Every component serves **Meaning → Capability → Outcome → Evolution**. The graph is the intelligence layer. The transformer is a component inside the network; it is not the centre. Storage is not intelligence.
+
+## New in v0.4
+
+### KENUXA Core Transformer (`lib/transformer/`)
+
+This is a real decoder-only transformer written in plain JavaScript. It has no dependencies and no downloaded weights. Every parameter is trained by your node on approved atoms.
+
+| Spec item | Implementation |
+| --- | --- |
+| 9 transformer layers | 9 pre-norm blocks in every profile. `TRANSFORMER_EXTRA_LAYERS` stacks more layers that start as exact identities, so the network's existing behaviour is preserved |
+| 81 attention heads | 81 query heads per layer |
+| GQA | 9 key/value heads, so 9 query heads share each KV head |
+| RoPE | Rotary positions, base 500000 |
+| RMSNorm, SwiGLU | Both used in every block, plus a final RMSNorm |
+| 32K context baseline | 32,768-token positional range. Inference uses a KV cache |
+| Flash attention | Tiled online-softmax attention during inference, which never materialises the full attention matrix. This is the flash-attention algorithm on the CPU, not NVIDIA's CUDA kernel |
+| Mixed precision | fp32 compute and fp16 checkpoint storage. JavaScript has no fp16 arithmetic |
+| Gradient checkpointing | On by default. Layer activations are recomputed during the backward pass |
+| Scalable hidden dimension | Profiles `nano` (head dim 2, about 2.5M parameters), `lite` (4, about 9.7M) and `core` (8, about 39M) |
+| Mini-transformer kernel per atom | Each approved atom trains its own prefix vectors against the frozen shared transformer. Molecules and cells merge their members' kernels |
+
+Its jobs are meaning embeddings (stored in `embeddings`, including a pgvector `vec` column), atom kernels, and *experimental drafts*. Drafts are hidden until `TRANSFORMER_MIN_STEPS_FOR_DRAFTS` (1000) steps have run, and they are always labelled as generated rather than retrieved. Embedding-based `similar-meaning` links are created only after 2000 steps.
+
+Long-running hosts train continuously in a worker thread, so the server stays responsive. `nano` manages about 1,000–2,000 steps per hour on a typical CPU. A model trained from scratch on a small curriculum will produce rough text for a long time. It does not compare with Groq or GPT-class models. The backward pass is verified against numerical gradients in `tests/transformer.test.mjs`.
+
+### Mandatory 7-part response
+
+Every `/api/ask` reply includes `sections`: **1** direct answer, **2** meaning graph (entities, relationships, parent molecules and cells), **3** outcomes (expected result, observed ratings, confidence, validation, prediction), **4** capabilities (executable native skills, each with a ready API call), **5** action layer, **6** evidence layer (external citations and internal trust), and **7** evolution layer (what was learned this turn). The internal graph is searched first. External research follows only when needed.
+
+### 4-stage atom life cycle and trust scoring
+
+**LOCAL** (private) → **SHARED** (public or received from a peer) → **VERIFIED** (approved, with captured external evidence, no open contradictions, and either teacher support or two or more source domains) → **GLOBAL** (verified, with identical approved knowledge confirmed by two or more other nodes). Each atom carries a numeric 0–1 trust score.
+
+### Evolution Kernel (`lib/evolution.mjs`)
+
+Each node keeps creating and growing its own atoms, molecules, cells, agents and experts. One tick runs these steps in order:
+
+1. Expand the crawl frontier from known topics.
+2. Crawl.
+3. Run teacher inspection when a teacher is configured.
+4. Update the life cycle.
+5. Grow kernels and embeddings.
+6. Add semantic links.
+7. Discover peers.
+8. Federate.
+9. Train.
+
+Agents and experts regenerate from the grown DNA. Long-running hosts tick every `EVOLUTION_INTERVAL_SECONDS`. Serverless hosts tick from a scheduler. You can also trigger a tick under **Core & evolution → Run an evolution tick**.
+
+### Supabase storage (`lib/store.mjs`, `supabase/migrations/`)
+
+Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (or a `sb_secret_…` key). The node then keeps its full graph state in `kenuxa_node_state` and mirrors it into the original tables:
+
+- entities use the v1.1 type vocabulary (atom → Knowledge, domain atom → Concept, molecule or cell → Custom)
+- relationships use CONNECTED_TO, PART_OF and SIMILAR_TO
+- attachments use category Evidence
+- capabilities, embeddings and resolutions are mirrored too
+- the new tables are `outcomes`, `agents` and `memory_logs`
+
+Every row carries `node_id`, so several nodes can share one project. Transformer checkpoints go to the private Storage bucket `kenuxa`. Run `0001_kenuxa_internet_v04.sql` once; it is additive and never drops data. `0002_tighten_v11_policies.sql` is recommended. It removes the v1.1 "anyone with the anon key can write" policies.
+
+### MTP federation on any host (`lib/federation.mjs`, `lib/node.mjs`, `lib/adapters.mjs`)
+
+The protocol is MTP/0.4, the *Meaning Transfer Protocol* named in the original design. Peers can be any public HTTPS origin: Render, Railway, Vercel, Netlify, Fly or a custom domain. Every request and every response is HMAC-signed with the shared `NETWORK_SECRET`.
+
+Nodes find each other in three ways:
+
+1. **Configured** `PEER_URLS`.
+2. **Hello announcements.** A node tells its peers its own public URL.
+3. **Gossip and registry.** Snapshots list each node's known peers. Nodes sharing a Supabase project also find each other through the `kenuxa_nodes` table.
+
+Received atoms arrive pending unless `FEDERATION_AUTO_APPROVE=true` and the sender marked them VERIFIED or GLOBAL. Peer molecules re-form locally once their members exist on the receiving node.
 
 ## Question-driven research and method memory
 
@@ -94,17 +168,22 @@ In **Learning studio**, request a topic. Only the topic and a fixed teacher inst
 
 Review each draft's factual accuracy, then click **Approve & train**. Approval is human review, not independent source verification; teacher-generated lessons retain their unverified-draft provenance. Once approved, ask its questions with the teacher disconnected: KENUXA answers with its own trained weights. This is teacher-generated supervised data, not full logit-level model distillation. The configured crawler can make background inspection calls under the explicit daily call cap; automatic answer-model learning remains opt-in.
 
-## Deploy separate nodes to Render
+## Deploy anywhere
 
-1. The source repository is https://github.com/LosharHammond/Kenuxa-Internet. Use it when creating each Render deployment. Local data and credentials are excluded from Git; back them up separately.
-2. On each Render account, deploy that same repository using `render.yaml`, or create a Node web service manually with build `npm ci --ignore-scripts` and start `npm start`.
-3. Give each node a different NODE_ID, such as `kenuxa-accra` and `kenuxa-kumasi`. Set HOST to `0.0.0.0`; Render supplies PORT. Keep each node's ADMIN_TOKEN different and secret, at least 32 characters. The blueprint generates it; copy it from Render's environment settings into that node's login screen.
-4. Choose one random NETWORK_SECRET, at least 32 characters, and securely set the same value on all trusted nodes. It must differ from all ADMIN_TOKEN values. Generate a secret locally with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`; do not put it in URLs or source control.
-5. After Render assigns URLs, set PEER_URLS on each node to the comma-separated HTTPS origins of the peers it should pull from. Example for node A: `https://kenuxa-kumasi.onrender.com`. Node B uses A's URL. Origins only: no paths, query parameters or trailing path segments. Restart after environment changes. This prototype allows Render subdomains only, up to 10 peers per node.
-6. Use the blueprint's persistent disk and DATA_DIR `/var/data/kenuxa`. **The supplied blueprint uses a paid starter service and disk.** Free services have ephemeral local storage; model/state changes can disappear after a restart or deployment. They can also sleep, preventing continuous sync. Use exports for backups regardless of plan.
-7. Add a manual public lesson on A. On B click **Sync knowledge**, inspect the review queue, approve the lesson, then ask it. B will answer independently from its own local model. Background sync checks configured peers every 120 seconds while running.
+Every hosted node needs a unique `NODE_ID`, its own `ADMIN_TOKEN` (32 or more characters), the same `NETWORK_SECRET` as its trusted peers (32 or more characters, different from every admin token) and, ideally, `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` so nothing is lost when the host restarts. Set `PEER_URLS` to at least one other node; the rest are discovered. Generate secrets with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`.
 
-Federation does not pool Render resources, bypass service limits, keep free services awake or train a single model across accounts. It exchanges curricula; each node trains independently. Use accounts you control under Render's applicable terms. A star or mesh of trusted nodes is possible. No transitive lesson rebroadcasting is performed in v0.1; configure direct peers for all required exchanges. Disconnected peers retain their already approved knowledge.
+| Host | How | Notes |
+| --- | --- | --- |
+| **Render** | New Blueprint → this repo (`render.yaml`) | The free plan works when Supabase is configured. Free services sleep, so evolution pauses while asleep |
+| **Railway** | New project → deploy from GitHub (`railway.json`) | Set `HOST=0.0.0.0`. The public domain is detected automatically |
+| **Vercel** | Import the repo (`vercel.json`, `api/index.mjs`) | Serverless. **Supabase is required** for durable state. Set `CRON_SECRET`. Hobby crons run once a day; Pro can run every 10 minutes. Background transformer training is off; inference and drafts work from the stored checkpoint |
+| **Netlify** | Import the repo (`netlify.toml`, `netlify/functions/`) | Serverless. **Supabase is required**. `kenuxa-evolve` is a scheduled function that runs every 10 minutes |
+| **Fly, Cloud Run, Koyeb, any Docker host** | `Dockerfile` | Long-running, like Render |
+| **Your PC** | `START-KENUXA.cmd` or `npm start` | Local files by default. Add the Supabase variables to `.env` to share the cloud graph |
+
+A good topology: your PC plus one long-running host (Render or Railway) do the training and crawling, serverless nodes (Vercel and Netlify) serve and federate, and all of them share the same Supabase project or peer with each other.
+
+Federation does not pool compute across hosts or train one distributed model. Nodes exchange approved knowledge, evidence and molecule definitions. Each node trains its own models.
 
 ## Trust and privacy boundaries
 
@@ -112,7 +191,7 @@ Federation does not pool Render resources, bypass service limits, keep free serv
 - Peers authenticate using HMAC-SHA256 over method, path, timestamp, nonce and body. Requests expire after 60 seconds, used nonces are rejected, redirects are disallowed, and responses are signed. Use HTTPS in production. Nonce state is process-local and resets on restart; bounded timestamp replay remains possible across restarts or replicas. One process per node is the supported topology.
 - Shared-secret members can impersonate a network member. Signatures prove possession of the shared secret, not factual truth or cryptographic per-node identity. Revoke a compromised peer by rotating NETWORK_SECRET on retained nodes and removing its URL. Per-node public-key identities remain future work.
 - Only approved public originals are exposed to authenticated peers. The payload includes question/answer content and public provenance, not full private DNA, learned programs, context layers, memory, goals or credentials. Imported atoms develop new local DNA. Parent structures and capabilities are currently local. Changing an exported lesson later does not recall existing copies; update/revocation propagation is not implemented.
-- Network inputs have limits and enter review. Local server state and API response sizes are bounded for a small prototype: 500 lesson records, 100 memory entries, 300 events, 100 goals. Graph links are based on shared tags, not a transformer attention-routing protocol.
+- Network inputs have limits and enter review. Local server state and API response sizes are bounded for a small prototype: 500 lesson records, 100 memory entries, 300 events, 100 goals. Graph links come from shared tags, explicit formations and, once the transformer is trained enough, embedding similarity (labelled `similar-meaning`, with scores).
 - The UI renders untrusted text using textContent. There is no shell/tool execution, public signup or automatic external publishing. This is not an audited production security product.
 
 ## Backups and recovery
@@ -123,7 +202,7 @@ UI import restores lesson content into the review queue with new IDs; it does no
 
 ## Verification
 
-Run `npm test`. Tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise provider adapters with mocks (no spending), reject unsafe peers, invalid signatures and replays, verify source-quote checks, robots exclusions, DNA growth and parent propagation, inherited learned capabilities and absence of provider secrets in state/export. An integration test launches two real HTTP node processes, teaches A a public lesson, reviews/trains B, checks B answers independently, verifies private DNA stays off the wire, and restarts B to check persistence.
+Run `npm test` (25 tests). v0.4 adds numerical gradient checks for the transformer, KV-cache equivalence, identity-preserving layer stacking, checkpoint round-trips, Supabase mirroring against the v1.1 CHECK constraints (using a mock), a serverless Netlify/Vercel-style node with a 7-part answer and cron tick, and three real node processes that discover one another through hello and gossip. Earlier tests train the actual model, verify an unseen paraphrase and unknown-topic abstention, exercise provider adapters with mocks (no spending), reject unsafe peers, invalid signatures and replays, verify source-quote checks, robots exclusions, DNA growth and parent propagation, inherited learned capabilities and absence of provider secrets in state/export. An integration test launches two real HTTP node processes, teaches A a public lesson, reviews/trains B, checks B answers independently, verifies private DNA stays off the wire, and restarts B to check persistence.
 
 Live Groq access requires your own configured key. Live cross-account Render deployments are not established by local tests. See `VERIFICATION.md` for the checks actually completed during delivery.
 
@@ -133,6 +212,9 @@ Live Groq access requires your own configured key. Live cross-account Render dep
 - Groq current models: https://console.groq.com/docs/models
 - Render Blueprint specification: https://render.com/docs/blueprint-spec
 - Render free-service storage and sleep limits: https://render.com/docs/free
+- Vercel cron jobs: https://vercel.com/docs/cron-jobs
+- Netlify scheduled functions: https://docs.netlify.com/functions/scheduled-functions/
+- Supabase API keys: https://supabase.com/docs/guides/api/api-keys
 - OpenAI Responses/text: https://developers.openai.com/api/docs/guides/text
 - Anthropic Messages: https://platform.claude.com/docs/en/api/messages/create
 - DeepSeek chat: https://api-docs.deepseek.com/api/create-chat-completion/

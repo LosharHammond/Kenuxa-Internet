@@ -31,7 +31,7 @@ test('federation rejects wrong keys, replays, expired signatures and unsafe peer
  assert.equal(verify('wrong-secret'.repeat(4),'GET','/federation/snapshot','',h,new Map()),false);
  assert.equal(verify(secret,'GET','/federation/snapshot','',{...h,'x-kenuxa-time':'1'},new Map()),false);
  assert.throws(()=>peerOrigin('http://169.254.169.254/'));
- assert.throws(()=>peerOrigin('https://attacker.example/'));
+ assert.equal(peerOrigin('https://kenuxa.up.railway.app'),'https://kenuxa.up.railway.app');assert.throws(()=>peerOrigin('https://10.0.0.1/'));assert.throws(()=>peerOrigin('https://router.local/'));
  assert.throws(()=>peerOrigin('https://node.onrender.com/path'));
  assert.equal(peerOrigin('https://kenuxa-a.onrender.com'),'https://kenuxa-a.onrender.com');
 });

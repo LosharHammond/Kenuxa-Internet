@@ -7,5 +7,5 @@ if errorlevel 1 (
   exit /b 1
 )
 echo Open http://127.0.0.1:3210 after the server starts.
-node --env-file-if-exists=.env server.mjs
+node --env-file-if-exists=.env --env-file-if-exists=.env.local server.mjs
 pause

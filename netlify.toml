@@ -1,0 +1,9 @@
+[build]
+  command = "echo 'no build step'"
+  publish = "public"
+
+[functions]
+  included_files = ["public/**", "lib/**"]
+
+[build.environment]
+  NODE_VERSION = "22"

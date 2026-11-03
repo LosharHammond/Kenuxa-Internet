@@ -3,3 +3,4 @@ data/
 !.env.example
 node_modules/
 *.log
+Claude outputs/

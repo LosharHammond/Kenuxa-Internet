@@ -1,28 +1,28 @@
-# One independent node per Render account. This blueprint uses a paid persistent disk.
+# Render blueprint. With SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY set, the free plan works:
+# state lives in Supabase, so restarts and redeploys lose nothing. Without Supabase, use a paid
+# plan with the persistent disk below.
 services:
   - type: web
     name: kenuxa-internet
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci --ignore-scripts
     startCommand: npm start
     healthCheckPath: /health
-    disk:
-      name: kenuxa-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: "22"
       - key: HOST
         value: 0.0.0.0
-      - key: DATA_DIR
-        value: /var/data/kenuxa
       - key: NODE_ID
         sync: false
       - key: ADMIN_TOKEN
         generateValue: true
       - key: NETWORK_SECRET
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
       - key: PEER_URLS
         sync: false
@@ -32,3 +32,5 @@ services:
         value: openai/gpt-oss-20b
       - key: CRAWLER_ENABLED
         value: "true"
+      - key: TRANSFORMER_PROFILE
+        value: nano

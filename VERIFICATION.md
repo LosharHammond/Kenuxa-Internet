@@ -1,4 +1,26 @@
-# Delivery verification — 3 November 2026
+# Delivery verification, 3 November 2026
+
+## v0.4: transformer, 7-part responses, Supabase, cross-host federation
+
+Checks that passed:
+
+- **Tests:** 25 automated tests pass (`npm test`, about 13 s).
+- **Transformer gradients:** the hand-written backward pass for all weight types, and for atom-kernel prefix inputs, matches central-difference numerical gradients within 2%, both with and without gradient checkpointing.
+- **Transformer inference:** KV-cache tiled attention reproduces full attention to within 1e-4. Appending identity-initialised layers leaves the outputs unchanged.
+- **Transformer training:** training lowers loss, and fp16 checkpoints round-trip.
+- **Real data:** the v0.3 state from the user's PC (24 atoms) loaded unchanged. It produced 10 molecules, 5 cells, and life-cycle stages (13 shared, 11 local).
+- **Background training:** the worker reached step 25 (loss 5.13) while `/health` kept answering in about 35 ms, including during kernel growth.
+- **Evolution tick:** a tick grew an atom kernel and embedding inside the worker.
+- **Browser:** the 7-part answer and the Core & evolution view rendered in Chromium with no console errors.
+- **Supabase mirroring:** tested against a mock Supabase REST API. Every mirrored row satisfied the original v1.1 CHECK constraints (entity type, relationship type, attachment category, weight range). Unchanged entities were not re-sent.
+- **Serverless:** a Netlify-style node built from a web `Request` answered with all 7 sections. It ran an evolution tick through `/cron/tick` with `CRON_SECRET`, rejected the tick without the secret, and flushed state before replying.
+- **Discovery:** three real node processes found each other. C learned A's address by gossip through B, and A learned B from B's hello. C then pulled A's public atom directly over signed MTP. The atom arrived pending, with A recorded as a confirmation.
+
+Not verified:
+
+- **Live deployments:** no Render, Railway, Vercel or Netlify deployment was tested. The configuration files follow each platform's documented format.
+- **Live Supabase writes:** these depend on running the migration and adding the server key to `.env`.
+- **Transformer quality:** text quality after long training is not established. Drafts stay hidden until 1000 steps.
 
 ## v0.3 research and method learning
 
@@ -55,3 +77,7 @@ Location: `C:\Users\Procus\Desktop\KENUXA\kenuxa-internet`
 - This verifies a small trained answer-selection model and curriculum federation, not an original generative transformer, distributed parameter training, broad factual accuracy or a security audit.
 
 The manual lesson and the two browser questions remain in the local data directory as initial knowledge and memory. Test fixtures use separate temporary directories and do not populate the user's node.
+
+## Render binding regression fix - 3 November 2026
+
+The supplied Render log deployed commit 45dca26 (v0.3) and bound only to 127.0.0.1. The local v0.4 upgrade was not yet committed. Render platform detection now forces 0.0.0.0 even if a copied local HOST setting specifies loopback; the supplied PORT is preserved. A real-process regression test starts with RENDER=true and HOST=127.0.0.1, checks the 0.0.0.0 startup address, verifies /health, and verifies unauthenticated /api/status is denied. Local environment files and Claude outputs are excluded from Git and container context. This verifies startup locally; a successful hosted Render redeploy still needs to be observed.
