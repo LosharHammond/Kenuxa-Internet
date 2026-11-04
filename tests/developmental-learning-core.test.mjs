@@ -8,20 +8,20 @@ test('unverified demonstrations never become executable knowledge',()=>{
 });
 test('inducts and transfers verified arithmetic procedure to unseen values',()=>{
  const state={},m=new DevelopmentalLearning({state});
- for(const [a,b] of [[7,2],[9,3],[14,4],[18,5]])m.observe({input:{a,b},output:{answer:a-b},consent:true,source:'trusted-evaluator',verified:true});
+ for(const [a,b] of [[7,2],[9,3],[14,4],[18,5]]){const input={a,b},output={answer:a-b};const observed=m.observe({input,output,consent:true});assert.equal(m.verifyExample(observed.id,{expected:output,authority:true}).ok,true);}
  m.discover();assert.equal(m.predict({a:23,b:8}).output.answer,15);
  const restored=new DevelopmentalLearning({state:JSON.parse(JSON.stringify(state))});
  assert.equal(restored.predict({a:45,b:12}).output.answer,33);
 });
 test('contradictory verified evidence blocks incorrect rule',()=>{
  const m=new DevelopmentalLearning();
- for(const [a,b] of [[7,2],[9,3],[14,4]])m.observe({input:{a,b},output:{answer:a-b},consent:true,source:'trusted-evaluator',verified:true});
- m.discover();m.observe({input:{a:21,b:8},output:{answer:999},consent:true,source:'trusted-evaluator',verified:true});
+ for(const [a,b] of [[7,2],[9,3],[14,4]]){const input={a,b},output={answer:a-b};const observed=m.observe({input,output,consent:true});assert.equal(m.verifyExample(observed.id,{expected:output,authority:true}).ok,true);}
+ m.discover();{const output={answer:999};const observed=m.observe({input:{a:21,b:8},output,consent:true});m.verifyExample(observed.id,{expected:output,authority:true});}
  m.evaluate();assert.equal(m.predict({a:23,b:8}).ok,false);
 });
 test('rules can be retired and are scoped',()=>{
  const m=new DevelopmentalLearning();
- for(const [a,b] of [[7,2],[9,3],[14,4]])m.observe({input:{a,b},output:{answer:a-b},consent:true,source:'trusted-evaluator',verified:true});
+ for(const [a,b] of [[7,2],[9,3],[14,4]]){const input={a,b},output={answer:a-b};const observed=m.observe({input,output,consent:true});assert.equal(m.verifyExample(observed.id,{expected:output,authority:true}).ok,true);}
  m.discover();const hit=m.predict({a:23,b:8});assert.equal(hit.ok,true);
  assert.equal(m.predict({a:23,b:8},{scope:'public'}).ok,false);
  assert.equal(m.rollback(hit.proof[0].ruleId).ok,true);
