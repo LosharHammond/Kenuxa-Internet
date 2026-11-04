@@ -17,6 +17,7 @@ test('learns a method once, applies it to a new subject, persists evidence, dedu
  assert.equal(a.answer,b.answer);assert.equal(f.counts().calls,1);assert.equal(f.counts().searches,1);assert.ok(a.answer.includes('Venus'));assert.equal(a.teacherUsed,true);
  const repeat=await f.engine.ask('What is Venus?');assert.equal(repeat.teacherUsed,false);assert.equal(repeat.reused,true);assert.equal(f.counts().searches,1);
  const related=await f.engine.ask('Explain Saturn');assert.ok(related.answer.includes('Saturn'));assert.ok(!related.answer.includes('Venus'));assert.equal(related.methodId,a.methodId);assert.equal(related.teacherUsed,false);assert.equal(f.counts().calls,1);
+ assert.equal(related.teacherDerived,true,'transferred teacher method retains its lineage');assert.equal(related.methodTeacher,'groq');assert.equal(repeat.teacherDerived,true,'cached answer retains teacher dependency');assert.equal(repeat.teacherCallAttempted,false);
  for(const a of f.state.atoms)a.status='approved';rebuildOrganism(f.state);assert.ok(f.state.organism.cells[0].dna.learning.methodIds.includes(a.methodId));
  for(const e of related.evidence)assert.ok(related.answer.includes(e.quote));
  const persisted=JSON.parse(JSON.stringify(f.state)),g=fixture(persisted);assert.equal((await g.engine.ask('What is Venus?')).reused,true);await g.engine.ask('Describe Venus');assert.equal(g.counts().calls,0);assert.equal(persisted.atoms[0].dna.learning.methodIds[0],a.methodId);

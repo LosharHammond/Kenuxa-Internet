@@ -74,7 +74,7 @@ test('non-English questions: native atomization plus a labelled teacher analysis
   mockTeacher(node, { analysis: x => ({ language: 'fr', translation: 'Is a snake an animal?', clauses: [{ predicate: 'be', tense: 'present', polarity: 'positive', mood: 'interrogative', subject: 'le serpent', object: 'un animal' }], echo: x.text }) });
   const a = await ask('Le serpent est-il un animal ?');
   assert.match(a.answer, /^\*\*Yes\.\*\* A snake is a reptile, a reptile is an animal/);
-  assert.equal(a.plan.retrieval.answeredFrom, 'own-node reasoning'); assert.ok(a.trace.some(t => /Teacher-assisted analysis \(fr → en\)/.test(t)));
+  assert.equal(a.plan.retrieval.answeredFrom, 'teacher-assisted'); assert.equal(a.performance.teacherDerived, true); assert.ok(a.plan.reasoning, 'local reasoning remains inspectable after teacher translation'); assert.ok(a.trace.some(t => /Teacher-assisted analysis \(fr → en\)/.test(t)));
   assert.ok(node.atomRegistry().has('lex:und:serpent') || node.atomRegistry().has('lex:fr:serpent'), 'the French word itself became an atom');
 });
 

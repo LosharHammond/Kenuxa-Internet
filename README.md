@@ -1,4 +1,8 @@
-# KENUXA Internet v1.11 — offline foundation and federated record storage
+# KENUXA Internet v1.12 — audited question answering and bounded native methods
+
+Added offline arithmetic, correction, conversions, explicit passage questions and writing from supplied facts. Public chat distinguishes native procedures from teacher-assisted answers, including cached teacher knowledge. See [the question-to-answer audit](docs/QUESTION-ANSWER-AUDIT.md) and [full evaluation results](docs/BASIC-QA-EVALUATION.json). The supported-family evaluation passes 36/36; six broader challenges remain unsupported. **Universal question answering is not established.**
+
+Run `npm run eval:qa` to evaluate a fresh isolated node without API keys or network access.
 
 ## New: licensed offline foundation and provider-independent records
 

@@ -110,7 +110,10 @@ test(`a UI change is decided by people's ratings during its canary (seed ${SEED}
   const arms = { candidate: 0, baseline: 0 }, candidateLiked = r.bool(), ipFor = i => `10.5.${i % 250}.${(i * 7) % 250}`;
   for (let i = 0; i < 400 && (await api('evolution/record?id=' + rec.id)).status === 'canary'; i++) {
     const cfg = await webRequest(node, new Request('http://127.0.0.1/chat/config'), ipFor(i)).then(x => x.json()); arms[cfg.uiArm]++;
-    const helpful = cfg.uiArm === 'candidate' ? (candidateLiked ? r.bool(0.95) : r.bool(0.3)) : r.bool(0.9);
+    // Keep randomized cohorts and scenario choice, but ensure the observed ratings actually
+    // support the expected decision. Bernoulli noise previously made a "liked" candidate
+    // empirically worse (e.g. seed 2701796571: 10% vs 5.8% failure), correctly triggering rollback.
+    const helpful = cfg.uiArm === 'candidate' ? (candidateLiked || arms.candidate % 3 === 0) : arms.baseline % 10 !== 0;
     await webRequest(node, new Request('http://127.0.0.1/chat/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ helpful, uiArm: cfg.uiArm }) }), ipFor(i));
   }
   const final = await api('evolution/record?id=' + rec.id); assert.ok(arms.candidate > 0 && arms.baseline > 0, 'both versions were shown');

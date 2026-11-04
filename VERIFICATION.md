@@ -424,3 +424,13 @@ The supplied Render log deployed commit 45dca26 (v0.3) and bound only to 127.0.0
 - Scope: English lexical baseline + small world subset; no Wiktionary/ConceptNet dump bundled, no arbitrary provider signup, no S3/R2/Neon adapter, no automatic multi-writer canonical consensus or independent remote journal backup. These boundaries are explicit in docs/FOUNDATION-STORAGE.md.
 
 Final acceptance: 200 tests passed, zero failures, in the complete suite excluding the previously unverified long-running candidate-training promotion test. The final file-adapter atomic publish path was separately rechecked in all 12 foundation/storage groups. Background backfill avoids eager dictionary hydration, and the bounded lexicon loop consults the offline foundation before spending teacher quota.
+
+## v1.12 question-to-answer audit — 4 November 2026
+
+Audited owner/public input, understanding, graph inference, methods, retrieval, construction, teacher composition, verification, caching and delivery. Added bounded native arithmetic/correction/conversion, explicit passage locations, supporting-text retrieval, summaries and fact-constrained drafts. New attribution preserves teacher dependence during cached composition and method reuse; public chat shows it. Research disable now honors the configured node environment.
+
+Full suite: 206 passed, zero failures, with the previously unverified long-running candidate-training test excluded (data/basic-qa-complete.log). Final numeric precision, terminal punctuation and context fixes passed the affected QA/learning/reasoning/chat checks (data/basic-qa-last-check.log). A pre-existing randomized UI-canary test falsely assumed sampled ratings always matched intended probabilities; its fixture now guarantees separated observed outcomes while retaining randomized cohorts/scenario choice. The previously failing seed 2701796571 passes without changing production rollback behavior.
+
+Evaluation: 36/36 supported-family checks and 0/6 broader challenges, recorded in docs/BASIC-QA-EVALUATION.json. An additional fresh seed 859304 produced the same coverage. Generated-input families and rubrics are known to the implementer; this is not an independent blind benchmark. Tests with simulated teachers verify provenance and method transfer, not live provider quality. No keys or live teacher calls were used.
+
+Browser: isolated localhost public chat displayed 47 * 23 = 1081 and 19 * 17 = 323 as corrections, with Native procedure attribution. Universal basic question answering, arbitrary creative writing, all-language comprehension, and perfect correctness are not established. See docs/QUESTION-ANSWER-AUDIT.md for failures and boundaries.

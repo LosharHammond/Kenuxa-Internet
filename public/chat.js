@@ -84,6 +84,8 @@
     const prose = h('div', 'prose' + (m.error ? ' error-text' : '')); col.append(prose);
     const after = () => {
       if (m.sources?.length && config?.ui?.showSources !== false) { const s = h('div', 'sources'); for (const src of m.sources.slice(0, 6)) { const a = h('a', 'source'); try { const u = new URL(src.url); if (!['https:', 'http:'].includes(u.protocol)) continue; a.href = u.href; } catch { continue; } a.target = '_blank'; a.rel = 'noopener noreferrer'; a.append(h('b', '', String(src.n)), h('span', '', src.title)); s.append(a); } col.append(s); }
+      if (m.performance?.teacherDerived) col.append(h('div', 'engine-label', 'Teacher-assisted' + (m.performance.newTeacherCall ? ' · new teacher call' : ' · includes retained teacher knowledge')));
+      else if (m.performance) col.append(h('div', 'engine-label', m.performance.mode === 'native-procedure' ? 'Native procedure · ' + m.performance.outcome : 'Local pipeline · correctness depends on available evidence'));
       if (config?.ui?.showEngine && m.engine) col.append(h('div', 'engine-label', String(m.engine).slice(0, 80))); /* text only (textContent), never markup */
       if (!m.error) col.append(actions(m));
       if (m.followups?.length && animate && (config?.ui?.maxFollowups ?? 3) > 0) { const f = h('div', 'followups'); m.followups.slice(0, config?.ui?.maxFollowups ?? 3).forEach((q, i) => { const b = h('button', 'follow'); b.type = 'button'; b.style.animationDelay = `${i * 70}ms`; b.append(svg(ICON.arrow), h('span', '', q)); b.addEventListener('click', () => { f.remove(); send(q); }); f.append(b); }); col.append(f); }
@@ -112,7 +114,7 @@
     const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
     try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) });
-      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, at: Date.now(), question: text };
+      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, performance: r.performance || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
     addAI(msg); busy = false; updateSend(); scrollDown();

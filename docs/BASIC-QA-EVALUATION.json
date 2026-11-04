@@ -1,0 +1,881 @@
+{
+  "format": "kenuxa-basic-qa-evaluation/1",
+  "seed": 20261104,
+  "at": "2026-11-04T19:44:11.293Z",
+  "node": "v24.20.0",
+  "conditions": "Fresh isolated node, no network, no API keys. Generated values are not saved lessons. Families are known to implementer. Rubrics are limited automated checks; this is not a blind independent benchmark.",
+  "teacherAssistance": "None in this evaluation. Simulated teacher attribution is separately tested; live teacher quality is unmeasured.",
+  "categories": {
+    "arithmetic": {
+      "passed": 8,
+      "total": 8
+    },
+    "correction": {
+      "passed": 8,
+      "total": 8
+    },
+    "method-transfer": {
+      "passed": 8,
+      "total": 8
+    },
+    "passage-comprehension": {
+      "passed": 4,
+      "total": 4
+    },
+    "writing": {
+      "passed": 4,
+      "total": 4
+    },
+    "uncertainty": {
+      "passed": 4,
+      "total": 4
+    },
+    "broader-challenge": {
+      "passed": 0,
+      "total": 6
+    }
+  },
+  "universalQAEstablished": false,
+  "results": [
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 47 * (16 + 69)",
+      "rubric": "computed result 3995",
+      "passed": true,
+      "answer": "47 * (16 + 69) = 3995.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 154
+    },
+    {
+      "category": "correction",
+      "question": "Check: 47 * 16 = 755.",
+      "rubric": "correct erroneous result to 752",
+      "passed": true,
+      "answer": "Correction: 47 * 16 = 752. The supplied result 755 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 285
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 47.16 kilometers to meters.",
+      "rubric": "fresh unit conversion 47160",
+      "passed": true,
+      "answer": "47.16 kilometers = 47160 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 88
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 45 * (38 + 27)",
+      "rubric": "computed result 2925",
+      "passed": true,
+      "answer": "45 * (38 + 27) = 2925.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 7
+    },
+    {
+      "category": "correction",
+      "question": "Check: 45 * 38 = 1713.",
+      "rubric": "correct erroneous result to 1710",
+      "passed": true,
+      "answer": "Correction: 45 * 38 = 1710. The supplied result 1713 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 101
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 45.38 kilometers to meters.",
+      "rubric": "fresh unit conversion 45380",
+      "passed": true,
+      "answer": "45.38 kilometers = 45380 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 8
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 27 * (48 + 67)",
+      "rubric": "computed result 3105",
+      "passed": true,
+      "answer": "27 * (48 + 67) = 3105.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 4
+    },
+    {
+      "category": "correction",
+      "question": "Check: 27 * 48 = 1299.",
+      "rubric": "correct erroneous result to 1296",
+      "passed": true,
+      "answer": "Correction: 27 * 48 = 1296. The supplied result 1299 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 7
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 27.48 kilometers to meters.",
+      "rubric": "fresh unit conversion 27480",
+      "passed": true,
+      "answer": "27.48 kilometers = 27480 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 83
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 14 * (50 + 79)",
+      "rubric": "computed result 1806",
+      "passed": true,
+      "answer": "14 * (50 + 79) = 1806.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 6
+    },
+    {
+      "category": "correction",
+      "question": "Check: 14 * 50 = 703.",
+      "rubric": "correct erroneous result to 700",
+      "passed": true,
+      "answer": "Correction: 14 * 50 = 700. The supplied result 703 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 7
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 14.50 kilometers to meters.",
+      "rubric": "fresh unit conversion 14500",
+      "passed": true,
+      "answer": "14.50 kilometers = 14500 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 3
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 85 * (71 + 27)",
+      "rubric": "computed result 8330",
+      "passed": true,
+      "answer": "85 * (71 + 27) = 8330.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 71
+    },
+    {
+      "category": "correction",
+      "question": "Check: 85 * 71 = 6038.",
+      "rubric": "correct erroneous result to 6035",
+      "passed": true,
+      "answer": "Correction: 85 * 71 = 6035. The supplied result 6038 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 9
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 85.71 kilometers to meters.",
+      "rubric": "fresh unit conversion 85710",
+      "passed": true,
+      "answer": "85.71 kilometers = 85710 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 4
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 90 * (17 + 23)",
+      "rubric": "computed result 3600",
+      "passed": true,
+      "answer": "90 * (17 + 23) = 3600.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 3
+    },
+    {
+      "category": "correction",
+      "question": "Check: 90 * 17 = 1533.",
+      "rubric": "correct erroneous result to 1530",
+      "passed": true,
+      "answer": "Correction: 90 * 17 = 1530. The supplied result 1533 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 73
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 90.17 kilometers to meters.",
+      "rubric": "fresh unit conversion 90170",
+      "passed": true,
+      "answer": "90.17 kilometers = 90170 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 5
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 42 * (47 + 51)",
+      "rubric": "computed result 4116",
+      "passed": true,
+      "answer": "42 * (47 + 51) = 4116.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 2
+    },
+    {
+      "category": "correction",
+      "question": "Check: 42 * 47 = 1977.",
+      "rubric": "correct erroneous result to 1974",
+      "passed": true,
+      "answer": "Correction: 42 * 47 = 1974. The supplied result 1977 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 4
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 42.47 kilometers to meters.",
+      "rubric": "fresh unit conversion 42470",
+      "passed": true,
+      "answer": "42.47 kilometers = 42470 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 73
+    },
+    {
+      "category": "arithmetic",
+      "question": "Evaluate 35 * (26 + 10)",
+      "rubric": "computed result 1260",
+      "passed": true,
+      "answer": "35 * (26 + 10) = 1260.",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 5
+    },
+    {
+      "category": "correction",
+      "question": "Check: 35 * 26 = 913.",
+      "rubric": "correct erroneous result to 910",
+      "passed": true,
+      "answer": "Correction: 35 * 26 = 910. The supplied result 913 is incorrect.",
+      "engine": "KENUXA native basic QA · arithmetic-correction",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Locally evaluated arithmetic; decimal results are rounded to 12 significant digits."
+      },
+      "ms": 4
+    },
+    {
+      "category": "method-transfer",
+      "question": "Convert 35.26 kilometers to meters.",
+      "rubric": "fresh unit conversion 35260",
+      "passed": true,
+      "answer": "35.26 kilometers = 35260 meters.",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 2
+    },
+    {
+      "category": "passage-comprehension",
+      "question": "Passage: Nera stored another case on the desk. Nera0 stored the case 70 inside locker 88. Question: Where did Nera0 store the case 70?",
+      "rubric": "bind exact subject and object; answer relative to passage",
+      "passed": true,
+      "answer": "According to your passage, the case 70 was inside locker 88.",
+      "engine": "KENUXA native basic QA · passage-location",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered-relative-to-text",
+        "correctness": "not universally verified",
+        "scope": "One explicit affirmative subject/action/object/location relation in supplied text; not independently verified."
+      },
+      "ms": 522
+    },
+    {
+      "category": "passage-comprehension",
+      "question": "Passage: Nera stored another case on the desk. Nera1 stored the case 58 inside locker 55. Question: Where did Nera1 store the case 58?",
+      "rubric": "bind exact subject and object; answer relative to passage",
+      "passed": true,
+      "answer": "According to your passage, the case 58 was inside locker 55.",
+      "engine": "KENUXA native basic QA · passage-location",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered-relative-to-text",
+        "correctness": "not universally verified",
+        "scope": "One explicit affirmative subject/action/object/location relation in supplied text; not independently verified."
+      },
+      "ms": 21
+    },
+    {
+      "category": "passage-comprehension",
+      "question": "Passage: Nera stored another case on the desk. Nera2 stored the case 65 inside locker 52. Question: Where did Nera2 store the case 65?",
+      "rubric": "bind exact subject and object; answer relative to passage",
+      "passed": true,
+      "answer": "According to your passage, the case 65 was inside locker 52.",
+      "engine": "KENUXA native basic QA · passage-location",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered-relative-to-text",
+        "correctness": "not universally verified",
+        "scope": "One explicit affirmative subject/action/object/location relation in supplied text; not independently verified."
+      },
+      "ms": 12
+    },
+    {
+      "category": "passage-comprehension",
+      "question": "Passage: Nera stored another case on the desk. Nera3 stored the case 75 inside locker 79. Question: Where did Nera3 store the case 75?",
+      "rubric": "bind exact subject and object; answer relative to passage",
+      "passed": true,
+      "answer": "According to your passage, the case 75 was inside locker 79.",
+      "engine": "KENUXA native basic QA · passage-location",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "answered-relative-to-text",
+        "correctness": "not universally verified",
+        "scope": "One explicit affirmative subject/action/object/location relation in supplied text; not independently verified."
+      },
+      "ms": 10
+    },
+    {
+      "category": "writing",
+      "question": "Write an email using these facts: The class starts Thursday; Bring a pen.",
+      "rubric": "preserve both supplied facts, label as draft",
+      "passed": true,
+      "answer": "Hello,\n\nThe class starts Thursday. Bring a pen.\n\nKind regards",
+      "engine": "KENUXA native basic QA · fact-based-writing",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "draft",
+        "correctness": "not universally verified",
+        "scope": "Template-based draft from supplied facts; no additional factual claims."
+      },
+      "ms": 399
+    },
+    {
+      "category": "writing",
+      "question": "Write an announcement using these facts: The class starts Thursday; Bring a pen.",
+      "rubric": "preserve both supplied facts, label as draft",
+      "passed": true,
+      "answer": "The class starts Thursday. Bring a pen.",
+      "engine": "KENUXA native basic QA · fact-based-writing",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "draft",
+        "correctness": "not universally verified",
+        "scope": "Template-based draft from supplied facts; no additional factual claims."
+      },
+      "ms": 21
+    },
+    {
+      "category": "writing",
+      "question": "Write an paragraph using these facts: The class starts Thursday; Bring a pen.",
+      "rubric": "preserve both supplied facts, label as draft",
+      "passed": true,
+      "answer": "The class starts Thursday. Bring a pen.",
+      "engine": "KENUXA native basic QA · fact-based-writing",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "draft",
+        "correctness": "not universally verified",
+        "scope": "Template-based draft from supplied facts; no additional factual claims."
+      },
+      "ms": 24
+    },
+    {
+      "category": "writing",
+      "question": "Write an bullet list using these facts: The class starts Thursday; Bring a pen.",
+      "rubric": "preserve both supplied facts, label as draft",
+      "passed": true,
+      "answer": "- The class starts Thursday.\n- Bring a pen.",
+      "engine": "KENUXA native basic QA · fact-based-writing",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "draft",
+        "correctness": "not universally verified",
+        "scope": "Template-based draft from supplied facts; no additional factual claims."
+      },
+      "ms": 97
+    },
+    {
+      "category": "uncertainty",
+      "question": "Calculate 9 / 0",
+      "rubric": "explicitly withhold unsupported answer",
+      "passed": true,
+      "answer": "I cannot calculate this expression: Division by zero is undefined.\n\n_KENUXA is not confident about this answer; please check it against another source._",
+      "engine": "KENUXA native basic QA · arithmetic",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "insufficient",
+        "correctness": "not universally verified",
+        "scope": "Invalid or unsupported arithmetic input."
+      },
+      "ms": 100
+    },
+    {
+      "category": "uncertainty",
+      "question": "Convert 3 kilograms to meters",
+      "rubric": "explicitly withhold unsupported answer",
+      "passed": true,
+      "answer": "I cannot convert these units: both units must be supported and have the same dimension.\n\n_KENUXA is not confident about this answer; please check it against another source._",
+      "engine": "KENUXA native basic QA · unit-conversion",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "insufficient",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 16
+    },
+    {
+      "category": "uncertainty",
+      "question": "Passage: Neri did not store the cup in the drawer. Question: Where did Neri store the cup?",
+      "rubric": "explicitly withhold unsupported answer",
+      "passed": true,
+      "answer": "I cannot establish a unique location from this passage; it may contain missing, conflicting, or negated information.",
+      "engine": "KENUXA native basic QA · passage-location",
+      "performance": {
+        "mode": "native-procedure",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "native operator; no teacher dependency",
+        "outcome": "insufficient",
+        "correctness": "not universally verified",
+        "scope": "computed from supplied inputs"
+      },
+      "ms": 154
+    },
+    {
+      "category": "uncertainty",
+      "question": "Who is the current leader of Blorvax?",
+      "rubric": "explicitly withhold unsupported answer",
+      "passed": true,
+      "answer": "I don't have reliable knowledge about who current leader of Blorvax yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 89
+    },
+    {
+      "category": "broader-challenge",
+      "question": "Explain why the sky is blue.",
+      "rubric": "content rubric: /rayleigh|shorter wavelengths/i",
+      "passed": false,
+      "answer": "I don't have reliable knowledge about **sky is blue** yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 233
+    },
+    {
+      "category": "broader-challenge",
+      "question": "What is the capital of Japan?",
+      "rubric": "content rubric: /Tokyo/i",
+      "passed": false,
+      "answer": "**The capital of Ghana** is Accra.\n\n- **Where:** Ghana",
+      "engine": "KENUXA comprehension → construction (definition)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "answered",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 149
+    },
+    {
+      "category": "broader-challenge",
+      "question": "How many sides does a hexagon have?",
+      "rubric": "content rubric: /six|6/",
+      "passed": false,
+      "answer": "I don't have reliable knowledge about **sides does a hexagon have** yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 155
+    },
+    {
+      "category": "broader-challenge",
+      "question": "Write a four-line poem about a lighthouse.",
+      "rubric": "content rubric: /\\n.+\\n.+\\n/",
+      "passed": false,
+      "answer": "I don't have reliable knowledge about **Write a four-line poem about a lighthouse** yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 320
+    },
+    {
+      "category": "broader-challenge",
+      "question": "Translate good morning into Spanish.",
+      "rubric": "content rubric: /buenos d[ií]as/i",
+      "passed": false,
+      "answer": "I don't have reliable knowledge about **Translate good morning into Spanish** yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 243
+    },
+    {
+      "category": "broader-challenge",
+      "question": "If all daxes are lumens and all lumens are norts, are all daxes norts?",
+      "rubric": "content rubric: /yes/i",
+      "passed": false,
+      "answer": "I don't have reliable knowledge about **all daxes are lumens and all lumens are norts, are all daxes norts** yet, so I won't guess. Try rephrasing, or ask me something related.",
+      "engine": "KENUXA offline (student run)",
+      "performance": {
+        "mode": "local-pipeline",
+        "teacherDerived": false,
+        "newTeacherCall": false,
+        "assistance": [],
+        "offline": true,
+        "lineage": "historical dependency lineage not completely audited",
+        "outcome": "limited",
+        "correctness": "not universally verified",
+        "scope": "Local knowledge, retrieved evidence, and bounded procedures; coverage varies by task."
+      },
+      "ms": 25
+    }
+  ]
+}

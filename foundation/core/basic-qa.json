@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "MIT",
+  "units": {
+    "m": {"dimension":"length","scale":1}, "meter": {"dimension":"length","scale":1}, "meters": {"dimension":"length","scale":1},
+    "km": {"dimension":"length","scale":1000}, "kilometer": {"dimension":"length","scale":1000}, "kilometers": {"dimension":"length","scale":1000},
+    "cm": {"dimension":"length","scale":0.01}, "centimeters": {"dimension":"length","scale":0.01},
+    "mm": {"dimension":"length","scale":0.001}, "millimeters": {"dimension":"length","scale":0.001},
+    "inches": {"dimension":"length","scale":0.0254}, "feet": {"dimension":"length","scale":0.3048}, "miles": {"dimension":"length","scale":1609.344},
+    "kg": {"dimension":"mass","scale":1000}, "kilograms": {"dimension":"mass","scale":1000}, "g": {"dimension":"mass","scale":1}, "grams": {"dimension":"mass","scale":1},
+    "seconds": {"dimension":"time","scale":1}, "minutes": {"dimension":"time","scale":60}, "hours": {"dimension":"time","scale":3600}, "days": {"dimension":"time","scale":86400},
+    "celsius": {"dimension":"temperature","scale":1,"offset":273.15}, "kelvin": {"dimension":"temperature","scale":1}, "fahrenheit": {"dimension":"temperature","scale":0.5555555555555556,"offset":255.3722222222222}
+  }
+}

@@ -2,6 +2,10 @@
   "format": "kenuxa-core-foundation/1",
   "version": 1,
   "files": {
+    "basic-qa.json": {
+      "sha256": "14bbc25b31fd4548171924e6fcd10db7bfb0cf72d5cb9ad4f5388172be23128a",
+      "bytes": 1250
+    },
     "english.json": {
       "sha256": "494666a3c2e724043fa6d42cfffd616fe630e17474ebc6f5a43f3ac982f09b8f",
       "bytes": 37586
@@ -28,6 +32,7 @@
     }
   },
   "licenses": {
+    "basic-qa.json": "MIT (KENUXA authored bounded unit conversion data)",
     "cognitive-seeds.json": "MIT (existing KENUXA authored assumptions and methods)",
     "procedures.json": "MIT (existing KENUXA authored declarative procedures)",
     "english.json": "MIT (existing KENUXA authored baseline)",
