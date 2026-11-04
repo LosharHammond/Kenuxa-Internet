@@ -26,8 +26,10 @@ jobs:
           node --check lib/mind/autonomous-learning.mjs
           node --check lib/mind/foundation-training.mjs
           node --check lib/mind/grammar-induction.mjs
+          node --check lib/mind/semantic-proof.mjs
+          node --check lib/transformer/worker.mjs
       - name: Run autonomous learning, transformer and regression tests
-        run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/contextual-answer.test.mjs tests/developmental-learning-core.test.mjs tests/transformer.test.mjs
+        run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/contextual-answer.test.mjs tests/developmental-learning-core.test.mjs tests/semantic-proof.test.mjs tests/transformer.test.mjs
       - name: Run complete Node test suite
         run: npm test
   live-smoke:
