@@ -120,7 +120,7 @@ test('actual CPU gradient training learns from imported WordNet bytes rather tha
 test('dictionary-induced grammar keeps independent held-out usage examples',()=>{
  const catalog=new FoundationCatalog(),state={},learner=new GrammarInduction({catalog,state});
  const examples=[];
- for(let i=0;i<200;i++) examples.push(i%2?'The young dog quickly followed the other animal.':'A thoughtful person opened the wooden window.');
+ for(let i=0;i<200;i++) examples.push('A thoughtful person opened the wooden window '+(i+1)+' times.');
  for(let i=0;i<4;i++)learner.observe(examples.slice(i*50,(i+1)*50),{limit:50});
  const measured=learner.evaluateHeldout();
  assert.ok(measured.samples>0);
