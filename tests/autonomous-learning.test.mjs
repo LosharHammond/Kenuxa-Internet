@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { FoundationCatalog } from '../lib/foundation/catalog.mjs';
 import { FoundationTrainingCorpus } from '../lib/mind/foundation-training.mjs';
 import { GrammarInduction } from '../lib/mind/grammar-induction.mjs';
+import { MorphologyLearner } from '../lib/mind/morphology-learning.mjs';
 import { AutonomousLearningEngine } from '../lib/mind/autonomous-learning.mjs';
 import { corpusFromState } from '../lib/transformer/train.mjs';
 import { curateDataset } from '../lib/transformer/pipeline.mjs';
@@ -78,4 +79,23 @@ test('train/eval split and privacy screening on generated corpus are bounded',()
  assert.equal(ds.dropped.privacy,0);
  const n=new Set(ds.train);
  assert.ok(ds.eval.every(x=>!n.has(x)));
+});
+
+test('morphology skills are learned from held-out patterns and transfer to unseen words',()=>{
+ const bases=[];for(let i=0;i<130;i++)bases.push('term'+String.fromCharCode(97+(i%26))+String.fromCharCode(97+Math.floor(i/26)));
+ const morphology=Object.fromEntries(bases.map(w=>[w+'ed',[w]]));
+ const catalog={shard:name=>{assert.equal(name,'morphology.json.gz');return morphology;},lookup:word=>({senses:[{id:'mock:'+word,pos:'v'}]})};
+ const state={},learner=new MorphologyLearner({state,catalog});
+ const status=learner.train();assert.equal(status.ok,true);
+ assert.ok(status.trained>10&&status.heldOut>2);
+ assert.ok(status.validated>0);
+ const prediction=learner.infer('newstemmed');
+ assert.ok(prediction);assert.equal(prediction.lemma,'newstemm');
+ const reboot=new MorphologyLearner({state:JSON.parse(JSON.stringify(state)),catalog});
+ assert.deepEqual(reboot.infer('newstemmed'),prediction);
+});
+test('morphology inference does not invent stems without held-out validation',()=>{
+ const catalog={shard:()=>({abcde:['abcd']}),lookup:()=>({senses:[{pos:'n'}]})};
+ const learner=new MorphologyLearner({state:{},catalog});
+ learner.train();assert.equal(learner.infer('newworde'),null);
 });
