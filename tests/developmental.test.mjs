@@ -22,7 +22,7 @@ test('rejects conflicting observations and validates only held-out tests', () =>
 test('held-out contradiction blocks promotion', () => {
   const mind = new DevelopmentalLearner();
   for(let i=0;i<2;i++) mind.observe({ before:'a',action:'b',after:'c' });
-  const result=mind.validate({before:'a',action:'b',trials:[{before:'a',action:'b',after:'c',source:'verified-test',testId:'t1'},{before:'a',action:'b',after:'d',source:'verified-test',testId:'t1'}]});
+  const result=mind.validate({before:'a',action:'b',trials:[{before:'a',action:'b',after:'c',source:'verified-test',testId:'t1'},{before:'a',action:'b',after:'d',source:'verified-test',testId:'t2'}]});
   assert.equal(result.promoted,false);
   assert.equal(mind.status().rejected,1);
 });
