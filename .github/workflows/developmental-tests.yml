@@ -1,17 +1,29 @@
-name: Developmental learning tests
+name: KENUXA cognitive and developmental CI
 on:
   push:
     branches:
+      - main
       - feature/cross-domain-concepts-v1
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
-  test:
+  core-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run developmental and concept tests
-        run: node --test tests/developmental*.test.mjs tests/concept-discovery.test.mjs
+      - name: Check cognitive modules parse
+        run: |
+          node --check lib/node.mjs
+          node --check lib/mind/autonomous-learning.mjs
+          node --check lib/mind/foundation-training.mjs
+          node --check lib/mind/grammar-induction.mjs
+      - name: Run autonomous learning, transformer and regression tests
+        run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/contextual-answer.test.mjs tests/developmental-learning-core.test.mjs tests/transformer.test.mjs
+      - name: Run complete Node test suite
+        run: npm test
