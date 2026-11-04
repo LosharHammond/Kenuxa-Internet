@@ -17,3 +17,9 @@ Next research steps: structured state representations; factorized/compositional 
 `Mind` constructs `DevelopmentalLearner` using `state.developmental`, which follows the existing Mind state ownership and can be persisted by the node's normal state serialization when that state is saved. Explicit calls: `developmentalObserve`, `developmentalPredict`, `developmentalValidate`, `developmentalStatus`. These do not expose untrusted HTTP writes or claim that natural-language understanding is solved.
 
 Validation trials require distinct `testId` values. This only checks uniqueness, **not independence or authenticity**. A future trusted experiment runner must generate and authenticate trials before they are accepted as evidence. Do not expose these methods to unauthenticated clients.
+
+## Isolated experimental environment
+
+`lib/mind/developmental-lab.mjs` defines a deterministic bounded `ToyWorld` and `DevelopmentalLab`. The world exposes opaque state/action identifiers; the learner is not given the transition formula. `Mind.developmentalExperiment({ world: { states, actions, seed }, repetitions, maxExperiments })` runs explicit, synchronous experiments. It is intentionally not connected to public chat, HTTP, or a recurring background scheduler. Test with `node --test tests/developmental*.test.mjs`.
+
+**Evaluation limit:** this experiment observes each transition before testing it. It measures acquisition of a deterministic transition table, not compositional generalization. Trial IDs are distinct but tests share the same simulated world, so they are not independent external evidence. For genuine generalization, future benchmarks must withhold states or entire environments, vary symbol encodings, and score only unseen tasks. Autonomous scheduling should be gated by CPU budgets, consent, and regression checks.
