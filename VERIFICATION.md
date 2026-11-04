@@ -1,5 +1,101 @@
 # Delivery verification, 4 November 2026
 
+## v1.10: robustness under any input; randomised tests
+
+- **Tests:** `npm test` → **189 / 189 pass in three consecutive full runs**, each with fresh random seeds. New test files:
+  - `tests/universal.test.mjs` (10)
+  - `tests/evolve2.test.mjs` (9)
+- **Exploratory fuzzing before the tests** found no failures in:
+  - about 1,500 random questions through `/chat/ask`
+  - 24,000 random route calls across 112 routes
+  - about 30,000 hostile module inputs
+  The remaining failures were fixed first — see `docs/ROBUSTNESS.md` for the 11 bugs.
+- **Measured:** indexed retrieval on 20,013 atoms takes 35 ms/query vs 190 ms (recall@1 0.943 vs 0.917; recall@3 0.997 vs 1.0).
+- **Honest limit:** "any question passes" means every question gets a safe, honest, well-formed response, and everything KENUXA can compute is computed correctly. It does not mean every question is answered correctly; unknown topics get "I don't know yet".
+
+## v1.9: Universal Evolution Engine
+
+- **Tests:** `npm test` → **170 / 170 pass** (one earlier run had a time-budget test fail while a benchmark ran in parallel; it passes alone and in a clean full run). New `tests/evolve.test.mjs` has 15 tests, one per system-wide evolution requirement (see `docs/EVOLUTION.md` §4).
+- **Measured evaluator results** (`docs/EVOLUTION.md` §3):
+
+  | Proposal | Outcome |
+  |---|---|
+  | Routing: locality + cost | priority-weighted wait 137 → 91, data 36.6 → 14.8 MB (simulation) |
+  | Routing: age weight | rejected |
+  | Retrieval: plain lexical | rejected (recall@3 1.0 → 0.968) |
+  | Learning: narrower search | rejected (3 → 2 corrections fixed) |
+  | Learning: fewer constants | same results with 8,993 → 3,959 expressions searched |
+  | Replication: 1 copy | rejected |
+  | Security: 24-bit PoW | rejected (≈ 170 s on a slow browser) |
+
+- **Bugs found by the new evaluators and tests, all fixed:**
+  - synthesis could not learn tariff procedures
+  - a departed storage holder still counted toward the replica target
+  - re-replication was deduplicated away
+- **Not verified here:** real multi-node propagation over the internet (in-process and signed-route code paths are tested); routing gains on production traffic (simulation only — which is why routing changes go through a monitored canary).
+
+## v1.8: self-knowledge, imagination memory, self-evaluation
+
+- **Tests:** `npm test` → **155 / 155 pass**. `tests/mind.test.mjs` grew to 18 tests; the three new ones cover:
+  - self-knowledge, directly and through `/chat/ask`
+  - hypothesis and simulation atoms; sandboxed self-evaluation (the live node's procedures are unchanged by it)
+  - the reasoning service; a candidate causal atom used only after owner review; rating signals on episodes
+- **Self-evaluation** (`node bench/mind.bench.mjs`, same code as `/api/mind/evaluate`):
+
+  | Measure | Result |
+  |---|---|
+  | Comprehension | 20/20 and 20/20 |
+  | Calculation, dev | 7/7 |
+  | Calculation, held-out | 8/10 → 10/10 after one verified correction (0 regressions, no repeated error) |
+  | Diagnosis | 5/5 |
+  | Counterfactuals | 3/3 |
+  | Planning | 3/3 |
+  | Vision | 36/36 and 12/12 |
+  | Time per episode | 0.3–0.7 ms median |
+  | Whole run | ≈ 0.3 s and ≈ 7 MB heap |
+
+- **Studio "Cognitive engine" view:** rendered in Chromium with live data and no script errors.
+- **Fixed:** v1.7 counterfactual answers claimed a stored simulation that did not exist; it is now stored and referenced by id.
+
+## v1.7: Evolving Cognitive Engine
+
+- **Tests:** `npm test` → **152 / 152 pass** (137 earlier tests plus 15 new ones in `tests/mind.test.mjs`).
+  - The new tests cover:
+    - the procedure kernel and composition
+    - Scenarios A–H
+    - deduction, induction, analogy, temporal reasoning, constraints and Bayes
+    - the world model and capsule round-trip
+    - comprehension on labelled cases
+    - working memory, experience memory and metareasoning
+    - security
+    - two-node chat integration
+  - The whole suite was re-run after the last change: 152 / 152.
+- **Benchmark** (`node bench/mind.bench.mjs`):
+
+  | Measure | Result |
+  |---|---|
+  | Comprehension goal | 20/20 dev and 20/20 held-out |
+  | Calculation, dev | 7/7 |
+  | Calculation, held-out | 8/10 before learning → 10/10 after one verified correction (0 regressions) |
+  | Diagnosis | 5/5 |
+  | Counterfactuals | 3/3 |
+  | Planning adaptation | 3/3 |
+  | Vision | 36/36 detection, 12/12 connection questions |
+  | Time per episode | 0.3–1 ms median |
+  | Heap over 120 episodes | ≈ 2.3 MB |
+
+  - The first held-out run found two phrasing gaps; it scored 7/10 before and 9/10 after learning, with diagnosis at 4/5. Both gaps were fixed, and this is disclosed in `docs/COGNITIVE-ENGINE.md` §10.
+- **Defects found and fixed:**
+  - follow-up licences question lost the context (Scenario A)
+  - one-word definition questions were treated as follow-ups
+  - the KUNPP global cost gate starved new task kinds
+  - procedure-test results were replaced by the core's partial re-check
+  - role-word binding: a solar procedure was applied to a light bulb
+- **Not verified here:**
+  - comprehension or reasoning beyond the small, same-author evaluation sets
+  - OCR and real photographs (not implemented)
+  - many nodes sharing procedures over the internet: sharing is tested in-process, and the signed ATP route reuses the existing mesh signing
+
 ## v1.6: KUNPP/2 (P2P, Type C/D, storage tiers, task kinds A–E, PoW, multiple coordinators)
 
 - **Tests:** `npm test` → **137 / 137 pass**. New `tests/compute2.test.mjs` (6 tests):
@@ -315,3 +411,16 @@ The manual lesson and the two browser questions remain in the local data directo
 ## Render binding regression fix - 3 November 2026
 
 The supplied Render log deployed commit 45dca26 (v0.3) and bound only to 127.0.0.1. The local v0.4 upgrade was not yet committed. Render platform detection now forces 0.0.0.0 even if a copied local HOST setting specifies loopback; the supplied PORT is preserved. A real-process regression test starts with RENDER=true and HOST=127.0.0.1, checks the 0.0.0.0 startup address, verifies /health, and verifies unauthenticated /api/status is denied. Local environment files and Claude outputs are excluded from Git and container context. This verifies startup locally; a successful hosted Render redeploy still needs to be observed.
+
+## v1.11 foundation + federated record storage — 4 November 2026
+
+- Downloaded official Princeton WordNet 3.0, retained its full licence, and built 147,306 normalized lemmas / 117,659 synsets / 5,940 morphology exceptions into 513 gzip data shards (12,512,673 bytes). Every compressed shard has a verified SHA-256 manifest entry. The full package is shipped; raw downloads stay ignored.
+- Obtained 30 CC0 structured Wikidata educational entities with source revisions/URLs and selected claim references. Existing grammar, seed lessons, source packs, cognitive seed models/rules and declarative procedure specifications moved into checksummed JSON assets. Pattern descriptors preserve trusted RegExp behavior through explicit data encoding/revival; executable functions are rejected.
+- New randomized foundation/storage test groups exercise source lookup, source integrity, real file replicas, SQLite-backed Turso protocol execution, Supabase protocol fixtures, stable IDs/versions, idempotence, missing/corrupt replica fallback, private access denial, duplicate/non-durable domain rejection, capacity backpressure, interrupted writes, control-journal failure and restart recovery. Hosted adapters were NOT run against live cloud databases; no production migration or account setup occurred.
+- Authenticated owner APIs and studio lookup/storage controls were inspected in the actual browser on an isolated offline server at port 3299. Looked up microscope, saw its source sense ID and example, stored that atom, and observed COMMITTED with one local location and 2,029 stored bytes. This is a local-policy commit, not a global or cloud durability claim.
+- Definition API answered Define microscope from local dictionary senses with no teacher. A fresh node without cloud keys or network retained foundation lookup and recovered a committed record after restart. Private live events were proven excluded from automatic/public storage routes.
+- The first full regression pass identified four dictionary integration regressions, fixed by preserving dictionary verb morphology and leaving absent lexical reads to explicit hydration. A later pass caught RegExp serialization loss in cognitive data; tagged data encoding/revival and a regression test fixed it. Affected cognition/live-update groups pass after the fixes.
+- Local benchmark (Node v24.20.0): catalog open 2.47 ms; 12 cold lookups 261.76 ms; 60 cached atom accesses 227.69 ms; 39.76 MiB heap in the benchmark process. Thirty records into two local failure-domain fixtures took 514.96 ms; thirty reads 41.04 ms. No cloud cost/latency benchmark is implied. See docs/FOUNDATION-BENCHMARK.json.
+- Scope: English lexical baseline + small world subset; no Wiktionary/ConceptNet dump bundled, no arbitrary provider signup, no S3/R2/Neon adapter, no automatic multi-writer canonical consensus or independent remote journal backup. These boundaries are explicit in docs/FOUNDATION-STORAGE.md.
+
+Final acceptance: 200 tests passed, zero failures, in the complete suite excluding the previously unverified long-running candidate-training promotion test. The final file-adapter atomic publish path was separately rechecked in all 12 foundation/storage groups. Background backfill avoids eager dictionary hydration, and the bounded lexicon loop consults the offline foundation before spending teacher quota.

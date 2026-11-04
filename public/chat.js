@@ -83,9 +83,10 @@
     }
     const prose = h('div', 'prose' + (m.error ? ' error-text' : '')); col.append(prose);
     const after = () => {
-      if (m.sources?.length) { const s = h('div', 'sources'); for (const src of m.sources.slice(0, 6)) { const a = h('a', 'source'); try { const u = new URL(src.url); if (!['https:', 'http:'].includes(u.protocol)) continue; a.href = u.href; } catch { continue; } a.target = '_blank'; a.rel = 'noopener noreferrer'; a.append(h('b', '', String(src.n)), h('span', '', src.title)); s.append(a); } col.append(s); }
+      if (m.sources?.length && config?.ui?.showSources !== false) { const s = h('div', 'sources'); for (const src of m.sources.slice(0, 6)) { const a = h('a', 'source'); try { const u = new URL(src.url); if (!['https:', 'http:'].includes(u.protocol)) continue; a.href = u.href; } catch { continue; } a.target = '_blank'; a.rel = 'noopener noreferrer'; a.append(h('b', '', String(src.n)), h('span', '', src.title)); s.append(a); } col.append(s); }
+      if (config?.ui?.showEngine && m.engine) col.append(h('div', 'engine-label', String(m.engine).slice(0, 80))); /* text only (textContent), never markup */
       if (!m.error) col.append(actions(m));
-      if (m.followups?.length && animate) { const f = h('div', 'followups'); m.followups.forEach((q, i) => { const b = h('button', 'follow'); b.type = 'button'; b.style.animationDelay = `${i * 70}ms`; b.append(svg(ICON.arrow), h('span', '', q)); b.addEventListener('click', () => { f.remove(); send(q); }); f.append(b); }); col.append(f); }
+      if (m.followups?.length && animate && (config?.ui?.maxFollowups ?? 3) > 0) { const f = h('div', 'followups'); m.followups.slice(0, config?.ui?.maxFollowups ?? 3).forEach((q, i) => { const b = h('button', 'follow'); b.type = 'button'; b.style.animationDelay = `${i * 70}ms`; b.append(svg(ICON.arrow), h('span', '', q)); b.addEventListener('click', () => { f.remove(); send(q); }); f.append(b); }); col.append(f); }
       markLast();
     };
     row.append(av, col); $('#messages').append(row);
@@ -95,7 +96,7 @@
   function actions(m) {
     const bar = h('div', 'actions'), btn = (icon, label, fn) => { const b = h('button', 'act'); b.type = 'button'; b.title = label; b.setAttribute('aria-label', label); b.append(svg(icon)); b.addEventListener('click', () => fn(b)); bar.append(b); return b; };
     btn(ICON.copy, 'Copy', async b => { try { await navigator.clipboard.writeText(m.content); b.replaceChildren(svg(ICON.ok)); setTimeout(() => b.replaceChildren(svg(ICON.copy)), 1500); } catch { toast('Copy is not available here'); } });
-    const fb = helpful => async b => { bar.querySelectorAll('.on').forEach(x => x.classList.remove('on')); b.classList.add('on'); try { await post('/chat/feedback', { helpful, entityIds: m.entityIds || [], question: m.question || '' }); toast(helpful ? 'Thanks for the feedback' : "Thanks — I'll use this to improve"); } catch {} };
+    const fb = helpful => async b => { bar.querySelectorAll('.on').forEach(x => x.classList.remove('on')); b.classList.add('on'); try { await post('/chat/feedback', { helpful, entityIds: m.entityIds || [], question: m.question || '', episode: m.episode || null, uiArm: config?.uiArm || null }); toast(helpful ? 'Thanks for the feedback' : "Thanks — I'll use this to improve"); } catch {} };
     btn(ICON.up, 'Good response', fb(true)); btn(ICON.down, 'Bad response', fb(false));
     btn(ICON.redo, 'Regenerate', () => regenerate(m));
     return bar;
@@ -111,7 +112,7 @@
     const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
     try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) });
-      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, at: Date.now(), question: text };
+      msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
     addAI(msg); busy = false; updateSend(); scrollDown();

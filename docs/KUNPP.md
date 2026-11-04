@@ -91,6 +91,7 @@ Every number in this document was measured in this repository's sandbox. Rows ma
 | `isa-closure/1` | symbolic-reasoning | Transitive IS_A inference for a batch of queries | probe with known answers, then replica |
 | `replicate/1` | storage | Store public revisions (content-addressed) | hash of each stored revision; unproven until a storage proof |
 | `storage-proof/1` | storage | `sha256(nonce ‖ canonical bytes)` for random held revisions, fresh nonces | the core computes the expected proof |
+| `procedure-test/1` (v1.7) | — | Re-runs the test cases of public candidate and promoted cognitive procedures in the shared procedure kernel | replica / spot-check; results are evidence only, and promotion stays with the core's own evaluation (`docs/COGNITIVE-ENGINE.md`) |
 | `restore/1` | storage | Return revisions the core lost | re-hash must equal the head named by a manifest |
 
 **Scheduling.** Priority: restore 9 · storage-proof 6 · replicate 5 · other capability kinds 4 · compute 3. A storage peer's lease triggers storage planning (at most every 3 s), so storage work does not wait for the atom queue to empty. Storage work is never gated by the cost check, because the core cannot do it for itself.

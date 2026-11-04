@@ -1,0 +1,39 @@
+{
+  "note": "Expected values are hand-computed from the stated numbers (E = P×t; cost = E×tariff; runtime = E/P; charge time = E/(P×0.85 default efficiency); panels = ceil(need/(W×sun×0.75 default)). Held-out cases are never given to the evolution engine.",
+  "calculation": {
+    "dev": [
+      { "problem": "How much energy does a 60 W bulb use in 5 hours?", "value": 300 },
+      { "problem": "How much energy does a 1.5 kW iron use in 30 minutes?", "value": 750 },
+      { "problem": "A 100 W TV runs 6 hours a day. Electricity costs GH₵2 per kWh. How much does it cost per day?", "value": 1.2 },
+      { "problem": "How long will a 1200 Wh battery last running a 100 W TV?", "value": 12 },
+      { "problem": "How long does it take to charge a 17 Wh battery with a 20 W charger?", "value": 1 },
+      { "problem": "How many panels do I need for 3 kWh per day with 300 W panels and 5 hours of peak sun?", "value": 3 },
+      { "problem": "My phone has a 4000 mAh 3.7 V battery at 10% and uses 2 W. How long will it last?", "value": 0.74 }
+    ],
+    "correction": { "problem": "How long will a 1000 Wh battery run a 100 W load through an inverter that is 90% efficient?", "value": 9, "unit": "h" },
+    "heldOut": [
+      { "problem": "How much energy does a 2 kW air conditioner use in 3 hours?", "value": 6000 },
+      { "problem": "A 45 W laptop runs for 8 hours. Electricity costs GH₵1.5 per kWh. How much will it cost?", "value": 0.54 },
+      { "problem": "How long will a 500 Wh battery run a 25 W fan?", "value": 20 },
+      { "problem": "How long will a 2 kWh battery last with a 250 W fridge?", "value": 8 },
+      { "problem": "How long will it take to charge a 50 Wh power bank with a 10 W charger?", "value": 5.882352941 },
+      { "problem": "How many 400 W panels do I need for 6 kWh a day with 4 hours of peak sun?", "value": 5 },
+      { "problem": "A 5000 mAh 3.85 V phone battery at 50% powers a 1.5 W load. How long will it last?", "value": 6.416666667 },
+      { "problem": "How much energy does a 800 W microwave use in 15 minutes?", "value": 200 },
+      { "problem": "How long will a 2400 Wh battery run a 300 W fridge through an inverter that is 85% efficient?", "value": 6.8, "needsLearning": true },
+      { "problem": "How long will a 3000 Wh battery run a 250 W pump through an inverter that is 80% efficient?", "value": 9.6, "needsLearning": true }
+    ]
+  },
+  "diagnosis": [
+    { "text": "My solar battery is not charging. The panel voltage is normal.", "ruledOut": "insufficient solar input", "alive": "faulty or loose wiring" },
+    { "text": "My solar battery is not charging. It is cloudy and the panel voltage is low.", "top": "insufficient solar input" },
+    { "text": "My solar battery is not charging. The battery is hot and it is in protection mode.", "top": "battery protection" },
+    { "text": "My solar battery won't charge. The panel voltage is normal and the controller input voltage is normal and the controller output voltage is low.", "top": "charge controller fault" },
+    { "text": "Why does my phone die so fast? I watch videos all the time.", "top": "screen brightness" }
+  ],
+  "counterfactual": [
+    { "text": "What would happen if a solar panel produced electricity at night?", "changes": ["storageNeededWh", "nightEnergyWh"], "law": true },
+    { "text": "What if a battery had twice its current capacity?", "changes": ["runtimeH", "chargeTimeH"], "law": false },
+    { "text": "What happens if three nodes disappear?", "changes": ["recoverable"], "law": false }
+  ]
+}

@@ -1,0 +1,3956 @@
+{
+  "format": "kenuxa-world-pack/1",
+  "version": 1,
+  "sourceHash": "3f3d132a77125b990dff09de0538512fda1f8235a96d1c2e0efe7f95847d91ab",
+  "entities": [
+    {
+      "id": "concept:wikidata:Q395",
+      "wikidataId": "Q395",
+      "label": "mathematics",
+      "description": "field of study",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q395$32cecfcf-462c-92db-4b12-ff8e801299a1",
+            "rank": "normal",
+            "value": "Q11862829",
+            "references": [
+              {
+                "hash": "d3a1378f425783c7e70530b682748d83a6f9bf1c",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "54a1f5e3d884e6d1fda84488c2519593de4d7ed4",
+                      "datavalue": {
+                        "value": "https://www.masterstudies.com/universities/Turkey/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              },
+              {
+                "hash": "9a55d9b4e0ad0a39307ea077dfc93dcdad9d1955",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "f065f714f0bd462c0a54f43c82728d30aef9ffab",
+                      "datavalue": {
+                        "value": {
+                          "text": "Mathematics",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$517C352C-127F-4D53-B021-0C0507D1861C",
+            "rank": "normal",
+            "value": "Q4671286",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q395$4e113cdf-493d-0597-fc2d-3b3f74390d4c",
+            "rank": "normal",
+            "value": "Q7991",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q395$ae319d5e-45ee-fd47-f0b7-92298c0bc379",
+            "rank": "deprecated",
+            "value": "Q1881523",
+            "references": [
+              {
+                "hash": "e53897184fcb5aebe26529069c95f7a1285c6257",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "4b8dc34544e4a73a73ddbc24801a338c20dad7ee",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 52055677,
+                          "id": "Q52055677"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P11130": [
+                    {
+                      "snaktype": "value",
+                      "property": "P11130",
+                      "hash": "80fc43241f2b44c3ff8cf5c2c05284ae2e1d0450",
+                      "datavalue": {
+                        "value": "stem",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P11130"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$f67e8af6-4c43-afd7-7872-83ec6d89f589",
+            "rank": "normal",
+            "value": "Q816264",
+            "references": [
+              {
+                "hash": "f9a4311594cdf5bad511de039a2c446f811e03ad",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "f06fa32585051c1221d0988def8d5d9a398cde2d",
+                      "datavalue": {
+                        "value": "https://pictmodelschool.com/Blogs/formal-science-its-like-magic-but-real/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$cf2ce2f8-4078-a84f-a5b6-aefca4ede853",
+            "rank": "normal",
+            "value": "Q475023",
+            "references": [
+              {
+                "hash": "12b8facc7688205f325a6cb7c4fe52756e4cda3e",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "5962cda0a1c11826f6ff3e2cddccb8ea150ea1d1",
+                      "datavalue": {
+                        "value": "https://www.jstor.org/stable/3028342?seq=2",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              },
+              {
+                "hash": "8c04b7fd553abf6d90e5d744fed2c984ce6772a4",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "6253e6287fb29426e91404ecdc5d402c631285a3",
+                      "datavalue": {
+                        "value": "https://parade.com/525493/marilynvossavant/is-math-an-exact-science/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q395$724ae769-4eda-566b-adce-1526bddcfa41",
+            "rank": "normal",
+            "value": "Q12479",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$72d29faf-4aad-93bd-5940-3f2d0c5f0d65",
+            "rank": "normal",
+            "value": "Q8087",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$0061f244-4856-56c8-45a4-ee2fed68ded1",
+            "rank": "normal",
+            "value": "Q3968",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$c1bec2d7-417a-6470-4da3-6e250e702ddd",
+            "rank": "normal",
+            "value": "Q217413",
+            "references": []
+          },
+          {
+            "id": "Q395$f9439223-4ccd-3d91-c66e-795bf05d5194",
+            "rank": "normal",
+            "value": "Q12482",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$b056cc6b-48b5-9a66-102c-ae8e5229aeaa",
+            "rank": "normal",
+            "value": "Q12483",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$ff496060-4a1e-e69a-d11e-b1ef889e6e73",
+            "rank": "normal",
+            "value": "Q5862903",
+            "references": [
+              {
+                "hash": "625bf0fe47f6ddf64e60180d9addd908c1651287",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "b4f16229ea4db23f3b27d346181b3d49610b157c",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 2743906,
+                          "id": "Q2743906"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$35eb41cd-49ab-c868-72b8-0e449354209c",
+            "rank": "normal",
+            "value": "Q42989",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$07398476-481c-b41c-e536-56ae0e5319c7",
+            "rank": "normal",
+            "value": "Q7754",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$de8b438c-4e65-3818-1aa9-8afa1f3253ef",
+            "rank": "normal",
+            "value": "Q76592",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q395$7fb4a200-4924-fdc8-a4c2-d79a91feb4c4",
+            "rank": "normal",
+            "value": "Q1166618",
+            "references": []
+          },
+          {
+            "id": "Q395$42f8b581-404a-3569-888f-b5b566f66669",
+            "rank": "normal",
+            "value": "Q11205",
+            "references": [
+              {
+                "hash": "dc0ce823083841ba96347b734657b4a894a0dcaf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5ae74bf86436d2f9682d03e35bb85a9b937a3845",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 455,
+                          "id": "Q455"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1417": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1417",
+                      "hash": "ab2d855370b10b0a56f51b77bd53373ad2f0af98",
+                      "datavalue": {
+                        "value": "summary/mathematics",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1417"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q395",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q21199",
+      "wikidataId": "Q21199",
+      "label": "natural number",
+      "description": "ambiguous mathematical term used either for non-negative or for strictly positive integers, depending on usage",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q21199$d4262f1d-4d9b-e8b7-5ecd-f36f88ff232b",
+            "rank": "deprecated",
+            "value": "Q77358734",
+            "references": []
+          },
+          {
+            "id": "Q21199$d0baef57-4fbe-7717-5582-a85d93558783",
+            "rank": "normal",
+            "value": "Q66786238",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "q21199$7ec9546e-4bbb-cab0-a000-541ce3c737b1",
+            "rank": "deprecated",
+            "value": "Q12503",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q21199$c1a37257-4763-ccb5-d4bf-27e99f15a497",
+            "rank": "deprecated",
+            "value": "Q28777634",
+            "references": []
+          },
+          {
+            "id": "Q21199$8bb34c4b-44f7-f492-6ba5-8b063646fa7f",
+            "rank": "deprecated",
+            "value": "Q47339953",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q21199$c83477b8-47c2-26f5-6ef7-ae56b95fc6ce",
+            "rank": "normal",
+            "value": "Q28920052",
+            "references": []
+          },
+          {
+            "id": "Q21199$4bc3e567-4153-269c-66b8-b71191c5a5cb",
+            "rank": "normal",
+            "value": "Q16317911",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q21199",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11173",
+      "wikidataId": "Q11173",
+      "label": "chemical compound",
+      "description": "pure chemical substance consisting of two or more different chemical elements",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11173$8a2ee60d-417d-3e6a-0322-4e1db32ded3b",
+            "rank": "normal",
+            "value": "Q72070508",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11173$257b4a6d-4987-8e46-7cd2-1df85da007b8",
+            "rank": "normal",
+            "value": "Q43460564",
+            "references": []
+          },
+          {
+            "id": "Q11173$f7ec4b83-446e-5b0d-31a4-5d1fcce1bbbc",
+            "rank": "deprecated",
+            "value": "Q2393187",
+            "references": []
+          },
+          {
+            "id": "q11173$135A5049-D7EA-478A-A28E-4B9E6F2149B3",
+            "rank": "deprecated",
+            "value": "Q578779",
+            "references": [
+              {
+                "hash": "8369ebd28f3d929900b634dc9d240468281fa7ab",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "5f69c22fedd2f01f9893e4bc52576c643ad029f1",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 107422103,
+                          "id": "Q107422103"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q11173$45cd48b4-4366-eba4-d2cb-c998d1ef9498",
+            "rank": "normal",
+            "value": "Q9121",
+            "references": []
+          },
+          {
+            "id": "Q11173$e446b1e1-4203-eca5-ed0e-24623fbe3968",
+            "rank": "normal",
+            "value": "Q44424",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11173",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q420",
+      "wikidataId": "Q420",
+      "label": "biology",
+      "description": "scientific study of living things, especially their structure, function, growth, evolution, and distribution",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q420$230A5362-565D-4E5C-9C16-0B6FAB04F9B1",
+            "rank": "normal",
+            "value": "Q2465832",
+            "references": []
+          },
+          {
+            "id": "Q420$449682c1-4377-8321-ffb0-0e9d3241908e",
+            "rank": "normal",
+            "value": "Q11862829",
+            "references": [
+              {
+                "hash": "4e7aefccba9bf2f921626f660602cd74f662c38b",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "912cb30f89de4e1f3838049944e916e4c839d01b",
+                      "datavalue": {
+                        "value": {
+                          "text": "Biology",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              },
+              {
+                "hash": "caae6a2fdd98ca1129e353e8d9400ffc5f2d4ad3",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "f6cee8dfb84646ca2853775ce3810d3e8d6463d6",
+                      "datavalue": {
+                        "value": {
+                          "text": "Biology (General)",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              },
+              {
+                "hash": "477c7e1fe161af3975034237ff32970727b37743",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "13b6311a6e3dff80eacdc0f5e1a7c967cf63aa6d",
+                      "datavalue": {
+                        "value": "https://static.helpjuice.com/helpjuice_production/uploads/upload/image/15882/3552993/1716925213395-Disciplines_taxonomy_2024-04.pdf",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q420$04d5c32b-4a56-fe4a-b9b9-cb107b4fcd4c",
+            "rank": "normal",
+            "value": "Q4671286",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "q420$9ec1deae-41b6-f991-3528-2cb3336cfad0",
+            "rank": "normal",
+            "value": "Q7991",
+            "references": []
+          },
+          {
+            "id": "Q420$be8c0b20-4b0d-6f0b-b3f2-c5072d57a6f8",
+            "rank": "normal",
+            "value": "Q864928",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q420$143359fb-40fa-a3eb-5e72-74f4bc61fe48",
+            "rank": "normal",
+            "value": "Q183252",
+            "references": []
+          },
+          {
+            "id": "Q420$98a44dc3-45bd-b2c8-dd2a-019aea69405b",
+            "rank": "normal",
+            "value": "Q7150",
+            "references": []
+          },
+          {
+            "id": "Q420$fb70808a-4075-1daa-7016-8549ef517859",
+            "rank": "normal",
+            "value": "Q441",
+            "references": []
+          },
+          {
+            "id": "Q420$d357843b-46b3-3ca1-d608-7710b6355fb5",
+            "rank": "normal",
+            "value": "Q431",
+            "references": []
+          },
+          {
+            "id": "Q420$D65A0925-4DB1-45FE-AA25-F0B84676D62A",
+            "rank": "normal",
+            "value": "Q4785356",
+            "references": []
+          },
+          {
+            "id": "Q420$616857BD-CC18-44AD-B81D-B1A1BC81AD3E",
+            "rank": "normal",
+            "value": "Q514",
+            "references": []
+          },
+          {
+            "id": "Q420$1512ac09-4473-4a26-8fc4-0951b14ae05b",
+            "rank": "normal",
+            "value": "Q7175",
+            "references": []
+          },
+          {
+            "id": "Q420$9b023c79-4c41-0311-1b40-bc92964a007f",
+            "rank": "normal",
+            "value": "Q7162",
+            "references": []
+          },
+          {
+            "id": "Q420$ae93f579-40a5-be36-2753-4cc54d4a62f2",
+            "rank": "normal",
+            "value": "Q105582462",
+            "references": []
+          },
+          {
+            "id": "Q420$bef630ec-4fa2-6928-35d5-076a2e275b6b",
+            "rank": "normal",
+            "value": "Q7141",
+            "references": []
+          },
+          {
+            "id": "Q420$d921558d-4a4e-6fa7-60e0-573ea37b4d86",
+            "rank": "normal",
+            "value": "Q840400",
+            "references": []
+          },
+          {
+            "id": "Q420$b75906da-4ef3-6890-b4d4-c0912e05643d",
+            "rank": "normal",
+            "value": "Q177005",
+            "references": []
+          },
+          {
+            "id": "Q420$679f9ed6-4953-0b45-6eaf-c0d598be6c37",
+            "rank": "normal",
+            "value": "Q2728012",
+            "references": []
+          },
+          {
+            "id": "Q420$fae98383-48d6-d30d-7182-4a66e340b88b",
+            "rank": "normal",
+            "value": "Q7193",
+            "references": []
+          },
+          {
+            "id": "Q420$9a7bcc45-43a4-b456-20b7-5e5f633e1689",
+            "rank": "normal",
+            "value": "Q7108",
+            "references": []
+          },
+          {
+            "id": "Q420$3d5c6c1c-44c2-e84b-7af2-97f018524034",
+            "rank": "normal",
+            "value": "Q7094",
+            "references": []
+          },
+          {
+            "id": "Q420$56e8afe6-40a1-859d-9b67-23e8f24fe0bc",
+            "rank": "normal",
+            "value": "Q7100",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q420",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11452",
+      "wikidataId": "Q11452",
+      "label": "general relativity",
+      "description": "standard and classical physics theory of gravity and space",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11452$83925A1F-EF62-4E07-940A-11F204CBB664",
+            "rank": "normal",
+            "value": "Q3239681",
+            "references": []
+          },
+          {
+            "id": "Q11452$7aaf74d4-4918-b291-6b47-85def4befb35",
+            "rank": "normal",
+            "value": "Q214070",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11452$75cce9a4-4f50-4cbe-1755-55c2a9fdda0d",
+            "rank": "normal",
+            "value": "Q43514",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q11452$11577D14-B2FE-4665-8757-3832EB696FE3",
+            "rank": "normal",
+            "value": "Q273711",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11452",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11379",
+      "wikidataId": "Q11379",
+      "label": "energy",
+      "description": "quantitative property of a physical system, recognizable in the performance of work and in the form of heat and light",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11379$1d5789e1-4dd5-f8d9-949b-07357de60396",
+            "rank": "normal",
+            "value": "Q107715",
+            "references": []
+          },
+          {
+            "id": "Q11379$46392315-4808-8505-18d3-dc93eb68e5d1",
+            "rank": "normal",
+            "value": "Q1554231",
+            "references": [
+              {
+                "hash": "9fcb182fed62c9af5f15867806f64b97a0403712",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "03a3715b86ea292173cf0eee64b5df2e361f92ba",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 129652515,
+                          "id": "Q129652515"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "8241bb762fd9838e9404272f6d49e5534a509508",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-05-13T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11379$8a13a8d1-440e-b9a7-9685-4d61da68e7fb",
+            "rank": "normal",
+            "value": "Q181175",
+            "references": []
+          },
+          {
+            "id": "Q11379$3a02500e-4ebd-a696-b754-67c3290a1778",
+            "rank": "normal",
+            "value": "Q3386703",
+            "references": []
+          },
+          {
+            "id": "Q11379$E6BABE11-8676-4CC4-BCC7-D1D963E0FC7D",
+            "rank": "normal",
+            "value": "Q141256417",
+            "references": [
+              {
+                "hash": "049399b07ae587382e1ddba403c4a51693173217",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "8575512ada9b7e4f3fa284cb95d83c521feaf3a4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 141256658,
+                          "id": "Q141256658"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q11379$4AC4A6B9-DD9A-42A6-BB04-40FEEAC56BA9",
+            "rank": "normal",
+            "value": "Q4373292",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11379$1138df66-4bb6-07fb-28fe-6dbf3ef454a4",
+            "rank": "normal",
+            "value": "Q35875",
+            "references": []
+          },
+          {
+            "id": "Q11379$7a13e160-46d9-c574-f070-8fa6cfe1cf06",
+            "rank": "normal",
+            "value": "Q1",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11379",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11471",
+      "wikidataId": "Q11471",
+      "label": "time",
+      "description": "dimension in which events can be ordered from the past through the present into the future",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11471$36c3e800-4f4f-c47e-b127-14d140401447",
+            "rank": "normal",
+            "value": "Q181175",
+            "references": []
+          },
+          {
+            "id": "Q11471$c69e726d-45fc-f433-4a17-69e4ecfc3394",
+            "rank": "normal",
+            "value": "Q2487752",
+            "references": []
+          },
+          {
+            "id": "Q11471$cd43c7d0-452d-a29d-fd95-ed09e35912f9",
+            "rank": "normal",
+            "value": "Q58415929",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11471$84760393-420f-5353-8a83-4a5ad33150b1",
+            "rank": "normal",
+            "value": "Q133250",
+            "references": []
+          },
+          {
+            "id": "Q11471$bca50322-4d80-1e8b-876d-df4819ea2c9d",
+            "rank": "deprecated",
+            "value": "Q3054889",
+            "references": []
+          },
+          {
+            "id": "Q11471$bc735c72-4ab9-5234-b9dd-01a9fd2cffda",
+            "rank": "normal",
+            "value": "Q141182953",
+            "references": []
+          },
+          {
+            "id": "Q11471$f9bae58c-4fb3-08d0-cc73-c20b24c71064",
+            "rank": "normal",
+            "value": "Q378078",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11471$39433fa7-46d6-7d8f-7a18-f7f6a218b48c",
+            "rank": "normal",
+            "value": "Q133327",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q11471$802ffb73-4599-2ea9-7a37-dddef7e67724",
+            "rank": "normal",
+            "value": "Q186081",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11471",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11466",
+      "wikidataId": "Q11466",
+      "label": "temperature",
+      "description": "physical property of matter that quantitatively expresses the common notions of hot and cold",
+      "claims": {
+        "P31": [
+          {
+            "id": "q11466$3BD767B5-3633-4D04-9DCC-7C2729AD1DC0",
+            "rank": "normal",
+            "value": "Q230937",
+            "references": [
+              {
+                "hash": "56f8d78fb33222e4164654816e1153d0d7bde185",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "3069db09456663044b09e713673990f9ea1173f8",
+                      "datavalue": {
+                        "value": "https://www2.montes.upm.es/dptos/digfa/cfisica/termo1p/variables.html",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "dbc09782e4a8292433b33ef47dff8dfc48140c75",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-03-15T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P958": [
+                    {
+                      "snaktype": "value",
+                      "property": "P958",
+                      "hash": "030c463f73c6194620d9cbfc739afa64e8cf3644",
+                      "datavalue": {
+                        "value": "Cuando un sistema se encuentra en equilibrio, las variables termodinámicas están relacionadas mediante una ecuación denominada ecuación de estado.",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813",
+                  "P958"
+                ]
+              }
+            ]
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11466$8381e150-4b3f-c68c-413a-045690c6c63b",
+            "rank": "normal",
+            "value": "Q181175",
+            "references": [
+              {
+                "hash": "c2fdb4393c6b8cb4f04986b8a028a69ca3381cc7",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "259a3f07431dc5e2d2941cb46b68ac1bca577bc4",
+                      "datavalue": {
+                        "value": "https://www.google.es/books/edition/FISICAS_AVANZADAS_TELETRASPORTE/A2CzeEvV_BEC?hl=es&gbpv=1&dq=temperatura+magnitud+escalar&pg=PA13&printsec=frontcover",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "dbc09782e4a8292433b33ef47dff8dfc48140c75",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-03-15T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P958": [
+                    {
+                      "snaktype": "value",
+                      "property": "P958",
+                      "hash": "a1219a8a3dee03d1ac9862177bc3cd43420df300",
+                      "datavalue": {
+                        "value": "La física asigna a la temperatura caracter escalar, y es una magnitud escalar. (español)",
+                        "type": "string"
+                      },
+                      "datatype": "string"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813",
+                  "P958"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q11466$d81ce788-4418-81ba-d52e-01eeaee00094",
+            "rank": "normal",
+            "value": "Q3387041",
+            "references": []
+          },
+          {
+            "id": "Q11466$6a688576-4941-6385-024f-b7f07b5919e4",
+            "rank": "normal",
+            "value": "Q141256417",
+            "references": [
+              {
+                "hash": "049399b07ae587382e1ddba403c4a51693173217",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "8575512ada9b7e4f3fa284cb95d83c521feaf3a4",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 141256658,
+                          "id": "Q141256658"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q11466$3a526095-4555-442b-2ed9-18c316e06fa3",
+            "rank": "normal",
+            "value": "Q65939908",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11466",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11460",
+      "wikidataId": "Q11460",
+      "label": "clothing",
+      "description": "covering worn on the body",
+      "claims": {
+        "P279": [
+          {
+            "id": "Q11460$1f1ac838-40fa-9a29-d1b3-45af81aa7e06",
+            "rank": "normal",
+            "value": "Q386724",
+            "references": []
+          },
+          {
+            "id": "Q11460$e11151f8-4ec9-4dfe-4799-258ab84a0efd",
+            "rank": "normal",
+            "value": "Q2424752",
+            "references": []
+          },
+          {
+            "id": "Q11460$3eb19a9c-455c-047f-7769-f61d6ca5cd98",
+            "rank": "normal",
+            "value": "Q8205328",
+            "references": []
+          },
+          {
+            "id": "Q11460$71e2e062-4736-a49d-e4fb-adfe961016e4",
+            "rank": "deprecated",
+            "value": "Q113518695",
+            "references": []
+          },
+          {
+            "id": "Q11460$991527ae-48fa-02f4-bc41-d0549d98a34f",
+            "rank": "deprecated",
+            "value": "Q115797493",
+            "references": []
+          },
+          {
+            "id": "Q11460$878a599a-4fdb-3d64-31e4-f68467e2ffa6",
+            "rank": "normal",
+            "value": "Q39546",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11460$cb03e7df-4d5d-a5bf-d7bc-4c6edca25381",
+            "rank": "normal",
+            "value": "Q12684",
+            "references": []
+          },
+          {
+            "id": "Q11460$fcad1094-45d1-08cc-daf8-bebac9b54cd2",
+            "rank": "normal",
+            "value": "Q11828862",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11460",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11412",
+      "wikidataId": "Q11412",
+      "label": "gravity",
+      "description": "fundamental interaction affecting all matter",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11412$aefca81c-4e0c-edab-543e-29a53717e92e",
+            "rank": "normal",
+            "value": "Q104934",
+            "references": []
+          },
+          {
+            "id": "Q11412$fc4e14a3-4c0f-1ab9-1e0d-511131703ca7",
+            "rank": "normal",
+            "value": "Q1293220",
+            "references": []
+          },
+          {
+            "id": "Q11412$f82ba57c-4038-8495-c020-6187a2ef1362",
+            "rank": "deprecated",
+            "value": "Q118193027",
+            "references": [
+              {
+                "hash": "3079889bbcf4ec810adf44357f624c4c6b4e4bbf",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 36578,
+                          "id": "Q36578"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P227": [
+                    {
+                      "snaktype": "value",
+                      "property": "P227",
+                      "hash": "d99261cac60f2d5489cfae0d1db2b271b471ed7a",
+                      "datavalue": {
+                        "value": "4021908-2",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P407": [
+                    {
+                      "snaktype": "value",
+                      "property": "P407",
+                      "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 188,
+                          "id": "Q188"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "09deb0890e72401f7dd396660740283144ed2a8f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2023-05-07T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P227",
+                  "P407",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11412",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11469",
+      "wikidataId": "Q11469",
+      "label": "glass",
+      "description": "amorphous solid that exhibits a glass transition when heated towards the liquid state",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11469$00563568-4a4f-ac7a-63f2-0ee8c0f510d9",
+            "rank": "normal",
+            "value": "Q15831577",
+            "references": []
+          },
+          {
+            "id": "Q11469$53817140-1743-44AE-A6DC-28AE7762E9FE",
+            "rank": "normal",
+            "value": "Q63981612",
+            "references": [
+              {
+                "hash": "873141c0d7fa59958eddfbabda220474b1af537a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "8f42e18cb90499b4f5b3c7b5bdc8323416ce4281",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 115385762,
+                          "id": "Q115385762"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11469$09590523-4b76-f941-721b-15a230c9b71a",
+            "rank": "normal",
+            "value": "Q103382",
+            "references": []
+          },
+          {
+            "id": "Q11469$638a0add-4783-54c4-6b14-822163fa005b",
+            "rank": "normal",
+            "value": "Q11438",
+            "references": []
+          },
+          {
+            "id": "Q11469$be12b179-4fe0-362c-1a03-375b651b1a39",
+            "rank": "normal",
+            "value": "Q214609",
+            "references": []
+          },
+          {
+            "id": "Q11469$71A3E038-AD6A-4898-B087-0057F310B269",
+            "rank": "normal",
+            "value": "Q206615",
+            "references": [
+              {
+                "hash": "873141c0d7fa59958eddfbabda220474b1af537a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "8f42e18cb90499b4f5b3c7b5bdc8323416ce4281",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 115385762,
+                          "id": "Q115385762"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11469$1c3c0726-ad7b-42a2-8728-e1315fd48427",
+            "rank": "normal",
+            "value": "Q35473",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q11469$2446b284-48e3-3904-16b2-2e275cc5a15a",
+            "rank": "normal",
+            "value": "Q116269",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11469",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q146",
+      "wikidataId": "Q146",
+      "label": "cat",
+      "description": "small domesticated carnivorous mammal",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q146$7dfb6ff0-4fcb-8a6c-f67b-be9835fe8e05",
+            "rank": "normal",
+            "value": "Q55983715",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q146$77588ba6-4862-0209-7ac7-2c11b7157525",
+            "rank": "normal",
+            "value": "Q57814795",
+            "references": [
+              {
+                "hash": "319af17f8f3c604c22b92c1011bface4e3199dc3",
+                "snaks": {
+                  "P356": [
+                    {
+                      "snaktype": "value",
+                      "property": "P356",
+                      "hash": "9711e1e93b460eb380cf161e808055efb4db45ee",
+                      "datavalue": {
+                        "value": "10.1016/J.YGENO.2007.10.009",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P1476": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1476",
+                      "hash": "9631dd59d06945d973ab590c85ca52487bc9dd75",
+                      "datavalue": {
+                        "value": {
+                          "text": "The ascent of cat breeds: Genetic evaluations of breeds and worldwide random-bred populations",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "c1dd32c79ecbfbdb407a13167380d7d97b87997b",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2018-11-15T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "2a6789b1d93d6a1e4ffd3797a21f4b8041d5c14b",
+                      "datavalue": {
+                        "value": {
+                          "text": "Archeological evidence suggests the domestication of the cat occurred in the Near East approximately 9000–10,000 years ago",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P356",
+                  "P1476",
+                  "P813",
+                  "P1683"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q146$22253ad1-4bd4-7127-8c32-250809f115b1",
+            "rank": "normal",
+            "value": "Q39201",
+            "references": []
+          },
+          {
+            "id": "Q146$71b2ae9f-45d7-e2be-7d91-f94d28639020",
+            "rank": "normal",
+            "value": "Q25265",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q146$54ed53e1-4af3-57a9-fc3d-caf0b03e235c",
+            "rank": "normal",
+            "value": "Q219588",
+            "references": []
+          },
+          {
+            "id": "Q146$ecab05ac-4486-2bae-221f-f404ca51bad3",
+            "rank": "normal",
+            "value": "Q167896",
+            "references": []
+          },
+          {
+            "id": "Q146$006854a1-41ce-d9cb-b675-c4f034942314",
+            "rank": "normal",
+            "value": "Q7362",
+            "references": []
+          },
+          {
+            "id": "Q146$b9c61387-4513-ff61-7701-0ec7422c0e65",
+            "rank": "normal",
+            "value": "Q60960",
+            "references": []
+          },
+          {
+            "id": "Q146$8697567c-47ad-07cc-4d59-b6f7eadb2e25",
+            "rank": "normal",
+            "value": "Q913572",
+            "references": []
+          },
+          {
+            "id": "Q146$592e2a24-465a-03c9-8513-817e900a2abe",
+            "rank": "normal",
+            "value": "Q7364",
+            "references": []
+          },
+          {
+            "id": "Q146$bd26e0a5-41e5-5867-c327-6fe0fa2ad397",
+            "rank": "normal",
+            "value": "Q9635",
+            "references": []
+          },
+          {
+            "id": "Q146$e1652e53-4998-e90e-f2eb-d11cd28fffdc",
+            "rank": "normal",
+            "value": "Q217605",
+            "references": []
+          },
+          {
+            "id": "Q146$a7f3056f-4b94-a78e-767e-0f5cfee43628",
+            "rank": "normal",
+            "value": "Q553",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q146",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q144",
+      "wikidataId": "Q144",
+      "label": "dog",
+      "description": "domesticated mammal of the family Canidae",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q144$daf9cda3-4a93-7e45-1bba-c02d3d60d56b",
+            "rank": "normal",
+            "value": "Q55983715",
+            "references": []
+          },
+          {
+            "id": "Q144$32937351-4c3c-8a81-4ca6-c185179864f9",
+            "rank": "normal",
+            "value": "Q136772238",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q144$e3f8cb4d-4a7c-6004-87e2-498660f601ee",
+            "rank": "normal",
+            "value": "Q57814795",
+            "references": []
+          },
+          {
+            "id": "Q144$acd93a51-43f7-cb14-249e-8d44d50027c7",
+            "rank": "deprecated",
+            "value": "Q39201",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q144$842e3ce1-44e4-efea-1305-b8ccb0fd4bf1",
+            "rank": "normal",
+            "value": "Q152392",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q144",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q16521",
+      "wikidataId": "Q16521",
+      "label": "taxon",
+      "description": "group of one or more organism(s), which a taxonomist adjudges to be a unit",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q16521$e31ceda2-4f12-248e-2299-dc71bae352c5",
+            "rank": "normal",
+            "value": "Q24017414",
+            "references": [
+              {
+                "hash": "403de0023a77e07a827970a7511276af5aa837a4",
+                "snaks": {
+                  "P143": [
+                    {
+                      "snaktype": "value",
+                      "property": "P143",
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 328,
+                          "id": "Q328"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P407": [
+                    {
+                      "snaktype": "value",
+                      "property": "P407",
+                      "hash": "daf1c4fcb58181b02dff9cc89deb084004ddae4b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1860,
+                          "id": "Q1860"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143",
+                  "P407"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q16521$bc5a94fb-4fc7-2e93-6247-2c289dbcbc40",
+            "rank": "normal",
+            "value": "Q115949945",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q16521$cc853109-4c46-028a-dd45-d52b4a34cb75",
+            "rank": "normal",
+            "value": "Q21871294",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q16521",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q729",
+      "wikidataId": "Q729",
+      "label": "animal",
+      "description": "kingdom of multicellular eukaryotic organisms",
+      "claims": {
+        "P31": [
+          {
+            "id": "q729$405B3757-79EF-4E02-94C5-F8250849E825",
+            "rank": "normal",
+            "value": "Q16521",
+            "references": []
+          },
+          {
+            "id": "Q729$5cd16b3d-4876-cb1b-c22f-9b2215859c1c",
+            "rank": "normal",
+            "value": "Q104086571",
+            "references": []
+          },
+          {
+            "id": "Q729$82E2CAA2-DADE-45FE-8DA6-C31E4D862939",
+            "rank": "normal",
+            "value": "Q55983715",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q729$4ad52c37-45a6-79d2-b152-411b452e5051",
+            "rank": "normal",
+            "value": "Q159344",
+            "references": []
+          },
+          {
+            "id": "Q729$441008FC-95EE-47EE-97AB-0C53E5F17F83",
+            "rank": "normal",
+            "value": "Q36458",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q729",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q756",
+      "wikidataId": "Q756",
+      "label": "plant",
+      "description": "living thing in the kingdom of photosynthetic eukaryotes",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q756$8e429100-4294-3a49-23e5-1bcbe92ba612",
+            "rank": "normal",
+            "value": "Q16521",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q756$f797febc-4070-3eff-4c8d-125d630509ab",
+            "rank": "normal",
+            "value": "Q7239",
+            "references": []
+          },
+          {
+            "id": "Q756$59e789e6-4658-d90e-663d-73ebcf74ab5b",
+            "rank": "deprecated",
+            "value": "Q131427",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q756$28c98a4a-449f-cd23-dfcb-4672c21ad09f",
+            "rank": "normal",
+            "value": "Q41500",
+            "references": []
+          },
+          {
+            "id": "Q756$24f9a0de-4a45-b9c0-8832-da5e836d2d6a",
+            "rank": "normal",
+            "value": "Q5935823",
+            "references": []
+          },
+          {
+            "id": "Q756$196bdd42-44c4-eddc-18b8-2856769ba6f0",
+            "rank": "normal",
+            "value": "Q134267",
+            "references": []
+          },
+          {
+            "id": "Q756$01f42d69-4b87-02af-8f4e-7171fc41ac7c",
+            "rank": "normal",
+            "value": "Q660498",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q756",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q7239",
+      "wikidataId": "Q7239",
+      "label": "organism",
+      "description": "living being or physical living system composed of organic matter",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q7239$d1e9fbab-4835-9b22-dd28-182a1c8025be",
+            "rank": "normal",
+            "value": "Q111360549",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q7239$a80a1e54-4c22-cde8-132e-3576be3be666",
+            "rank": "normal",
+            "value": "Q141164427",
+            "references": [
+              {
+                "hash": "c7f6a6ce0439d35ffac259198b67cc52e5b7e72a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "067ccad721a76f2a6e09dce03b3869661d9ba0c1",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 141163319,
+                          "id": "Q141163319"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    },
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "c2c50baeffcc972d0f8f92c14e9c9eebcb143f81",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 141163352,
+                          "id": "Q141163352"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q7239$6ecb550e-474f-5e8e-3376-483418afe2b8",
+            "rank": "normal",
+            "value": "Q28845870",
+            "references": []
+          },
+          {
+            "id": "Q7239$71273b13-4bb1-f94e-3cae-f4b0158f2600",
+            "rank": "normal",
+            "value": "Q27043948",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q7239$99dc6bbc-4f03-5ad6-9726-6f4f917de5cc",
+            "rank": "normal",
+            "value": "Q2625603",
+            "references": []
+          },
+          {
+            "id": "Q7239$f1c74674-4b98-d92f-30dc-6e0e8f5aa031",
+            "rank": "normal",
+            "value": "Q16334298",
+            "references": [
+              {
+                "hash": "abb4e5ae6dc0ac6e89e505ecc306cbd64c0ebe60",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "2fabb8d94cb2d0158bcc2ae4abc8dd31f56f1886",
+                      "datavalue": {
+                        "value": "https://biologydictionary.net/organ-system/#ftoc-heading-14",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q7239$c040e29e-4df2-bd76-84fc-b80c398c5356",
+            "rank": "normal",
+            "value": "Q2382443",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q7239$8f74bcb1-4d8c-86eb-edd4-0a0d152d0434",
+            "rank": "normal",
+            "value": "Q7868",
+            "references": []
+          },
+          {
+            "id": "Q7239$0528a8e6-44a1-d14f-d86b-fc160fa0d2ba",
+            "rank": "normal",
+            "value": "Q188193",
+            "references": []
+          },
+          {
+            "id": "Q7239$2429184a-49f6-a137-7178-1e73a3fe627e",
+            "rank": "normal",
+            "value": "Q28845870",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q7239",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q5",
+      "wikidataId": "Q5",
+      "label": "human",
+      "description": "any single member of Homo sapiens, unique extant species of the genus Homo",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q5$82b80d5f-4353-c7cb-1a3c-c0c8f4f5f237",
+            "rank": "normal",
+            "value": "Q55983715",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q5$768dc56e-4291-c3a7-654c-f137d70034ea",
+            "rank": "normal",
+            "value": "Q2250224",
+            "references": []
+          },
+          {
+            "id": "Q5$e5807c96-4857-459d-0c4b-aa192f7cd303",
+            "rank": "normal",
+            "value": "Q164509",
+            "references": []
+          },
+          {
+            "id": "Q5$d68ce771-4858-4666-377f-2fa9b70f18b7",
+            "rank": "normal",
+            "value": "Q154954",
+            "references": []
+          },
+          {
+            "id": "Q5$8f1dde99-4ab8-69f9-bea6-7eb37c3215c9",
+            "rank": "normal",
+            "value": "Q5891007",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q5$1b8740d3-4e6c-29a9-9501-da22673cb5ac",
+            "rank": "normal",
+            "value": "Q8425",
+            "references": []
+          },
+          {
+            "id": "q5$3ff6552a-41f7-0650-dbf3-8b6be2d8dc9a",
+            "rank": "normal",
+            "value": "Q1156970",
+            "references": []
+          },
+          {
+            "id": "Q5$01816e31-49be-7b06-b89e-15cedd897872",
+            "rank": "normal",
+            "value": "Q42762",
+            "references": []
+          },
+          {
+            "id": "Q5$299464df-49a9-e486-d231-8447662b70db",
+            "rank": "normal",
+            "value": "Q16334295",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q5$1bbe2872-4dd6-0a71-7faf-c3ceff34bb4e",
+            "rank": "normal",
+            "value": "Q23852",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q5",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q68",
+      "wikidataId": "Q68",
+      "label": "computer",
+      "description": "general-purpose device for performing arithmetic or logical operations",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q68$ae1998ef-46e4-925a-e29a-bbe3ffd0fdfc",
+            "rank": "normal",
+            "value": "Q12579633",
+            "references": []
+          },
+          {
+            "id": "Q68$d390a238-4343-1ff5-4cba-fe557cda917d",
+            "rank": "normal",
+            "value": "Q11019",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q68$ea630f28-488a-0cec-eda2-2656f3d24082",
+            "rank": "normal",
+            "value": "Q11019",
+            "references": [
+              {
+                "hash": "796f6a498a78ec937b34f074343dd0c517eadb03",
+                "snaks": {
+                  "P4656": [
+                    {
+                      "snaktype": "value",
+                      "property": "P4656",
+                      "hash": "78b4a1dfcbb7ae00622a93f1814794ef2feaf408",
+                      "datavalue": {
+                        "value": "https://en.wikipedia.org/wiki/Computer",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "d88da95dffc127597dea714833d4173c91fcbbb1",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2022-11-20T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P4656",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$2cb88f5f-4547-6852-8ee2-3e57fbd6a5c6",
+            "rank": "normal",
+            "value": "Q241317",
+            "references": [
+              {
+                "hash": "796f6a498a78ec937b34f074343dd0c517eadb03",
+                "snaks": {
+                  "P4656": [
+                    {
+                      "snaktype": "value",
+                      "property": "P4656",
+                      "hash": "78b4a1dfcbb7ae00622a93f1814794ef2feaf408",
+                      "datavalue": {
+                        "value": "https://en.wikipedia.org/wiki/Computer",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "d88da95dffc127597dea714833d4173c91fcbbb1",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2022-11-20T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P4656",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$11d032db-4f47-b3cf-e52c-607be3ac0583",
+            "rank": "normal",
+            "value": "Q1662611",
+            "references": [
+              {
+                "hash": "796f6a498a78ec937b34f074343dd0c517eadb03",
+                "snaks": {
+                  "P4656": [
+                    {
+                      "snaktype": "value",
+                      "property": "P4656",
+                      "hash": "78b4a1dfcbb7ae00622a93f1814794ef2feaf408",
+                      "datavalue": {
+                        "value": "https://en.wikipedia.org/wiki/Computer",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "d88da95dffc127597dea714833d4173c91fcbbb1",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2022-11-20T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P4656",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$fef36c01-4738-d714-854c-8db0489a2a54",
+            "rank": "normal",
+            "value": "Q115517465",
+            "references": []
+          },
+          {
+            "id": "Q68$b011f193-42e3-4891-d2b2-9cc27d4adae4",
+            "rank": "normal",
+            "value": "Q3181395",
+            "references": []
+          },
+          {
+            "id": "Q68$c0657e2a-49cf-973f-0225-041f76f08312",
+            "rank": "normal",
+            "value": "Q1172400",
+            "references": []
+          },
+          {
+            "id": "Q68$a9a41afa-468b-e3c0-a141-763c42a4a099",
+            "rank": "deprecated",
+            "value": "Q1327500",
+            "references": [
+              {
+                "hash": "393d2d960f0cf910b0243607b2ff10aed56c2b6f",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "ee185d900508500506d77832a0e5a9a5cd6cbab5",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 106573395,
+                          "id": "Q106573395"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "57c1662952e75430b0b6ab3c15d26da4d2d505b8",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2023-02-23T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "768919d698548fb159f4011f6e9e0dfcb65f009b",
+                      "datavalue": {
+                        "value": "http://urn.fi/urn:nbn:fi:au:seko:01091",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813",
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q68$c72c2dad-4cbe-a5f0-b592-2b59f543c695",
+            "rank": "normal",
+            "value": "Q2384798",
+            "references": []
+          },
+          {
+            "id": "Q68$df8bb031-4eb0-23e4-3da2-4a8e1e31bb33",
+            "rank": "normal",
+            "value": "Q7397",
+            "references": [
+              {
+                "hash": "e032eec1125cee7f4932a83f85acca4a9afbc9e9",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "949788264b45fdf11639c6f2036ac8849e3c70b5",
+                      "datavalue": {
+                        "value": "http://cs.sru.edu/~mullins/cpsc100book/module02_introduction/module02-03_introduction.html",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "20c60c19ad9707ccce60c98c42ef34424c721c3f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2020-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$a05ba279-4501-7eee-929f-dddef3b8845b",
+            "rank": "normal",
+            "value": "Q3966",
+            "references": [
+              {
+                "hash": "e032eec1125cee7f4932a83f85acca4a9afbc9e9",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "949788264b45fdf11639c6f2036ac8849e3c70b5",
+                      "datavalue": {
+                        "value": "http://cs.sru.edu/~mullins/cpsc100book/module02_introduction/module02-03_introduction.html",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "20c60c19ad9707ccce60c98c42ef34424c721c3f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2020-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$98ECFA0C-27A1-44BE-B422-BCA847FB97DC",
+            "rank": "normal",
+            "value": "Q250",
+            "references": [
+              {
+                "hash": "ff1747331842ae2febe05bad15a87bffb27d2a01",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "ebd4cdc7542aca6c401972faec7957c54e5faec0",
+                      "datavalue": {
+                        "value": "https://www.informationq.com/about-the-basic-parts-of-a-computer-with-devices/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "20c60c19ad9707ccce60c98c42ef34424c721c3f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2020-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$98729439-46e7-f00d-d418-09156522d6db",
+            "rank": "normal",
+            "value": "Q5300",
+            "references": [
+              {
+                "hash": "b225f7f8f2af3b7f8281a50c6da9a3a224bcff18",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "19b14cd991262077690fa4e1dd58a6e309471b37",
+                      "datavalue": {
+                        "value": "https://www.youngwonks.com/blog/Basic-Parts-of-a-Computer",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "20c60c19ad9707ccce60c98c42ef34424c721c3f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2020-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              },
+              {
+                "hash": "88cf8b86c2b38b116f0c37dcabb65ea045f49968",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "cc67aaf787972119a88daf32665fdb6ce2fad3dd",
+                      "datavalue": {
+                        "value": "https://www.idtech.com/blog/parts-of-a-computer",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "20c60c19ad9707ccce60c98c42ef34424c721c3f",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2020-06-22T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q68$e55187f7-4d78-7d3d-c999-b0be7d1d95e5",
+            "rank": "normal",
+            "value": "Q183484",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q68",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q75",
+      "wikidataId": "Q75",
+      "label": "Internet",
+      "description": "global system of connected computer networks based on IP addressing and routing protocols",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q75$aedc3be9-4473-a015-4e08-0609856c281e",
+            "rank": "normal",
+            "value": "Q11224256",
+            "references": []
+          },
+          {
+            "id": "q75$09CE92CB-C019-4E99-B6A5-4460B5DC1AA2",
+            "rank": "normal",
+            "value": "Q1301371",
+            "references": []
+          },
+          {
+            "id": "Q75$cf055986-470e-8b25-8377-87ff12b694d3",
+            "rank": "normal",
+            "value": "Q12579633",
+            "references": []
+          },
+          {
+            "id": "Q75$11642A3C-BA5F-46C3-B066-72FD9B0F2C70",
+            "rank": "normal",
+            "value": "Q11384",
+            "references": [
+              {
+                "hash": "1ae83e0e740cb8e930b910909bb19fcf277b0110",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "85f1fb001e29cd1412b0fa2fa765904bad4da611",
+                      "datavalue": {
+                        "value": "https://www.merriam-webster.com/dictionary/wide%20area%20network",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q75$331aac25-4dd3-72e6-7c38-b2b85e02fbe5",
+            "rank": "normal",
+            "value": "Q1068715",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q75",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q11016",
+      "wikidataId": "Q11016",
+      "label": "technology",
+      "description": "making, modification, usage, and knowledge of tools, machines, techniques, crafts, systems, and methods of organization, or tools and techniques so created",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q11016$A19AD3C9-73DD-4C9F-B49D-4577036F8528",
+            "rank": "normal",
+            "value": "Q11862829",
+            "references": [
+              {
+                "hash": "cc5069dfc44e30d21a066e2e90f22f2a44cf25b3",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "992cb015a15141dbfebd22d45933f3f9c8e02f18",
+                      "datavalue": {
+                        "value": {
+                          "text": "Technology (General)",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              },
+              {
+                "hash": "3a49446052c336b5dbda65f808839b9ea0ea2915",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "fba8d1d676bca38bc93c7898cf663255a18cc8ff",
+                      "datavalue": {
+                        "value": {
+                          "text": "Technology",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q11016$9bbeec49-4134-c580-6629-178dba74e7ef",
+            "rank": "normal",
+            "value": "Q268592",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q11016$00284c99-4946-de4f-70cf-2b974f21125c",
+            "rank": "deprecated",
+            "value": "Q28797",
+            "references": []
+          },
+          {
+            "id": "Q11016$140656de-4b60-4f62-6776-1262c9fae93b",
+            "rank": "normal",
+            "value": "Q34104",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q11016$43141835-48c8-d2f8-9f89-4d6141e249b0",
+            "rank": "normal",
+            "value": "Q1881523",
+            "references": []
+          },
+          {
+            "id": "Q11016$d926efb9-437b-3fd8-dbe3-fe5b8df2b3c9",
+            "rank": "normal",
+            "value": "Q994895",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q11016",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q4022",
+      "wikidataId": "Q4022",
+      "label": "river",
+      "description": "larger natural watercourse",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q4022$fc0357c5-4963-8fa8-0336-382c06200551",
+            "rank": "normal",
+            "value": "Q125824188",
+            "references": []
+          },
+          {
+            "id": "Q4022$10b4e36f-4003-c7bc-f730-ae3bf310e590",
+            "rank": "normal",
+            "value": "Q1428660",
+            "references": []
+          },
+          {
+            "id": "Q4022$4217fce8-4f1a-521f-5add-4dbf01573f83",
+            "rank": "normal",
+            "value": "Q140595023",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q4022$38D11B54-9102-4CC1-9FDA-7CB6A181998E",
+            "rank": "normal",
+            "value": "Q355304",
+            "references": []
+          },
+          {
+            "id": "Q4022$4fae2244-43ee-9fba-71cd-2217832b75ad",
+            "rank": "normal",
+            "value": "Q2479431",
+            "references": []
+          },
+          {
+            "id": "Q4022$460A58DE-65B4-4B45-80B5-77BC1A0AADB8",
+            "rank": "normal",
+            "value": "Q30092769",
+            "references": []
+          },
+          {
+            "id": "Q4022$97824ce6-42c4-27db-d4ef-a967f2710304",
+            "rank": "normal",
+            "value": "Q2221906",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q4022$949f830a-4963-2683-1686-bd8329eafc81",
+            "rank": "normal",
+            "value": "Q283",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q4022",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q6256",
+      "wikidataId": "Q6256",
+      "label": "country",
+      "description": "distinct territorial body or political entity",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q6256$8841022c-4cd2-96fc-22e5-e63faf0e427f",
+            "rank": "normal",
+            "value": "Q15617994",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q6256$a9a6fd15-4a3d-6091-0336-5838f383c827",
+            "rank": "normal",
+            "value": "Q4835091",
+            "references": []
+          },
+          {
+            "id": "Q6256$0a293322-411a-e651-50f7-b12f614f77aa",
+            "rank": "normal",
+            "value": "Q1048835",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q6256$e2ac079f-4202-97f4-bb80-11d00952cd91",
+            "rank": "normal",
+            "value": "Q183366",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q6256",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q515",
+      "wikidataId": "Q515",
+      "label": "city",
+      "description": "large human settlement",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q515$a2a1a2ca-402f-d910-bdae-45c748f4445f",
+            "rank": "normal",
+            "value": "Q98966309",
+            "references": []
+          },
+          {
+            "id": "Q515$cb3b2df9-4e87-bb7e-1bdd-4e43eb61453e",
+            "rank": "normal",
+            "value": "Q137018865",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q515$9bdec2f6-44ed-3a6f-8c37-d258b463fa3b",
+            "rank": "normal",
+            "value": "Q124250988",
+            "references": []
+          },
+          {
+            "id": "Q515$CF36F8E1-55DE-467D-BD36-8582432935C4",
+            "rank": "normal",
+            "value": "Q7930989",
+            "references": []
+          },
+          {
+            "id": "Q515$06a26436-4c2c-4e83-379e-e4ac6ffa89c4",
+            "rank": "deprecated",
+            "value": "Q15284",
+            "references": []
+          },
+          {
+            "id": "Q515$d6753bcd-4660-52a7-5343-b1ad85f143e4",
+            "rank": "normal",
+            "value": "Q56061",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q515$0299f060-8698-486f-818f-821f771c4ab4",
+            "rank": "normal",
+            "value": "Q123705",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q515",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q573",
+      "wikidataId": "Q573",
+      "label": "day",
+      "description": "unit of time lasting 24 hours, derived from the period of Earth's rotation about its axis",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q573$A128AFC5-35D0-4857-A514-C099166CF119",
+            "rank": "normal",
+            "value": "Q1790144",
+            "references": []
+          },
+          {
+            "id": "Q573$8eb5afdb-449a-6050-a984-c5f2cc4bd424",
+            "rank": "normal",
+            "value": "Q106839753",
+            "references": []
+          },
+          {
+            "id": "Q573$50749501-4946-b514-b00e-5e60b6d7aab4",
+            "rank": "normal",
+            "value": "Q82047057",
+            "references": []
+          },
+          {
+            "id": "Q573$a59d98f8-433d-e143-6c31-e410ce23ad0f",
+            "rank": "normal",
+            "value": "Q3268848",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q573$a2527d72-4f28-988b-01ed-f1044ad50edb",
+            "rank": "preferred",
+            "value": "Q2199864",
+            "references": []
+          },
+          {
+            "id": "Q573$b8a19c53-425d-0009-2c55-decdfeb3ff19",
+            "rank": "deprecated",
+            "value": "Q78754808",
+            "references": []
+          },
+          {
+            "id": "Q573$1fe2cf1a-4807-56fa-b6b8-e795e8366055",
+            "rank": "normal",
+            "value": "Q186081",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q573$9619396a-42d5-4175-0cfb-c43b36b1fb1c",
+            "rank": "normal",
+            "value": "Q23387",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "q573$44723eed-44ca-bc97-1577-4c018024c59f",
+            "rank": "normal",
+            "value": "Q25235",
+            "references": []
+          },
+          {
+            "id": "Q573$92db8fc4-4dd9-6ea9-719c-7c8597da1391",
+            "rank": "normal",
+            "value": "Q575",
+            "references": []
+          },
+          {
+            "id": "Q573$bff309b7-466b-ca38-9b77-4d11c1559364",
+            "rank": "normal",
+            "value": "Q52643",
+            "references": []
+          },
+          {
+            "id": "Q573$5b921693-c406-4d75-ae2a-ab461e92bd0a",
+            "rank": "normal",
+            "value": "Q166564",
+            "references": []
+          },
+          {
+            "id": "Q573$1d315f97-bbd6-4fdc-ae22-819365a9c631",
+            "rank": "normal",
+            "value": "Q3238843",
+            "references": []
+          },
+          {
+            "id": "Q573$4bc5ef84-522b-461c-b2ac-84ec02f509cb",
+            "rank": "normal",
+            "value": "Q193294",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q573",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q8502",
+      "wikidataId": "Q8502",
+      "label": "mountain",
+      "description": "large natural elevation of the Earth's surface",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q8502$186325a5-4914-a4f0-5258-2f4cc4b91b3c",
+            "rank": "normal",
+            "value": "Q12046615",
+            "references": []
+          },
+          {
+            "id": "Q8502$ccea1566-445f-5a40-738b-167f82d934db",
+            "rank": "normal",
+            "value": "Q618123",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q8502$81511026-4f44-e0f7-0a3f-7a5f3c9b12b3",
+            "rank": "normal",
+            "value": "Q106589819",
+            "references": []
+          },
+          {
+            "id": "Q8502$47702372-4028-4581-ea48-bf624a441f47",
+            "rank": "normal",
+            "value": "Q35145263",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q8502$fbe18e5d-42f0-2cc1-b505-e601d14f3dc0",
+            "rank": "normal",
+            "value": "Q46831",
+            "references": []
+          },
+          {
+            "id": "Q8502$0d2ffa0b-4ddd-5666-1d0a-12e7ad0e8c4d",
+            "rank": "normal",
+            "value": "Q56406134",
+            "references": []
+          },
+          {
+            "id": "Q8502$e3635490-4583-26cf-0496-d858894d99c9",
+            "rank": "normal",
+            "value": "Q2624046",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q8502$0d46f0a5-4996-4d85-b54a-092f544e668c",
+            "rank": "normal",
+            "value": "Q3064051",
+            "references": []
+          },
+          {
+            "id": "Q8502$c8bf4ee6-4974-19e0-32d9-e8cae5aaed1d",
+            "rank": "normal",
+            "value": "Q111177881",
+            "references": []
+          },
+          {
+            "id": "Q8502$e57af38d-4ea9-4ebe-dbc7-9e166ce6c0c7",
+            "rank": "normal",
+            "value": "Q207762",
+            "references": []
+          },
+          {
+            "id": "Q8502$6713b516-46b5-b133-d203-269b5101bb8f",
+            "rank": "normal",
+            "value": "Q35666",
+            "references": []
+          },
+          {
+            "id": "Q8502$df1f5046-4437-6c84-9a77-dbca12e1a9cc",
+            "rank": "normal",
+            "value": "Q1334383",
+            "references": []
+          },
+          {
+            "id": "Q8502$280d947c-445a-a185-82ca-19563d60ba4c",
+            "rank": "normal",
+            "value": "Q15787792",
+            "references": []
+          },
+          {
+            "id": "Q8502$e6cc472b-41a7-b8c9-52f1-0062c9455405",
+            "rank": "normal",
+            "value": "Q1400565",
+            "references": []
+          },
+          {
+            "id": "Q8502$a978a759-46ec-056e-aff7-55085dc07f9d",
+            "rank": "normal",
+            "value": "Q3618634",
+            "references": []
+          },
+          {
+            "id": "Q8502$1aede6ca-4858-973f-c5e6-970c03dea6f2",
+            "rank": "normal",
+            "value": "Q131860194",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q8502",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q16502",
+      "wikidataId": "Q16502",
+      "label": "world",
+      "description": "term ambiguously referring to any of: the whole of reality, the universe, the Earth and all life upon it, or human civilization",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q16502$571f0d12-4cc3-4bab-f4db-8a315b0c8df8",
+            "rank": "normal",
+            "value": "Q122754124",
+            "references": []
+          },
+          {
+            "id": "Q16502$388dd7d2-4400-dbc0-6e49-ac0f35d9896c",
+            "rank": "normal",
+            "value": "Q33104279",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q16502$7abd90f1-4623-dc98-1a1c-ae454e43e5a2",
+            "rank": "normal",
+            "value": "Q53617407",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q16502$0826d319-4a2e-da5f-0ed5-b09e07436d3e",
+            "rank": "normal",
+            "value": "Q17334923",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q16502",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q413",
+      "wikidataId": "Q413",
+      "label": "physics",
+      "description": "study of matter and its motion, along with related concepts such as energy and force",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q413$9eb1d2ba-4883-b974-2fcd-07214f327312",
+            "rank": "normal",
+            "value": "Q2465832",
+            "references": [
+              {
+                "hash": "6282e5272580c0778d761bbc8ae0d0a64c9e9341",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "22131e1b5825962de4fa65615e4b426cf9e4359c",
+                      "datavalue": {
+                        "value": "https://www.unir.net/revista/ingenieria/que-es-la-fisica/",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "5427b08844e879459edadd7ede6693cf4905ba08",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2026-05-28T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ],
+                  "P407": [
+                    {
+                      "snaktype": "value",
+                      "property": "P407",
+                      "hash": "ffe70325d10cfc55f0dca807ed80ca0b5b97c472",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1321,
+                          "id": "Q1321"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854",
+                  "P813",
+                  "P407"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q413$846d03b8-43b2-06e1-5e28-63ef2f99984d",
+            "rank": "normal",
+            "value": "Q11862829",
+            "references": [
+              {
+                "hash": "607e523ba14bfc8bd72cddd64a694cb168cc819e",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "7aca12ac0bb75e17b05f3d6f034edf71521a0e0a",
+                      "datavalue": {
+                        "value": {
+                          "text": "Physics",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q413$A009F86B-A8F3-42F2-8211-5C6EA9B7609E",
+            "rank": "normal",
+            "value": "Q475023",
+            "references": [
+              {
+                "hash": "58962fc731d2b34bdd5ba396473299ab65a22f6e",
+                "snaks": {
+                  "P854": [
+                    {
+                      "snaktype": "value",
+                      "property": "P854",
+                      "hash": "f8925e7e6cbd4168fdecd674220f305defff6c93",
+                      "datavalue": {
+                        "value": "https://shs.cairn.info/revista-revue-francaise-de-psychanalyse-2024-2-page-37?lang=es",
+                        "type": "string"
+                      },
+                      "datatype": "url"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q413$675d146c-4cd1-a83a-b3f1-844eb02a8de9",
+            "rank": "normal",
+            "value": "Q7991",
+            "references": [
+              {
+                "hash": "43ffd82fe236157af414e6e5bfbe25e56c0ce76b",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "019a50b7de741e0068bde41c9d9955b22a5de47b",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 36578,
+                          "id": "Q36578"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P227": [
+                    {
+                      "snaktype": "value",
+                      "property": "P227",
+                      "hash": "8578408eaf42b897dd2dc43c9e7f6b4c41af0f02",
+                      "datavalue": {
+                        "value": "4045956-1",
+                        "type": "string"
+                      },
+                      "datatype": "external-id"
+                    }
+                  ],
+                  "P407": [
+                    {
+                      "snaktype": "value",
+                      "property": "P407",
+                      "hash": "46bfd327b830f66f7061ea92d1be430c135fa91f",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 188,
+                          "id": "Q188"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "snaktype": "value",
+                      "property": "P813",
+                      "hash": "0b2daa8083d9a2792929f86fafbcc79d68254c85",
+                      "datavalue": {
+                        "value": {
+                          "time": "+2025-03-08T00:00:00Z",
+                          "timezone": 0,
+                          "before": 0,
+                          "after": 0,
+                          "precision": 11,
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                        },
+                        "type": "time"
+                      },
+                      "datatype": "time"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P227",
+                  "P407",
+                  "P813"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q413$8A991864-5A2D-4555-98F8-F4DF5952C382",
+            "rank": "normal",
+            "value": "Q14632398",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q413$637b0af6-56cc-4f3a-b69a-32b74890001d",
+            "rank": "normal",
+            "value": "Q136980",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q413",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q336",
+      "wikidataId": "Q336",
+      "label": "science",
+      "description": "systematic study of the world through testable explanations, empirical evidence, and independent verification",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q336$88A69736-FBE6-4A82-B56A-69739FD7B9F9",
+            "rank": "normal",
+            "value": "Q11862829",
+            "references": [
+              {
+                "hash": "7bbf38a50a6b661682c9a95832048d4a09cac12a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "snaktype": "value",
+                      "property": "P248",
+                      "hash": "19f63e859613f911f0b55dcc7e91475f22530105",
+                      "datavalue": {
+                        "value": {
+                          "entity-type": "item",
+                          "numeric-id": 1227538,
+                          "id": "Q1227538"
+                        },
+                        "type": "wikibase-entityid"
+                      },
+                      "datatype": "wikibase-item"
+                    }
+                  ],
+                  "P1683": [
+                    {
+                      "snaktype": "value",
+                      "property": "P1683",
+                      "hash": "aac5d2d6ce94ce6349eb637e7d0b1130da96a747",
+                      "datavalue": {
+                        "value": {
+                          "text": "Science",
+                          "language": "en"
+                        },
+                        "type": "monolingualtext"
+                      },
+                      "datatype": "monolingualtext"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P1683"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "Q336$eb478464-474f-7dd4-efa2-62c7eb2de607",
+            "rank": "normal",
+            "value": "Q8027727",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "Q336$d944ad65-4bf8-5c1e-3b15-f1a7317644e3",
+            "rank": "normal",
+            "value": "Q105948247",
+            "references": []
+          },
+          {
+            "id": "Q336$2fcf5d42-49e0-e363-a4a8-50b715e5b5fc",
+            "rank": "normal",
+            "value": "Q9081",
+            "references": []
+          },
+          {
+            "id": "Q336$925ffc25-47eb-4e9b-fb05-4635bae2ede4",
+            "rank": "normal",
+            "value": "Q221173",
+            "references": []
+          },
+          {
+            "id": "Q336$f753475e-40c5-8212-ddf7-965aeb92cd5c",
+            "rank": "normal",
+            "value": "Q9471",
+            "references": []
+          },
+          {
+            "id": "Q336$fc556a63-43c1-20ea-cde9-ac6a4c9636e7",
+            "rank": "normal",
+            "value": "Q42240",
+            "references": []
+          },
+          {
+            "id": "Q336$fad547b9-440b-0996-2ea0-f838659fb9f8",
+            "rank": "normal",
+            "value": "Q105606485",
+            "references": []
+          }
+        ],
+        "P361": [
+          {
+            "id": "Q336$eada84a4-431f-f41b-1084-c7f717f3c5f9",
+            "rank": "normal",
+            "value": "Q1881523",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q336$abdece8d-4434-cd3d-a930-7995f6dfccd2",
+            "rank": "normal",
+            "value": "Q12132639",
+            "references": []
+          },
+          {
+            "id": "Q336$2c4af74d-4a55-a04a-051a-6cfbfa357015",
+            "rank": "normal",
+            "value": "Q7991",
+            "references": []
+          },
+          {
+            "id": "Q336$4e2540fd-455d-9dcf-8b05-5bd941ddc494",
+            "rank": "normal",
+            "value": "Q34749",
+            "references": []
+          },
+          {
+            "id": "Q336$1aa3cf30-494a-5017-40fe-96f081ae98c0",
+            "rank": "normal",
+            "value": "Q816264",
+            "references": []
+          },
+          {
+            "id": "Q336$83943ce1-4056-7019-8aea-78da1ca90982",
+            "rank": "normal",
+            "value": "Q5769081",
+            "references": []
+          },
+          {
+            "id": "Q336$149c2c75-478c-7b2d-f2c3-08d5ca5d38fa",
+            "rank": "normal",
+            "value": "Q1665984",
+            "references": []
+          },
+          {
+            "id": "Q336$ea56ef3c-494b-a502-882b-4332cdcdf916",
+            "rank": "normal",
+            "value": "Q6045936",
+            "references": []
+          },
+          {
+            "id": "Q336$04a2704c-4982-09b8-23a1-8743f9176502",
+            "rank": "normal",
+            "value": "Q42240",
+            "references": []
+          },
+          {
+            "id": "Q336$ec254a18-48cb-98ca-0338-750718680621",
+            "rank": "normal",
+            "value": "Q12042160",
+            "references": []
+          },
+          {
+            "id": "Q336$26fcb17a-4668-242b-5560-aff468a86117",
+            "rank": "normal",
+            "value": "Q133897036",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q336",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "concept:wikidata:Q12136",
+      "wikidataId": "Q12136",
+      "label": "disease",
+      "description": "abnormal biological process in an organism driven by a specific pathophysiological mechanism",
+      "claims": {
+        "P31": [
+          {
+            "id": "Q12136$58CF2EC6-EC23-4D39-9045-DBE61FC21145",
+            "rank": "normal",
+            "value": "Q130459448",
+            "references": []
+          },
+          {
+            "id": "Q12136$5e66aeac-4d48-9b62-a37e-be8b645dfaed",
+            "rank": "normal",
+            "value": "Q104086571",
+            "references": []
+          }
+        ],
+        "P279": [
+          {
+            "id": "q12136$676e544e-4801-87fc-c0bf-d99870b769ba",
+            "rank": "normal",
+            "value": "Q2057971",
+            "references": []
+          },
+          {
+            "id": "Q12136$abe543d2-4558-3a8c-286a-995024e84bb5",
+            "rank": "normal",
+            "value": "Q2996394",
+            "references": []
+          },
+          {
+            "id": "Q12136$b1a8714e-4d0b-7d9c-4843-05ba9327c1c2",
+            "rank": "normal",
+            "value": "Q2438541",
+            "references": []
+          }
+        ],
+        "P527": [
+          {
+            "id": "Q12136$31940521-03A4-40D3-97F5-2B169B013493",
+            "rank": "normal",
+            "value": "Q727096",
+            "references": []
+          },
+          {
+            "id": "Q12136$5871d841-4441-4198-5d26-b8354778c248",
+            "rank": "normal",
+            "value": "Q3621717",
+            "references": []
+          }
+        ]
+      },
+      "source": "https://www.wikidata.org/wiki/Q12136",
+      "license": "CC0-1.0"
+    }
+  ]
+}

@@ -1,8 +1,67 @@
-# KENUXA Internet v1.6: an atom-native cognitive network that learns while it runs, and that visitors and installed agents can volunteer computing and storage to
+# KENUXA Internet v1.11 — offline foundation and federated record storage
+
+## New: licensed offline foundation and provider-independent records
+
+A fresh installation now includes 147,306 WordNet lemmas, 117,659 senses and a small CC0 Wikidata educational snapshot. Eight compressed dictionary shards are cached at most. Explicit definition requests can be answered offline. Grammar, starter lessons, world packs, cognitive seeds and declarative methods are checksummed data assets; active knowledge can evolve through the existing live ledger without a code redeploy.
+
+The new owner-operated storage manager supports immutable local, Supabase REST and Turso HTTP records, canonical manifests, placement budgets, independent-domain replica policies, checksum fallback and partial-write recovery. It does not create cloud accounts or migrate your production database. Cloud adapters have isolated protocol tests; live cloud replication is not configured by this release.
+
+Open **Web learning → Offline foundation & federated storage**. Read [the complete architecture, setup and limits](docs/FOUNDATION-STORAGE.md), [dataset licensing](foundation/README.md) and [provider eligibility snapshot](docs/FOUNDATION-STORAGE.md#current-eligibility-snapshot--4-november-2026). R2 and Neon are evaluated candidates, not active adapters. No package or test establishes universal question answering.
+
 
 A fresh reconstruction from your surviving semantic-internet specification. It is not a recovered copy of the lost laptop's code. v0.4 reconnects to the original **INTERNET** Supabase project and reuses its v1.1 *Semantic Graph Entity Schema* tables: entities, relationships, attachments, capabilities, embeddings and resolutions.
 
 Every component serves **Meaning → Capability → Outcome → Evolution**. The graph is the intelligence layer. The transformer is a component inside the network; it is not the centre. Storage is not intelligence.
+
+## New in v1.10: safe under any input, and tested differently every run
+
+- **Any input, any route.** Every question and every request body sent to any route gets a safe, honest, well-formed response. Nothing crashes, and no internal errors or secrets leak. What KENUXA can compute it computes exactly. When it doesn't know, it says so.
+- **Different tests every run.** The automated tests generate new random questions, conversations, attack inputs and calculations on every run. Any failure can be replayed exactly. This found and fixed 11 real bugs, including a learning mistake on ambiguous examples and two dishonest volunteers backing each other's fake result. See `docs/ROBUSTNESS.md`.
+- **Also new:**
+  - a tamper-proof audit log
+  - safe replacement of a server's identity key
+  - new kinds of setting defined as data
+  - people's ratings decide whether a chat-layout change is kept
+  - routing changes tested quietly on real work before they decide anything
+  - a 5–7× faster search option for large knowledge stores
+  - verified storage migration
+
+## New in v1.9: the whole system can evolve (KUEE)
+
+Every part of KENUXA can now be improved safely, not only its knowledge and reasoning. This covers retrieval, how volunteer work is scheduled, replication, memory limits, learning settings, security settings, protocols, the chat layout, and the evolution process itself.
+
+- **One process for every change.** Each change is proposed, checked against protected safety rules, measured against the current version, approved according to its risk, tried on a share of traffic, watched, and kept or rolled back automatically.
+- **Approval by risk.** Security and protocol changes always need the owner's explicit approval.
+- **Never weakened.** Sign-in, the audit log, credential hashing, minimum proof-of-work, keeping a working protocol, and validation of learning cannot be weakened by any change.
+- **Measured, not claimed.** In the scheduling simulation a better routing rule cut priority-weighted waiting by a third and data transfer by 60%. A rule that made things worse was rejected. A simpler search method that found the top answer more often but missed others more often was also rejected. The new measurements found and fixed three real bugs.
+- **Nodes discover each other's capabilities.** Servers and volunteer devices are found by what they can do. Protocol versions are negotiated, and outdated nodes are refused safely instead of silently. Approved improvements spread between servers, and each server re-checks them itself.
+- **Details:** `docs/EVOLUTION.md`.
+
+## New in v1.8: KENUXA knows itself
+
+- **Knows who made it.** Ask "Who created you?" and KENUXA answers: **created by Loshar Hammond Kenku, the owner of Kenuxa Technologies.** It also answers what it is (not a large language model), what it can and cannot do, how it works, and its current live state.
+- **Never makes things up about itself.** Its self-knowledge comes from stored atoms plus the running node's real numbers, and it does not invent details about its creator.
+- **Hypotheses and what-if results are really stored.** Each is saved as an atom whose status follows the evidence.
+- **Self-evaluation.** "Run self-evaluation" (Studio → Cognitive engine, or `POST /api/mind/evaluate`) measures every reasoning category on a sandbox copy and keeps the history, so improvement or regression is visible.
+- **Reviewable new knowledge.** New rules, causes and actions can be proposed and approved by the owner, after which they are used immediately.
+- **Reasoning on request.** An owner reasoning service is available at `/api/mind/reason`.
+- **New Studio panel** for the cognitive engine.
+
+## New in v1.7: the Evolving Cognitive Engine
+
+KENUXA now *applies* its knowledge, not just stores it. The new engine (`lib/mind/`) runs on the CPU with no model and no paid service, and it is part of the normal chat.
+
+- **Calculations with executable procedures.** Methods are stored as data with physical units, for example "energy = power × time". They are checked for unit consistency and chained together automatically: a phone's battery size, its level and its use give how long it lasts. If a value is missing, KENUXA asks for it instead of guessing.
+- **Situations that change.** "My phone is at 10% and I travel for three hours" builds a picture of the situation in which what you said, what was inferred and what was assumed are kept apart. "I don't have a power bank" removes that option, and "only ten minutes before leaving" is worked in. A different server can answer the next turn, because the picture travels with the conversation.
+- **Diagnosis.** "My solar battery is not charging" lists the possible causes, rules some out from what you say, recommends the most informative safe check first, and never calls a cause proven.
+- **What-if questions.** "What if a solar panel produced electricity at night?" is worked out on a model of the system and marked as hypothetical. KENUXA says which known fact the premise contradicts, and none of it is stored as knowledge.
+- **Learning from corrections.** A verified correction (from the owner, a test or a reference, never a teacher alone) leads KENUXA to find the error, build a new procedure, check it on problems it has never seen and against everything it already got right, then adopt it or reject it. Measured on the evaluation set: held-out calculations went from 8/10 to 10/10 after a single correction, with no regressions.
+- **Also included:**
+  - rules with logical proofs, learned patterns, analogies, time constraints, budget constraints and probability (only with an explicit model)
+  - a working memory for each problem, and a memory of past problems found by structure, not by wording
+  - simple diagram vision: shapes, colours, connections; objects are named only from a legend or verified examples
+- **Shared across the network.** Volunteer devices re-run the tests of new procedures (KUNPP `procedure-test/1`). Proven procedures are shared between servers, and each server re-tests them before use.
+- **Details and honest limits:** `docs/COGNITIVE-ENGINE.md` has the audit, design, measurements, security review and what is not supported (no OCR, no real photographs, small evaluation sets).
 
 ## New in v1.6: KUNPP/2 — peer-to-peer, installed agents, storage on peers, failover
 

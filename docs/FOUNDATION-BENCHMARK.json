@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-04T19:04:29.738Z",
+  "node": "v24.20.0",
+  "counts": {
+    "lemmas": 147306,
+    "senses": 117659,
+    "morphology": 5940
+  },
+  "compressedBytes": 12512673,
+  "startupMs": 2.465999999999994,
+  "coldLookups": 12,
+  "coldLookupMs": 261.7573,
+  "warmAtomLookups": 60,
+  "warmAtomLookupMs": 227.6923,
+  "cachedShards": 8,
+  "cachedAtoms": 12,
+  "heapMiB": 39.764854431152344,
+  "storage": {
+    "records": 30,
+    "independentLocalDomains": 2,
+    "writeMs": 514.9629,
+    "readMs": 41.03659999999991,
+    "bytes": [
+      {
+        "id": "a",
+        "bytes": 5680
+      },
+      {
+        "id": "b",
+        "bytes": 5680
+      }
+    ]
+  },
+  "scope": "Local CPU and local filesystem; no cloud latency/cost or independent-host durability measurement"
+}

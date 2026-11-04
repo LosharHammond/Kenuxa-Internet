@@ -1,0 +1,42 @@
+{
+  "format": "kenuxa-core-foundation/1",
+  "version": 1,
+  "files": {
+    "english.json": {
+      "sha256": "494666a3c2e724043fa6d42cfffd616fe630e17474ebc6f5a43f3ac982f09b8f",
+      "bytes": 37586
+    },
+    "seeds.json": {
+      "sha256": "b21d94712b5370169564cb116f501e40d03133daa923c953ef83242e8a05785f",
+      "bytes": 7306
+    },
+    "knowledge-packs.json": {
+      "sha256": "0b3f7244018e70aa2b18828bea664c3205d22e76794f307e312ec45fa1b0941d",
+      "bytes": 15018
+    },
+    "world.json": {
+      "sha256": "0e51fd7c07b8772ac2c6f378288dddc0434deadd1cbbbb6a74a372d2a8756633",
+      "bytes": 127855
+    },
+    "cognitive-seeds.json": {
+      "sha256": "813599bdb447e1d74a3f876cd5946ddf2ebb1f63f5567d8a774d467c97a27f6d",
+      "bytes": 15060
+    },
+    "procedures.json": {
+      "sha256": "b85e995886d4e27037bb9a31d30b6b4f28e9f1f8f100fb0d902b8509878176a8",
+      "bytes": 12201
+    }
+  },
+  "licenses": {
+    "cognitive-seeds.json": "MIT (existing KENUXA authored assumptions and methods)",
+    "procedures.json": "MIT (existing KENUXA authored declarative procedures)",
+    "english.json": "MIT (existing KENUXA authored baseline)",
+    "seeds.json": "MIT (existing KENUXA authored baseline)",
+    "knowledge-packs.json": "MIT (KENUXA authored summaries; original cited sources retain their rights)",
+    "world.json": "CC0-1.0 (Wikidata structured data)"
+  },
+  "limitations": [
+    "Lexical and source attestation does not prove all factual claims.",
+    "Static data is versioned; algorithms and security boundaries remain executable code."
+  ]
+}

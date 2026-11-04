@@ -1,0 +1,2591 @@
+{
+  "format": "kenuxa-foundation/1",
+  "dataset": "princeton-wordnet-3.0",
+  "version": "3.0",
+  "language": "en",
+  "license": "WordNet-3.0",
+  "source": "https://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz",
+  "sourceHashes": {
+    "data.noun": "489f145e0f68877c0be5bd0eb4117adaaac52f38f6204eb8d85dbe2158b614cc",
+    "noun.exc": "2b5d675c380b39ecf595af9fa9d4e7feb1d58c643b0bff08c40ed5bfe41fab7a",
+    "data.verb": "7fff397e93b4fb152fdaee116747cf1c40d7badedccb4b63f5503e8e962d9102",
+    "verb.exc": "dbbcf9a601b2d77e934e413b91d90e88ec7f933a8b77cfc00602a923b891b42c",
+    "data.adj": "f24b635368be441501c9b8001e9271fd3b30b203f00d91e332979e6f8fe35646",
+    "adj.exc": "8824cc24bbedd797b9702316b27f07cd4c2b76b629539f0a1276f03926758016",
+    "data.adv": "e66dbbda0e0359e41b7f225bff71dd0c263dc7c66c1b61abc9ba334973d92979",
+    "adv.exc": "e7291461b629abfe63301bbe1998cee09fd575ed7107abd7ea9763adb05bf0a8"
+  },
+  "counts": {
+    "lemmas": 147306,
+    "senses": 117659,
+    "morphology": 5940
+  },
+  "compressedBytes": 12512673,
+  "files": {
+    "lemmas-c6.json.gz": {
+      "bytes": 9007,
+      "sha256": "0dbb1643e45192fad7f6955b69efc2089e2a41390486515d6947736b4fec1bba",
+      "records": 585
+    },
+    "lemmas-68.json.gz": {
+      "bytes": 9064,
+      "sha256": "b1226e96d53c26bbe8b848af5133cd1f880d633d593e8b91a4c809b022a1294a",
+      "records": 582
+    },
+    "lemmas-35.json.gz": {
+      "bytes": 9162,
+      "sha256": "2f0f6fc171d6dd65f6b5075b3a694fa08a0a8d5cf734d62d83c053e5d4f6b0e6",
+      "records": 574
+    },
+    "lemmas-9c.json.gz": {
+      "bytes": 8866,
+      "sha256": "45dad6a9af34d7a878353b1613fa6454fddf6a08a1792143e2c507d8bbadcbe0",
+      "records": 577
+    },
+    "lemmas-1c.json.gz": {
+      "bytes": 8822,
+      "sha256": "c0667e2d21e82bc6b2912db0d85af754d6db19071163382cc6f125f0e041813c",
+      "records": 552
+    },
+    "lemmas-30.json.gz": {
+      "bytes": 8567,
+      "sha256": "e96168cf23da66cf741b647b694ce59416ff802436b4da05672ccb69d42f61ad",
+      "records": 573
+    },
+    "lemmas-63.json.gz": {
+      "bytes": 9402,
+      "sha256": "9c73d38f476b943733f356481eb44655bb06bb05c9775aa07c8b692258463e53",
+      "records": 593
+    },
+    "lemmas-4d.json.gz": {
+      "bytes": 8341,
+      "sha256": "d1e2674919a144ce19a49a363819e24224164e243dc7996644d9bb8bdc775dd7",
+      "records": 541
+    },
+    "lemmas-44.json.gz": {
+      "bytes": 9111,
+      "sha256": "da0ce506e178fdf341bccefb6a1f2fd65110eaa81a38120a879d9adf055d86b6",
+      "records": 588
+    },
+    "lemmas-de.json.gz": {
+      "bytes": 8494,
+      "sha256": "7a2e1f0ef5283f038a8aa205e230542b10c30b459d89732c2b08cc71161e0dc5",
+      "records": 552
+    },
+    "lemmas-f5.json.gz": {
+      "bytes": 9646,
+      "sha256": "e79e0007167ad6719e1b12ed677a35934ed2fbd923afa0abd5e93e77b2fc2b45",
+      "records": 625
+    },
+    "lemmas-f1.json.gz": {
+      "bytes": 9114,
+      "sha256": "775d4b70214a6bf0ac1a086c0fb1590fc69541b23c5464f84665601cd25c9622",
+      "records": 593
+    },
+    "lemmas-1a.json.gz": {
+      "bytes": 8962,
+      "sha256": "f7452b536420a75fdbd07a3b49eddbc9c5bcfab670a853f7cc223d3d4cd2322d",
+      "records": 567
+    },
+    "lemmas-c9.json.gz": {
+      "bytes": 8932,
+      "sha256": "ee1728c59ca3fe17a48326721128a93c0b53ce2cb43f87e9b43d9fa3682683e5",
+      "records": 567
+    },
+    "lemmas-52.json.gz": {
+      "bytes": 8918,
+      "sha256": "01ac404e0cbf2709a03d4b5120c2a488394940ae5f75bb6d84883ed9b50e7a2a",
+      "records": 564
+    },
+    "lemmas-a2.json.gz": {
+      "bytes": 8761,
+      "sha256": "13693f073c355050e9c496a199be8d7b22e56466974fe752eedd892bd3ac188e",
+      "records": 582
+    },
+    "lemmas-5f.json.gz": {
+      "bytes": 8262,
+      "sha256": "41331c78e456e92516ad6cccd40ab0badff6285d5694e375123b939814a7caf4",
+      "records": 557
+    },
+    "lemmas-6b.json.gz": {
+      "bytes": 8352,
+      "sha256": "4a2b809f28bc19fe1c4586a46727edc4e2fba8ec1e7439ccd550e756cf81ab4b",
+      "records": 545
+    },
+    "lemmas-c0.json.gz": {
+      "bytes": 9224,
+      "sha256": "18a672bab4b622b07ea84fdf07ab8984de67b7cffcedceca9113c69c024bee51",
+      "records": 574
+    },
+    "lemmas-fd.json.gz": {
+      "bytes": 9185,
+      "sha256": "d5c8c9347fd56a7371bfb39c59ba5638cde4e975b4fa6b2dbde45cc4a6abfc5a",
+      "records": 607
+    },
+    "lemmas-67.json.gz": {
+      "bytes": 8690,
+      "sha256": "4eee3742d43fe44f38c49a84c9cd107f5e9dbc839a6e3fd53fc20a03db58adf6",
+      "records": 576
+    },
+    "lemmas-cc.json.gz": {
+      "bytes": 9211,
+      "sha256": "5219fb02d41c7e84e0abdeef22a2d0a5474e0df71f56aec4e6409ceb44e901a9",
+      "records": 599
+    },
+    "lemmas-f9.json.gz": {
+      "bytes": 9311,
+      "sha256": "4ef896b0e4969ac5d1bd5ab06433e6902ca259ffb7c88a8243b5abf90129de27",
+      "records": 588
+    },
+    "lemmas-aa.json.gz": {
+      "bytes": 8609,
+      "sha256": "39a95a9c08ab7e34004610465155e7dba01f19f3025f6f6f14b3b7e90359cc1b",
+      "records": 554
+    },
+    "lemmas-9b.json.gz": {
+      "bytes": 9460,
+      "sha256": "38ac8d2c806f3d93a5fdd2634331649c2b26835ccabf9f9b56bb1951a4edef1e",
+      "records": 601
+    },
+    "lemmas-4a.json.gz": {
+      "bytes": 8443,
+      "sha256": "daf8de5dec6d9ae5cdc14853a47fd89c8da43562abffaddbef464d51d52870a5",
+      "records": 542
+    },
+    "lemmas-bf.json.gz": {
+      "bytes": 9212,
+      "sha256": "608f8e0ec0e56d85411c9444a77879bea9e1611b0a17a34a09bba49d0caa7a07",
+      "records": 594
+    },
+    "lemmas-ad.json.gz": {
+      "bytes": 9285,
+      "sha256": "e726d7cdeff2c4c27dbdcf2ed0a5129d717b76514d00cd37abf7d6860b24375c",
+      "records": 610
+    },
+    "lemmas-40.json.gz": {
+      "bytes": 8903,
+      "sha256": "50acdde2b6d12f3f48b389eec0a9ed98c58b64396289c7ddbfed77beb6d9abc5",
+      "records": 559
+    },
+    "lemmas-39.json.gz": {
+      "bytes": 9438,
+      "sha256": "2ab1f90b43f4487165fb1c8644717c2d0b5ca5ef280c615a14c460f0044eaf31",
+      "records": 598
+    },
+    "lemmas-3b.json.gz": {
+      "bytes": 9074,
+      "sha256": "8acdc1489cf3d5042b6713bf6dbd8c18c437d07cc3518f6ce288c81706284a4e",
+      "records": 587
+    },
+    "lemmas-6c.json.gz": {
+      "bytes": 9304,
+      "sha256": "d8caedf51ccbbbd1c5a4aa5cd4da91db974b8a482202948b8fd71729dc310283",
+      "records": 582
+    },
+    "lemmas-0e.json.gz": {
+      "bytes": 8845,
+      "sha256": "1efa4888387cad37934f59409a7d56bf7d454b513622de2adfb9d272e9b1f91e",
+      "records": 556
+    },
+    "lemmas-a8.json.gz": {
+      "bytes": 8608,
+      "sha256": "3a55fd241c1b2603ee4214ef88dda2beec48591e704f1266cea0c0011deb114e",
+      "records": 553
+    },
+    "lemmas-5e.json.gz": {
+      "bytes": 9038,
+      "sha256": "6c713a12ae54591e3ad8603246943edf7930d4baf67175629af18cabc5913687",
+      "records": 578
+    },
+    "lemmas-16.json.gz": {
+      "bytes": 9483,
+      "sha256": "3ec59144d1fb019920434a21403b1e1d8da0b33d5cca14a6470f3c8ad0bc9427",
+      "records": 597
+    },
+    "lemmas-12.json.gz": {
+      "bytes": 8898,
+      "sha256": "7d29f13e0f6ab4ddbcfb6aa0cd3cdb1419f1ba1b0718be1a06103fdafecb5a0e",
+      "records": 559
+    },
+    "lemmas-f6.json.gz": {
+      "bytes": 8643,
+      "sha256": "bd5f60696fc11bf89f03e1bb19f86fb86067df951fc34cfe581dc739f10317ed",
+      "records": 575
+    },
+    "lemmas-3d.json.gz": {
+      "bytes": 8946,
+      "sha256": "a92028dda65a18eac8d4bb7c8d7ffca207d8e57533fe6cbba140477c6d5d3807",
+      "records": 583
+    },
+    "lemmas-4f.json.gz": {
+      "bytes": 9337,
+      "sha256": "cd0328cbf0110ebea76610c677716852f34ec0c2454cb921562fb864bc830b2b",
+      "records": 625
+    },
+    "lemmas-66.json.gz": {
+      "bytes": 9314,
+      "sha256": "f8b261293dff1effc0ee601a3659f3989d6a5d25c314933c0ce4efa90f12e33e",
+      "records": 604
+    },
+    "lemmas-88.json.gz": {
+      "bytes": 9470,
+      "sha256": "cde79035bf585f052667c46ee444d0b944007c711e57c302715bcdd39f0155a2",
+      "records": 621
+    },
+    "lemmas-28.json.gz": {
+      "bytes": 8569,
+      "sha256": "eef3f608b93b2c55f66978cff1e06b18d047eb0f34c456c8f83eab03a1f98b2c",
+      "records": 557
+    },
+    "lemmas-73.json.gz": {
+      "bytes": 9105,
+      "sha256": "1734d41160ac84edc44bfdf1cb363e00d9c8ab11a7925456aaf28381b0d91fd8",
+      "records": 594
+    },
+    "lemmas-00.json.gz": {
+      "bytes": 8829,
+      "sha256": "dd60588c479d6d739f2cb14e5b0b33f14a9f3575b072795d8ef787829093d672",
+      "records": 548
+    },
+    "lemmas-a9.json.gz": {
+      "bytes": 9476,
+      "sha256": "be9d2ebe240239a5babba4df2bcbd3df140bc0059177e050c93c7b2e9d2d9814",
+      "records": 587
+    },
+    "lemmas-a4.json.gz": {
+      "bytes": 8451,
+      "sha256": "49fbc761839e770c7825d978422ffc35ca1f74bf14152bcc02289b4a2072cb11",
+      "records": 551
+    },
+    "lemmas-2a.json.gz": {
+      "bytes": 9230,
+      "sha256": "817c75074a1b52d11ce60c88951fc45236efd9e192536dbde457d0ac2cc38667",
+      "records": 590
+    },
+    "lemmas-dd.json.gz": {
+      "bytes": 9010,
+      "sha256": "44f0ab766c08911839b1d1b3cbd213ea871526a3df07c7d1e20aa73006716d3e",
+      "records": 573
+    },
+    "lemmas-0f.json.gz": {
+      "bytes": 9120,
+      "sha256": "7ecbecbbb9d75683ad217cf405d81306359025056033124f642bd3044ce73984",
+      "records": 582
+    },
+    "lemmas-49.json.gz": {
+      "bytes": 8849,
+      "sha256": "3d0b41ef20e45fb8aef40a02ed5e1593aeb4a9d06ba544b5431d8d7dd8f9ec51",
+      "records": 549
+    },
+    "lemmas-4b.json.gz": {
+      "bytes": 9546,
+      "sha256": "b2ba2b4120e14cd25730655f347099a07d9b4e326ab2b49128e3029e9fd0f229",
+      "records": 609
+    },
+    "lemmas-3f.json.gz": {
+      "bytes": 9571,
+      "sha256": "2dfbfdef109a243c1fb46f7c7b83c5966fa4b1d723a1e6ad5fc893decfcd86c1",
+      "records": 600
+    },
+    "lemmas-38.json.gz": {
+      "bytes": 8856,
+      "sha256": "7f5cb57abfad7c36341e01b698e501a5c986770abdebe06639b67967bbd57049",
+      "records": 574
+    },
+    "lemmas-87.json.gz": {
+      "bytes": 8642,
+      "sha256": "bd9760e641be9593233c056f5ec4ea36ebd4f05140e49053acff0eb948d37750",
+      "records": 545
+    },
+    "lemmas-13.json.gz": {
+      "bytes": 8399,
+      "sha256": "309735670704669c2047a34526d83f2de69c8bca4fd5d6ad25c05b5878b4d7f1",
+      "records": 547
+    },
+    "lemmas-82.json.gz": {
+      "bytes": 9047,
+      "sha256": "5bb8241030720ccef537448bf8da79733f8ff0ef67b89c57d461c36a2a83864f",
+      "records": 574
+    },
+    "lemmas-65.json.gz": {
+      "bytes": 8425,
+      "sha256": "1be33ceb87ea0e8adb85cecf3927a4e64e04222115c290c21449fb70a9bca580",
+      "records": 524
+    },
+    "lemmas-85.json.gz": {
+      "bytes": 9045,
+      "sha256": "2b59619a8a9f076bfb8464270afe3ab8798af0423133b6b926ac9352cb31aada",
+      "records": 561
+    },
+    "lemmas-cd.json.gz": {
+      "bytes": 8406,
+      "sha256": "2b8fd5d03911fc480287a38bca28e10c01ab200766c43e071f7ed540a51690ad",
+      "records": 536
+    },
+    "lemmas-db.json.gz": {
+      "bytes": 8838,
+      "sha256": "d76305d6a6a1e8e77423d4aa6817a3caf398c632b9ea552dd95f4a1a8fe28fde",
+      "records": 553
+    },
+    "lemmas-e4.json.gz": {
+      "bytes": 9390,
+      "sha256": "8f2bda01774864bd3973e2489ddf25cdb2905fcdbfff4be2ae7fb8282e60b4f2",
+      "records": 600
+    },
+    "lemmas-be.json.gz": {
+      "bytes": 9144,
+      "sha256": "2bb07ba1ffc7b5aa07aab797d5eec237a9c86422e3bd27465a6774ef39157c30",
+      "records": 579
+    },
+    "lemmas-8a.json.gz": {
+      "bytes": 9193,
+      "sha256": "33470e6cf8efb36cd5b27763c47f01be6291e889684496fdb65a6b0b8bc267e1",
+      "records": 599
+    },
+    "lemmas-e6.json.gz": {
+      "bytes": 9292,
+      "sha256": "74b9409f1ce3d65bd79de8ac619b5406235fbf82aeb3d3fcdc996247c480c8ed",
+      "records": 591
+    },
+    "lemmas-3e.json.gz": {
+      "bytes": 9432,
+      "sha256": "50d90d190fa73f666ae13c79e47211d44b4720bc18e056e213d50af972ca8e03",
+      "records": 597
+    },
+    "lemmas-2f.json.gz": {
+      "bytes": 8446,
+      "sha256": "382aed92aeb84e39801580499169f46fc260cb8ae8b0dab195bd8189ffbd7b93",
+      "records": 547
+    },
+    "lemmas-9a.json.gz": {
+      "bytes": 8667,
+      "sha256": "7450ff34af9b52ce1084b492cb634b47fcef79b5faebba1d75a8021319dce4f1",
+      "records": 569
+    },
+    "lemmas-21.json.gz": {
+      "bytes": 7960,
+      "sha256": "f48fda3520e89153c6c6d8972b35dfe5de488c9847d64b6cf699c564ac2eec84",
+      "records": 525
+    },
+    "lemmas-23.json.gz": {
+      "bytes": 9959,
+      "sha256": "3a5c99bbbd0fc052e88bebf2b4daaf13c3386aca5fa467222141286dc6cf281a",
+      "records": 624
+    },
+    "lemmas-46.json.gz": {
+      "bytes": 8581,
+      "sha256": "82428a8ee10439976abeaf89fbb70b32c13e9b258f67c83e8563b5b7abba49ed",
+      "records": 563
+    },
+    "lemmas-b1.json.gz": {
+      "bytes": 9775,
+      "sha256": "abafbb363e2e3201516c56ef12390b9f03aeb9b673ea928e82067f9045736b2b",
+      "records": 631
+    },
+    "lemmas-a5.json.gz": {
+      "bytes": 8942,
+      "sha256": "7d540db4fd52708793ddee415c9f09834160f9ab79dc40c411b8c168741609b4",
+      "records": 573
+    },
+    "lemmas-79.json.gz": {
+      "bytes": 8553,
+      "sha256": "19ee478108c4f0a94387ef82b8036fcbe669fe830ec97ca82c88b6f7b600aa51",
+      "records": 552
+    },
+    "lemmas-bc.json.gz": {
+      "bytes": 9020,
+      "sha256": "85b7407532905e3804c900b18aee2a7ad8ddf4d4f2d891691ff4f33047262773",
+      "records": 591
+    },
+    "lemmas-eb.json.gz": {
+      "bytes": 8668,
+      "sha256": "2e58d21d7066686487def583f46ddebea98fbe13428b0833571b5361046a9e5e",
+      "records": 573
+    },
+    "lemmas-45.json.gz": {
+      "bytes": 8515,
+      "sha256": "963724fbe4ed0e90d0126962ae82568c12f8d497af1bccd5074884011eb96d79",
+      "records": 541
+    },
+    "lemmas-81.json.gz": {
+      "bytes": 9777,
+      "sha256": "82d9d0615472a1138b9edc612075694658ad8918c05ea3669d70a59b46e39970",
+      "records": 613
+    },
+    "lemmas-15.json.gz": {
+      "bytes": 9242,
+      "sha256": "1fc3020288ae7aad09eb3672b8043583d6aaa0dd5afb09ccf027a17a9d2bd902",
+      "records": 596
+    },
+    "lemmas-a0.json.gz": {
+      "bytes": 9184,
+      "sha256": "458b989a420857b0cf5f9117826ffe8b700be9e841ed84943aa28ce08d8da36f",
+      "records": 591
+    },
+    "lemmas-da.json.gz": {
+      "bytes": 8346,
+      "sha256": "e3a363b546f60ee36223e2fa4177c2e72dbd8befacf954c21211286983985487",
+      "records": 544
+    },
+    "lemmas-04.json.gz": {
+      "bytes": 9296,
+      "sha256": "02656f53f366a7f914610b88b69d1e9b9f85ddc90de67391b3a635d88287d078",
+      "records": 606
+    },
+    "lemmas-df.json.gz": {
+      "bytes": 8773,
+      "sha256": "32a85587c9e561775420dcd23b7f044dbd97b1300ac6306e6933683f59997ac5",
+      "records": 552
+    },
+    "lemmas-5b.json.gz": {
+      "bytes": 8563,
+      "sha256": "771a05d9fad0be2a290d4a5172898c6aecd1fb7571076811c8c86f1437100aa8",
+      "records": 558
+    },
+    "lemmas-08.json.gz": {
+      "bytes": 8999,
+      "sha256": "e4b12597397a8ea7abd16388f9cc277d2aab9e916749f40278603a1075ef74d5",
+      "records": 567
+    },
+    "lemmas-4e.json.gz": {
+      "bytes": 9044,
+      "sha256": "19148e76a16618e55fd0edd8c83b15af25c0e4597406af09e45867abaf8c8015",
+      "records": 594
+    },
+    "lemmas-9f.json.gz": {
+      "bytes": 8756,
+      "sha256": "5b9885cf296f056aa867fcc4f607a589b40dc4f0d07abd853898d211758cfb61",
+      "records": 532
+    },
+    "lemmas-7b.json.gz": {
+      "bytes": 9337,
+      "sha256": "57900f2b6296b59a264b04944c6e5d5a54cbc932fc1212fc1add8a3f345806c3",
+      "records": 611
+    },
+    "lemmas-59.json.gz": {
+      "bytes": 9000,
+      "sha256": "f2cd38bab48c618160c66e718e7ebd50ef76c95f01120d03b8b7ce40d8aa1346",
+      "records": 585
+    },
+    "lemmas-e3.json.gz": {
+      "bytes": 8784,
+      "sha256": "1c2e2525fd6e77da21a15941e56c56ff16c05f5d5756b8f99a9615e4016cb056",
+      "records": 569
+    },
+    "lemmas-93.json.gz": {
+      "bytes": 8905,
+      "sha256": "347759888851d24dc4dae834e60669295e3255381dac667c5daa55e510565da9",
+      "records": 568
+    },
+    "lemmas-01.json.gz": {
+      "bytes": 9148,
+      "sha256": "6c40027ecccfd31c7505bc622895cfdf032c46477c20ab4f6fe0e1a02878811f",
+      "records": 596
+    },
+    "lemmas-d9.json.gz": {
+      "bytes": 9019,
+      "sha256": "036c8c23405cf8771d5fd5aecf76c3fbcdc693c3d9cbde6333460d3555816428",
+      "records": 579
+    },
+    "lemmas-94.json.gz": {
+      "bytes": 9368,
+      "sha256": "3cd0292f2090072ca101e80b8118de9af43067dd6998897a233fe7b9fbc22146",
+      "records": 579
+    },
+    "lemmas-b3.json.gz": {
+      "bytes": 8832,
+      "sha256": "a8c4c9e1a6fefb05c349843f679caaddb078ce9c4a6d320e7ce3ebc9093cb67e",
+      "records": 567
+    },
+    "lemmas-b2.json.gz": {
+      "bytes": 8562,
+      "sha256": "4e870fd86d7765f0a97b39529ffa9937bb20c7dce860380ee0fad285fd70751e",
+      "records": 555
+    },
+    "lemmas-d8.json.gz": {
+      "bytes": 8564,
+      "sha256": "0a4313e4260826666e63e602abc88e3e37411983e95e973349af0d1a5ca0c2e8",
+      "records": 577
+    },
+    "lemmas-3a.json.gz": {
+      "bytes": 8834,
+      "sha256": "985b77cba3661c22bb28ae85bfdc8361946979ae6ba8d2f66b2fd517f8bba5af",
+      "records": 568
+    },
+    "lemmas-77.json.gz": {
+      "bytes": 9126,
+      "sha256": "87eaa283a8186edefde53dae0cf3771e0d9409626275d8718b80a86c7f5c7177",
+      "records": 562
+    },
+    "lemmas-29.json.gz": {
+      "bytes": 8844,
+      "sha256": "e3914e14fb0e111287b3d4e1437a6e3f44f9c3e2f9ff0b1ed4e6a545ef69d850",
+      "records": 584
+    },
+    "lemmas-09.json.gz": {
+      "bytes": 8781,
+      "sha256": "f908c5e4d2a1f26880367397574496313d74e49a86c8ebd105aac73371b85263",
+      "records": 579
+    },
+    "lemmas-fa.json.gz": {
+      "bytes": 9094,
+      "sha256": "c8d4e11080afa3565e5b592a0af07e8dea4fb8e1234c13dbd311f6c091ef7370",
+      "records": 589
+    },
+    "lemmas-e0.json.gz": {
+      "bytes": 8945,
+      "sha256": "44dcab280253efcd451a38bf63b0e8478993bc22e4119f0e454bfbffd21ec281",
+      "records": 566
+    },
+    "lemmas-ee.json.gz": {
+      "bytes": 8860,
+      "sha256": "e49a36b3dbfd4d250d0bdef41927f957b0437864c2040d3d2330cdea49fa01a0",
+      "records": 581
+    },
+    "lemmas-f7.json.gz": {
+      "bytes": 9114,
+      "sha256": "075bc711dbc59cea5a145c3f533e5c62a1a4dfd91a41b441008689535b18abc8",
+      "records": 591
+    },
+    "lemmas-9d.json.gz": {
+      "bytes": 8581,
+      "sha256": "ba8c2331681615f5d8dfd623eed018cc85020dfad4888cc818552ea2e6b45d1a",
+      "records": 561
+    },
+    "lemmas-d7.json.gz": {
+      "bytes": 9645,
+      "sha256": "b6ddfc0b448e76c18b7152d1e7911c43b2e5be861aec38d157bd7bf40b9d6dd8",
+      "records": 603
+    },
+    "lemmas-05.json.gz": {
+      "bytes": 8903,
+      "sha256": "cd1f2728f7d06be8c5fc260b37503e5f258a49416048ee24690f99005e57edd2",
+      "records": 576
+    },
+    "lemmas-86.json.gz": {
+      "bytes": 8438,
+      "sha256": "b6e5835120617e4d31b3e16c7bd99015fde2e0d650ddea13a26b0610769dcc07",
+      "records": 569
+    },
+    "lemmas-d4.json.gz": {
+      "bytes": 9069,
+      "sha256": "04b6a10207a4ebe29d827ab85133e0d8b0d596deca2bd8dbc5cb6e51ff2ac2a0",
+      "records": 590
+    },
+    "lemmas-84.json.gz": {
+      "bytes": 9002,
+      "sha256": "26b5d0da36ccc6689dd14af4b6fc3465c683c6b9d1cce316a97f2e8c7805cd28",
+      "records": 587
+    },
+    "lemmas-91.json.gz": {
+      "bytes": 8581,
+      "sha256": "aac0eab630046c8dfe8f3c73d520dbd1cc3328ab48c040f80caf91cf8f0363b8",
+      "records": 541
+    },
+    "lemmas-b0.json.gz": {
+      "bytes": 8374,
+      "sha256": "34c5c97ba4a4df898f6d78e515d59f819cd1dc7c40f25045912a8a53aa2c28d8",
+      "records": 547
+    },
+    "lemmas-ed.json.gz": {
+      "bytes": 8944,
+      "sha256": "e89d783b116060e04b460f03fec93c80b0d14b479b0a1eb1e952eff5c5c612fe",
+      "records": 569
+    },
+    "lemmas-41.json.gz": {
+      "bytes": 9161,
+      "sha256": "d09acd69590a75580f90b6fdc1569117971349d99264051f87bfaa9c5154b58d",
+      "records": 587
+    },
+    "lemmas-c7.json.gz": {
+      "bytes": 8856,
+      "sha256": "1b75d3d15976022c172c6d128bfd5ecf7a7a2deb3e09f72b321f25224ad2945b",
+      "records": 582
+    },
+    "lemmas-e9.json.gz": {
+      "bytes": 8797,
+      "sha256": "6944cbc5d103eba33f6be2f2fe527e338aebad37e88a4269cc4c18746d194126",
+      "records": 568
+    },
+    "lemmas-27.json.gz": {
+      "bytes": 9034,
+      "sha256": "ee27bc99c204896ccef071eb607c1bc20035f65407facd324d99cf1aae01519f",
+      "records": 578
+    },
+    "lemmas-f4.json.gz": {
+      "bytes": 9211,
+      "sha256": "7b1f7a8380fd3884e309aa40e118db92b075d4d527edcbd1bd59ee5b2b7d0be4",
+      "records": 584
+    },
+    "lemmas-6f.json.gz": {
+      "bytes": 8889,
+      "sha256": "836891fdc8c77d92295e709ed1b73617d179b55640f23c947baf74d244983587",
+      "records": 595
+    },
+    "lemmas-78.json.gz": {
+      "bytes": 9216,
+      "sha256": "2e9b14c4626639b09642a2743934a83f340b5a3690941f6f3363bcc34ca424ec",
+      "records": 603
+    },
+    "lemmas-ba.json.gz": {
+      "bytes": 8613,
+      "sha256": "69f93141cd4a299dfab5cc02b8100e64ce61fa3fe10dd77b0ddc97a276d4149c",
+      "records": 562
+    },
+    "lemmas-53.json.gz": {
+      "bytes": 9102,
+      "sha256": "2f672b8cf6064fbcb179349912bccbeab3b777d89753835f7e42b6eac9d6bf4d",
+      "records": 596
+    },
+    "lemmas-c2.json.gz": {
+      "bytes": 8635,
+      "sha256": "89503c2472edb66bcab514309910ab732d75869d64490f5a8853fb1c60d6d4b2",
+      "records": 568
+    },
+    "lemmas-8b.json.gz": {
+      "bytes": 8913,
+      "sha256": "ee9462001f5fe1c847089d73edf593da9ba363fff3812e91a4ef3445989ae7e2",
+      "records": 586
+    },
+    "lemmas-b7.json.gz": {
+      "bytes": 9209,
+      "sha256": "4c96bc65070b7494b89d52c61592b9c5f2759fb34952ea5f3d693831968adcf1",
+      "records": 577
+    },
+    "lemmas-6e.json.gz": {
+      "bytes": 9182,
+      "sha256": "899cad8c8aea735d48b377dc550d682edccc7a01c00c43027442e89c8f316f2e",
+      "records": 568
+    },
+    "lemmas-f8.json.gz": {
+      "bytes": 8269,
+      "sha256": "4acda5eb244ac68ca9466e31047f5880815823002ac1f38a551900b721282e9b",
+      "records": 542
+    },
+    "lemmas-5a.json.gz": {
+      "bytes": 9397,
+      "sha256": "49f39acfa99deaa4baf9a6fac49cb3b02bc4852a37c037e35be7d74aeb0a7e58",
+      "records": 617
+    },
+    "lemmas-51.json.gz": {
+      "bytes": 8838,
+      "sha256": "9fcbdeb8fe0bee4e8ab0ac849a2c3c359bc5876ede4ed6061908366873bf03c2",
+      "records": 566
+    },
+    "lemmas-62.json.gz": {
+      "bytes": 9214,
+      "sha256": "be507e6a3b821c9afe13571d17695011e3b0079f5c4f3570197760bf08799f8d",
+      "records": 579
+    },
+    "lemmas-f0.json.gz": {
+      "bytes": 9347,
+      "sha256": "5c69228477b70efec1516f1788a784c7f4a22c160a8e737b57542da3d34793c0",
+      "records": 599
+    },
+    "lemmas-98.json.gz": {
+      "bytes": 8640,
+      "sha256": "47ad8c7140a761cf51adc52b6365a7dd9c32c985c1beffea9de4cc421b20e374",
+      "records": 566
+    },
+    "lemmas-cf.json.gz": {
+      "bytes": 8718,
+      "sha256": "4da3d39a9e8e3f808c9369f222b13d8befe0050b12ed5ac03173f13184f156a8",
+      "records": 560
+    },
+    "lemmas-8d.json.gz": {
+      "bytes": 8879,
+      "sha256": "859acb86836b96c0a9298fccf3d3fa106e6c4c7486ca5d6798a99d05d500495b",
+      "records": 597
+    },
+    "lemmas-58.json.gz": {
+      "bytes": 8852,
+      "sha256": "476a1dd9d827549074b7e5562548bb59abf31188e97e691e5fdf07ced06bc451",
+      "records": 573
+    },
+    "lemmas-e2.json.gz": {
+      "bytes": 8492,
+      "sha256": "52dd6011664c0294d0a9ba355b14f7fcbab77a3ce06a3ab4a7b57eee3695952e",
+      "records": 552
+    },
+    "lemmas-76.json.gz": {
+      "bytes": 8686,
+      "sha256": "59f61af13b899d9c9f698fad9b75a313ec028559795527e7a8b704dbd29380cd",
+      "records": 558
+    },
+    "lemmas-56.json.gz": {
+      "bytes": 9032,
+      "sha256": "f569c1bad28257d7f700a0b8a78100ae794cdae93455aaaa2c2d30a1cb58c39a",
+      "records": 593
+    },
+    "lemmas-fc.json.gz": {
+      "bytes": 9292,
+      "sha256": "60c44285ff581c9528bf3980108cd3f2bd422bd4c959118f05d11131cf89ec62",
+      "records": 581
+    },
+    "lemmas-7a.json.gz": {
+      "bytes": 8724,
+      "sha256": "60258ffd740e5c9857b987feb212a7192954f11569de46dbaa498020bffbbe1a",
+      "records": 567
+    },
+    "lemmas-ae.json.gz": {
+      "bytes": 8752,
+      "sha256": "981341b5d1ed6342dc5589d00d3227c74faa0924e02b658ce7e051b35f77bd1c",
+      "records": 553
+    },
+    "lemmas-0b.json.gz": {
+      "bytes": 9004,
+      "sha256": "cb5acd8f1cb5488412be832a817aa4059b4f0fd734f11b2259b14310a66216d4",
+      "records": 563
+    },
+    "lemmas-7e.json.gz": {
+      "bytes": 8575,
+      "sha256": "c068d9605b0624130d584d11b304aaf5d7de13f2333a9c74e9a36b0b7299123a",
+      "records": 545
+    },
+    "lemmas-47.json.gz": {
+      "bytes": 9193,
+      "sha256": "71fc981c23981efe607a95992b79230d2f2ae9d32c2c0f82fb3e84a0ea63d045",
+      "records": 591
+    },
+    "lemmas-d5.json.gz": {
+      "bytes": 8116,
+      "sha256": "c66efdd7d33de40f3fbd9c8b96ea4e49c21521dcf0aec589f35358dd6cafd57f",
+      "records": 540
+    },
+    "lemmas-26.json.gz": {
+      "bytes": 8474,
+      "sha256": "132baf1f3fb0e9229553b0f019e80f012a2cc86e01be5f495b6d80e12466a10a",
+      "records": 557
+    },
+    "lemmas-c8.json.gz": {
+      "bytes": 8641,
+      "sha256": "841f8782c2b11f90fcffbd7fef43e5af4dd12db8b0fa9a3b7c518a4146296f69",
+      "records": 574
+    },
+    "lemmas-71.json.gz": {
+      "bytes": 8880,
+      "sha256": "26fe695c00bb06c13e958d3f402e5753e2193aed195751b70caffa8fcf6b0d21",
+      "records": 579
+    },
+    "lemmas-f2.json.gz": {
+      "bytes": 8655,
+      "sha256": "0fd8acac5a42b21dd6eeec75199c7cdb75ae7a421b881c48fc385e1720dd6bcf",
+      "records": 568
+    },
+    "lemmas-97.json.gz": {
+      "bytes": 8722,
+      "sha256": "89c6318c34d0e56e1fb5d034821cfb01690ee9dc7ed50435615c06c02ed38c4f",
+      "records": 571
+    },
+    "lemmas-d1.json.gz": {
+      "bytes": 8959,
+      "sha256": "4a510c62841e88286566f828d5fd09b7c5f48480e240b58739a7716ff54a48ff",
+      "records": 550
+    },
+    "lemmas-25.json.gz": {
+      "bytes": 8470,
+      "sha256": "8b757e85e19d023544b4828ec0f809ca64cd6979b7df18426bb6c2d78c2a52ed",
+      "records": 523
+    },
+    "lemmas-6d.json.gz": {
+      "bytes": 8878,
+      "sha256": "d3866246dcebc4ae377b60d0bb1687d753038bfd891e8b5a8b4a4c7151e37af7",
+      "records": 582
+    },
+    "lemmas-31.json.gz": {
+      "bytes": 9041,
+      "sha256": "68f47653e1cc4b6c59a9a3285da2d42ad3687781eb45a9a2027dc465ad28215f",
+      "records": 573
+    },
+    "lemmas-ac.json.gz": {
+      "bytes": 8641,
+      "sha256": "1f02054d4b7daf752fad839eb9f174760191206338f14329cdd1842396a64c1e",
+      "records": 529
+    },
+    "lemmas-11.json.gz": {
+      "bytes": 9269,
+      "sha256": "625f99e7ee5891fac51751ef7088a580b613872e5c588fbb98348bd42f543e25",
+      "records": 584
+    },
+    "lemmas-8c.json.gz": {
+      "bytes": 8236,
+      "sha256": "5e407e4d56c9ba48fa152ed086514c84f5c664668aae3b5fd428d044c79fe9ad",
+      "records": 536
+    },
+    "lemmas-ef.json.gz": {
+      "bytes": 8485,
+      "sha256": "4fdae4f6ea932c80cbbf14538afb8a0f3db2fa3a4cd1dca6d2cc0b1dc19a8d03",
+      "records": 549
+    },
+    "lemmas-70.json.gz": {
+      "bytes": 9296,
+      "sha256": "2834b6ad8a8c66642c3c58d2eae164b50a6d0ae9e69b3d950dd826299901cbd5",
+      "records": 587
+    },
+    "lemmas-b5.json.gz": {
+      "bytes": 8339,
+      "sha256": "43c5b8c5340abd98b8bd85d633ee720fc8f467c143e3341ed7c8bda5e3b24d24",
+      "records": 538
+    },
+    "lemmas-06.json.gz": {
+      "bytes": 9609,
+      "sha256": "fd9e1da404ce8c917cbc9a5b7c4886a65c836cf8fb202d8d207755c95db70297",
+      "records": 607
+    },
+    "lemmas-03.json.gz": {
+      "bytes": 8789,
+      "sha256": "8fa8be0aa15e8eb862d3e292b9f0b8046e4f67af257e9520c25b44a328642f98",
+      "records": 576
+    },
+    "lemmas-02.json.gz": {
+      "bytes": 8532,
+      "sha256": "5280e98a61e90990385a76a49c276f01b8e28f0b10cdc7995d6e4cc707a27987",
+      "records": 551
+    },
+    "lemmas-e7.json.gz": {
+      "bytes": 8700,
+      "sha256": "c19344678b6988e73cc62848c4619e995b6d2ca99ebaad7d1b92e289a678b87e",
+      "records": 580
+    },
+    "lemmas-d0.json.gz": {
+      "bytes": 9216,
+      "sha256": "8feedb11430388955b7391eae3400bc6f3d3b9bdc99257a62620be4c76e8800f",
+      "records": 564
+    },
+    "lemmas-a6.json.gz": {
+      "bytes": 9053,
+      "sha256": "96f41f8826a0d279d8b7ec92a25dc0a2483fbb0d2ba8c90d5ac15f46a7c3e249",
+      "records": 584
+    },
+    "lemmas-10.json.gz": {
+      "bytes": 7994,
+      "sha256": "3d6600b62e7cbaa26a214fedc1e0009c7679805c587482d2d05c57b53edd0135",
+      "records": 521
+    },
+    "lemmas-ff.json.gz": {
+      "bytes": 9563,
+      "sha256": "662038f632c337223ac65073cf27578dbba540dc70d4f77356f9495e5c9b2bc8",
+      "records": 622
+    },
+    "lemmas-fb.json.gz": {
+      "bytes": 8747,
+      "sha256": "8f6d0b75f6c8b7b4c387d9f57676fbf8e5c1996755ab8a2154c708e335c186ee",
+      "records": 576
+    },
+    "lemmas-7f.json.gz": {
+      "bytes": 9159,
+      "sha256": "65ccdb99278b9c680ad5a34714a93e129bddf46a16d1ab84898406cb942c6ce7",
+      "records": 582
+    },
+    "lemmas-96.json.gz": {
+      "bytes": 8851,
+      "sha256": "88f80d5f4d9f795cb4710745d44e8efc37cf9a53345798e87db070abaa4a5cd5",
+      "records": 586
+    },
+    "lemmas-f3.json.gz": {
+      "bytes": 8588,
+      "sha256": "d4a694f214ba9fa7ab98e420cbee21f9825125457c9a7b30894865233893d6da",
+      "records": 563
+    },
+    "lemmas-34.json.gz": {
+      "bytes": 9092,
+      "sha256": "043a170315f0cbf6064f7dd8b4d6db378438c1d3fb3de571bd7239ff82c9f465",
+      "records": 577
+    },
+    "lemmas-af.json.gz": {
+      "bytes": 8484,
+      "sha256": "252feb7df2e8351f563d98409f78f2439cb96d6e75d0a20d9c8aa8e406b803d3",
+      "records": 552
+    },
+    "lemmas-2c.json.gz": {
+      "bytes": 9511,
+      "sha256": "5b41e90eb8917ab1e3ea0240f7861de00899629a435b63e44ac05e29e9e10e0e",
+      "records": 592
+    },
+    "lemmas-48.json.gz": {
+      "bytes": 9085,
+      "sha256": "4940719db18f09921e91389c8739302881201078a0a9f2c7d1edec8ba15c651a",
+      "records": 592
+    },
+    "lemmas-bb.json.gz": {
+      "bytes": 9076,
+      "sha256": "92862601aa6095fcf665d7b438b9b4c6145ff5c886f8e33022ff29af5df7de9b",
+      "records": 591
+    },
+    "lemmas-b4.json.gz": {
+      "bytes": 8588,
+      "sha256": "ef3542f29fe98d439681aeb639f5d34789bdefc7d4f4f9b92a13aa8f3b179832",
+      "records": 552
+    },
+    "lemmas-c3.json.gz": {
+      "bytes": 8920,
+      "sha256": "aa7bf8bea012df90cb0ac324bc5320b272a11f67fbeb36f9c556831d9ac44b4d",
+      "records": 574
+    },
+    "lemmas-43.json.gz": {
+      "bytes": 8849,
+      "sha256": "a4b91c9fef122f6d2d8ac28fde87258f74b65b99e36d40d9363d3a1d192517c9",
+      "records": 592
+    },
+    "lemmas-bd.json.gz": {
+      "bytes": 8966,
+      "sha256": "c3a47fd1d524cfc1039a0948809dff7bf0e9c2d3224ee0a1e0a0e6d7bf8e9fd0",
+      "records": 581
+    },
+    "lemmas-1d.json.gz": {
+      "bytes": 8782,
+      "sha256": "f276dc85ac8679862fa3dff2af41e1f4bce879c687984f241ccc8c8d94fdf964",
+      "records": 579
+    },
+    "lemmas-19.json.gz": {
+      "bytes": 9629,
+      "sha256": "3850a568c389d1c1738ce454a0cd06e17cc826d87b29347670b949a3af9d8599",
+      "records": 603
+    },
+    "lemmas-69.json.gz": {
+      "bytes": 8764,
+      "sha256": "08227402fadfa5a778e419a664ee511c57c26d44bea8e780657240993d35aa1e",
+      "records": 583
+    },
+    "lemmas-d6.json.gz": {
+      "bytes": 8762,
+      "sha256": "366a31766795af52a4054dbdf7f21cf16fb71ca8f39f022ef6f8e0307d77c051",
+      "records": 566
+    },
+    "lemmas-2e.json.gz": {
+      "bytes": 9447,
+      "sha256": "96047bf9b809bc5a59a89303b93d2fe6eaed6f7123f57cd09348fd07c1811b00",
+      "records": 601
+    },
+    "lemmas-ca.json.gz": {
+      "bytes": 9323,
+      "sha256": "10e08ca7147a8c9af884609286f56001f9a0d707a79219637cb70bba5fd45502",
+      "records": 597
+    },
+    "lemmas-90.json.gz": {
+      "bytes": 9436,
+      "sha256": "a619cbadb13ce2cb17f284707b5b734ac8ba39e3b6ee20d4d75e2505f6020fb7",
+      "records": 613
+    },
+    "lemmas-c1.json.gz": {
+      "bytes": 8912,
+      "sha256": "8785bb29cf21980588e5d3c694254c2cef11bbfd66e534344a4e92f69b41d43d",
+      "records": 575
+    },
+    "lemmas-20.json.gz": {
+      "bytes": 8977,
+      "sha256": "acc6b915cb6d92df4122337b152cd81eb2b5a4e8bcf0f3ed85918b311c35b719",
+      "records": 564
+    },
+    "lemmas-8e.json.gz": {
+      "bytes": 8863,
+      "sha256": "3387d840387c775960758d2ba501f3883307582d95a1e3cd74c646af6bd56e46",
+      "records": 584
+    },
+    "lemmas-80.json.gz": {
+      "bytes": 9355,
+      "sha256": "6b515211f08714d92d1c536672b8c9ba7ef440c8ae550f319106182ff956def0",
+      "records": 604
+    },
+    "lemmas-54.json.gz": {
+      "bytes": 9217,
+      "sha256": "f7e374ba0691a869b773bbf369f7070d7b864ca1f52b9e3248d50ac682e314bc",
+      "records": 603
+    },
+    "lemmas-55.json.gz": {
+      "bytes": 8883,
+      "sha256": "e8c66f658364e5ea1182e5936558db378763c5e8a911bd36ae9db6667c5514f8",
+      "records": 574
+    },
+    "lemmas-1b.json.gz": {
+      "bytes": 9381,
+      "sha256": "aae496bd45fcce5e652c5d02a61842e673bac09804e3010f7f079392d4f68bea",
+      "records": 608
+    },
+    "lemmas-5c.json.gz": {
+      "bytes": 8501,
+      "sha256": "7d1613cd8a02d5761792278c0e683a829fab1ec104d48a805420721eceb87401",
+      "records": 563
+    },
+    "lemmas-c4.json.gz": {
+      "bytes": 9250,
+      "sha256": "9a340c13e04c62d0609fe0019619e754e0adf902fdfd2b072aface8cfa6b182d",
+      "records": 618
+    },
+    "lemmas-a3.json.gz": {
+      "bytes": 8784,
+      "sha256": "df2513ac1eca0e8f45f474b22531059ebf96432ab7ca7878a18846b9503a4811",
+      "records": 553
+    },
+    "lemmas-57.json.gz": {
+      "bytes": 8796,
+      "sha256": "08a4ca2433ad9162c02890bf7475cd4703c29d9c9f46ddc0318e453b6d5cbdaa",
+      "records": 565
+    },
+    "lemmas-e1.json.gz": {
+      "bytes": 7991,
+      "sha256": "100bfde8e1c28edf513aeb2b96fe347159e7f4f6b32a3aace5906c15328c6754",
+      "records": 524
+    },
+    "lemmas-2d.json.gz": {
+      "bytes": 9453,
+      "sha256": "4253640645701b3e4d867a79f1a3764b15a66e5da40f23686f14bccdeadedd46",
+      "records": 585
+    },
+    "lemmas-ea.json.gz": {
+      "bytes": 8937,
+      "sha256": "f21030a700c1a9646b48a3b1d31d61445f6094c703fecd589d493bb108c96792",
+      "records": 578
+    },
+    "lemmas-07.json.gz": {
+      "bytes": 8615,
+      "sha256": "be85eaa84246ef4890f20bd6e9a1c505e91710f25a869778f32ddca9a2331598",
+      "records": 568
+    },
+    "lemmas-32.json.gz": {
+      "bytes": 9075,
+      "sha256": "69979914a194d42920a8ec5b7b3f18cfff769e4a89e3d492d1a20a90c3daf994",
+      "records": 582
+    },
+    "lemmas-14.json.gz": {
+      "bytes": 9127,
+      "sha256": "36749d379d259431a423f153eb3686e28fea9c61548b05166408bdb6ac13501d",
+      "records": 582
+    },
+    "lemmas-3c.json.gz": {
+      "bytes": 8866,
+      "sha256": "4d33659048d66d87965cb298ba668e17c043d86a5c4ee6dc29d0bb1a14dfc2aa",
+      "records": 568
+    },
+    "lemmas-75.json.gz": {
+      "bytes": 8670,
+      "sha256": "484bee4c5f06ace052a9c0c6c47e089c245320e252ebc85d681dee97ae6c500a",
+      "records": 566
+    },
+    "lemmas-4c.json.gz": {
+      "bytes": 9774,
+      "sha256": "ab0be093c5072a29b47bdc1544987c4470e124bde5a3fb97251fe07439cf31de",
+      "records": 623
+    },
+    "lemmas-b8.json.gz": {
+      "bytes": 8912,
+      "sha256": "87132ccc23d39b5f1a6de27085ced6880396da828d9971bcb93624cb626e90e3",
+      "records": 574
+    },
+    "lemmas-dc.json.gz": {
+      "bytes": 9753,
+      "sha256": "e9aeb47a0609ec51a452cb0139caba15a84521cc510deb5721ea32fc0b2556e2",
+      "records": 607
+    },
+    "lemmas-18.json.gz": {
+      "bytes": 8823,
+      "sha256": "d8bdbec4f1bf33d03f7c46382caf2a24a05e4a49d730b5f1e74bf7bd442ab77c",
+      "records": 564
+    },
+    "lemmas-6a.json.gz": {
+      "bytes": 8661,
+      "sha256": "c10eaf068afa5d15cc254959989aa1c7ebbd4de275a134e20596f63ee6d2a1b0",
+      "records": 575
+    },
+    "lemmas-b6.json.gz": {
+      "bytes": 8535,
+      "sha256": "b34c88bd999f03304dcef94c2837b8336439b1d164130b5421d07efab650b629",
+      "records": 554
+    },
+    "lemmas-64.json.gz": {
+      "bytes": 8724,
+      "sha256": "0e0eed2212a71ba3c30500e930107f55d14d0d1d11ae05b910b88c192b27ed65",
+      "records": 586
+    },
+    "lemmas-74.json.gz": {
+      "bytes": 9013,
+      "sha256": "ee0f0d3f0ec4cdd65289220c42f2dc25ba081f708e14c8401303ac8d6ef90ff9",
+      "records": 565
+    },
+    "lemmas-e8.json.gz": {
+      "bytes": 9156,
+      "sha256": "30052c07e2cc6ee15216bf9e381aa5ce0313ae89a1e9263116017beab62ab330",
+      "records": 602
+    },
+    "lemmas-99.json.gz": {
+      "bytes": 8875,
+      "sha256": "dbed471e77a7ae7f92947c4b078304db58f66cb1bd1585f7927ff624788c0ffe",
+      "records": 577
+    },
+    "lemmas-e5.json.gz": {
+      "bytes": 8482,
+      "sha256": "42bd8301f670f17f407faaed4537ac38863bbffd0f9ddad38ab565160e36e650",
+      "records": 553
+    },
+    "lemmas-d3.json.gz": {
+      "bytes": 8869,
+      "sha256": "c5d7ffcc3362b6c9d97508ff690b80131487705baf139429eef9df7b7ef57ef9",
+      "records": 562
+    },
+    "lemmas-72.json.gz": {
+      "bytes": 8858,
+      "sha256": "628e32bd94ea7b73b87307d7d664bf058b84cd7250c1e0fd3b8fcc375e3a909f",
+      "records": 547
+    },
+    "lemmas-a7.json.gz": {
+      "bytes": 8376,
+      "sha256": "325a7ad1e924715267636c62efb67bd1120f18daa497b2f7813ac3484f569f7f",
+      "records": 538
+    },
+    "lemmas-ab.json.gz": {
+      "bytes": 9266,
+      "sha256": "f38b0cee981238bd0bb22556e454d5dcc0fb2096841847381d709a41a48c30dc",
+      "records": 566
+    },
+    "lemmas-b9.json.gz": {
+      "bytes": 8988,
+      "sha256": "edd5bd84b9d49f8af0d690ef3468a6ffd587e0bc9d55129b7705a70bec5f4628",
+      "records": 585
+    },
+    "lemmas-d2.json.gz": {
+      "bytes": 8500,
+      "sha256": "813eb94c1319d5b75d5a92808f8331ec95f5f0879c02a856ce4eeccd5c9131a7",
+      "records": 547
+    },
+    "lemmas-17.json.gz": {
+      "bytes": 8361,
+      "sha256": "ca8201338768ff0d629a066778940308f7842aef908167bba7e460a81a9da298",
+      "records": 542
+    },
+    "lemmas-92.json.gz": {
+      "bytes": 9050,
+      "sha256": "e42663758795b51a839b9ceba2c858c90515205bddbfc15ff4351e2e842f08c2",
+      "records": 591
+    },
+    "lemmas-a1.json.gz": {
+      "bytes": 8778,
+      "sha256": "f73292b536fc6e3e23d4cb798a6825c472eeeddfdb4bfda4a05929fd024d57ad",
+      "records": 565
+    },
+    "lemmas-24.json.gz": {
+      "bytes": 9459,
+      "sha256": "eb7e7c927d2ae92e51787dc759beaf846059c72ff878d74ddbfc1cec70dc8fe7",
+      "records": 612
+    },
+    "lemmas-42.json.gz": {
+      "bytes": 8819,
+      "sha256": "97814b0eb572c4ed2b54a8406a50f97594011f96978de035691f1dc34b94f4e8",
+      "records": 581
+    },
+    "lemmas-0c.json.gz": {
+      "bytes": 8270,
+      "sha256": "a6d4f687094b1ec085bce784f73d4caa404ebb4a4191b22abfb0cfa677aa9e9f",
+      "records": 549
+    },
+    "lemmas-0d.json.gz": {
+      "bytes": 9105,
+      "sha256": "fe04d947581915f39ba5bd8c8177f33dabe129e7b838fe1934a700fda7c2e88f",
+      "records": 578
+    },
+    "lemmas-fe.json.gz": {
+      "bytes": 8631,
+      "sha256": "ce38e2737ccee8fec003fd4601784bf145ce91f854517e6ba62a79ba6fb83c20",
+      "records": 557
+    },
+    "lemmas-c5.json.gz": {
+      "bytes": 8952,
+      "sha256": "ebdc4715e666216c44be6210c668778768295bac81da22bd3f740533a5916d51",
+      "records": 553
+    },
+    "lemmas-9e.json.gz": {
+      "bytes": 8934,
+      "sha256": "8cbf6f2c6f446fbd2b873ad494ddc2acf922ca21ce4625d851fa5249704f9411",
+      "records": 593
+    },
+    "lemmas-89.json.gz": {
+      "bytes": 8597,
+      "sha256": "ef48d1c645d6094c150e5129804e68fa71ae3f6d0efa7ec44ce224150e5b10ca",
+      "records": 560
+    },
+    "lemmas-8f.json.gz": {
+      "bytes": 9515,
+      "sha256": "dd71b8429d656c696d166d121c8b68fa4a7cd09852086e2721de5db97579c298",
+      "records": 604
+    },
+    "lemmas-50.json.gz": {
+      "bytes": 9285,
+      "sha256": "97b38ac03e98f058e3e0aae5fa8a01decf7f6d36fa54c79ece7dc0ef0f38d6b7",
+      "records": 589
+    },
+    "lemmas-ec.json.gz": {
+      "bytes": 9099,
+      "sha256": "356eec41223c7cc1636073bdb86e1ec4057b24c3e9563d88345bb03349d19e48",
+      "records": 569
+    },
+    "lemmas-95.json.gz": {
+      "bytes": 9288,
+      "sha256": "77018d69b1db61090964156b7a8ad9a575e1962558b675245aa608242ed2435c",
+      "records": 607
+    },
+    "lemmas-7c.json.gz": {
+      "bytes": 8737,
+      "sha256": "7f6c151a0d85e37d1ca3d6888a7b13d3f7dd12297e41d67834a21ba497c4d65e",
+      "records": 554
+    },
+    "lemmas-7d.json.gz": {
+      "bytes": 9242,
+      "sha256": "35963580a7f81f156b92df450cab0e0931121af9b73cb8c292a43d07e6b8315f",
+      "records": 603
+    },
+    "lemmas-61.json.gz": {
+      "bytes": 8856,
+      "sha256": "364d66bd61010b8f30312460884f55f3a75fce7d4a8b7547058346631ca51876",
+      "records": 580
+    },
+    "lemmas-22.json.gz": {
+      "bytes": 8951,
+      "sha256": "6922b8b0f80b9864fae780c153fd99d86ffbefebadbb6266a056c91ce42141b4",
+      "records": 561
+    },
+    "lemmas-36.json.gz": {
+      "bytes": 8396,
+      "sha256": "120fac8bc716c733ca57b78ace7e47e1e2803650a76037888622510404139ca3",
+      "records": 539
+    },
+    "lemmas-1e.json.gz": {
+      "bytes": 8938,
+      "sha256": "deda0ca6661a99680d1fb9858922304de93f36a38560abf646db23fbfa907abf",
+      "records": 589
+    },
+    "lemmas-33.json.gz": {
+      "bytes": 9262,
+      "sha256": "e45ad22a85505eab2e55da0f7cb28c85b02f491e552aa7c0d15438dac174f2c8",
+      "records": 601
+    },
+    "lemmas-37.json.gz": {
+      "bytes": 9646,
+      "sha256": "fb895c9ffe13736b84d5fd05eb27a0e8137d182616235f3e01109bbc817fca89",
+      "records": 607
+    },
+    "lemmas-5d.json.gz": {
+      "bytes": 8694,
+      "sha256": "21828ef01bd698ddb72a8f7c56bcd64fa79016fd61bb80f668aeb7fcf8715647",
+      "records": 551
+    },
+    "lemmas-cb.json.gz": {
+      "bytes": 9194,
+      "sha256": "6d006438c2c2275cede1033d4ff066a14f39ea6a31b5067a5e9026bdb00282b8",
+      "records": 590
+    },
+    "lemmas-0a.json.gz": {
+      "bytes": 9117,
+      "sha256": "f61f4e4df1c5b5b5dd61005d17ccb157f34a003c1526561846f7a80ee203603f",
+      "records": 598
+    },
+    "lemmas-83.json.gz": {
+      "bytes": 8670,
+      "sha256": "eecbf1b83d6f806bceea705922ac5a32b71201792de2139ce148da45f0c33a9b",
+      "records": 549
+    },
+    "lemmas-1f.json.gz": {
+      "bytes": 8660,
+      "sha256": "d376934550fe1717bbc009f3258d2d3f049a8929cb2ee1421dafe6caae200eba",
+      "records": 563
+    },
+    "lemmas-60.json.gz": {
+      "bytes": 8591,
+      "sha256": "cf7695964f87594ca3c9ea7eba40fc242c9e017e3ca35149a9ea0d9dbbe2d9bf",
+      "records": 555
+    },
+    "lemmas-2b.json.gz": {
+      "bytes": 9906,
+      "sha256": "85a57910e4c7a6926df603d65347340eeff32f95cf9e485689550da6e864d218",
+      "records": 628
+    },
+    "lemmas-ce.json.gz": {
+      "bytes": 9091,
+      "sha256": "94d55b3e81cfb59c98356978628c806c69a9eec45799850dbcb3fa3ed115307f",
+      "records": 596
+    },
+    "senses-71.json.gz": {
+      "bytes": 39073,
+      "sha256": "d81ef97a67a1c776edfc612d67fa9e0232d955f191935d982bce6a613f2c5ca8",
+      "records": 472
+    },
+    "senses-6d.json.gz": {
+      "bytes": 41785,
+      "sha256": "07f4f5140b431e4ec83f363f38e41dcee3f068ae4cccc134d75353d4d53517ce",
+      "records": 476
+    },
+    "senses-46.json.gz": {
+      "bytes": 42777,
+      "sha256": "53dd27123a2db520b5c67db82801de8cec14c3b815b3b82175a6797cd0d481cc",
+      "records": 474
+    },
+    "senses-56.json.gz": {
+      "bytes": 38477,
+      "sha256": "e0290fb9b6729e604970fed95bdbb8bcdce200e53b1bc249392e431e63b3ae3f",
+      "records": 451
+    },
+    "senses-6b.json.gz": {
+      "bytes": 36020,
+      "sha256": "9911fcc9b2cad184914238b9e927c041558c02ab2783d436c94c3805c493e5fd",
+      "records": 410
+    },
+    "senses-e3.json.gz": {
+      "bytes": 40621,
+      "sha256": "551ca9a0dc3af067c9585fdc0239e26b74f2ec562980f9934eabce6c3d41bcc2",
+      "records": 473
+    },
+    "senses-a5.json.gz": {
+      "bytes": 41817,
+      "sha256": "c011002760109ed7b0c76237d3f1a42da5657fdd229ef83853655dc1dd421898",
+      "records": 492
+    },
+    "senses-55.json.gz": {
+      "bytes": 37957,
+      "sha256": "4be10fd8cb4013b1c08ac9edced944d2f501a5578b61568b1c712238bd7f36f1",
+      "records": 450
+    },
+    "senses-ea.json.gz": {
+      "bytes": 41590,
+      "sha256": "ed7aac770875dcf6a6d76d6d6c0cefb8746e728c76aeba1b7009ec87439c05b0",
+      "records": 469
+    },
+    "senses-ec.json.gz": {
+      "bytes": 39970,
+      "sha256": "86928351f5a1bcf4cebdf7a5dc6fbb2ee7bd3f78344850bae90e69f248d47933",
+      "records": 461
+    },
+    "senses-e5.json.gz": {
+      "bytes": 39816,
+      "sha256": "cdfc2567234baaed794c7c56beea73887d4182c7781327dd6d9c79c38f808740",
+      "records": 472
+    },
+    "senses-c0.json.gz": {
+      "bytes": 41519,
+      "sha256": "36e59b5935c4ced7e32164f81922c9e76a18e355fb313731dac9fdd34b4563e7",
+      "records": 495
+    },
+    "senses-83.json.gz": {
+      "bytes": 39673,
+      "sha256": "e5aab519ac9ffc48f4fa8051e65c23ffc5a08100fd4d57677d65fc22b5c2c5d7",
+      "records": 431
+    },
+    "senses-07.json.gz": {
+      "bytes": 40677,
+      "sha256": "0dbbac7b870fb8c70a57e24e21f7193961991ba3f838bd810394d048e54ac97b",
+      "records": 479
+    },
+    "senses-0a.json.gz": {
+      "bytes": 44967,
+      "sha256": "42873cc966042bc7b4aae64ffcbb9108f082cc46c84a7df73ac32cd486dd2519",
+      "records": 500
+    },
+    "senses-67.json.gz": {
+      "bytes": 37594,
+      "sha256": "b4422faa249a9109e0b1c9235c8d3c369bc277569f9257472f8ef332c79937f6",
+      "records": 457
+    },
+    "senses-42.json.gz": {
+      "bytes": 41710,
+      "sha256": "b4c5bbef755d98fb5b6bc7f0e454b892243f8189ca07d3b96f4a69e842febe07",
+      "records": 447
+    },
+    "senses-57.json.gz": {
+      "bytes": 40824,
+      "sha256": "bb7004578664766de28a428b3b28be715af72111c8fce711fc3cc721e356e02a",
+      "records": 494
+    },
+    "senses-13.json.gz": {
+      "bytes": 36777,
+      "sha256": "3b1941e8efc114ec8f27df443bf34ca24e98881b250815a1defbb94b66e6eac8",
+      "records": 425
+    },
+    "senses-9a.json.gz": {
+      "bytes": 40687,
+      "sha256": "7cee1c82869fd424ae600953340bfb701db85ac90435f92249a0ba57636ab6f3",
+      "records": 461
+    },
+    "senses-8a.json.gz": {
+      "bytes": 39972,
+      "sha256": "6e699e41db279a60fd30051ca680e6e996e4b254b2d666019ddd24633bbe7325",
+      "records": 473
+    },
+    "senses-1b.json.gz": {
+      "bytes": 38264,
+      "sha256": "119df4642d43fcd3346fb9bdae5e52c2292105a72fc51f78b46c70169b51c0d6",
+      "records": 434
+    },
+    "senses-e8.json.gz": {
+      "bytes": 37935,
+      "sha256": "d4a40c692c1d995c4a63d24c5a1451e598381157fbbcb91d2dd105924c9f5343",
+      "records": 441
+    },
+    "senses-22.json.gz": {
+      "bytes": 41202,
+      "sha256": "6918f66bf739831d49a2cabe32e5f0366c292ad6d2795c593afd466da99d1be3",
+      "records": 447
+    },
+    "senses-ce.json.gz": {
+      "bytes": 36908,
+      "sha256": "583baa774758a006b2c7dc05a3140519c6d61005e02257e2d178cff90686d0f6",
+      "records": 433
+    },
+    "senses-76.json.gz": {
+      "bytes": 40157,
+      "sha256": "8818aaaafe02b5407e584f3c6ff6c08ac9a6d217fbb74d869becbdcffeb9c8e4",
+      "records": 448
+    },
+    "senses-97.json.gz": {
+      "bytes": 37947,
+      "sha256": "56a157cdd732852018f742aad6da072087b4b948098067b0db9ea9359c593ef2",
+      "records": 445
+    },
+    "senses-db.json.gz": {
+      "bytes": 38925,
+      "sha256": "b225778e43554db3f11b9ab4c645345e644c64c06bea8fc7fb5f842422861e0e",
+      "records": 434
+    },
+    "senses-e1.json.gz": {
+      "bytes": 37000,
+      "sha256": "6ef6d6e1f9dd4b7b7ecdd9d0d0317b2d7ef5ab0af764ac33db9580f2fd96fb36",
+      "records": 432
+    },
+    "senses-f6.json.gz": {
+      "bytes": 38942,
+      "sha256": "a1f36d1f9fd31456bf888839dac1ff546c5f517a4b459a631f54e04a675b0465",
+      "records": 465
+    },
+    "senses-30.json.gz": {
+      "bytes": 40284,
+      "sha256": "72a8a8a3f1a153b7ac166e0c53b79f62f44ec828117a68754e2ba42a7353a207",
+      "records": 470
+    },
+    "senses-4f.json.gz": {
+      "bytes": 40290,
+      "sha256": "ea75480b6e2f0844370278049866966b569e2d6f6f7fc387c99709031b9f423e",
+      "records": 475
+    },
+    "senses-15.json.gz": {
+      "bytes": 41925,
+      "sha256": "dc0d707f51880922f23795fdf6c817f4bcf18e311df9894fba5b81e5ca38093d",
+      "records": 491
+    },
+    "senses-8e.json.gz": {
+      "bytes": 40265,
+      "sha256": "e204211f49432f4520076a07021d9a894ccea4b6f4844ce2cfc143cd53042e26",
+      "records": 465
+    },
+    "senses-ef.json.gz": {
+      "bytes": 41581,
+      "sha256": "20e778d5f59eee392a7201f893be839e86f7bd464a854c7452a4deb63289c0e6",
+      "records": 474
+    },
+    "senses-d7.json.gz": {
+      "bytes": 39575,
+      "sha256": "e6532ca844b01d1b0e58ec9dd555b895262d8d1b134382ad842607c36aace0d2",
+      "records": 464
+    },
+    "senses-5c.json.gz": {
+      "bytes": 42694,
+      "sha256": "bbaead0be68c8f8216b925f8766339e7b3d06fb686bd129dc2f9e9007af9c9ef",
+      "records": 483
+    },
+    "senses-b8.json.gz": {
+      "bytes": 41213,
+      "sha256": "3117dafe8d6f2b540036e31812bb22a023c671eb68964b908f6bba1afac224b0",
+      "records": 477
+    },
+    "senses-86.json.gz": {
+      "bytes": 43173,
+      "sha256": "5f5ebde130c29cc734ebd079c778d2c00591da59674350282a69b6d7ec259d2c",
+      "records": 485
+    },
+    "senses-4d.json.gz": {
+      "bytes": 44675,
+      "sha256": "04e1178f7642804282f9beb892dba254df0823cc25dfd37a37b46f59377af1cc",
+      "records": 502
+    },
+    "senses-87.json.gz": {
+      "bytes": 35819,
+      "sha256": "bfba76468547dc27db5d2facef349911f9805da8f11b36bad6bfc6d591744cb7",
+      "records": 428
+    },
+    "senses-b2.json.gz": {
+      "bytes": 37475,
+      "sha256": "4b47dd3fbe43d245e42d9edd16934e595b9d8a393fd005200019615b9a4ca90e",
+      "records": 439
+    },
+    "senses-8f.json.gz": {
+      "bytes": 38459,
+      "sha256": "dfe925dec456ce9cee8df2e5641c0d2d4369640898ebe2324a3290a9c3a02f2d",
+      "records": 457
+    },
+    "senses-c7.json.gz": {
+      "bytes": 44019,
+      "sha256": "a3896928411b97a397aa7540e5775e78d3db651f9d72bb74869cd140ebe2e44f",
+      "records": 466
+    },
+    "senses-82.json.gz": {
+      "bytes": 41562,
+      "sha256": "24e058a94eaaefd1012761f5d04c4fc5b3bc524886e51a4f5f7ef00174fcadbb",
+      "records": 468
+    },
+    "senses-d2.json.gz": {
+      "bytes": 42917,
+      "sha256": "57f55ca92e2543202ee65ab1b5f3ea42ade173c115ba0fe4cfabaa6e4a4ba73f",
+      "records": 467
+    },
+    "senses-f8.json.gz": {
+      "bytes": 40675,
+      "sha256": "ebc27d43b0f9e7c035eb8e1997c4996b10a2313a05eee01aea49b7ed5f205638",
+      "records": 478
+    },
+    "senses-54.json.gz": {
+      "bytes": 38475,
+      "sha256": "899da2fc1a9de34798f474ac49aea8cfa214b546454d73db3e81d3ec745ad2ec",
+      "records": 452
+    },
+    "senses-7b.json.gz": {
+      "bytes": 41708,
+      "sha256": "6588da2a55450482e976d957e1f2b12694b2d69256f841f47fcf5a3b0862ceac",
+      "records": 452
+    },
+    "senses-28.json.gz": {
+      "bytes": 41011,
+      "sha256": "8aa24bc0a8d9c396f40c516fd6709b7f204a36d23fa11eeef0bdab403b6b3ead",
+      "records": 463
+    },
+    "senses-4c.json.gz": {
+      "bytes": 41084,
+      "sha256": "aca55caff192d528b4d116afcecc95dd184debda2c9910c86230923e52b32eca",
+      "records": 457
+    },
+    "senses-a7.json.gz": {
+      "bytes": 36768,
+      "sha256": "1cb43e58d0b8a2a6acfe789b87390f1f3297fc364644db9eed5aa9e398fb980d",
+      "records": 426
+    },
+    "senses-d5.json.gz": {
+      "bytes": 36797,
+      "sha256": "ec06e9f71cd63c609703d3a8a1e5fd6fd3c7fdea2f9f66fdf965fd902f427ce0",
+      "records": 429
+    },
+    "senses-88.json.gz": {
+      "bytes": 43156,
+      "sha256": "a9f58804671f3a40129e41190e5e4a42fbda327f8eced2d65cf81fa58ee4541f",
+      "records": 495
+    },
+    "senses-5d.json.gz": {
+      "bytes": 38818,
+      "sha256": "751371ffc5de5bef4ce05edd1cff1d68e144c640cd06a57419ecc5ee46a87ed6",
+      "records": 456
+    },
+    "senses-d8.json.gz": {
+      "bytes": 43136,
+      "sha256": "be6b8e121b1332114587c74a0959c96944381f11bf25f1686983b91ec4315b5c",
+      "records": 491
+    },
+    "senses-ff.json.gz": {
+      "bytes": 39018,
+      "sha256": "7e5bbd7ba9f585da9e3a947a4677ef3c8aa7459536cd64f819c4376b069746e7",
+      "records": 465
+    },
+    "senses-c8.json.gz": {
+      "bytes": 43797,
+      "sha256": "60ebe4d662481054ffadd6690b627bb5b427ac969ce09e3e5f7d1463a65da24e",
+      "records": 499
+    },
+    "senses-a8.json.gz": {
+      "bytes": 36520,
+      "sha256": "9a5ee93321fd6f9f8d271c4eaad0b1c1a9b6e268f9dd225f1b10bde7fba2f3a6",
+      "records": 428
+    },
+    "senses-fe.json.gz": {
+      "bytes": 38913,
+      "sha256": "e223202ae19999357259d09bc4b6a39735fbca090f90162f17198fa1f1bce0ed",
+      "records": 466
+    },
+    "senses-27.json.gz": {
+      "bytes": 38934,
+      "sha256": "c1ce3f5d49a4896e66cfa6164345e7e045279d3d3e87f13f70ffaa03fcefcb53",
+      "records": 450
+    },
+    "senses-2e.json.gz": {
+      "bytes": 39611,
+      "sha256": "8fb9407cb5cf9fd2e23db2c80dd68fa35d5ea00c67bb0efc314c0e9348115f1a",
+      "records": 443
+    },
+    "senses-ed.json.gz": {
+      "bytes": 46106,
+      "sha256": "2acf7aec922370852dd9e645588a4b375e290beadf23e016a339d830215c7054",
+      "records": 504
+    },
+    "senses-9c.json.gz": {
+      "bytes": 38214,
+      "sha256": "86bf8b7419fea2d97a8cf81972bd3c1ba94abdc21dbe5f9abd9006b65918db66",
+      "records": 453
+    },
+    "senses-94.json.gz": {
+      "bytes": 39449,
+      "sha256": "41f0680eabd58859f1f6440e9967f552ff725e511a589d86401b7849c4eaace1",
+      "records": 463
+    },
+    "senses-4b.json.gz": {
+      "bytes": 39014,
+      "sha256": "ac7ca06ef237f3b84cade360854a851b45c46736ddbbdef0a6200ff80de4fd00",
+      "records": 458
+    },
+    "senses-d6.json.gz": {
+      "bytes": 36312,
+      "sha256": "725ce3ebfdd0c8267903d451892abff6100452bb2d52131178266946a94ac61b",
+      "records": 433
+    },
+    "senses-3a.json.gz": {
+      "bytes": 38475,
+      "sha256": "1c2147b6a5eabc8abeed164e0c995374d3d7e25959736ac47f815da60a03ff9d",
+      "records": 461
+    },
+    "senses-fa.json.gz": {
+      "bytes": 41813,
+      "sha256": "c6ad68333535f83acc0f0f4bd9cad906fd80bb2305d894a23231e3f9a6fbaef2",
+      "records": 480
+    },
+    "senses-e7.json.gz": {
+      "bytes": 38754,
+      "sha256": "45d78bbc6e496a03061febb01ba3479fc7511725835c77a66fa5cd7d29f55a02",
+      "records": 447
+    },
+    "senses-2c.json.gz": {
+      "bytes": 37673,
+      "sha256": "3d79ea598a85ecd9fee781dee5a21e141be47d22ae59ac0a71fab279543da333",
+      "records": 441
+    },
+    "senses-bd.json.gz": {
+      "bytes": 39590,
+      "sha256": "75caa5bc03a2bb2297ad2b00e1f55faa5ad53e6ca378cf207f70e7e13b7efc32",
+      "records": 448
+    },
+    "senses-41.json.gz": {
+      "bytes": 37493,
+      "sha256": "34a7cdc654f771883865fca4220470c39981d90d9c7ff660354b930f4ee220a6",
+      "records": 434
+    },
+    "senses-7d.json.gz": {
+      "bytes": 38883,
+      "sha256": "2cbceb19539fc05d8c7951672a62645957440edebe326bff4f01b3032681d711",
+      "records": 444
+    },
+    "senses-19.json.gz": {
+      "bytes": 40015,
+      "sha256": "303ff551fc466a97501476d9bfb026cf4a29e2252fddd6e9f04fbb72299ce8af",
+      "records": 471
+    },
+    "senses-31.json.gz": {
+      "bytes": 41381,
+      "sha256": "99338a50e059c4aa52fe1c78e5c05bdb2ac08af3271564be57cd4ff18cd2795a",
+      "records": 479
+    },
+    "senses-96.json.gz": {
+      "bytes": 40085,
+      "sha256": "b2f8c7a947fa20ecebe01d364ecefa02c1e1fe1f4253c32101310db5d6d030d6",
+      "records": 459
+    },
+    "senses-0e.json.gz": {
+      "bytes": 35610,
+      "sha256": "ad53966dc6168b32d612b617bc56aef362eb0109db3eb193906ec1b99a5b8315",
+      "records": 424
+    },
+    "senses-b9.json.gz": {
+      "bytes": 39181,
+      "sha256": "dde456a6a16c12499d77e7b38001e454ee8e1a9b4c01187ca38cce7fe99909d4",
+      "records": 463
+    },
+    "senses-1a.json.gz": {
+      "bytes": 39957,
+      "sha256": "9e19bcaef1ab6d3114a7b7bd1ce2f278931012c3063d1b507e56decbef21cdaa",
+      "records": 455
+    },
+    "senses-77.json.gz": {
+      "bytes": 42173,
+      "sha256": "bceb9d864671ff14a71c3dd8e724b305caf298078776b90000fd94755d0e7e94",
+      "records": 479
+    },
+    "senses-47.json.gz": {
+      "bytes": 42396,
+      "sha256": "76f94c814086c1d8e9a4ad16bb8446289ea4adec5cfe07c28b50b0bd6a27a5a7",
+      "records": 488
+    },
+    "senses-08.json.gz": {
+      "bytes": 38171,
+      "sha256": "fbe18d710d3fe006d064bb9aa927213f21a6df6e2d40316306e44e1c67767741",
+      "records": 456
+    },
+    "senses-e6.json.gz": {
+      "bytes": 41177,
+      "sha256": "761689d1a95232fc51f71aa2505f298cb1411afd2d3b4b5bf938aa53068e8f54",
+      "records": 476
+    },
+    "senses-dc.json.gz": {
+      "bytes": 40583,
+      "sha256": "0fdae6f13b96740ce2e9a45ae04e87b16c86f501305a018de2da7aff31fe072b",
+      "records": 482
+    },
+    "senses-43.json.gz": {
+      "bytes": 37636,
+      "sha256": "766a6249ba7279dd848a04f5f841ae2723ed466705f0277ea0aff2dc58874115",
+      "records": 448
+    },
+    "senses-f5.json.gz": {
+      "bytes": 38261,
+      "sha256": "d0e8b9eceb13dc0ea49b1cca350fea028ba473e540e184e8003084a06c2d27c4",
+      "records": 453
+    },
+    "senses-9d.json.gz": {
+      "bytes": 39934,
+      "sha256": "d5a7d7c7ffaa056ae485c0e6f4350fb4c82eab80905b4e09b79d1e726e2db62e",
+      "records": 445
+    },
+    "senses-95.json.gz": {
+      "bytes": 41248,
+      "sha256": "eff9683fe7e4b62a6dcd3bd156c5fe353fb7ce3cbcb17813f03158b3bd274f8b",
+      "records": 459
+    },
+    "senses-35.json.gz": {
+      "bytes": 42730,
+      "sha256": "758e87d63686c95cb0b8e54f62a131ddfb74d0150e45242871f3fb76df96c224",
+      "records": 484
+    },
+    "senses-f9.json.gz": {
+      "bytes": 39575,
+      "sha256": "60632463358e04b858863b1d0502a6c9cebedbf7aae9f3f9f564b913c2e19b9c",
+      "records": 459
+    },
+    "senses-cc.json.gz": {
+      "bytes": 41458,
+      "sha256": "fdaac54e911029372056d9a12f382e81240a73099d7edc32cfd7f4f6f157faa9",
+      "records": 453
+    },
+    "senses-29.json.gz": {
+      "bytes": 43589,
+      "sha256": "06b4bd5081be5d25e62b59ae2437dd231637043d28a4a39a4bc433220e1ab487",
+      "records": 497
+    },
+    "senses-ab.json.gz": {
+      "bytes": 39660,
+      "sha256": "281decfe9af383799209e7a15909acf7f45b3892cae739e04baa3114078cce31",
+      "records": 455
+    },
+    "senses-9e.json.gz": {
+      "bytes": 40906,
+      "sha256": "9e3867b534405ac3a9d8fa79e56d8ab2b8fa0e056519c4fe9c4fa9baac0d779c",
+      "records": 451
+    },
+    "senses-75.json.gz": {
+      "bytes": 36513,
+      "sha256": "51083f450c96d15a1f9336388c31760efcf714756765274327bbb339f39a5a44",
+      "records": 433
+    },
+    "senses-49.json.gz": {
+      "bytes": 39725,
+      "sha256": "43bff9ba4f98e6db1661a831174eaa248b542dfbb8d5afaabdc8187ad66d8f7d",
+      "records": 469
+    },
+    "senses-cb.json.gz": {
+      "bytes": 39550,
+      "sha256": "8064074924d324f5acce05cbb6f8d09860085aab4d61cba5800d8cd01930edfd",
+      "records": 474
+    },
+    "senses-21.json.gz": {
+      "bytes": 40400,
+      "sha256": "c2dc2548dc7e28d76b4c428960bae64946ce43e75ae22403d4e7272aa5687660",
+      "records": 461
+    },
+    "senses-05.json.gz": {
+      "bytes": 44039,
+      "sha256": "c61393d59d05fc8179d3162c31556d50219c920de536ea8bd7d4d8053091d923",
+      "records": 516
+    },
+    "senses-40.json.gz": {
+      "bytes": 39067,
+      "sha256": "ac3d2d1937aa79b44df4a65a81f2824fe4299a06a7807c3796793cba0dfe7903",
+      "records": 432
+    },
+    "senses-7e.json.gz": {
+      "bytes": 36208,
+      "sha256": "8f551015c93561e720f336f0896eef362dee11354bd391f402913871fd088a7a",
+      "records": 442
+    },
+    "senses-14.json.gz": {
+      "bytes": 37946,
+      "sha256": "e98ae0d3838e3ed24d21dd4709960b5a6de42b677713f0cfeb223cac2452fe4a",
+      "records": 444
+    },
+    "senses-36.json.gz": {
+      "bytes": 38173,
+      "sha256": "2c049ca6ba74c0c1233c140b937d0f1b4b0440a154a48efd652b4e075d43cabb",
+      "records": 439
+    },
+    "senses-4e.json.gz": {
+      "bytes": 42230,
+      "sha256": "7b18d6fb93d2b6699b6d285730645ee66f7ed95b26b16228af121b6ada933ee6",
+      "records": 486
+    },
+    "senses-ee.json.gz": {
+      "bytes": 41394,
+      "sha256": "5a7b2a0906e2ac7fb22ae01663baff6cd1290ec5a723c6452f4f9c7f599146dd",
+      "records": 463
+    },
+    "senses-53.json.gz": {
+      "bytes": 44843,
+      "sha256": "2df87a558fa5613a66cba75a3ccf5328976ef3cd275bfb34e6d40536b33a34e5",
+      "records": 500
+    },
+    "senses-89.json.gz": {
+      "bytes": 38633,
+      "sha256": "f8c57a6e510362f95822df6ddd29de99484884142c14684b49cecf6765cb9065",
+      "records": 444
+    },
+    "senses-be.json.gz": {
+      "bytes": 41564,
+      "sha256": "8f50b6278aa95e9133bad70f905787ef8c8267f1910642ac7b630a916d16cb12",
+      "records": 473
+    },
+    "senses-ae.json.gz": {
+      "bytes": 37987,
+      "sha256": "8ffc98eb21658e8c450c701aef3721d422a45092f892a98aa9543347189f173f",
+      "records": 441
+    },
+    "senses-fb.json.gz": {
+      "bytes": 36517,
+      "sha256": "65a1d1ec087635119fad179ab6f8c2bc9eb3041e362e257f3cc12dced704a01b",
+      "records": 424
+    },
+    "senses-b5.json.gz": {
+      "bytes": 37975,
+      "sha256": "9773df72c5c67b9a0c20fb58ecf9d9d0e11c07536821a65a4ed4a76ca33bc355",
+      "records": 434
+    },
+    "senses-7c.json.gz": {
+      "bytes": 40486,
+      "sha256": "09145c91ad8a7b0218a2790b1c3f683d63fda33f05fd522062b99840580bce7b",
+      "records": 475
+    },
+    "senses-9b.json.gz": {
+      "bytes": 42062,
+      "sha256": "5204ffacdf34eb5702e529b4abe27f424f5e87636046a717ddac0021f5f5c510",
+      "records": 480
+    },
+    "senses-23.json.gz": {
+      "bytes": 38487,
+      "sha256": "22d555dd8934f571a0eb9584175511e6461f54b5d85a6d9b2620169eb1f64e4f",
+      "records": 453
+    },
+    "senses-aa.json.gz": {
+      "bytes": 37936,
+      "sha256": "3868a440c30caf56af716e1c152876cb85d416c8ab09325335325e968d022a3d",
+      "records": 431
+    },
+    "senses-c3.json.gz": {
+      "bytes": 37591,
+      "sha256": "44ee64ee2bbc31a78ccdb88bcddb26ec85dbe45be118c7e9ebacbf004de6d94b",
+      "records": 436
+    },
+    "senses-6c.json.gz": {
+      "bytes": 40978,
+      "sha256": "daa0d0bbd35ce7074e82208d802beca2252b756b1b4ff6c46dff384c2b2ab584",
+      "records": 490
+    },
+    "senses-8d.json.gz": {
+      "bytes": 40792,
+      "sha256": "6c582143bcbadd8f51f5d5905743d8884f4cfbb8fc22ae13a74d795d246ee82d",
+      "records": 476
+    },
+    "senses-ac.json.gz": {
+      "bytes": 37764,
+      "sha256": "b23a1909a2d1e6ba5847b0df9c1e4caeb400e2b4642e120fe1fd7da6d8474b8d",
+      "records": 438
+    },
+    "senses-df.json.gz": {
+      "bytes": 36307,
+      "sha256": "eecb9df81d6e2ec6fa5083e57b4a38bf4a00cbdd5ccf8669a4e75e2ebce68595",
+      "records": 433
+    },
+    "senses-f2.json.gz": {
+      "bytes": 35760,
+      "sha256": "ed919e91021aa9d4c23b70f7fa7738856158f816b0681ebe4b073cb645a63b59",
+      "records": 438
+    },
+    "senses-c5.json.gz": {
+      "bytes": 37526,
+      "sha256": "2e74f4d3b9b1895f54abb30a25f674fb395a0911d5ea1f80453aa2cebba05eb2",
+      "records": 437
+    },
+    "senses-63.json.gz": {
+      "bytes": 40012,
+      "sha256": "1e06e4d427eb9263ea082fb51ac0485e4ff7725db696f33b2965cc844280b869",
+      "records": 451
+    },
+    "senses-b4.json.gz": {
+      "bytes": 36055,
+      "sha256": "28ab61ca51ae770737e9c9b9e9c8232e5b8892c67313346ed0de7df2e57a6945",
+      "records": 421
+    },
+    "senses-16.json.gz": {
+      "bytes": 39544,
+      "sha256": "42a7c982564f10a883e9aa54854bcd92b99b06157343519c3a7080090158df0e",
+      "records": 480
+    },
+    "senses-01.json.gz": {
+      "bytes": 40825,
+      "sha256": "9a4f6a2469e70f46ce5c11043c28fd58f6de4e1964688e716ef098c820c2957b",
+      "records": 483
+    },
+    "senses-64.json.gz": {
+      "bytes": 39536,
+      "sha256": "25b33b24d57e6cbaed55dc5020a864b522d2fdfc32218d8b2a6e3693beda0488",
+      "records": 470
+    },
+    "senses-bb.json.gz": {
+      "bytes": 40163,
+      "sha256": "d779295aaf86ed8cbefc711abb034a58e3ca88eae73a7a096ca2d83179b0e3ff",
+      "records": 450
+    },
+    "senses-37.json.gz": {
+      "bytes": 42107,
+      "sha256": "f3e0728f9d9c260284f0ff21b123f653dbab095579bb34763ad3ceac826ef90b",
+      "records": 494
+    },
+    "senses-98.json.gz": {
+      "bytes": 40206,
+      "sha256": "098e251433185734bc6a1fa1feb6e62cf629b0526ce37e2ca62fc14fc49689d4",
+      "records": 459
+    },
+    "senses-0c.json.gz": {
+      "bytes": 34525,
+      "sha256": "3e1c7663b5e4ed11d575425ce0bab53772d21b34d9cf78a7ecd7ae61b5e56f8b",
+      "records": 427
+    },
+    "senses-a9.json.gz": {
+      "bytes": 41642,
+      "sha256": "0dfe8618a824fdd72258a4e01a12c990c42b3a4486d8b9b443ae4311fb2b9711",
+      "records": 480
+    },
+    "senses-cf.json.gz": {
+      "bytes": 41079,
+      "sha256": "1aecd1ce675e3cf6056f43ca50bbb6a2f88f517c3b7f3ce9ec353d338e51befb",
+      "records": 447
+    },
+    "senses-fd.json.gz": {
+      "bytes": 41145,
+      "sha256": "9ca3a2b39491add72f20f78f3ffc69df2d4cf5f4fb225d90d31ee917545bb50a",
+      "records": 476
+    },
+    "senses-0f.json.gz": {
+      "bytes": 38547,
+      "sha256": "fdc19d5ce9ce94fa8b730e32601ad6ae8762f735c30abc307bf13f2c4b9b3986",
+      "records": 445
+    },
+    "senses-6e.json.gz": {
+      "bytes": 35799,
+      "sha256": "c89f4a7be04d66d133a2da4a433ad87750e61d5c79c3699bbaf57bd492c4b840",
+      "records": 419
+    },
+    "senses-ba.json.gz": {
+      "bytes": 38246,
+      "sha256": "8aa88b7862a80858a4df7e13f3f05d96de67e810d98c37bb29686c99c2b807c1",
+      "records": 442
+    },
+    "senses-2b.json.gz": {
+      "bytes": 40948,
+      "sha256": "9d7f15dc48087073d929110edd5c1c46d0967a4f4d662aacb361968d86c11ddd",
+      "records": 452
+    },
+    "senses-1e.json.gz": {
+      "bytes": 39799,
+      "sha256": "6ac0d69552a95ebfbafa114247bbd9497df851c8acf20fdf84023f8cef9a611d",
+      "records": 460
+    },
+    "senses-93.json.gz": {
+      "bytes": 34829,
+      "sha256": "7fb6b84c82853a6e9aabcad1d2e02a40e525f1f900001d01d2d2e6e9195d5d00",
+      "records": 423
+    },
+    "senses-f1.json.gz": {
+      "bytes": 38511,
+      "sha256": "7e7942ad6c1d8395860df9484360169339174f09e1b8a55035f6401d10d5fb99",
+      "records": 434
+    },
+    "senses-26.json.gz": {
+      "bytes": 40840,
+      "sha256": "838fa336c8d750b2690c280e429798f38797c34c64be2065cb2f3b1bfd16bb04",
+      "records": 478
+    },
+    "senses-00.json.gz": {
+      "bytes": 42750,
+      "sha256": "69591301d50bb66429013fe1eb2c146f2bf4a13c09999d99816f7aad7f407f22",
+      "records": 481
+    },
+    "senses-bc.json.gz": {
+      "bytes": 39444,
+      "sha256": "3c7647c7d8a542683498944ec3b674f31e7a5ae5aab556bb36d25cb10cc3f01b",
+      "records": 457
+    },
+    "senses-a6.json.gz": {
+      "bytes": 38790,
+      "sha256": "f8c43ab775a3d908c3a4ed68a10e0e93914ba63d0bd515ef48968d95edcc0e68",
+      "records": 439
+    },
+    "senses-1f.json.gz": {
+      "bytes": 38181,
+      "sha256": "445bcf64c9018c0d3187dc99dbafdf1c50697225d49d749660d50e7d73502d0d",
+      "records": 440
+    },
+    "senses-79.json.gz": {
+      "bytes": 39724,
+      "sha256": "d76129dae5a32386025f53f0950c72722dd01eeafd05b93db81f36286b63d0f9",
+      "records": 464
+    },
+    "senses-85.json.gz": {
+      "bytes": 41994,
+      "sha256": "3510a4eb6617112d32cdabbae36d48ae8b2fe407dea431500ae178c9ced3b369",
+      "records": 495
+    },
+    "senses-60.json.gz": {
+      "bytes": 38237,
+      "sha256": "80a92f3f3b6825a744e8778fe161cd5ba0448efb338f31371798f914263f4d82",
+      "records": 460
+    },
+    "senses-48.json.gz": {
+      "bytes": 38673,
+      "sha256": "1bf655acb8ee756d1086798ae844e67ad00d5c59fe8ca8581c28b6d8d11f93a5",
+      "records": 453
+    },
+    "senses-a4.json.gz": {
+      "bytes": 42963,
+      "sha256": "fc800ea5c9b30770c6eaaf65cef2557cc3f3b7f8daa79e1c9520d15122454c83",
+      "records": 496
+    },
+    "senses-2d.json.gz": {
+      "bytes": 43484,
+      "sha256": "61967803ee1d76f230bef371ae45df796be6af654a5f0b0ad43bdaa4462b6d81",
+      "records": 467
+    },
+    "senses-7f.json.gz": {
+      "bytes": 40511,
+      "sha256": "810a82e9d59ddf50f380a597c2dccfc9b05fd3a4966f21ae4c11ff06f8382881",
+      "records": 470
+    },
+    "senses-c6.json.gz": {
+      "bytes": 39078,
+      "sha256": "d52f510c5d329e1b452219b2a6672e326dcbc26e6841a34b9c720722389a61e2",
+      "records": 470
+    },
+    "senses-91.json.gz": {
+      "bytes": 36061,
+      "sha256": "061563485dd77cdcf8f81c0c19d30f849e4aee61723e91b79907469864c01191",
+      "records": 412
+    },
+    "senses-ca.json.gz": {
+      "bytes": 42231,
+      "sha256": "a61d1374c6d0b94ad31554616412858bcc187e857e5ef479fef7be20b55cbce8",
+      "records": 456
+    },
+    "senses-e2.json.gz": {
+      "bytes": 38925,
+      "sha256": "b643164ac56c8613661021233e22dcfb79c25e05d8ecc826c94e4b019d01d5d7",
+      "records": 430
+    },
+    "senses-3f.json.gz": {
+      "bytes": 44808,
+      "sha256": "90c16efb396e3f236b6b4edaa6169bfb3417b936d91b33cd9417bff871d39a3a",
+      "records": 473
+    },
+    "senses-fc.json.gz": {
+      "bytes": 39702,
+      "sha256": "5d29262a47c1238f394f3ceda448ab26e1a02f01f28793e5f9bf79d9ac57d141",
+      "records": 469
+    },
+    "senses-62.json.gz": {
+      "bytes": 37245,
+      "sha256": "c5f353f2353da9a55744c33a83e9c72ca55ec8241d9ad6926df38054b695f774",
+      "records": 435
+    },
+    "senses-20.json.gz": {
+      "bytes": 37070,
+      "sha256": "0fd408445f7ae1cc7c12a845ce7e00ef30b340aca57116b0f0a9c5abf4eaa9f1",
+      "records": 437
+    },
+    "senses-da.json.gz": {
+      "bytes": 40174,
+      "sha256": "629538ef5543ab687e1bc65cb66c48e7c5fb35b4034b948f88d3ddcab8b534ff",
+      "records": 469
+    },
+    "senses-f0.json.gz": {
+      "bytes": 39092,
+      "sha256": "c8201ab49e3057eab742c38aaec0e65689e5c68d7c315a3de9eb2ea1c6700308",
+      "records": 426
+    },
+    "senses-a0.json.gz": {
+      "bytes": 38272,
+      "sha256": "d878325c34a5e0fcc633ad261cf9f897d04f5a8ad9dd58b557afc6561df9d238",
+      "records": 455
+    },
+    "senses-33.json.gz": {
+      "bytes": 38622,
+      "sha256": "8945c7099e1cfc61bc97b4d24fa395dda2b8cade6c855004afd2ccee1c86efe4",
+      "records": 453
+    },
+    "senses-8c.json.gz": {
+      "bytes": 38547,
+      "sha256": "42268fc6ed23a097caa83fafd0d155d5c7fb6f04e1acc5a9ee4d215b7dacf33d",
+      "records": 452
+    },
+    "senses-58.json.gz": {
+      "bytes": 42224,
+      "sha256": "80e3632ed5721b5b08268281184243a42c2365a8a265a02f7c37d658c93a38bb",
+      "records": 495
+    },
+    "senses-0b.json.gz": {
+      "bytes": 39639,
+      "sha256": "c29281fcb8cb2fee9fc01478341089a8aa7113af653e7f64cb538728f632185f",
+      "records": 463
+    },
+    "senses-5b.json.gz": {
+      "bytes": 40750,
+      "sha256": "d6559debfa59f4194286b1819f2d6e2b20820c841ad5f6d057e2c31990fef35f",
+      "records": 459
+    },
+    "senses-5f.json.gz": {
+      "bytes": 38760,
+      "sha256": "fa6d34bd58cd851e1175eecbea14da7ca4c57b7fba2c05423eeab5458fd29733",
+      "records": 455
+    },
+    "senses-f7.json.gz": {
+      "bytes": 42889,
+      "sha256": "17cf8cae2dd52b4fed21a3c58999fcb1e71f9a64270560a9c42aa13adc22bbce",
+      "records": 475
+    },
+    "senses-69.json.gz": {
+      "bytes": 41186,
+      "sha256": "15ea78bd13d49304815a94e62491f74f56c40319d5690344c4b90a698ca51232",
+      "records": 478
+    },
+    "senses-d3.json.gz": {
+      "bytes": 41940,
+      "sha256": "af3fa376b1c9ecdc2c7348944a258b2d7d3929b4c294658ed11d8401b30bf629",
+      "records": 478
+    },
+    "senses-f3.json.gz": {
+      "bytes": 37506,
+      "sha256": "f28d0c775bdf73cb1bf1a6db8fe06ea7239c587c523e2d1d2d6eb4dd1903bc25",
+      "records": 438
+    },
+    "senses-72.json.gz": {
+      "bytes": 38595,
+      "sha256": "4f93aa7c8ff508c5880d50d57f7f5f4cc02f4f41e92b17b3a43e7d72423afbfe",
+      "records": 446
+    },
+    "senses-32.json.gz": {
+      "bytes": 43637,
+      "sha256": "2cafe856cbf198bc64f2acb05c487090cece285926931be7d0f6a1a82b73873a",
+      "records": 483
+    },
+    "senses-2f.json.gz": {
+      "bytes": 44831,
+      "sha256": "9efec65f21d6b4dc53d16b4ab179451f6f1ee28a2a8e5877f14a3ceb1ff0203f",
+      "records": 501
+    },
+    "senses-eb.json.gz": {
+      "bytes": 39167,
+      "sha256": "9d863fa57714300196633b1c338c9521e527fa2a9aec3e5d76a6c59aab3798f9",
+      "records": 459
+    },
+    "senses-17.json.gz": {
+      "bytes": 38868,
+      "sha256": "5adce11d42fe67aae781799832aa2501058df752eae53bb2744621d8b3c2620f",
+      "records": 447
+    },
+    "senses-39.json.gz": {
+      "bytes": 40979,
+      "sha256": "5486b8ceaa02bee3b6c621d91258e7d29c610d3c128ac37ed98681025dfca301",
+      "records": 473
+    },
+    "senses-34.json.gz": {
+      "bytes": 39928,
+      "sha256": "96a24e5edd5a723b4b51b7c7e519bdc40b67eab3461ea655b23bfd20cfa5b5da",
+      "records": 467
+    },
+    "senses-03.json.gz": {
+      "bytes": 38111,
+      "sha256": "e4961c719d21c79e5f76bdf6cca983b0212ae9e27c421d799a1313bedb3295de",
+      "records": 435
+    },
+    "senses-04.json.gz": {
+      "bytes": 41731,
+      "sha256": "baa82e73ae6e90318befc8368c2b86feed5199fedda314afa7b193d12b762a69",
+      "records": 477
+    },
+    "senses-9f.json.gz": {
+      "bytes": 42611,
+      "sha256": "b4bdefacb6021b6bc78f5dd924fc587b9d6a7b1ccba2f9113809f87c6ba58403",
+      "records": 504
+    },
+    "senses-61.json.gz": {
+      "bytes": 40285,
+      "sha256": "a01fdca302ad11a170057532c66e1e0e0e2516cddc223e6bc481f43ed1566b99",
+      "records": 469
+    },
+    "senses-59.json.gz": {
+      "bytes": 40083,
+      "sha256": "5d2294c417b71d5c8c4b554b60f79b599145722fcf4258f46d5248056ca5358c",
+      "records": 460
+    },
+    "senses-90.json.gz": {
+      "bytes": 42601,
+      "sha256": "8ffd78f9ccea88caf508c2515b1a795d8d3cabcb3df03f7028383b267d6b7d2d",
+      "records": 483
+    },
+    "senses-84.json.gz": {
+      "bytes": 38104,
+      "sha256": "37e06071661c0f333d50cb2a8f72fe59ccb72d71924967468c0cb10015d4fa34",
+      "records": 460
+    },
+    "senses-a1.json.gz": {
+      "bytes": 38824,
+      "sha256": "803bf1bb2aab836e3d0c493c445ed33d518f55f337705c432f29b57269de2e16",
+      "records": 473
+    },
+    "senses-66.json.gz": {
+      "bytes": 41435,
+      "sha256": "94d964d7366415dbb630a8c075123bc950fb64b37c73d1e0bf4a6cd925fb2af3",
+      "records": 469
+    },
+    "senses-18.json.gz": {
+      "bytes": 37002,
+      "sha256": "950ce0e921fac9e963c9f4f07033eadfc8bd450f387dd619098b93bc1ae04235",
+      "records": 442
+    },
+    "senses-3c.json.gz": {
+      "bytes": 43213,
+      "sha256": "7d49ada570eb1ccfc8997f1881eb3b7033282f42aad6e0a575b1649f437f421c",
+      "records": 491
+    },
+    "senses-d4.json.gz": {
+      "bytes": 40288,
+      "sha256": "0ee28ba37943ce97e675b9b9aeba38af1efaf3bafc0115354f9464fe04c334cd",
+      "records": 457
+    },
+    "senses-c1.json.gz": {
+      "bytes": 38365,
+      "sha256": "aa6187ee21c237b1d9d4f7c7add51e73a3ca3613a8f8f86fd1f5a7084a252684",
+      "records": 450
+    },
+    "senses-a2.json.gz": {
+      "bytes": 38729,
+      "sha256": "6c781627b4e42bcde3bc4a61f240beab70ca09c611f0c320dd91e696e3f341ea",
+      "records": 447
+    },
+    "senses-3b.json.gz": {
+      "bytes": 38755,
+      "sha256": "a065abf51834d575c49adbdc0a00171d1883a4af79ef7e3d86ac02bc98464b32",
+      "records": 449
+    },
+    "senses-4a.json.gz": {
+      "bytes": 38596,
+      "sha256": "6ebb167c3b5b43b4d38866b703a68e5663ac54227b7f4ae8c971e4a7bb0431c9",
+      "records": 445
+    },
+    "senses-45.json.gz": {
+      "bytes": 38723,
+      "sha256": "fa2985e9dcde38b4eeb13f90dd831050ea1bfc976b322e9f69206ab8ac8a1549",
+      "records": 463
+    },
+    "senses-5a.json.gz": {
+      "bytes": 40991,
+      "sha256": "7d3afc59f8ec200f3e87b9d379540f462bc20f665bc5bebedd99223a8bc231bc",
+      "records": 458
+    },
+    "senses-99.json.gz": {
+      "bytes": 40757,
+      "sha256": "5fc3e00d54c66def615a18123417a7684ae2511fa6a0de439b7dde257e0fbba9",
+      "records": 478
+    },
+    "senses-81.json.gz": {
+      "bytes": 37663,
+      "sha256": "bc460341204568227c6fa830dd6e1b884812c2ec57a96263fa33a33a13b01f37",
+      "records": 439
+    },
+    "senses-8b.json.gz": {
+      "bytes": 40194,
+      "sha256": "122d29c19ab552e5a361f18d413645fdaf99dc36df7722b0db478ffca25640f7",
+      "records": 460
+    },
+    "senses-c2.json.gz": {
+      "bytes": 41646,
+      "sha256": "6d4497eee69fb16d502b521eeb88d62c9c8ba93b3b4873a3a3f7ccccd3b198af",
+      "records": 461
+    },
+    "senses-dd.json.gz": {
+      "bytes": 40624,
+      "sha256": "7e400044873b4c3f0eba04e4005f61f384744f7c694622f257957f688a958db0",
+      "records": 469
+    },
+    "senses-02.json.gz": {
+      "bytes": 36479,
+      "sha256": "09d615632de4a61faec5e2c9571b281d33890f40fe2278850615f3a8f92fecd6",
+      "records": 440
+    },
+    "senses-d9.json.gz": {
+      "bytes": 39685,
+      "sha256": "69f5a11fccd52a26927b835fd49ee82046d7f81987174bdf7fc554d7bbf2bb2c",
+      "records": 463
+    },
+    "senses-af.json.gz": {
+      "bytes": 39741,
+      "sha256": "28105c11de3978aa6bb703157d2b1820a9bc2840de02c772e6815594abd8ee89",
+      "records": 471
+    },
+    "senses-6f.json.gz": {
+      "bytes": 37547,
+      "sha256": "7323ab84e02101a8736ba5f873f22f8f93f4f451d0d9bfc85cdd57aeefa9d857",
+      "records": 440
+    },
+    "senses-2a.json.gz": {
+      "bytes": 38354,
+      "sha256": "77c7e023a9c78cf5e9cf2db8ef94914f29ba77acecb04701d0966c676c24c259",
+      "records": 450
+    },
+    "senses-cd.json.gz": {
+      "bytes": 42171,
+      "sha256": "016fba7b3db23f6205d98ff108b364917036e1e956bc204fa61dd1253597dce2",
+      "records": 485
+    },
+    "senses-c9.json.gz": {
+      "bytes": 40826,
+      "sha256": "ee1061ce25120b638a6955a51d91b947ee7eaea0726bdfd87bac2f5ccb4938bc",
+      "records": 476
+    },
+    "senses-e0.json.gz": {
+      "bytes": 38894,
+      "sha256": "172506498c8e3b2a9ba18b7ee56cce60511b4e699ba55d57ea19720299b9fe0b",
+      "records": 430
+    },
+    "senses-70.json.gz": {
+      "bytes": 42548,
+      "sha256": "db7a7d62e686e7f0a8d2f4b10d6d6762dc7b3953dccfa143f928eabd91ad781f",
+      "records": 460
+    },
+    "senses-bf.json.gz": {
+      "bytes": 37907,
+      "sha256": "ca47811950a4d6e4675afb576bd5a1b75405cfbecda0750df6b510f169a9988b",
+      "records": 446
+    },
+    "senses-7a.json.gz": {
+      "bytes": 39575,
+      "sha256": "618171192f99ae89e3f11a60c06c0b1d1eb995399dba96fd127d7407d6d4eb07",
+      "records": 473
+    },
+    "senses-b0.json.gz": {
+      "bytes": 43970,
+      "sha256": "c92c2903f93fd13322270f9343447c2d662e2e9938676b36fd997ca9576d3c6c",
+      "records": 497
+    },
+    "senses-09.json.gz": {
+      "bytes": 40809,
+      "sha256": "a7be4e8aac50c668562cb10320105411daeb302b901c62ca07a5a145a75c5213",
+      "records": 464
+    },
+    "senses-78.json.gz": {
+      "bytes": 40788,
+      "sha256": "4e2fd8a5f936edf15dc27ebd32c1eb35dc96eaf87ab4907f8b400825d185fa01",
+      "records": 439
+    },
+    "senses-1d.json.gz": {
+      "bytes": 40830,
+      "sha256": "acfd86846f24d6277f16a30f02b0883c0e0a16d924c575225fe719f3f0617fa8",
+      "records": 470
+    },
+    "senses-11.json.gz": {
+      "bytes": 39478,
+      "sha256": "80c43990f1ce288ba346c2b09fd1837fc23247eaee08c273568ac2f0278b720e",
+      "records": 461
+    },
+    "senses-92.json.gz": {
+      "bytes": 36381,
+      "sha256": "00b154167b516b283a9fba7fc2cbe71ae8b4eea07d029faeafc61a3aa89c509d",
+      "records": 433
+    },
+    "senses-3d.json.gz": {
+      "bytes": 38134,
+      "sha256": "a8b48d6508cfd6ecee144d3ecd30dcbf4c9cb142fe31196cb2fae7e98359f926",
+      "records": 446
+    },
+    "senses-de.json.gz": {
+      "bytes": 44336,
+      "sha256": "57d47ac26f66ee202bdd664d8d860d27276be372cb6e81f579dd4f3e8b70a092",
+      "records": 528
+    },
+    "senses-06.json.gz": {
+      "bytes": 41572,
+      "sha256": "01ec4f6b0b53634b1f93f0e3547ecef9a45a95f73492c1768f3cc8869ba4b509",
+      "records": 477
+    },
+    "senses-5e.json.gz": {
+      "bytes": 40285,
+      "sha256": "f2557482fb21695ee4ede18fc1272627bdcd36a0a1c5cbc7dc51e35b8385604b",
+      "records": 470
+    },
+    "senses-b1.json.gz": {
+      "bytes": 38656,
+      "sha256": "33980e0a4e9f3cb5f9f72a870c46a1da13b99c09f6e9c15dced05724fca25441",
+      "records": 448
+    },
+    "senses-80.json.gz": {
+      "bytes": 38992,
+      "sha256": "92f9b5b9c70221047342acb3e0b7ca3978df9930d587e1aa28d6a8336c7d3317",
+      "records": 454
+    },
+    "senses-38.json.gz": {
+      "bytes": 38940,
+      "sha256": "b01abf934fe5e71894639f48c2f189536e2c4acdbd376bcb4edb1ffa5d5bbbb2",
+      "records": 437
+    },
+    "senses-12.json.gz": {
+      "bytes": 37590,
+      "sha256": "bf2d12227ce717b04c755605eacba2d9ccaf57c3f4558de38d05c9750220010b",
+      "records": 435
+    },
+    "senses-51.json.gz": {
+      "bytes": 37312,
+      "sha256": "81dd82a36610464b58d119451d381059df7f8d150ec6abffadd8cd5f093709d2",
+      "records": 438
+    },
+    "senses-10.json.gz": {
+      "bytes": 42752,
+      "sha256": "f029ad72be69bfc10952d6911b0578492bf598ca868d04f63dd4b5bf279e0e58",
+      "records": 463
+    },
+    "senses-74.json.gz": {
+      "bytes": 37033,
+      "sha256": "758853e4b28320f00fa78fdbd7acbc741a483880ff7b6b9de4e04a37c742ffe8",
+      "records": 437
+    },
+    "senses-b6.json.gz": {
+      "bytes": 37995,
+      "sha256": "d0e82c89fec8e0019551b4c9c24b5aa8984379b4080024a6a97a1a0a302b3e52",
+      "records": 449
+    },
+    "senses-e9.json.gz": {
+      "bytes": 39789,
+      "sha256": "f11f7c940584ad4dc9a46547a548ada3c9d90fb161d47557a6796da9df7fe100",
+      "records": 446
+    },
+    "senses-44.json.gz": {
+      "bytes": 40166,
+      "sha256": "5c765e1f4805e5a4d681961a098ce0da1bc86da854771872971c272d1e3fbe06",
+      "records": 484
+    },
+    "senses-a3.json.gz": {
+      "bytes": 40443,
+      "sha256": "207095ba29b41065bebad2f2aa05de1508b0355ae14885d2aed4123c1cdf2989",
+      "records": 469
+    },
+    "senses-0d.json.gz": {
+      "bytes": 41846,
+      "sha256": "7e3e65479c8bb029d54b0a5a0d92ec997b61d21e67189bfa54104d2002582e54",
+      "records": 460
+    },
+    "senses-c4.json.gz": {
+      "bytes": 39380,
+      "sha256": "b2f27ff15ff5b4d05c36c80fa08def4b031c689a5c5e8d3d7de6719cbcc84d5b",
+      "records": 463
+    },
+    "senses-ad.json.gz": {
+      "bytes": 42482,
+      "sha256": "19a8eb659f0587d63a9e812000936e322c2ef48a3a14822f397ad29675a7f65e",
+      "records": 479
+    },
+    "senses-f4.json.gz": {
+      "bytes": 40167,
+      "sha256": "0aab17c5eda4e43369737d8cdb56ea6792ad04513a6edf73cfc3897c360b02a7",
+      "records": 439
+    },
+    "senses-b3.json.gz": {
+      "bytes": 37361,
+      "sha256": "c6235b6b53eaf57fc557991f8b59d7af8a4bb0e857c0c2e46d303bf99e987cd1",
+      "records": 444
+    },
+    "senses-68.json.gz": {
+      "bytes": 41475,
+      "sha256": "d20e8aef49958ae6f3bb72e49b324b43007e8d643f1b792ccda513c51cacd8b4",
+      "records": 489
+    },
+    "senses-1c.json.gz": {
+      "bytes": 41915,
+      "sha256": "cf1f8c163a97026f511b1e2bbeaf38d7e198e473eec131c5adebdee772ae45b6",
+      "records": 490
+    },
+    "senses-e4.json.gz": {
+      "bytes": 39920,
+      "sha256": "5203079319fd37576b65ffe83d5925c5890f6756cb14a42d487cdc2c5b32f1fd",
+      "records": 465
+    },
+    "senses-b7.json.gz": {
+      "bytes": 35322,
+      "sha256": "063c30f17f714cc91735673631c83b75d21e997f359fa30f17a2d1a06aa16be3",
+      "records": 404
+    },
+    "senses-3e.json.gz": {
+      "bytes": 38889,
+      "sha256": "c2eea70cd6701cf8a3ce5ddb492814bd3887b4b0b5f31e35b58bcf46740e1573",
+      "records": 452
+    },
+    "senses-d0.json.gz": {
+      "bytes": 37879,
+      "sha256": "6599a2db22b82a15016902a408c9c08cf7652c4252903580cd7149c957be2cd2",
+      "records": 438
+    },
+    "senses-24.json.gz": {
+      "bytes": 39048,
+      "sha256": "bdbfd53c457c83d0d2321c445d4543d5ac1d16a2411a4ff12497b41ad8452e96",
+      "records": 452
+    },
+    "senses-6a.json.gz": {
+      "bytes": 39337,
+      "sha256": "f9870a3af217b210bfeee1f9d6ce12c433db3fc1789a513a7f8e75c93978def6",
+      "records": 461
+    },
+    "senses-73.json.gz": {
+      "bytes": 39789,
+      "sha256": "035e0ee60bf0989f3a97cddb0129762af8ecef90d15f9f5ba1ed84309c057fe4",
+      "records": 479
+    },
+    "senses-25.json.gz": {
+      "bytes": 36376,
+      "sha256": "2d13f93bd7927ca49fd92987f42c38ee5d75cb6e113b4dcd3f4cd68b8e8926e7",
+      "records": 424
+    },
+    "senses-65.json.gz": {
+      "bytes": 40796,
+      "sha256": "47bf885cfcecdedcb657e75e529b12f9e830759d8529e6415e0776d6b388ede3",
+      "records": 481
+    },
+    "senses-52.json.gz": {
+      "bytes": 39971,
+      "sha256": "8bed39d3769ad5a574aa6d5c0369355f4e28bf90da78a84e7992079af232a60b",
+      "records": 459
+    },
+    "senses-d1.json.gz": {
+      "bytes": 39890,
+      "sha256": "deecd1680906a6c7869e4e7c9139527c145f456e51089aaf061efd7bb1b59023",
+      "records": 462
+    },
+    "senses-50.json.gz": {
+      "bytes": 39368,
+      "sha256": "b7424999fba4a112ef728b8888b57c8e752581aca4dd9a667d55df5f4546fe76",
+      "records": 467
+    },
+    "morphology.json.gz": {
+      "bytes": 32483,
+      "sha256": "d6c333f07f4f8b7ab49744d697d512a043ef631749394d109eaf645d62e712c3",
+      "records": 5940
+    }
+  }
+}

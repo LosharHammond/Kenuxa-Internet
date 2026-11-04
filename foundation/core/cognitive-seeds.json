@@ -1,0 +1,564 @@
+{
+  "ACTIONS": [
+    {
+      "id": "act:charge-now",
+      "name": "Charge the phone now, before you leave",
+      "requires": [
+        "chargerAvailable"
+      ],
+      "timeLimited": true,
+      "chargeRateW": [
+        10,
+        20
+      ],
+      "effort": 1,
+      "note": "how much you gain depends on the minutes left and the charger"
+    },
+    {
+      "id": "act:power-saving",
+      "name": "Turn on battery/low-power saving mode",
+      "requires": [],
+      "loadFactor": [
+        0.6,
+        0.85
+      ],
+      "effort": 1,
+      "note": "reduces background activity and screen effects"
+    },
+    {
+      "id": "act:dim-screen",
+      "name": "Lower screen brightness and screen timeout",
+      "requires": [],
+      "loadFactor": [
+        0.75,
+        0.9
+      ],
+      "effort": 1
+    },
+    {
+      "id": "act:close-background",
+      "name": "Close video/streaming and location-heavy apps; download maps and music before leaving",
+      "requires": [],
+      "loadFactor": [
+        0.8,
+        0.95
+      ],
+      "effort": 1
+    },
+    {
+      "id": "act:airplane-when-idle",
+      "name": "Use airplane mode during stretches when you do not need the phone",
+      "requires": [],
+      "loadFactor": [
+        0.4,
+        0.7
+      ],
+      "effort": 2,
+      "note": "you cannot receive calls while it is on"
+    },
+    {
+      "id": "act:power-bank",
+      "name": "Bring a charged power bank",
+      "requires": [
+        "powerBank"
+      ],
+      "addEnergyWh": [
+        10,
+        30
+      ],
+      "effort": 1
+    },
+    {
+      "id": "act:charge-enroute",
+      "name": "Charge on the way (vehicle USB/socket, charging point)",
+      "requires": [
+        "chargingEnroute"
+      ],
+      "addEnergyWh": [
+        3,
+        10
+      ],
+      "effort": 1
+    }
+  ],
+  "CAUSAL": [
+    {
+      "id": "cause:solar-input-low",
+      "cause": "insufficient solar input (shade, dirt, cloud, night, panel too small)",
+      "effect": "battery not charging",
+      "signs": {
+        "panelVoltage": "low",
+        "sunny": false
+      },
+      "tests": {
+        "panelVoltage": "In full sun, measure the panel’s open-circuit voltage with a multimeter (DC volts) and compare it with the panel label (Voc).",
+        "sunny": "Check whether the panel is in direct sun and free of shade and dirt."
+      },
+      "safety": null
+    },
+    {
+      "id": "cause:wiring-fault",
+      "cause": "faulty or loose wiring, blown fuse or open breaker between panel and controller",
+      "effect": "battery not charging",
+      "signs": {
+        "panelVoltage": "normal",
+        "controllerInputVoltage": "low",
+        "fuseOk": false
+      },
+      "tests": {
+        "controllerInputVoltage": "Measure DC voltage at the charge controller’s PV input terminals; it should be close to the panel voltage.",
+        "fuseOk": "With the system isolated, check the inline fuse or breaker on the PV line."
+      },
+      "safety": "Isolate the panel (cover it or open the PV breaker) before touching connectors; PV wiring can carry dangerous DC voltage in daylight."
+    },
+    {
+      "id": "cause:controller-fault",
+      "cause": "charge controller fault or wrong settings",
+      "effect": "battery not charging",
+      "signs": {
+        "panelVoltage": "normal",
+        "controllerInputVoltage": "normal",
+        "controllerOutputVoltage": "low",
+        "controllerError": true
+      },
+      "tests": {
+        "controllerOutputVoltage": "Measure the controller’s battery-output voltage while the panel is in sun; it should be above the battery’s resting voltage.",
+        "controllerError": "Read the controller display or LED codes and compare them with its manual."
+      },
+      "safety": null
+    },
+    {
+      "id": "cause:battery-protection",
+      "cause": "battery protection (BMS) has disconnected the battery — deep discharge, over-temperature or over-current",
+      "effect": "battery not charging",
+      "signs": {
+        "batteryVoltage": "very low",
+        "bmsTripped": true,
+        "batteryHot": true
+      },
+      "tests": {
+        "batteryVoltage": "Measure the battery terminal voltage; compare it with the manufacturer’s minimum.",
+        "bmsTripped": "Check the battery’s BMS indicator or app for a protection state.",
+        "batteryHot": "Feel (do not hold) the battery case for heat; a hot battery must be left to cool."
+      },
+      "safety": "A swollen, hot or smelling battery must not be charged — disconnect it and keep it away from people and flammable material."
+    },
+    {
+      "id": "cause:battery-failed",
+      "cause": "battery at end of life (sulphated lead-acid, worn lithium cells)",
+      "effect": "battery not charging",
+      "signs": {
+        "batteryVoltage": "drops fast under load",
+        "batteryAgeYears": "old",
+        "bmsTripped": false
+      },
+      "tests": {
+        "batteryVoltage": "Measure voltage at rest and again under a known load; a large drop points to a worn battery."
+      },
+      "safety": null
+    },
+    {
+      "id": "cause:phone-screen",
+      "cause": "screen brightness and screen-on time",
+      "effect": "phone battery drains fast",
+      "signs": {
+        "screenOnLong": true
+      },
+      "tests": {
+        "screenOnLong": "Open Settings → Battery to see screen-on time and usage by app."
+      }
+    },
+    {
+      "id": "cause:phone-background",
+      "cause": "apps working in the background (location, sync, video)",
+      "effect": "phone battery drains fast",
+      "signs": {
+        "backgroundAppsHigh": true
+      },
+      "tests": {
+        "backgroundAppsHigh": "Settings → Battery lists apps by consumption; look for apps you did not use."
+      }
+    },
+    {
+      "id": "cause:phone-signal",
+      "cause": "weak mobile signal (the radio works harder)",
+      "effect": "phone battery drains fast",
+      "signs": {
+        "weakSignal": true
+      },
+      "tests": {
+        "weakSignal": "Check the signal bars; drain on journeys through poor coverage is common."
+      }
+    },
+    {
+      "id": "cause:phone-battery-worn",
+      "cause": "worn battery (reduced capacity)",
+      "effect": "phone battery drains fast",
+      "signs": {
+        "batteryHealthLow": true
+      },
+      "tests": {
+        "batteryHealthLow": "Check battery health in Settings (iPhone) or a diagnostics menu/app (Android)."
+      }
+    }
+  ],
+  "MODELS": {
+    "solar-home": {
+      "label": "small solar home system over one day",
+      "vars": {
+        "night": {
+          "exo": true,
+          "value": false
+        },
+        "panelOk": {
+          "exo": true,
+          "value": true
+        },
+        "demandAtNight": {
+          "exo": true,
+          "value": true
+        },
+        "light": {
+          "eq": "NOT night",
+          "type": "bool"
+        },
+        "panelOutput": {
+          "eq": "light AND panelOk",
+          "type": "bool",
+          "law": "photovoltaic cells convert light into electricity; without light they produce (almost) nothing"
+        },
+        "batteryNeeded": {
+          "eq": "night AND demandAtNight AND NOT panelOutput",
+          "type": "bool"
+        },
+        "gridOrBatteryAtNight": {
+          "eq": "batteryNeeded",
+          "type": "bool"
+        },
+        "panelW": {
+          "exo": true,
+          "value": 300
+        },
+        "sunHours": {
+          "exo": true,
+          "value": 5
+        },
+        "nightHours": {
+          "exo": true,
+          "value": 12
+        },
+        "nightOutputFactor": {
+          "exo": true,
+          "value": 0
+        },
+        "nightLoadW": {
+          "exo": true,
+          "value": 50
+        },
+        "efficiency": {
+          "exo": true,
+          "value": 0.75
+        },
+        "dayEnergyWh": {
+          "eq": "panelW * sunHours * efficiency",
+          "type": "num"
+        },
+        "nightEnergyWh": {
+          "eq": "panelW * nightHours * nightOutputFactor * efficiency",
+          "type": "num"
+        },
+        "dailyEnergyWh": {
+          "eq": "dayEnergyWh + nightEnergyWh",
+          "type": "num"
+        },
+        "storageNeededWh": {
+          "eq": "max(0, nightLoadW * nightHours - nightEnergyWh)",
+          "type": "num"
+        }
+      },
+      "premises": [
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\bsolar\\b.{0,70}\\b(?:produc\\w*|generat\\w*|work\\w*)\\b.{0,50}\\bnight\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "panelOutput": true,
+            "nightOutputFactor": 0.2
+          },
+          "exogenous": {
+            "night": true
+          },
+          "says": "solar panels produce electricity at night",
+          "assumption": "at night the panel delivers 20% of its rated power (a sustained output; the premise does not say how much, so this value is an assumption)"
+        }
+      ]
+    },
+    "battery": {
+      "label": "battery-powered device",
+      "vars": {
+        "capacityWh": {
+          "exo": true,
+          "value": 15
+        },
+        "loadW": {
+          "exo": true,
+          "value": 1.5
+        },
+        "factor": {
+          "exo": true,
+          "value": 1
+        },
+        "effectiveCapacityWh": {
+          "eq": "capacityWh * factor",
+          "type": "num"
+        },
+        "runtimeH": {
+          "eq": "effectiveCapacityWh / loadW",
+          "type": "num"
+        },
+        "chargeW": {
+          "exo": true,
+          "value": 18
+        },
+        "chargeTimeH": {
+          "eq": "effectiveCapacityWh / (chargeW * 0.85)",
+          "type": "num"
+        }
+      },
+      "premises": [
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\bbatter(?:y|ies)\\b.{0,60}\\b(?:twice|doubl\\w*)\\b|\\b(?:twice|doubl\\w*)\\b.{0,40}\\bcapacity\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "factor": 2
+          },
+          "says": "the battery has twice its capacity",
+          "assumption": "everything else (load, charger) stays the same"
+        },
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\bbatter(?:y|ies)\\b.{0,60}\\b(?:half|halv\\w*)\\b|\\b(?:half|halv\\w*)\\b.{0,40}\\bcapacity\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "factor": 0.5
+          },
+          "says": "the battery has half its capacity",
+          "assumption": "everything else stays the same"
+        }
+      ]
+    },
+    "atom-storage": {
+      "label": "KENUXA atom preservation (k-of-n erasure coding across nodes)",
+      "vars": {
+        "n": {
+          "exo": true,
+          "value": 6
+        },
+        "k": {
+          "exo": true,
+          "value": 4
+        },
+        "lost": {
+          "exo": true,
+          "value": 0
+        },
+        "available": {
+          "eq": "n - lost",
+          "type": "num"
+        },
+        "recoverable": {
+          "eq": "available >= k",
+          "type": "bool"
+        },
+        "margin": {
+          "eq": "n - lost - k",
+          "type": "num"
+        }
+      },
+      "premises": [
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\b(?:one|1|a)\\s+(?:of\\s+the\\s+)?nodes?\\b.{0,35}\\b(?:disappear\\w*|fail\\w*|lost|die\\w*|offline)\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "lost": 1
+          },
+          "says": "one node holding a fragment of the atom disappears",
+          "assumption": "the atom is stored with the default 4-of-6 erasure code"
+        },
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\b(?:two|2)\\s+(?:of\\s+the\\s+)?nodes?\\b.{0,35}\\b(?:disappear\\w*|fail\\w*|lost|die\\w*|offline)\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "lost": 2
+          },
+          "says": "two nodes holding fragments disappear",
+          "assumption": "the atom is stored with the default 4-of-6 erasure code"
+        },
+        {
+          "re": {
+            "$type": "RegExp",
+            "source": "\\b(?:three|3)\\s+(?:of\\s+the\\s+)?nodes?\\b.{0,35}\\b(?:disappear\\w*|fail\\w*|lost|die\\w*|offline)\\b",
+            "flags": "i"
+          },
+          "interventions": {
+            "lost": 3
+          },
+          "says": "three nodes holding fragments disappear",
+          "assumption": "the atom is stored with the default 4-of-6 erasure code"
+        }
+      ]
+    }
+  },
+  "PHONE_ASSUMPTIONS": {
+    "capacityWh": [
+      11,
+      19
+    ],
+    "averageDrawW": [
+      0.8,
+      2.5
+    ],
+    "label": "typical smartphone: 3,000–5,000 mAh at ~3.85 V (≈11–19 Wh); average draw in mixed use ≈0.8–2.5 W"
+  },
+  "RULES": [
+    {
+      "id": "rule:registered-needs-identity",
+      "if": [
+        [
+          "registered",
+          "?n"
+        ]
+      ],
+      "then": [
+        [
+          "must-have",
+          "?n",
+          "valid-identity"
+        ]
+      ],
+      "note": "node registration requires a valid node identity (ATP)"
+    },
+    {
+      "id": "rule:pv-needs-light",
+      "if": [
+        [
+          "solar-panel",
+          "?p"
+        ],
+        [
+          "dark",
+          "?p"
+        ]
+      ],
+      "then": [
+        [
+          "not",
+          "producing",
+          "?p"
+        ]
+      ],
+      "note": "photovoltaic output requires light"
+    },
+    {
+      "id": "rule:unverified-not-canonical",
+      "if": [
+        [
+          "peer-result",
+          "?r"
+        ]
+      ],
+      "unless": [
+        [
+          "verified",
+          "?r"
+        ]
+      ],
+      "then": [
+        [
+          "not",
+          "canonical",
+          "?r"
+        ]
+      ],
+      "note": "peer results are never canonical without verification"
+    },
+    {
+      "id": "rule:hypothesis-not-fact",
+      "if": [
+        [
+          "hypothesis",
+          "?h"
+        ]
+      ],
+      "unless": [
+        [
+          "verified",
+          "?h"
+        ]
+      ],
+      "then": [
+        [
+          "not",
+          "fact",
+          "?h"
+        ]
+      ],
+      "note": "imagination is not fact"
+    }
+  ],
+  "STRATEGY": {
+    "id": "strategy:default",
+    "category": "strategy",
+    "label": "Default cognitive strategy table",
+    "status": "validated",
+    "provenance": {
+      "source": "core (v1.7)"
+    },
+    "body": {
+      "routes": {
+        "calculation": [
+          "procedure-chain",
+          "experience-reuse"
+        ],
+        "diagnosis": [
+          "abduction",
+          "causal-tests",
+          "safety-check"
+        ],
+        "counterfactual": [
+          "scm-intervention",
+          "rule-consistency"
+        ],
+        "situation": [
+          "world-model",
+          "planning",
+          "simulation"
+        ],
+        "contradiction": [
+          "provenance-comparison",
+          "uncertainty"
+        ],
+        "deduction": [
+          "forward-chaining"
+        ],
+        "visual": [
+          "perception",
+          "spatial-reasoning"
+        ]
+      }
+    }
+  }
+}

@@ -236,7 +236,7 @@ test('teacher answers are learned from in depth (words → atoms, claims → opi
   node.teachers.list = () => [{ id: 'mock', primary: true, configured: true }];
   node.teachers.generate = async (instr, input) => ({ data: /teacher of KENUXA/.test(instr) ? { answer: 'A quokka is a marsupial. Drought causes famine.', claims: [], sources: [] } : { unknown: true }, provider: 'mock', model: 'fixture' });
   node.atomRegistry().discover('quokkaish', { lang: 'en', node: 'x' });
-  await node.learnTick({ budgetMs: 5000, limit: 2 });
+  await node.learnTick({ budgetMs: 60000, limit: 2 }); /* wall-clock budget: generous so parallel CPU-heavy suites cannot starve it */
   assert.ok(node.state.live.teacherLearning?.total >= 1, JSON.stringify(node.state.learning?.log?.slice(-2)));
   assert.ok(node.atomRegistry().has('lex:en:marsupial'));
   const C = node.claims(), q = C.assess(C.key('quokka', 'is a', 'marsupial')); assert.equal(q.verdict, 'insufficient-evidence', 'a teacher statement is recorded as opinion, not established');

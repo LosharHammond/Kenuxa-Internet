@@ -1,14 +1,14 @@
 {
- "name": "kenuxa-internet",
- "version": "1.6.0",
- "private": true,
- "description": "KENUXA Internet: living semantic graph, own 9-layer/81-head transformer, multi-teacher learning, Supabase storage and cross-host ATP (Atom Transfer Protocol) federation",
- "type": "module",
- "engines": {
-  "node": ">=22"
- },
- "scripts": {
-  "start": "node --env-file-if-exists=.env --env-file-if-exists=.env.local server.mjs",
-  "test": "node --test tests/*.test.mjs"
- }
+  "name": "kenuxa-internet",
+  "version": "1.11.0",
+  "private": true,
+  "description": "KENUXA Internet: living semantic graph, own 9-layer/81-head transformer, multi-teacher learning, Supabase storage and cross-host ATP (Atom Transfer Protocol) federation",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env --env-file-if-exists=.env.local server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
 }

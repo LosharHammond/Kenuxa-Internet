@@ -1,0 +1,5 @@
+# Foundation integrity hashes cover exact bytes, including line endings, on every OS.
+foundation/** -text
+foundation/**/*.gz binary
+# Preserve the upstream licence verbatim, including its original trailing spaces.
+foundation/wordnet-3.0/LICENSE -whitespace

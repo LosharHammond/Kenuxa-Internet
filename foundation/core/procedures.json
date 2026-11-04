@@ -1,0 +1,585 @@
+[
+  {
+    "id": "proc:energy-consumption",
+    "category": "procedure",
+    "label": "Energy used by a device: power × time",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "power",
+          "dim": "power",
+          "unit": "W",
+          "cues": "rated|uses|draws|consumes|load|bulb|appliance|device|fan|tv|fridge|kettle|laptop|iron"
+        },
+        {
+          "name": "duration",
+          "dim": "time",
+          "unit": "h",
+          "cues": "for|runs|use|hours a day|per day|daily|on for"
+        }
+      ],
+      "steps": [
+        {
+          "as": "energy",
+          "expr": "power * duration",
+          "dim": "energy"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "energy",
+          "unit": "Wh"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "power": 60,
+            "duration": 5
+          },
+          "expect": {
+            "energy": 300
+          }
+        },
+        {
+          "inputs": {
+            "power": {
+              "value": 1.5,
+              "unit": "kW"
+            },
+            "duration": {
+              "value": 90,
+              "unit": "min"
+            }
+          },
+          "expect": {
+            "energy": 2250
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "proc:energy-cost",
+    "category": "procedure",
+    "label": "Cost of energy: energy × tariff",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "energy",
+          "dim": "energy",
+          "unit": "Wh",
+          "cues": "uses|consumes|energy|consumption"
+        },
+        {
+          "name": "tariff",
+          "dim": "price-per-energy",
+          "unit": "money/kwh",
+          "cues": "per kwh|tariff|price|costs"
+        }
+      ],
+      "steps": [
+        {
+          "as": "cost",
+          "expr": "energy * tariff",
+          "dim": "money"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cost",
+          "unit": "money"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "energy": {
+              "value": 1,
+              "unit": "kWh"
+            },
+            "tariff": 1.8
+          },
+          "expect": {
+            "cost": 1.8
+          }
+        },
+        {
+          "inputs": {
+            "energy": 300,
+            "tariff": 2
+          },
+          "expect": {
+            "cost": 0.6
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "proc:battery-energy",
+    "category": "procedure",
+    "label": "Energy stored in a battery: charge capacity × voltage",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "capacity",
+          "dim": "charge",
+          "unit": "Ah",
+          "cues": "capacity|battery|mah|ah"
+        },
+        {
+          "name": "voltage",
+          "dim": "voltage",
+          "unit": "V",
+          "cues": "volt|voltage|v battery"
+        }
+      ],
+      "steps": [
+        {
+          "as": "energy",
+          "expr": "capacity * voltage",
+          "dim": "energy"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "energy",
+          "unit": "Wh"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "capacity": {
+              "value": 4000,
+              "unit": "mAh"
+            },
+            "voltage": 3.7
+          },
+          "expect": {
+            "energy": 14.8
+          }
+        },
+        {
+          "inputs": {
+            "capacity": 100,
+            "voltage": 12
+          },
+          "expect": {
+            "energy": 1200
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "proc:remaining-energy",
+    "category": "procedure",
+    "label": "Energy left in a battery: capacity × state of charge",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "capacity",
+          "dim": "energy",
+          "unit": "Wh",
+          "cues": "capacity|battery|stores|holds"
+        },
+        {
+          "name": "charge",
+          "dim": "fraction",
+          "unit": "%",
+          "cues": "at|charge|battery is|left|remaining"
+        }
+      ],
+      "steps": [
+        {
+          "as": "remaining",
+          "expr": "capacity * charge",
+          "dim": "energy"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "remaining",
+          "unit": "Wh"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "capacity": 15,
+            "charge": 10
+          },
+          "expect": {
+            "remaining": 1.5
+          }
+        },
+        {
+          "inputs": {
+            "capacity": 1200,
+            "charge": 50
+          },
+          "expect": {
+            "remaining": 600
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "proc:runtime",
+    "category": "procedure",
+    "label": "How long stored energy lasts: energy ÷ power drawn",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "energy",
+          "dim": "energy",
+          "unit": "Wh",
+          "cues": "battery|stored|capacity|remaining|left"
+        },
+        {
+          "name": "load",
+          "dim": "power",
+          "unit": "W",
+          "cues": "uses|draws|consumes|load|running|use"
+        }
+      ],
+      "steps": [
+        {
+          "as": "runtime",
+          "expr": "energy / load",
+          "dim": "time"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "runtime",
+          "unit": "h"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "energy": 1200,
+            "load": 100
+          },
+          "expect": {
+            "runtime": 12
+          }
+        },
+        {
+          "inputs": {
+            "energy": 1.5,
+            "load": 1
+          },
+          "expect": {
+            "runtime": 1.5
+          }
+        }
+      ],
+      "goal": "runtime"
+    }
+  },
+  {
+    "id": "proc:charge-time",
+    "category": "procedure",
+    "label": "Charging time: energy needed ÷ (charger power × efficiency)",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "energy",
+          "dim": "energy",
+          "unit": "Wh",
+          "cues": "battery|capacity|needed|to charge"
+        },
+        {
+          "name": "charger",
+          "dim": "power",
+          "unit": "W",
+          "cues": "charger|charging|adapter|input"
+        },
+        {
+          "name": "efficiency",
+          "dim": "fraction",
+          "unit": "%",
+          "cues": "efficiency|efficient",
+          "default": 85
+        }
+      ],
+      "steps": [
+        {
+          "as": "time",
+          "expr": "energy / (charger * efficiency)",
+          "dim": "time"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "time",
+          "unit": "h"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "energy": 17,
+            "charger": 20,
+            "efficiency": 85
+          },
+          "expect": {
+            "time": 1
+          }
+        },
+        {
+          "inputs": {
+            "energy": 100,
+            "charger": 50,
+            "efficiency": 100
+          },
+          "expect": {
+            "time": 2
+          }
+        }
+      ],
+      "goal": "charging-time"
+    }
+  },
+  {
+    "id": "proc:solar-daily-energy",
+    "category": "procedure",
+    "label": "Daily solar energy: panel power × peak sun hours × system efficiency",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "panel",
+          "dim": "power",
+          "unit": "W",
+          "cues": "panel|solar|array|pv"
+        },
+        {
+          "name": "sun",
+          "dim": "time",
+          "unit": "h",
+          "cues": "sun|peak sun|sunshine|hours of sun"
+        },
+        {
+          "name": "efficiency",
+          "dim": "fraction",
+          "unit": "%",
+          "cues": "efficiency|losses",
+          "default": 75
+        }
+      ],
+      "steps": [
+        {
+          "as": "energy",
+          "expr": "panel * sun * efficiency",
+          "dim": "energy"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "energy",
+          "unit": "Wh"
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "panel": 300,
+            "sun": 5,
+            "efficiency": 75
+          },
+          "expect": {
+            "energy": 1125
+          }
+        },
+        {
+          "inputs": {
+            "panel": 100,
+            "sun": 4,
+            "efficiency": 100
+          },
+          "expect": {
+            "energy": 400
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "proc:panels-needed",
+    "category": "procedure",
+    "label": "Panels needed: daily energy ÷ energy one panel gives per day (rounded up)",
+    "status": "validated",
+    "confidence": 0.95,
+    "provenance": {
+      "source": "core library (v1.7)"
+    },
+    "evidence": [
+      {
+        "kind": "test",
+        "ref": "own test cases",
+        "detail": "hand-computed expected values"
+      }
+    ],
+    "body": {
+      "inputs": [
+        {
+          "name": "need",
+          "dim": "energy",
+          "unit": "Wh",
+          "cues": "need|daily|per day|use|consumption"
+        },
+        {
+          "name": "panel",
+          "dim": "power",
+          "unit": "W",
+          "cues": "panel|solar|pv"
+        },
+        {
+          "name": "sun",
+          "dim": "time",
+          "unit": "h",
+          "cues": "sun|peak sun|sunshine"
+        },
+        {
+          "name": "efficiency",
+          "dim": "fraction",
+          "unit": "%",
+          "cues": "efficiency|losses",
+          "default": 75
+        }
+      ],
+      "steps": [
+        {
+          "as": "perPanel",
+          "expr": "panel * sun * efficiency",
+          "dim": "energy"
+        },
+        {
+          "as": "panels",
+          "expr": "ceil(need / perPanel)",
+          "dim": "number"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "panels",
+          "unit": ""
+        }
+      ],
+      "tests": [
+        {
+          "inputs": {
+            "need": 3000,
+            "panel": 300,
+            "sun": 5,
+            "efficiency": 75
+          },
+          "expect": {
+            "panels": 3
+          }
+        },
+        {
+          "inputs": {
+            "need": 400,
+            "panel": 100,
+            "sun": 4,
+            "efficiency": 100
+          },
+          "expect": {
+            "panels": 1
+          }
+        }
+      ],
+      "goal": "panels"
+    }
+  }
+]

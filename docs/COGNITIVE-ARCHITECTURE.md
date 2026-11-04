@@ -10,6 +10,8 @@ Every number below was measured on the build machine, offline (no internet, no t
 
 The status words mean: **Implemented** = working and covered by tests. **Partial** = working with stated limits. **Not implemented** = not built yet.
 
+> **v1.7:** the Evolving Cognitive Engine (world model, procedure atoms, multi-method reasoning, evolution, vision) is documented in [`COGNITIVE-ENGINE.md`](COGNITIVE-ENGINE.md).
+
 ## 1. Repository audit (Stage 1)
 
 **Existing system.**
