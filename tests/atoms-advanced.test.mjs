@@ -58,7 +58,7 @@ test('genesis migration: an old registry gains concepts/idioms without rewriting
   const before = old.manifest('lex:en:animal').head; old.seedEnglish();
   assert.equal(old.get('lex:en:animal').semantic.senses[0], 'sense:en:animal#organism'); assert.ok(old.manifest('lex:en:animal').history.includes(before), 'discovery revision kept');
   const fresh = new AtomRegistry(); assert.equal(fresh.manifest('sense:en:bank#finance').head, old.manifest('sense:en:bank#finance').head, 'upgraded and fresh nodes converge on identical heads');
-  const again = AtomRegistry.deserialize(fresh.serialize()); assert.equal(again.genesisVersion, 3); assert.equal(again.manifests.size, fresh.manifests.size); assert.equal(again.idioms.length, fresh.idioms.length);
+  const again = AtomRegistry.deserialize(fresh.serialize()); assert.equal(again.genesisVersion, 4); assert.equal(again.manifests.size, fresh.manifests.size); assert.equal(again.idioms.length, fresh.idioms.length);
 });
 
 async function cluster(n, domains = i => 'd' + i) { let clock = 0; const T = new InMemoryTransport(); for (let i = 0; i < n; i++) T.add('N' + i, domains(i)); const E = (id, policy) => new PreservationEngine({ self: id, transport: T, now: () => clock, policy, local: T.nodes.get(id)?.store }); return { T, E, tick: ms => { clock += ms; } }; }

@@ -100,7 +100,7 @@ test('Render binds 0.0.0.0 on PORT despite a legacy loopback HOST, and requires 
   } finally { if (n && n.child.exitCode === null) { const done = new Promise(r => n.child.once('exit', r)); n.child.kill(); await done; } }
 });
 
-test('three nodes on different "hosts" discover each other by hello + gossip and exchange atoms over MTP', { timeout: 60000 }, async () => {
+test('three nodes on different "hosts" discover each other by hello + gossip and exchange atoms over ATP', { timeout: 60000 }, async () => {
   const [pa, pb, pc] = [await port(), await port(), await port()]; let A, B, C;
   try {
     A = await start('node-alpha', pa); B = await start('node-beta', pb, `http://127.0.0.1:${pa}`); C = await start('node-gamma', pc, `http://127.0.0.1:${pb}`);

@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="/chat.css">
 <script src="/md.js" defer></script>
-<script src="/chat.js" defer></script>
+<script src="/chat.js" defer></script><script src="/peer.js" defer></script>
 </head>
 <body>
 <div class="shell" id="shell">
@@ -23,6 +23,7 @@
     <nav class="history" id="history" aria-label="Previous chats"></nav>
     <div class="side-foot">
       <button class="foot-btn" id="theme" type="button" aria-label="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span id="theme-label">Theme</span></button>
+      <button class="foot-btn" id="compute-btn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM9 1.5V4M15 1.5V4M9 20v2.5M15 20v2.5M1.5 9H4M1.5 15H4M20 9h2.5M20 15h2.5"/></svg><span id="compute-label">Contribute computing</span></button>
       <button class="foot-btn" id="account-btn" type="button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.4-3.3 4-5 7-5s5.6 1.7 7 5"/></svg><span id="account-label">Sign in</span></button>
       <a class="foot-btn hidden" id="studio-link" href="/studio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/></svg><span>Research studio</span></a>
     </div>
@@ -53,6 +54,19 @@
     </div>
   </main>
 </div>
+<dialog class="acct" id="compute-dialog" aria-labelledby="compute-title">
+  <form method="dialog" class="acct-card" id="compute-panel">
+    <div class="acct-head"><h2 id="compute-title">Contribute computing to KENUXA</h2><button class="icon-btn" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <p class="acct-note">This is optional and off until you start it. If you start it, this tab checks small batches of <b>public</b> KENUXA knowledge atoms: structure, links and integrity. It runs in a background worker, and only while this tab is open and visible.</p>
+    <p class="acct-small">It never receives conversations, accounts, passwords or private knowledge, and it runs no code other than KENUXA's fixed, published task list (<a href="/peer-tasks.mjs" target="_blank" rel="noopener">view it</a>). The node double-checks every result, so a wrong result cannot change KENUXA's knowledge. You can stop at any time; using KENUXA never requires this.</p>
+    <label>Contribution level<select data-k="profile"><option value="light">Light: one small batch about every 10 seconds</option><option value="balanced">Balanced: one larger batch about every 2 seconds</option><option value="custom">Custom: set your own limits</option></select></label>
+    <div data-k="custom" class="hidden acct-row"><label>Max data per hour (MB)<input data-k="mb" type="number" min="1" max="500"></label><label>Max tasks per hour<input data-k="tph" type="number" min="10" max="1200"></label><label>Max temporary cache (MB)<input data-k="cache" type="number" min="0" max="200"></label></div>
+    <p class="acct-small">Browsers don't let pages read CPU temperature or set an exact CPU share. Limits are enforced through task size, pace, hourly caps and pausing in the background or on low battery (where the browser reports it).</p>
+    <p class="acct-small">To speed things up, this tab may keep atoms it has already checked in a small temporary cache, so another volunteer can fetch them from you directly (peer-to-peer) instead of from the server. Every atom received that way is checked against its fingerprint. Joining also solves a small puzzle that stops automated mass sign-ups.</p>
+    <div class="acct-row"><button type="button" class="btn primary" data-k="toggle">Start contributing</button><button type="button" class="btn" data-k="pause" disabled>Pause</button><button type="button" class="btn" data-k="clear">Clear cache</button></div>
+    <p class="acct-small" data-k="status">Not contributing</p><p class="acct-small" data-k="tasks"></p><p class="acct-small" data-k="data"></p>
+  </form>
+</dialog>
 <dialog class="acct" id="acct" aria-labelledby="acct-title">
   <form method="dialog" class="acct-card" id="acct-form">
     <div class="acct-head"><h2 id="acct-title">Your KENUXA account</h2><button class="icon-btn" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>

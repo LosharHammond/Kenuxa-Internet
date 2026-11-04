@@ -11,7 +11,7 @@ This document is the v0.8 delivery report, updated for v0.9 (section K) and v1.0
 | Understanding | `lib/comprehension.mjs` (intent, goal and constraint detection by keywords and patterns), `lib/meaning.mjs` (meaning frames) | no tokenization into atoms, no syntax, no tense, aspect or negation, no coreference beyond history rewriting |
 | Response | `lib/response.mjs`, `lib/model.mjs` (construction into Markdown), `lib/transformer/` (9-layer, 81-head; embeddings, kernels and drafts), `lib/teacher.mjs` (Groq) | the answer was driven by intent and templates, not by an interpreted structure of the question |
 | Storage | `lib/store.mjs`: local JSON plus blobs, optional Supabase mirror | knowledge lived only on its own node; there was no content addressing, redundancy or recovery |
-| Network | `lib/mesh.mjs` MTP/0.5-open: Ed25519 identities, signed calls, gossip, reputation, consensus, network query | lessons were gossiped, but atoms were neither stored across peers nor recoverable after their creator died |
+| Network | `lib/mesh.mjs` MTP/0.5-open (renamed ATP/1.0, the Atom Transfer Protocol, in v1.2): Ed25519 identities, signed calls, gossip, reputation, consensus, network query | lessons were gossiped, but atoms were neither stored across peers nor recoverable after their creator died |
 | Tests | 33 tests in `tests/` | none covered language structure, durability or fault injection |
 
 ## B. Source code added or changed
@@ -27,7 +27,7 @@ This document is the v0.8 delivery report, updated for v0.9 (section K) and v1.0
 - `lib/node.mjs` changes:
   - integrates the registry, the lexicon tick (network first, then teacher guidance) and the preservation tick
   - adds atom interpretation to the answer cascade
-  - adds MTP store, meta and ping endpoints
+  - adds ATP store, meta and ping endpoints (`/atp/*`; `/mtp/*` accepted as a legacy alias)
   - adds the studio APIs `/api/interpret`, `/api/lexicon`, `/api/lexicon/atom`, `/api/atoms/fetch`, `/api/preserve` and `/api/preservation`
 - `lib/evolution.mjs`: each cycle runs `atomsTick`.
 - `lib/adapters.mjs`: a 3 MB body limit applies only to `/mtp/store/*`.

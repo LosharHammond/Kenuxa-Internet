@@ -1,4 +1,126 @@
-# Delivery verification, 3 November 2026
+# Delivery verification, 4 November 2026
+
+## v1.6: KUNPP/2 (P2P, Type C/D, storage tiers, task kinds A–E, PoW, multiple coordinators)
+
+- **Tests:** `npm test` → **137 / 137 pass**. New `tests/compute2.test.mjs` (6 tests):
+  - kinds B–E and `isa-closure/1` find seeded problems deterministically
+  - PoW is bound to a signed, single-use challenge, a replay is refused, and difficulty adapts
+  - Type D gets specialised work only after its probe, and a lying peer never does
+  - Type C replicates, passes fresh storage proofs, and restores a deleted core revision byte-identically; a cheating holder fails its proofs
+  - P2P leases carry references only, signals are relayed only inside the pair, and a fallback cancels the counted saving
+  - the installed agent runs against two real server processes (PoW, probe, disk storage, proofs), then fails over when its coordinator is SIGKILLed and keeps working
+- **`tests/compute.test.mjs`** is updated for KUNPP/2 (9 tests). It includes a regression test: an honest relation-check result was wrongly rejected because the core re-checked only part of the shard.
+- **Bugs found and fixed while testing:**
+  - storage tasks were starved behind the atom queue and blocked by the compute cost gate
+  - restore and storage-proof tasks computed their heads wrongly
+  - the agent overslept its run deadline
+  - the test helper waited forever on an already-killed process
+- **Benchmark (measured, `bench/compute.bench.mjs`):** with the v2 mix and the per-kind gate, core CPU fell −68% (8 honest peers), −82% (steady state), −68% (churn plus a malicious peer), and −91% (v1 workload).
+  - The first v2 run, with a single global gate, made core CPU **13–16× worse**: the cheap new kinds pulled the average up and stopped all delegation. That measurement led to the per-kind gate.
+  - Kinds B–E currently cost the core more to delegate than to run, so the node keeps them.
+  - gzip makes payloads 11.7× smaller.
+- **PoW (measured):** a 14-bit solve takes 30 ms median and 69 ms p90 on one core; verification takes about 0.1 ms.
+- **Real browsers (Chromium, `tests/browser/p2p-failover.e2e.cjs`, two coordinators):**
+  - Final code: 6 P2P pairings and 244 atoms received directly, all hash-verified. 342 KB avoided net; 1 fallback, counted.
+  - Earlier run: 844 atoms received and 911 KB avoided.
+  - gzip: 1.98 MB became 234 KB.
+  - After coordinator A was SIGKILLed, the browser failed over to B and kept working.
+  - 0 page errors and 0 rejected results.
+- **Studio dashboard** was rendered with live `/api/compute` data after an agent run, with no script errors. It shows per-kind gate decisions, P2P and gzip numbers, storage tiers, PoW bits and verified capabilities.
+- **Not verified here:**
+  - NAT traversal over the real internet (no TURN; STUN configurable)
+  - mobile browsers
+  - hosted Render coordinators under load
+  - agents on other operating systems
+  The scaling rows in `docs/KUNPP.md` §7.1 are extrapolated.
+
+## v1.5: KUNPP volunteer computing
+
+- **Tests:** `tests/compute.test.mjs` adds 8 tests:
+  - the task module's encoding is byte-identical to the core codec on every genesis atom, and its checks give the same verdicts as the core audit
+  - consent, tokens, limits and per-network rate limits
+  - the full task lifecycle, with idempotency, pacing, and private atoms never sent
+  - malicious peers (invented and hidden issues) caught, with reputation dropping and revocation
+  - expired leases, peers leaving, core fallback, and the no-peer mode
+  - the offload decision
+  - HTTP routes: consent, same-origin, authentication, owner-only dashboard, revocation
+  - a real server process with four independent peer clients, one malicious and one that vanishes with a task
+- **Benchmarks (measured):** `bench/compute.bench.mjs` gives −88% core CPU with 8 honest peers, −93% in steady state, and −66% with churn plus a malicious peer; this costs about 1.5 KB per atom checked. Per-request costs over real HTTP are listed in `docs/KUNPP.md` §5.2.
+- **Real browser check:** Chromium went through the chat consent dialog and a Web Worker, completing 5 tasks and 600 atoms, all accepted, with latency p50 43 ms and p95 99 ms. There were no page errors. With 100% spot-checks, the scheduler correctly paused delegation because it cost more than it saved.
+- **Not verified here:** many real devices on the internet, mobile browsers, and a hosted Render coordinator under load. The scaling table in `docs/KUNPP.md` §6 is an extrapolation.
+
+## v1.4.2: verb senses, structured extraction, network agreement
+
+- **Tests:** 122 automated tests pass. New coverage:
+  - a learned verb sense used in held-out sentences; before learning, the meaning is explicitly unknown, and no noun sense is borrowed
+  - claims extracted from interpreted roles, negation and modality
+  - price options with currencies, per-unit prices and unit normalisation, applied through a learned method
+  - `tests/consensus.test.mjs`: three real server processes over signed ATP:
+    - alpha teaches a verb sense; beta re-validates and activates it; gamma validates without adopting (`LIVE_ADOPT=off`); the result is agreed
+    - gamma then activates a different meaning under the same id; alpha and beta vote conflict, and gamma's event is contested
+    - alpha's own meaning is not overwritten
+- **Not verified here:** agreement across real hosted Render nodes. The tests use local processes.
+
+## v1.4.1: bounded investigation, interpretation coverage
+
+- **Tests:** 118 automated tests pass, 2 of them new. They cover investigation against fixture pages (budget, disabled mode, both-sides rule) and the spec sentences (the river "when" clause, coordinated objects, and the Python follow-ups with no clarification).
+- **Public chat check:** in Chromium, "I have a laptop and a phone." → "Is it expensive?" produced the clarification, and "I'm fine..." produced an uncertainty-preserving reply. There were no page errors.
+- **Fixtures, not live sources:** investigation was tested only with fixture pages. Live Wikipedia and Brave fetching was not exercised here.
+
+## v1.4: live cognitive evolution
+
+Checks that passed:
+
+- **Tests:** 116 automated tests pass. `tests/v14.test.mjs` covers acceptance demonstrations A–J, plus learning from teacher answers and failed-request discipline, and uses a frozen regression set (`tests/fixtures/regression-v14.json`).
+- **Runtime check:** a real `server.mjs` process in an isolated test configuration (network off, no credentials), all in the same process:
+  - the "bank of panels" sense was taught: observed → provisional → validated → committed → indexed → active (182 ms)
+  - the next interpretation used `sense:en:bank#arrangement`, and finance questions still used the finance sense
+  - the knowledge sequence went from 0 to 1, and transformer training steps stayed at 0
+  - a knowledge correction (174 ms) advanced two molecules and one cell, invalidated the cached answer, and the next answer showed the corrected value with its review marked revised
+- **Browser check:** a Chromium run of Studio → Live evolution showed events, propagation, answer history and the teach form.
+- **Fixtures, not live providers:** teacher and method-learning results use stand-in teachers. Live Groq or xAI behaviour was not exercised.
+- **Not verified here:**
+  - multi-node activation
+  - durability on Render free tier (it depends on the configured store)
+
+## v1.3.1: no default teacher cap, provider rate-limit backoff, backfill
+
+- **Tests:** 105 automated tests pass, 3 of them new. They check that:
+  - the whole queue drains in one cycle with no cap
+  - owner caps still apply
+  - HTTP 429 pauses calls with Retry-After and reset-header parsing, and queued words are kept
+  - the old 30-per-day default is lifted
+  - earlier conversations are backfilled once
+- **Not verified here:** live Groq rate-limit headers. The parsing is tested with stand-in responses.
+
+## v1.3: every word and every meaning is an atom (complete, evolving, teacher-guarded DNA)
+
+Checks that passed:
+
+- **Tests:** 102 automated tests pass. `tests/v13.test.mjs` adds 8, covering:
+  - words in questions and in KENUXA's answers become atoms
+  - usage consolidation, with personal text never stored
+  - full teacher DNA with links
+  - poisoned and wrong teacher replies rejected
+  - part-of-speech conflicts recorded as uncertainty
+  - the hourly budget
+  - corroboration with the new schema
+  - expression atoms with and without a teacher
+  - the explorer APIs
+- **Browser check:** a Chromium run of Studio → Word atoms covered search, the list and the full DNA panel. The only console message was the expected 401 before sign-in.
+- **Benchmarks:** interpretation, including usage observation, takes 0.24 ms per sentence. Median answer latency in the conversation evaluation is 144 ms.
+- **Not verified here:**
+  - the live Groq teacher's reply quality for the new full-DNA schema (tests use a stand-in teacher)
+  - multi-node corroboration of teacher meanings across real hosts
+
+## v1.2: ATP (Atom Transfer Protocol), causal reasoning, decomposition, synced chats
+
+Checks that passed:
+
+- **Tests:** 94 automated tests pass. `tests/v12.test.mjs` adds 6, plus an ATP migration test in `tests/mesh.test.mjs`.
+- **Browser check:** a Chromium run with two separate browser profiles signed in to the same account. The second profile showed the first one's conversation, and after signing out nothing remained on that device. There were no page errors.
+- **Benchmarks:** the conversation evaluation and atom benchmark figures are in `docs/COGNITIVE-ARCHITECTURE.md` §14.
+- **Not verified here:** an actual mixed network of v1.2 and older nodes on Render. Legacy interoperability is tested in-process and with signed requests, but not across real hosts.
 
 ## v1.1: cognitive network (context, verified answers, teacher dissection, identity)
 
@@ -126,7 +248,7 @@ Checks that passed:
 - **Browser:** the 7-part answer and the Core & evolution view rendered in Chromium with no console errors.
 - **Supabase mirroring:** tested against a mock Supabase REST API. Every mirrored row satisfied the original v1.1 CHECK constraints (entity type, relationship type, attachment category, weight range). Unchanged entities were not re-sent.
 - **Serverless:** a Netlify-style node built from a web `Request` answered with all 7 sections. It ran an evolution tick through `/cron/tick` with `CRON_SECRET`, rejected the tick without the secret, and flushed state before replying.
-- **Discovery:** three real node processes found each other. C learned A's address by gossip through B, and A learned B from B's hello. C then pulled A's public atom directly over signed MTP. The atom arrived pending, with A recorded as a confirmation.
+- **Discovery:** three real node processes found each other (over MTP/0.5, now ATP). C learned A's address by gossip through B, and A learned B from B's hello. C then pulled A's public atom directly over signed MTP. The atom arrived pending, with A recorded as a confirmation.
 
 Not verified:
 

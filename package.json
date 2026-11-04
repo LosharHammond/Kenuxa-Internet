@@ -1,8 +1,8 @@
 {
  "name": "kenuxa-internet",
- "version": "1.1.0",
+ "version": "1.6.0",
  "private": true,
- "description": "KENUXA Internet: living semantic graph, own 9-layer/81-head transformer, multi-teacher learning, Supabase storage and cross-host MTP federation",
+ "description": "KENUXA Internet: living semantic graph, own 9-layer/81-head transformer, multi-teacher learning, Supabase storage and cross-host ATP (Atom Transfer Protocol) federation",
  "type": "module",
  "engines": {
   "node": ">=22"

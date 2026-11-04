@@ -1,0 +1,20 @@
+{
+  "note": "Frozen regression set for v1.4 retention checks. Do not edit to make a failing check pass; fix the regression instead.",
+  "senses": [
+    { "text": "I deposited money at the bank.", "word": "bank", "expect": "sense:en:bank#finance" },
+    { "text": "We sat on the bank of the river.", "word": "bank", "expect": "sense:en:bank#river" },
+    { "text": "The bank approved my loan.", "word": "bank", "expect": "sense:en:bank#finance" }
+  ],
+  "discourse": [
+    { "turns": ["What is Python?", "How do I install it?"], "expectReferent": "Python" }
+  ],
+  "idioms": [
+    { "text": "He kicked the bucket.", "predicate": "die" },
+    { "text": "I am under the weather.", "predicate": "ill" }
+  ],
+  "classification": [
+    { "subject": "snake", "category": "animal", "answer": "yes" },
+    { "subject": "python", "category": "animal", "answer": "depends-on-sense" },
+    { "subject": "zorblax", "category": "animal", "answer": "unknown-terms" }
+  ]
+}

@@ -1,4 +1,4 @@
-// v0.4 UI: 7-part responses, core transformer, evolution kernel and MTP network views.
+// v0.4 UI: 7-part responses, core transformer, evolution kernel and ATP network views.
 (() => {
   const SECTIONS = [['directAnswer', '1 · Direct answer'], ['meaningGraph', '2 · Meaning graph'], ['outcomes', '3 · Outcomes'], ['capabilities', '4 · Capabilities'], ['actions', '5 · Action layer'], ['evidence', '6 · Evidence layer'], ['evolution', '7 · Evolution layer']];
   const p = (cls, t) => el('p', cls, t);

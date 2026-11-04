@@ -1,5 +1,5 @@
 // Test G on real node processes: node A creates atoms, commits them across the open mesh, then is
-// killed; another node retrieves them over signed MTP without A.
+// killed; another node retrieves them over signed ATP without A.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';

@@ -13,11 +13,11 @@ const admin = 'mesh-test-admin-token-1234567890-abcdefgh';
 test('node identity signatures: bound to one key, tamper- and replay-proof', () => {
   const a = ensureIdentity({}), b = ensureIdentity({}), seen = new Map();
   assert.notEqual(a.fingerprint, b.fingerprint); assert.equal(fingerprintOf(a.publicKey), a.fingerprint);
-  const h = signHeaders(a, 'GET', '/mtp/snapshot', '');
-  assert.equal(verifySigned(h, 'GET', '/mtp/snapshot', '', seen).fingerprint, a.fingerprint);
-  assert.equal(verifySigned(h, 'GET', '/mtp/snapshot', '', seen), null, 'replay rejected');
+  const h = signHeaders(a, 'GET', '/atp/snapshot', '');
+  assert.equal(verifySigned(h, 'GET', '/atp/snapshot', '', seen).fingerprint, a.fingerprint);
+  assert.equal(verifySigned(h, 'GET', '/atp/snapshot', '', seen), null, 'replay rejected');
   assert.equal(verifySigned(signHeaders(a, 'GET', '/x', ''), 'GET', '/y', ''), null, 'path bound');
-  assert.equal(verifySigned({ ...signHeaders(a, 'GET', '/x', ''), 'x-mtp-key': b.publicKey }, 'GET', '/x', ''), null, 'key swap rejected');
+  assert.equal(verifySigned({ ...signHeaders(a, 'GET', '/x', ''), 'x-atp-key': b.publicKey }, 'GET', '/x', ''), null, 'key swap rejected');
 });
 
 async function port() { const s = net.createServer(); await new Promise(r => s.listen(0, '127.0.0.1', r)); const p = s.address().port; await new Promise(r => s.close(r)); return p; }
@@ -38,7 +38,7 @@ test('online nodes join the network with no secret or peer list, find each other
     const C = await start('gamma', ports[2], B.origin); nodes.push(C);
     const lesson = { title: 'What is the Kenuxa lighthouse?', answer: 'The Kenuxa lighthouse is a public teaching beacon for the network.', questions: ['kenuxa lighthouse'], tags: ['beacon'], visibility: 'public' };
     await api(A, 'lessons', lesson); await api(B, 'lessons', lesson);
-    assert.equal((await (await fetch(A.origin + '/mtp/snapshot')).json()).error, 'Sign MTP requests with your node key');
+    assert.equal((await (await fetch(A.origin + '/atp/snapshot')).json()).error, 'Sign ATP requests with your node key');
     await api(B, 'sync', {});                        // B bootstraps from A and says hello
     await api(C, 'sync', {});                        // C bootstraps from B, learns A by gossip
     await api(C, 'sync', {});                        // C now exchanges with A and B
@@ -61,4 +61,20 @@ test('hosted nodes are on the network by default; a node on your own machine sta
   assert.equal(hosted.mesh.enabled, true); assert.ok(hosted.mesh.seeds.includes('https://kenuxa-internet.onrender.com')); assert.equal(hosted.mesh.publicUrl, 'https://example-node.onrender.com');
   const local = await createNode({ env: { ...base, HOST: '127.0.0.1', DATA_DIR: fs.mkdtempSync(path.join(os.tmpdir(), 'kx-l-')) }, log: () => {} });
   assert.equal(local.mesh.enabled, false);
+});
+
+test('ATP/1.0 migration: legacy MTP/0.5 nodes still interoperate in both directions', async () => {
+  const { Mesh, MESH_PROTOCOL } = await import('../lib/mesh.mjs'); assert.equal(MESH_PROTOCOL, 'ATP/1.0');
+  const me = ensureIdentity({}), old = ensureIdentity({});
+  // 1 · a legacy node signs only x-mtp-* headers over a /mtp/ path — a v1 verifier still accepts it
+  const legacy = Object.fromEntries(Object.entries(signHeaders(old, 'GET', '/mtp/ping', '')).filter(([k]) => k.startsWith('x-mtp-')));
+  assert.equal(verifySigned(legacy, 'GET', '/mtp/ping', '').fingerprint, old.fingerprint);
+  // 2 · ATP headers win when present, so a swapped legacy key cannot bypass the check
+  assert.equal(verifySigned({ ...signHeaders(me, 'GET', '/atp/ping', ''), 'x-mtp-key': old.publicKey }, 'GET', '/atp/ping', '').fingerprint, me.fingerprint);
+  // 3 · calling an old node: /atp/ returns 404, the client retries the legacy /mtp/ path and verifies its signed reply
+  const seenPaths = []; const request = async (url, { method, headers }) => { const p = new URL(url).pathname; seenPaths.push(p); if (p.startsWith('/atp/')) return { status: 404, headers: {}, text: '{"error":"Route not found"}' };
+    assert.ok(headers['x-mtp-sig'], 'legacy mirror headers are sent'); const body = JSON.stringify({ ok: true }); return { status: 200, headers: signHeaders(old, 'RESPONSE', p, body), text: body }; };
+  const mesh = new Mesh({ state: {}, identity: me, name: 'n', publicUrl: 'https://me.example', platform: 'test', enabled: true, request, shareable: () => [], findForQuery: () => [], importAtom: () => {} });
+  const res = await mesh.call('https://old.example', 'GET', '/atp/ping'); assert.deepEqual(seenPaths, ['/atp/ping', '/mtp/ping']);
+  assert.equal(mesh.verifyResponse(res, '/atp/ping', old.fingerprint).who.fingerprint, old.fingerprint);
 });

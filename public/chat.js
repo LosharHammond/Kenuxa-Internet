@@ -1,4 +1,5 @@
-// KENUXA public chat. Conversations live only in this browser (localStorage); nothing personal is stored on the node.
+// KENUXA public chat. Conversations live in this browser (localStorage). When you sign in, they also sync privately
+// to your account so your other devices see them; signing out removes your synced chats from a shared device.
 (() => {
   const $ = s => document.querySelector(s);
   const h = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
@@ -16,7 +17,7 @@
   ];
   const KEY = 'kenuxa.chats.v1';
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } };
-  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(chats.slice(0, 200))); } catch { /* private mode: in-memory only */ } };
+  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(chats.slice(0, 200))); } catch { /* private mode: in-memory only */ } if (typeof scheduleSync === 'function') scheduleSync(); };
   let chats = load(), current = null, busy = false, stopTyping = null, config = { name: 'KENUXA', mode: 'chat' };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -43,7 +44,7 @@
       const item = h('div', 'item' + (current?.id === c.id ? ' active' : '')), a = h('a', '', c.title); a.href = '#' + c.id;
       a.addEventListener('click', e => { e.preventDefault(); openChat(c.id); if (small()) shell.classList.add('closed'); });
       const del = h('button', 'del'); del.type = 'button'; del.title = 'Delete chat'; del.setAttribute('aria-label', 'Delete chat'); del.append(svg(ICON.trash));
-      del.addEventListener('click', () => { chats = chats.filter(x => x.id !== c.id); persist(); if (current?.id === c.id) newChat(); else renderHistory(); });
+      del.addEventListener('click', () => { if (c.owner) tombstones.push({ id: c.id, deleted: true, updatedAt: Date.now() }); chats = chats.filter(x => x.id !== c.id); persist(); if (current?.id === c.id) newChat(); else renderHistory(); });
       item.append(a, del); box.append(item);
     }
   }
@@ -103,7 +104,7 @@
   function toast(text) { const t = $('#toast'); t.textContent = text; t.classList.remove('hidden'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.add('hidden'), 2600); }
   async function send(text, { refresh = false } = {}) {
     text = text.trim(); if (!text || busy) return; busy = true; updateSend();
-    if (!current) { current = { id: Math.random().toString(36).slice(2, 10), title: text.slice(0, 60), messages: [], createdAt: Date.now(), updatedAt: Date.now() }; chats.unshift(current); history.replaceState(null, '', '#' + current.id); $('#top-title').textContent = current.title; }
+    if (!current) { current = { id: Math.random().toString(36).slice(2, 10), title: text.slice(0, 60), messages: [], createdAt: Date.now(), updatedAt: Date.now(), ...(me ? { owner: me.id } : {}) }; chats.unshift(current); history.replaceState(null, '', '#' + current.id); $('#top-title').textContent = current.title; }
     showEmpty(false); document.querySelectorAll('.followups').forEach(f => f.remove());
     if (!refresh) { current.messages.push({ role: 'user', content: text, at: Date.now() }); addUser(text); }
     scrollDown(); const think = thinking(); scrollDown();
@@ -138,14 +139,26 @@
     $('#account-label').textContent = me ? me.username : 'Sign in'; $('#acct-out').classList.toggle('hidden', !!me); $('#acct-in').classList.toggle('hidden', !me);
     if (me) { $('#acct-name').textContent = me.username; $('#acct-loc').checked = locOn(); $('#acct-loc-state').textContent = locOn() ? (me.settings?.location ? `Using: ${me.settings.location.country || 'nearby area'} (${me.settings.location.accuracy || me.settings.location.source})` : 'Location sharing is on.') : 'Location is not shared.'; }
   }
-  async function refreshMe() { try { me = (await (await fetch('/chat/me')).json()).user; } catch { me = null; } renderAccount(); }
+  // ---- private cross-device sync (signed-in only) ----
+  var tombstones = [], syncTimer = null, lastSync = 0;
+  function scheduleSync() { try { if (!me) return; } catch { return; } clearTimeout(syncTimer); syncTimer = setTimeout(syncChats, 1500); }
+  async function syncChats() {
+    if (!me) return;
+    const mine = chats.filter(c => c.owner === me.id && (c.updatedAt || 0) > lastSync); // chats made while signed out stay on this device only
+    try { const r = await post('/chat/account', { action: 'chats', chats: [...mine, ...tombstones] }); tombstones = []; lastSync = Date.now();
+      for (const rc of r.chats || []) { const i = chats.findIndex(c => c.id === rc.id); if (rc.deleted) { if (i >= 0 && current?.id !== rc.id) chats.splice(i, 1); continue; } rc.owner = me.id; if (i < 0) chats.push(rc); else if ((rc.updatedAt || 0) > (chats[i].updatedAt || 0) && current?.id !== rc.id) chats[i] = rc; }
+      chats.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0)); try { localStorage.setItem(KEY, JSON.stringify(chats.slice(0, 200))); } catch {} renderHistory();
+    } catch { /* offline: retry on next change */ }
+  }
+  function forgetOwned(id) { chats = chats.filter(c => c.owner !== id); if (current && current.owner === id) newChat(); try { localStorage.setItem(KEY, JSON.stringify(chats.slice(0, 200))); } catch {} renderHistory(); }
+  async function refreshMe() { try { me = (await (await fetch('/chat/me')).json()).user; } catch { me = null; } renderAccount(); if (me) { lastSync = 0; syncChats(); } }
   $('#account-btn').addEventListener('click', async () => { renderAccount(); if (me) { try { const m = await account('memory'); const box = $('#acct-mem'); box.replaceChildren(); box.append(h('b', '', m.facts.length ? 'What you asked me to remember' : 'Nothing remembered yet — say “remember that …” in a chat.')); if (m.facts.length) { const ul = h('ul'); for (const f of m.facts) ul.append(h('li', '', f.text)); box.append(ul); } } catch {} } dlg.showModal(); });
-  $('#acct-login').addEventListener('click', async () => { try { const r = await account('login', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); toast('Signed in'); } catch {} });
-  $('#acct-create').addEventListener('click', async () => { try { const r = await account('create', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); toast('Account created'); } catch {} });
-  $('#acct-logout').addEventListener('click', async () => { try { await account('logout'); } catch {} me = null; renderAccount(); toast('Signed out'); });
+  $('#acct-login').addEventListener('click', async () => { try { const r = await account('login', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); lastSync = 0; syncChats(); toast('Signed in'); } catch {} });
+  $('#acct-create').addEventListener('click', async () => { try { const r = await account('create', { username: $('#acct-user').value, passphrase: $('#acct-pass').value }); me = r.user; $('#acct-pass').value = ''; renderAccount(); lastSync = 0; syncChats(); toast('Account created'); } catch {} });
+  $('#acct-logout').addEventListener('click', async () => { const id = me?.id; try { await syncChats(); await account('logout'); } catch {} me = null; if (id) forgetOwned(id); renderAccount(); toast('Signed out — your synced chats were removed from this device'); });
   $('#acct-forget').addEventListener('click', async () => { try { await account('forget-all'); $('#acct-mem').replaceChildren(h('b', '', 'Memory erased.')); toast('Memory erased'); } catch {} });
   $('#acct-export').addEventListener('click', async () => { try { const d = await account('export'); const a = h('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(d, null, 2)], { type: 'application/json' })); a.download = 'kenuxa-my-data.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); } catch {} });
-  $('#acct-delete').addEventListener('click', async () => { try { await account('delete', { passphrase: $('#acct-del-pass').value }); me = null; renderAccount(); dlg.close(); toast('Account deleted'); } catch {} });
+  $('#acct-delete').addEventListener('click', async () => { try { const id = me?.id; await account('delete', { passphrase: $('#acct-del-pass').value }); me = null; if (id) forgetOwned(id); renderAccount(); dlg.close(); toast('Account deleted'); } catch {} });
   $('#acct-loc').addEventListener('change', async e => { try { localStorage.setItem('kx_loc', e.target.checked ? '1' : '0'); } catch {} if (e.target.checked) { const l = await readLocation(); try { const r = await account('location', { location: l }); me.settings = { ...me.settings, location: r.location }; } catch {} if (l && l.lat == null) toast('Using your time zone only (approximate)'); } else { lastLoc = null; try { await account('location', { enabled: false }); me.settings = { ...me.settings, location: null }; } catch {} } renderAccount(); });
   if (locOn()) readLocation();
   refreshMe();

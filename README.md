@@ -1,8 +1,112 @@
-# KENUXA Internet v1.1: an atom-native cognitive network that remembers the conversation, reasons, verifies and learns
+# KENUXA Internet v1.6: an atom-native cognitive network that learns while it runs, and that visitors and installed agents can volunteer computing and storage to
 
 A fresh reconstruction from your surviving semantic-internet specification. It is not a recovered copy of the lost laptop's code. v0.4 reconnects to the original **INTERNET** Supabase project and reuses its v1.1 *Semantic Graph Entity Schema* tables: entities, relationships, attachments, capabilities, embeddings and resolutions.
 
 Every component serves **Meaning → Capability → Outcome → Evolution**. The graph is the intelligence layer. The transformer is a component inside the network; it is not the centre. Storage is not intelligence.
+
+## New in v1.6: KUNPP/2 — peer-to-peer, installed agents, storage on peers, failover
+
+- **Peer-to-peer (WebRTC).** When two browsers check the same public atoms, the second gets them directly from the first over a DataChannel and re-hashes every revision. In a real two-browser run the server avoided sending 342–911 KB; a failed transfer falls back to HTTPS and is subtracted from the counted saving.
+- **Installed agent (Type C) and specialised nodes (Type D).** `node agent/kenuxa-agent.mjs --coordinator https://your-node --consent [--storage-dir ./store --storage-mb 512] [--specialized symbolic-reasoning]`. No dependencies. A claimed capability is used only after the agent passes a probe with a known answer.
+- **Storage on peers.** Agents hold replicated **public** revisions, prove them with fresh storage challenges, and can restore a revision the core lost. A restored revision is accepted only if its hash matches one the core already knows. Browsers are a cache, never durable storage.
+- **More work types.** Relation checks, word-form consistency, claim consistency, graph metrics and transitive IS_A inference join atom validation.
+- **The node measures every work type separately.** Today the new types are cheaper to run on the node than to hand out, so the node keeps them. Atom validation is still delegated, saving **68–91%** of the node's CPU for that work.
+- **Harder to flood.** Each registration solves a small proof-of-work puzzle (about 30 ms; harder when many arrive at once), on top of the per-network limits, a per-account device cap, and replicas from different networks.
+- **Survives a coordinator outage.** Every hosted node is a coordinator. Browsers and agents switch to the next one when theirs goes down; this is tested by killing the coordinator.
+- **Smaller transfers.** Task payloads are gzipped, 8.5–11.7× smaller.
+- **Still not covered:** a TURN relay, shared coordinator state, and first contact for new users when no hosted node is reachable. Details, measurements and limits are in `docs/KUNPP.md`.
+
+## New in v1.5: volunteer computing (KUNPP)
+
+Visitors can now **choose** to lend their browser to KENUXA. In the public chat sidebar, "Contribute computing" opens a consent dialog. If the visitor starts it, the tab checks small batches of **public** knowledge atoms in a background Web Worker: content hashes, schema, links and provenance. It runs only while the tab is open and visible, within the chosen profile (Light, Balanced or Custom). Pausing or stopping takes effect at once.
+
+- **Safety.** Peers receive only public atoms and run only a fixed, published task module (`/peer-tasks.mjs`), with no code from the network. Every reported problem is re-checked by the node, and clean results are confirmed by an independent replica or a spot-check. Peers never write knowledge.
+- **Measured.** Delegating the atom audit to 8 peers cut the node's own CPU for that work by **88%** with the default verification, and by **66%** with peers that drop tasks plus one malicious peer. The cost is outbound bandwidth (about 1.5 KB per atom). The node stops delegating whenever the measured overhead exceeds the work saved, and does the work itself when nobody participates.
+- **Owner view:** Studio → **Compute network** shows peers, tasks, verification counts, the measured saving, findings and a revoke button.
+- **Limits (v1.5, addressed in v1.6 above).** There was no WebRTC, no installed agent and no storage on peers, and one Render node was the single coordinator.
+- **Details:** `docs/KUNPP.md` covers the architecture, protocol, measurements, scaling table, outage analysis, configuration and roadmap.
+
+## New in v1.4: live cognitive evolution
+
+KENUXA's knowledge now changes while the same server process keeps running. No redeploy is needed and no neural weights change. Studio → **Live evolution** shows every learning event, claim, method and answer revision.
+
+- **Transactional learning events.** Each change moves through observed → provisional → validated → committed (durably stored) → indexed → active, with explicit disputed, rejected, superseded, revoked and failed states.
+  - A request reads one consistent knowledge snapshot.
+  - A failed write activates nothing.
+  - Identical updates are applied once.
+  - A correction made against a stale revision becomes a dispute instead of overwriting.
+  - An interrupted commit is recovered after restart.
+  - Any activation can be revoked.
+- **Live senses.** Teach a word a new meaning with evidence (`POST /api/live/sense`). A teacher alone is not enough. The next request uses the new sense, and other senses keep their meaning.
+- **Evidence-based claims.** Claims carry supporting and contradicting evidence, scope, dates and origin.
+  - Copies of one article count once.
+  - A teacher's statement is an opinion that does not establish a claim.
+  - Verdicts: supported, contradicted, disputed, outdated, inferred, insufficient evidence or not established.
+  - Competing explanations are shown with their evidence, and no winner is forced.
+- **Learned methods.** Reusable procedures run in a restricted interpreter: no code, no `eval`, a fixed set of operations.
+  - A method is applied only when it fits the new problem's inputs. Otherwise KENUXA says what is missing.
+  - Each learning need gets one teacher request. A failed request is never retried silently.
+- **Correction propagation.** Correcting a knowledge atom re-develops its intrinsic agent and expert, advances its molecules and cells, invalidates dependent answer caches and records the answer revision. Unrelated knowledge is untouched, and revoking the correction restores the old knowledge.
+- **Context and tone.** An ambiguous "it" gets a focused clarification. "I'm fine" variants get calibrated alternative readings (never above 0.7) that are kept separate from what was observed.
+- **Privacy.**
+  - Words first seen in conversations stay private (not preserved to the network) until the teacher confirms them.
+  - Public-chat statements become private notes.
+  - Public-chat questions never enter the teacher curriculum or dataset export.
+- **Learning sources.** `ATOMIZE_ANSWERS` is now **off** by default, so KENUXA's own answers are not turned into atoms. Teacher answers are learned from in depth: their words become atoms, and their claims are recorded as opinions to be checked.
+- **Fixes.** The teacher-lesson memory no longer stops with "memory full" after 1,000 lessons; it is bounded and drops the oldest. The studio header shows the real version.
+- **v1.4.2: verb senses, structured extraction, network agreement.**
+  - Verb uses get verb senses; when no verb sense is known, the meaning stays explicitly unknown.
+  - Claims and price options are read from KENUXA's own interpretation (roles, negation, modality, unit normalisation) instead of fixed patterns.
+  - A live update is re-validated by each peer node, which then votes accept, reject or conflict. The origin reports agreed, contested or pending, and accepting peers activate the update through their own ledgers.
+- **Bounded investigation (v1.4.1).** Disputed and teacher-only claims are checked against a few public pages, within `INVESTIGATE_PER_HOUR` (default 12). Only sentences that mention both sides of a claim count as evidence.
+- **APIs (owner):**
+  - `GET /api/live/status`, `/api/live/events`, `/api/live/claims`, `/api/live/methods`, `/api/live/answers`
+  - `POST /api/live/sense`, `/api/live/correct`, `/api/live/revoke`, `/api/live/claim`, `/api/live/disagreement`, `/api/live/method`, `/api/live/method/learn`, `/api/live/method/apply`, `/api/live/retry`, `/api/live/investigate`, `/api/live/share`
+- **Migration:** none. Existing state loads unchanged, and new fields are created on first use. No database migration is needed.
+
+Details, measurements and the status of each capability (working, narrow heuristic or not implemented) are in `docs/COGNITIVE-ARCHITECTURE.md` §16.
+
+## New in v1.3: every word and every meaning is an atom, with complete, evolving, teacher-guarded DNA
+
+- **Every word a person or KENUXA uses becomes an atom.** This covers each word in a question or reply, and each word in KENUXA's own answers. A new word gets its atom on first use and is queued for the teacher.
+- **Complete lexical DNA from a guarded teacher.** For each new word the teacher (Groq by default) is asked for:
+  - every part of speech, the lemma, inflected forms and pronunciation
+  - the word's purpose
+  - every distinct meaning, each as its own sense atom with a definition, a broader category, a field, where and how it is used, register, examples, synonyms and antonyms
+  - related words and collocations
+
+  Synonyms, antonyms and related words become linked word atoms of their own, which are queued in turn.
+- **The teacher cannot poison the registry.** Every reply is validated before anything is written:
+  - text containing links, HTML, scripts or prompt-injection phrases is rejected
+  - the lemma must be a plausible form of the word
+  - examples must actually use the word
+  - a part of speech that contradicts how people really used the word is recorded as uncertainty
+
+  Rejected replies are logged (visible in the studio) and retried once. Accepted meanings stay **provisional** until another node or this node's own teacher corroborates them.
+- **No teacher cap by default (v1.3.1).** Each cycle drains the whole word queue, bounded only by a time budget (`LEXICON_TICK_MS`, default 25 s). On hosted nodes, words from a new question are worked on right away. The old implicit limit of 30 teacher calls per day is lifted. KENUXA follows the provider's own rate limits instead: after HTTP 429 or 503 it pauses all teacher calls for as long as the provider says (`Retry-After` or the `x-ratelimit-reset-*` headers), otherwise with exponential backoff, and nothing queued is lost. Optional caps: `LEXICON_MAX_PER_HOUR`, `LEXICON_PER_TICK`, `TEACHER_MAX_CALLS_PER_DAY`, or the daily limit in Studio → AI teachers (leave it empty for no limit). Set a cap if your teacher charges per call.
+- **Backfill.** Words from conversations and lessons stored before v1.3 are turned into atoms once.
+- **Atoms keep evolving.** Each use is observed: count, roles, surface forms, neighbouring words and example sentences. At milestones (2, 5, 10, 25 … uses) the observations are written into the atom's DNA as a new revision. Words that repeatedly appear together get `RELATED_TO` links. History is never rewritten.
+- **Multi-word meanings get atoms too.** Frequent word combinations (2–4 words, scored by PMI) and repeated whole sentences are checked by the teacher. Compounds ("solar panel"), idioms, phrasal verbs and proverbs become phrase or sentence atoms linked to their words, and the interpreter recognises them. Ordinary combinations are marked compositional. Without a teacher, frequent combinations become candidate atoms whose meaning is honestly marked unknown.
+- **Privacy.** Only impersonal sentences are kept as examples. Sentences with first- or second-person words, names, numbers or addresses still count as usage, but their text is never stored in shared DNA.
+- **Studio → Word atoms.** A new explorer lists every atom in the registry, with search and type/status filters. Each atom's full DNA is shown: identity, all senses, usage, links (clickable), evidence and trust, revision history and raw JSON. A separate panel lists expression atoms and the combinations still waiting to be checked. APIs: `GET /api/atoms/list`, `GET /api/lexicon/atom?id=`, `GET /api/atoms/candidates`.
+- **Configuration:**
+  - `LEXICON_PER_TICK` and `LEXICON_MAX_PER_HOUR` are optional caps; unset or 0 means unlimited.
+  - `LEXICON_TICK_MS` sets the time budget per cycle. `LEXICON_EAGER=false` turns off starting work right after a question.
+  - `ATOMIZE_ANSWERS=true` turns on atomizing KENUXA's own answers (off by default since v1.4).
+
+## New in v1.2: ATP, causal reasoning, decomposition, synced chats
+
+- **ATP, the Atom Transfer Protocol, replaces the old MTP name everywhere.** Nodes talk over `/atp/*` with `x-atp-*` signatures and advertise `ATP/1.0`. **Migration:** nodes still on MTP/0.5 keep working. Requests to `/mtp/*` with `x-mtp-*` headers are accepted, and a v1.2 node retries a peer's `/mtp/` route if it does not yet know `/atp/`. Both directions are tested. `GET /atp/info` now also advertises the node's **capabilities and health** (uptime, memory, storage, pending commits, alerts, open learning tasks).
+- **Causal, multi-step reasoning.** "Heat causes expansion." and "Expansion causes cracks." are learned as unverified causal links. KENUXA then answers:
+  - "Does heat cause cracks?" with "Possibly, indirectly…", treating each extra step as weaker
+  - "What causes cracks?" with direct and indirect causes
+  - "Why do cracks happen?" in the same way
+
+  Denials ("Heat does not cause cracks.") make the question **disputed**.
+- **Sentences are decomposed into events.** "The solar panel converts sunlight into electrical energy." gives actor = solar panel, action = convert, input = sunlight, output = electrical energy. Every answer's plan now carries this structure.
+- **Only general statements become shared knowledge.** "My sister is a nurse." is personal and is never learned as a general fact.
+- **Chat history syncs across your devices when you sign in.** It stays private and bounded, the newer edit wins, unsafe links are stripped, and signing out removes your synced chats from a shared device. Chats you make while signed out stay on that device only.
+- **Metadata now survives as many losses as the data it describes.** On networks of 12 or more nodes, the index is kept on 5 nodes with majority writes, matching 8+4 stripes.
 
 ## New in v1.1: context continuity, verified answers, learning from a teacher, accounts and memory
 
@@ -21,7 +125,7 @@ The full report is in [docs/COGNITIVE-ARCHITECTURE.md](docs/COGNITIVE-ARCHITECTU
 - **Atomic correctness audit and a repository snapshot.** Public atoms can be backed up into the repository, which matters because Render free disks are ephemeral.
 
 ```bash
-npm test                        # 87 tests
+npm test                        # 94 tests
 node bench/cognition.eval.mjs   # before/after conversation evaluation
 ```
 
@@ -102,7 +206,7 @@ KENUXA is a network, not a single app. **Every node that is hosted online joins 
 
 A node running on your own machine stays private. To join from your PC anyway, set `KENUXA_NETWORK=on`.
 
-How joining works (`lib/mesh.mjs`, protocol **MTP/0.5-open**):
+How joining works (`lib/mesh.mjs`, protocol **ATP/1.0 — Atom Transfer Protocol**; MTP/0.5 nodes are still accepted):
 
 1. **Identity.** On first start a node creates its own Ed25519 key pair. Its network identity is the key's fingerprint. Every request and response is signed with it, timestamped and protected against replay, and each fingerprint is bound to exactly one key.
 2. **First contact.** The node reads the bundled genesis seeds and the living directory in `network/seeds.json`, which it fetches again from the public repo, so the list can grow without code changes. It then says hello. The receiving node checks the announced URL by fetching the sender's signed `/mtp/info`.
@@ -248,9 +352,9 @@ Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (or a `sb_secret_…` key). T
 
 Every row carries `node_id`, so several nodes can share one project. Transformer checkpoints go to the private Storage bucket `kenuxa`. Run `0001_kenuxa_internet_v04.sql` once; it is additive and never drops data. `0002_tighten_v11_policies.sql` is recommended. It removes the v1.1 "anyone with the anon key can write" policies.
 
-### MTP federation on any host (`lib/federation.mjs`, `lib/node.mjs`, `lib/adapters.mjs`)
+### ATP federation on any host (`lib/federation.mjs`, `lib/node.mjs`, `lib/adapters.mjs`)
 
-The protocol is MTP/0.4, the *Meaning Transfer Protocol* named in the original design. Peers can be any public HTTPS origin: Render, Railway, Vercel, Netlify, Fly or a custom domain. Every request and every response is HMAC-signed with the shared `NETWORK_SECRET`.
+The legacy pull protocol is ATP/0.4 (the *Atom Transfer Protocol*; earlier releases called it MTP). Peers can be any public HTTPS origin: Render, Railway, Vercel, Netlify, Fly or a custom domain. Every request and every response is HMAC-signed with the shared `NETWORK_SECRET`.
 
 Nodes find each other in three ways:
 

@@ -156,7 +156,7 @@
     ...VIEWS.map(([v, t]) => ({ label: `Go to ${t}`, hint: 'VIEW', run: () => view(v) })),
     { label: 'Run an evolution tick', hint: 'EVOLVE', run: async () => { const r = await api('evolve', {}); toast(r.busy ? 'Evolution is already running.' : `Evolution tick finished in ${r.ms} ms`); } },
     { label: 'Train the core transformer · 5 steps', hint: 'TRAIN', run: async () => { const r = await api('transformer/train', { steps: 5 }); toast(`Transformer step ${r.step}, loss ${r.loss?.toFixed(3)}`); } },
-    { label: 'Sync with connected nodes', hint: 'MTP', run: async () => { await api('sync', {}); toast('Sync finished.'); } },
+    { label: 'Sync with connected nodes', hint: 'ATP', run: async () => { await api('sync', {}); toast('Sync finished.'); } },
     { label: 'View the showcase page', hint: 'SHOW', run: () => $('#open-showcase').click() },
   ];
   let sel = 0, items = [];
