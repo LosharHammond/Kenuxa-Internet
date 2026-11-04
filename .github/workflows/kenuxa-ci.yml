@@ -4,7 +4,27 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: kenuxa-unified-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
+  quick-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and architecture
+        run: |
+          node --check lib/node.mjs
+          node --check lib/mind/program-induction.mjs
+          node --check lib/mind/unified-cognition.mjs
+          node --check lib/mind/developmental-learning-core.mjs
+          node scripts/check-unified-architecture.mjs
+      - name: Unified learning and chatbot regression
+        run: node --test tests/program-induction.test.mjs tests/autonomous-skills.test.mjs tests/unified-cognition.test.mjs tests/unified-chatbot.test.mjs tests/contextual-answer.test.mjs
   node-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 20
