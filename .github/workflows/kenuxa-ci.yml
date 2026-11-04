@@ -22,6 +22,8 @@ jobs:
           node --check lib/mind/foundation-training.mjs
           node --check lib/mind/foundation-cognition.mjs
           node --check lib/mind/developmental-learning-core.mjs
+      - name: Verify unified runtime dependency graph
+        run: node scripts/check-unified-architecture.mjs
       - name: Run full regression suite
         run: npm test
       - name: End-to-end node smoke test
