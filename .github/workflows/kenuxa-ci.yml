@@ -26,3 +26,19 @@ jobs:
         run: npm test
       - name: End-to-end node smoke test
         run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/developmental-learning-core.test.mjs
+
+  deployment-smoke:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: node-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify actual Render deployment and chatbot
+        env:
+          DEPLOYMENT_URL: https://kenuxa-internet.onrender.com
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: node scripts/deploy-smoke.mjs
