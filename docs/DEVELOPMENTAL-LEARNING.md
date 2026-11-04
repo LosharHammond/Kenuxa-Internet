@@ -23,3 +23,9 @@ Validation trials require distinct `testId` values. This only checks uniqueness,
 `lib/mind/developmental-lab.mjs` defines a deterministic bounded `ToyWorld` and `DevelopmentalLab`. The world exposes opaque state/action identifiers; the learner is not given the transition formula. `Mind.developmentalExperiment({ world: { states, actions, seed }, repetitions, maxExperiments })` runs explicit, synchronous experiments. It is intentionally not connected to public chat, HTTP, or a recurring background scheduler. Test with `node --test tests/developmental*.test.mjs`.
 
 **Evaluation limit:** this experiment observes each transition before testing it. It measures acquisition of a deterministic transition table, not compositional generalization. Trial IDs are distinct but tests share the same simulated world, so they are not independent external evidence. For genuine generalization, future benchmarks must withhold states or entire environments, vary symbol encodings, and score only unseen tasks. Autonomous scheduling should be gated by CPU budgets, consent, and regression checks.
+
+## Compositional transfer milestone
+
+`lib/mind/developmental-generalize.mjs` introduces a **bounded modular affine hypothesis search**: given structured examples `{state, action, next}`, it enumerates hypotheses of the form `next = (a*state + b*action + c) mod modulus` and accepts a rule only when the search identifies a unique consistent hypothesis within its budget. `evaluateModularRule` scores separately supplied unseen input combinations. `tests/developmental-generalize.test.mjs` includes withheld state/action combinations and ambiguity/conflict tests.
+
+This is deliberately a separate research module, not an automatic upgrade to all language reasoning. The hypothesis family is developer-defined; KENUXA discovers its coefficients, not the existence of modular arithmetic itself. No independent CI result was available when these changes were authored.
