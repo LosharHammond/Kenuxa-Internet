@@ -21,3 +21,12 @@ test('lab never changes public world or executes untrusted programs', () => {
   assert.throws(() => new ToyWorld({ states: 1000 }), RangeError);
   assert.throws(() => new ToyWorld({ seed: -1 }), RangeError);
 });
+
+test('Mind can explicitly run the bounded laboratory', async () => {
+  const { Mind } = await import('../lib/mind/index.mjs');
+  const mind = new Mind({ state: {} });
+  const report = mind.developmentalExperiment({ world: { states: 3, actions: 2, seed: 5 } });
+  assert.equal(report.ok, true);
+  assert.equal(report.tested, 6);
+  assert.equal(mind.developmentalStatus().validated, 6);
+});
