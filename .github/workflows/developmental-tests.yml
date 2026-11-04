@@ -27,3 +27,13 @@ jobs:
         run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/contextual-answer.test.mjs tests/developmental-learning-core.test.mjs tests/transformer.test.mjs
       - name: Run complete Node test suite
         run: npm test
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test deployed Render HTTP endpoints
+        run: node scripts/smoke-live.mjs
