@@ -128,3 +128,17 @@ test('dictionary-induced grammar keeps independent held-out usage examples',()=>
  assert.ok(measured.transitionCoverage>=0&&measured.transitionCoverage<=1);
  assert.deepEqual(new GrammarInduction({catalog,state:JSON.parse(JSON.stringify(state))}).evaluateHeldout(),measured);
 });
+
+test('licensed WordNet hypernym relationships enter persistent cognitive curriculum',async()=>{
+ const state={atoms:[],mind:{developmentalCurriculum:{examples:[]}}};
+ const catalog=new FoundationCatalog();
+ const recorded=[];
+ const mind={curriculumRecord:(e)=>{recorded.push(e);state.mind.developmentalCurriculum.examples.push(e);return {ok:true};}};
+ const engine=new AutonomousLearningEngine({state,catalog,mind,transformer:{enabled:false,status:()=>({release:{}})},save:async()=>{}});
+ for(let i=0;i<8&&recorded.length===0;i++)await engine.tick({limit:128,refresh:false});
+ assert.ok(recorded.length>0,'the imported sense stream must provide relations');
+ assert.equal(recorded[0].domain,'language-relation');
+ assert.equal(recorded[0].relation,'is-a');
+ assert.equal(recorded[0].evidence,'observation');
+ assert.ok(JSON.parse(JSON.stringify(state)).mind.developmentalCurriculum.examples.length>0);
+});
