@@ -7,6 +7,8 @@ import { MorphologyLearner } from '../lib/mind/morphology-learning.mjs';
 import { AutonomousLearningEngine } from '../lib/mind/autonomous-learning.mjs';
 import { corpusFromState } from '../lib/transformer/train.mjs';
 import { curateDataset } from '../lib/transformer/pipeline.mjs';
+import {makeConfig,initParams} from '../lib/transformer/core.mjs';
+import {Trainer} from '../lib/transformer/train.mjs';
 
 test('real imported WordNet shards become streaming transformer documents with a persisted cursor',()=>{
  const catalog=new FoundationCatalog({maxShards:2}),state={atoms:[]};
@@ -98,4 +100,19 @@ test('morphology inference does not invent stems without held-out validation',()
  const catalog={shard:()=>({abcde:['abcd']}),lookup:()=>({senses:[{pos:'n'}]})};
  const learner=new MorphologyLearner({state:{},catalog});
  learner.train();assert.equal(learner.infer('newworde'),null);
+});
+
+test('actual CPU gradient training learns from imported WordNet bytes rather than a stub',()=>{
+ const catalog=new FoundationCatalog();
+ const source=new FoundationTrainingCorpus({catalog,state:{atoms:[]}});
+ const wordnetDocument=source.next({limit:3}).documents[0];
+ assert.ok(wordnetDocument.includes('Meaning:'));
+ const config=makeConfig('test',{layers:1,heads:4,kvHeads:2,headDim:2,ffn:12});
+ const trainer=new Trainer(config,initParams(config,17),{lr:0.01,warmup:3,seq:24});
+ trainer.setCorpus([wordnetDocument.slice(0,160)]);
+ const initial=trainer.trainStep();
+ for(let step=0;step<45;step++)trainer.trainStep();
+ assert.ok(trainer.loss<initial,'training loss should improve from actual WordNet bytes');
+ assert.equal(trainer.step,46);
+ assert.ok(trainer.tokens>100);
 });
