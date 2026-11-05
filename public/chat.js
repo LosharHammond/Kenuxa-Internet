@@ -125,7 +125,7 @@
     showEmpty(false); document.querySelectorAll('.followups').forEach(f => f.remove());
     if (!refresh) { current.messages.push({ role: 'user', content: text, at: Date.now() }); addUser(text); }
     scrollDown(); const think = thinking(); scrollDown();
-    const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
+    const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, answer: current.messages[i + 1]?.role === 'ai' && !current.messages[i + 1]?.error ? String(current.messages[i + 1].content || '').slice(0, 1200) : null, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
     try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) }, { timeoutMs: 25000 });
       msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, performance: r.performance || null, at: Date.now(), question: text };
