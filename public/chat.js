@@ -114,7 +114,7 @@
       if (!r.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
       return data;
     } catch (e) {
-      if (controller.signal.aborted) throw new Error('KENUXA exceeded the 25-second answer limit. The request was stopped on this device. Please try again; this delay has been recorded for investigation.');
+      if (controller.signal.aborted) throw new Error('KENUXA could not reach this node before the connection deadline. The free Render service may be waking or temporarily unavailable.');
       throw e;
     } finally { if (timer) clearTimeout(timer); }
   }
@@ -132,7 +132,7 @@
     // definition after eight turns. Strictly honor the server's 16KB request cap.
     const bytes = () => new TextEncoder().encode(JSON.stringify(request)).length;
     while (request.history.length > 1 && bytes() > 14000) request.history.shift();
-    try { const r = await post('/chat/ask', request, { timeoutMs: 25000 });
+    try { const r = await post('/chat/ask', request, { timeoutMs: 90000 });
       msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, performance: r.performance || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
