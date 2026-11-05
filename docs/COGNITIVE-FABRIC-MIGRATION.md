@@ -88,3 +88,38 @@ Existing owner POST /api/mind/fabric review of an approved relation emits a Fabr
 - Separate evaluation against truly withheld examples, including generalization beyond the fixed operator vocabulary.
 
 The last two gates MUST NOT be declared passed until actual deployment evidence supports them.
+
+## Native atomic model evaluation (November 2026)
+
+The native KENUXA transformer can now train on privacy-filtered, compositional JSON-frame
+examples derived from reusable quantity and type-inheritance operators, in addition to
+its approved atom and dictionary corpus. These training examples use a fixed seed;
+held-out evaluation uses a different seed and tests unfamiliar names, arithmetic,
+inherited properties, and explicit unknowns. The quality gate measures **native model
+output only**, not whether the symbolic reasoning engine could solve the task.
+
+On an independent CPU worker or offline development machine that has a checkpoint,
+run `DATA_DIR=/path/to/kenuxa-data node scripts/evaluate-native-model.mjs`.
+It evaluates that checkpoint on withheld examples, records the score in checkpoint
+metadata and approves native inference only when the gate passes. If the checkpoint
+has not reached the quality threshold, the model stays out of the interactive answer
+path and existing atomic/graph reasoning continues to work. Never assume that
+training on a limited curriculum produces general language intelligence.
+
+Web-hosted Render instances do not run the synchronous evaluation in the HTTP thread.
+A model checkpoint cannot be promoted merely because a few symbolic test questions
+passed. Broader independent multilingual and cross-domain capability tests remain
+required before making general-comprehension claims.
+
+## Signed recovery production acceptance
+
+On startup and during idle recovery checks, nodes each select one existing curated
+public procedure with independent passing kernel tests. They publish signed copies
+into private shared storage, without exporting private conversations. Recovering a
+bundle uses the peer's known signed public key, not the current uptime reputation;
+every recovered procedure must pass local revalidation and is deduplicated.
+GitHub's deployment workflow now requires evidence that **both** nodes have
+published, mutually verified, offered, and adopted non-empty public procedures.
+This proves storage-based knowledge recovery without calling the origin node, but
+it is not equivalent to deliberately shutting down and restoring an actual Render
+service during a controlled production outage.
