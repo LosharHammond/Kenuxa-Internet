@@ -8,7 +8,7 @@ const add=(m,i,split='train')=>{
 };
 test('verified independent holdouts automatically promote without owner approval',()=>{
  const state={},m=new DevelopmentalLearning({state});
- for(const n of [3,4,5,6])add(m,n);
+ for(const n of [3,4,5,6,9])add(m,n);
  for(const n of [7,8])add(m,n,'holdout');
  m.discover();const release=m.autoPromote({scope:'public'});
  assert.ok(release.promoted>=1,JSON.stringify(release));
