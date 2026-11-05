@@ -43,6 +43,18 @@ test('signed ATP peer may lease bounded public task only after reciprocal identi
    const data=JSON.parse(response.body);
    assert.ok(Object.hasOwn(data,'task'));
    assert.ok(A.state.compute.peers['node_'+B.state.identity.fingerprint]);
+   // A degraded but established mesh peer must not be offered as goodPeers()
+   // while being denied by the compute handler. The production node fell into
+   // this exact HTTP 403 loop at reputation 0.23 on 2026-11-05.
+   const p=A.mesh.peers.find(x=>x.fingerprint===B.state.identity.fingerprint);
+   p.reputation=0.23;
+   assert.ok(A.mesh.goodPeers(10).includes(p));
+   assert.equal((await request(signHeaders(B.state.identity,'POST',route,body))).status,200,
+       'a low-reputation established peer can still lease bounded public work');
+   p.reputation=0.1;
+   assert.equal((await request(signHeaders(B.state.identity,'POST',route,body))).status,403,
+       'a peer below the shared trust floor is rejected');
+   p.reputation=0.5;
    assert.equal((await request(headers)).status,401,'signed messages cannot be replayed');
    const invalid=await A.handle({method:'POST',url:'/atp/compute/arbitrary-js',headers:{
      ...signHeaders(B.state.identity,'POST','/atp/compute/arbitrary-js',body),
