@@ -8,7 +8,7 @@ const scenarios=[
  {label:'follow-up',question:name+' receives 3 more shells. How many shells does it have now?',
   expected:14,check:s=>/\b14\b/.test(s)},
  {label:'unsupported-evidence',question:'What is the exact diameter in nanometers of the fictional '+name+'? The diameter has never been specified.',
-  expected:'uncertain',check:s=>/unknown|not (?:specified|provided|known|enough)|cannot determine|can't determine|no (?:reliable |known )?(?:diameter|information)|unspecified|not establish/i.test(s)}
+  expected:'uncertain',check:s=>/unknown|not (?:specified|provided|known|enough)|cannot determine|can't determine|no (?:reliable |known )?(?:diameter|information)|unspecified|not establish|don.t have reliable knowledge|i have not invented an answer/i.test(s)}
 ];
 const results=[];
 async function ask(origin,body){

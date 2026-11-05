@@ -82,3 +82,5 @@ jobs:
         env:
           EXPECTED_COMMIT: ${{ github.sha }}
         run: node scripts/smoke-mesh-live.mjs
+      - name: Verify nonempty signed knowledge recovery across live Render hosts
+        run: node scripts/verify-live-recovery.mjs
