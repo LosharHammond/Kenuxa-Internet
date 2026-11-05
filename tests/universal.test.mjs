@@ -126,7 +126,11 @@ test(`random corrections: one verified example of a hidden rule transfers to uns
   for (let k = 0; k < 2; k++) {
     const fam = fams[k], store = new CognitiveStore({}), ev = new EvolutionEngine({ store, procedures: () => [...LIBRARY, ...store.usable('procedure')] });
     const ex = [r.int(200, 5000), r.int(10, 900), r.int(50, 99)], out = ev.learn({ problem: fam.q(...ex), expected: { value: fam.f(...ex), unit: fam.unit }, verifiedBy: 'test' });
-    assert.ok(out.promoted, JSON.stringify(out).slice(0, 300));
+    // A verified example can either teach a missing procedure or confirm that
+    // an existing one already solves the family. No new rule is needed then.
+    assert.ok(out.promoted || (out.ok && out.status === 'already-correct' &&
+      close(out.answer?.value, fam.f(...ex), 1e-9)),
+      JSON.stringify(out).slice(0, 300));
     for (let i = 0; i < 8; i++) { const x = [r.int(100, 9000), r.int(5, 1500), r.int(30, 100)]; const s = solve(fam.q(...x), { procedures: [...LIBRARY, ...store.usable('procedure')] }); assert.ok(s.ok && close(s.answer.value, fam.f(...x), 1e-9), `${fam.q(...x)} → ${s.answer?.value} vs ${fam.f(...x)}`); }
   }
 });
