@@ -127,7 +127,12 @@
     scrollDown(); const think = thinking(); scrollDown();
     const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, answer: current.messages[i + 1]?.role === 'ai' && !current.messages[i + 1]?.error ? String(current.messages[i + 1].content || '').slice(0, 1200) : null, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
-    try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) }, { timeoutMs: 25000 });
+    const request = { question: text, history: hist.slice(-20).map(h => ({ question: String(h.question || '').slice(0, 500), answer: typeof h.answer === 'string' ? h.answer.slice(0, 600) : null, entityIds: (h.entityIds || []).slice(0, 6), context: h.context || null })), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) };
+    // Keep older premises when they fit, rather than losing the original fictional
+    // definition after eight turns. Strictly honor the server's 16KB request cap.
+    const bytes = () => new TextEncoder().encode(JSON.stringify(request)).length;
+    while (request.history.length > 1 && bytes() > 14000) request.history.shift();
+    try { const r = await post('/chat/ask', request, { timeoutMs: 25000 });
       msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, performance: r.performance || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
