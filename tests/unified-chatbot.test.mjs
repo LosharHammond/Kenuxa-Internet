@@ -34,7 +34,10 @@ test('new conversation routes name, fictional quantities, inheritance and lexica
   assert.match(c.answer,/8 channels/);assert.match(c.answer,/can rotate/);
   const d=await ask('If Nova loses two channels, how many remain? Explain.');
   assert.match(d.answer,/6 channels remaining/);
+  const recallStarted=performance.now();
   const e=await ask('What did I tell you about the Velon earlier?');
+  assert.ok(performance.now()-recallStarted<5000,'conversation recall must not fall into slow teacher or web cascade');
+  assert.ok(Number.isFinite(e.performance?.latencyMs),'server must expose real latency for diagnostics');
   assert.match(e.answer,/Velon has 8 channels/);
   const dictionary=await ask('Define dog',false);
   assert.match(dictionary.answer,/dog/i);assert.match(dictionary.engine,/unified cognition/);
