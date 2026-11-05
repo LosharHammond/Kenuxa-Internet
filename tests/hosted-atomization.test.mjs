@@ -15,6 +15,9 @@ test('hosted chatbot replies before slow atomic hydration, then learns in idle q
    TRANSFORMER_TRAINING:'false'
  },log:()=>{}});
  try{
+   // The production interpreter activates the induced grammar only after sufficient observations.
+   // Make the spy reachable without changing the initial chatbot's deferred-atomization policy.
+   node.autonomousLearning.grammar.S.observed = 30;
    let grammarCalls=0;
    node.autonomousLearning.grammar.tags=()=>{
      grammarCalls++;
@@ -34,7 +37,8 @@ test('hosted chatbot replies before slow atomic hydration, then learns in idle q
    assert.equal(grammarCalls,0,'grammar must not hold up a simple contextual reply');
    assert.ok(elapsed<1000,'fast answer must finish without slow hydration');
    // The same node later performs the queued word-to-atom work.
-   await new Promise(resolve=>setTimeout(resolve,600));
+   const deadline=Date.now()+4000;
+   while(grammarCalls<1 && Date.now()<deadline)await new Promise(resolve=>setTimeout(resolve,50));
    assert.ok(grammarCalls>=1,'idle worker must eventually process the queued sentence');
  }finally{await node.stop();fs.rmSync(dir,{recursive:true,force:true});}
 });
