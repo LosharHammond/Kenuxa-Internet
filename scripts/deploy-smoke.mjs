@@ -74,8 +74,8 @@ for(let i=0;i<cases.length;i++){
   assert.ok(/unified cognition/i.test(data.engine||''),'live test '+(i+1)+' used unexpected engine: '+data.engine);
   assert.ok(Number.isFinite(data.performance?.latencyMs),'live test '+(i+1)+' has no measured server latency');
   // This check measures WARM response latency, not Render cold-start time.
-  assert.ok(data.performance.latencyMs<10000,'live test '+(i+1)+' exceeded warm 10-second response budget: '+data.performance.latencyMs+'ms');
-  durations.push({n:i+1,wallMs,serverMs:data.performance.latencyMs,engine:data.engine});
+  assert.ok(data.performance.latencyMs<10000,'live test '+(i+1)+' exceeded warm 10-second response budget: '+data.performance.latencyMs+'ms; phases='+JSON.stringify(data.performance.phases||{}));
+  durations.push({n:i+1,wallMs,serverMs:data.performance.latencyMs,phases:data.performance.phases||null,engine:data.engine});
   history.push({question:testcase.q,answer:data.answer,entityIds:data.entityIds||[],context:data.context||null});
 }
 console.log(JSON.stringify({ok:true,origin,commit:health.buildCommit,
