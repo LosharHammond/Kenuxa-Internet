@@ -14,6 +14,8 @@ services:
         value: "22"
       - key: HOST
         value: 0.0.0.0
+      # Leave NODE_ID unset for unique per-deployment identity derived from
+      # Render's public hostname. Existing explicit IDs are respected.
       - key: NODE_ID
         sync: false
       - key: ADMIN_TOKEN
@@ -26,6 +28,14 @@ services:
         sync: false
       - key: PEER_URLS
         sync: false
+      - key: KENUXA_NETWORK
+        value: "on"
+      - key: KENUXA_NODE_WORKER
+        value: "true"
+      - key: KENUXA_NODE_WORKER_INTERVAL_MS
+        value: "15000"
+      - key: COMPUTE_PEERS
+        value: "on"
       - key: GROQ_API_KEY
         sync: false
       - key: GROQ_MODEL
