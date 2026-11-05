@@ -45,3 +45,16 @@ test('unknown original quantities remain unknown without made-up contradictions'
  const out=ask('Correction: A Fenlor has nine rotors, not eleven. What did I originally say and where is the conflict?',[]);
  assert.equal(out.kind,'unknown');assert.match(out.answer,/cannot establish/i);
 });
+
+
+test('prior assistant replies are reported as replies, not upgraded into ground truth',()=>{
+ const history=[
+  {question:'What is my name?',answer:'Your name is Kofi.'},
+  {question:'My name is Kofi. Remember this.' ,answer:"I'll use Kofi in this conversation."}
+ ];
+ const out=ask('Which of my earlier statements were premises, which conclusions were deductions, and which remain uncertain?',history);
+ assert.equal(out.kind,'provenance');
+ assert.match(out.answer,/Earlier responses/);
+ assert.match(out.answer,/Your name is Kofi/);
+ assert.match(out.answer,/not independent proof/);
+});
