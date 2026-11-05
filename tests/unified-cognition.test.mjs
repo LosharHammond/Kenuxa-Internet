@@ -49,3 +49,24 @@ test('no untrusted material is promoted when the coordinator falls through',()=>
  assert.equal(c.status().recent.at(-1).verified,false);
  assert.equal(c.status().recent.at(-1).route,'unresolved');
 });
+
+
+test('conversation recall short-circuits other cognition backends, including unknown local facts',()=>{
+ const d=fixtures();
+ let calls=0;
+ d.contextual=(q)=>/what did i tell you about the/i.test(q)?
+   {answer:q.includes('Tarvek')?'You told me Tarvek has 7 tails.':'No earlier statement found.',kind:q.includes('Tarvek')?'remembered':'unknown',proof:[{source:'conversation'}]}:null;
+ d.skills.predict=()=>{calls++;throw new Error('skill route must not execute');};
+ d.ontology.answer=()=>{calls++;throw new Error('ontology must not execute');};
+ d.foundation.answer=()=>{calls++;throw new Error('dictionary must not execute');};
+ const c=new UnifiedCognition(d);
+ const known=c.answer('What did I tell you about the Tarvek earlier?');
+ assert.equal(known.route,'conversation');
+ assert.match(known.answer,/7 tails/);
+ assert.equal(known.verified,false);
+ const missing=c.answer('What did I tell you about the Neral earlier?');
+ assert.equal(missing.route,'conversation');
+ assert.equal(missing.confidence,0);
+ assert.equal(calls,0);
+ assert.equal(c.status().answered,2);
+});
