@@ -66,3 +66,5 @@ jobs:
           DEPLOYMENT_URL: https://kenuxa-internet.onrender.com
           EXPECTED_COMMIT: ${{ github.sha }}
         run: node scripts/deploy-smoke.mjs
+      - name: Verify both Render nodes, signed identities and peer discovery
+        run: node scripts/smoke-mesh-live.mjs
