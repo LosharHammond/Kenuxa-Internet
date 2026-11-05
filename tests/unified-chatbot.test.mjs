@@ -55,6 +55,13 @@ test('new conversation routes name, fictional quantities, inheritance and lexica
   assert.match(dictionary.answer,/dog/i);assert.match(dictionary.engine,/unified cognition/);
   const relation=await ask('Is a python an animal?',false);
   assert.match(relation.answer,/animal/i);assert.match(relation.answer,/sense/i);
+  // The browser may supply up to twenty bounded previous turns, instead of
+  // forgetting the initial premise after the former eight-turn cutoff.
+  for(let i=0;i<12;i++)history.push({question:'Unrelated conversation note '+i+': The weather in this imaginary world is calm.'});
+  const longRecallStarted=performance.now();
+  const older=await ask('What did I tell you about the Velon earlier?',false);
+  assert.match(older.answer,/Velon has 8 channels/i);
+  assert.ok(performance.now()-longRecallStarted<5000,'older conversation premise should not require web research');
   const status=node.unifiedCognition.status();
   assert.ok(status.answered>=7);
   assert.ok(status.skillMemory&&status.cognitiveMemory);
