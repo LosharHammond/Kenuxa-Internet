@@ -58,3 +58,18 @@ test('new approved atom births grow the organism instead of creating disconnecte
  assert.ok(state.organism.molecules.find(m=>m.id==='mol://auto-x').atomIds.includes('delta'));
  assert.ok(state.atoms.at(-1).dna.agent.skills.length>0);
 });
+
+test('new word atoms join the learning stream without exposing private conversation terms',()=>{
+ const {growth,rebuilds}=setup(),before=rebuilds();
+ const q=growth.noteLexical(['lex:en:tarvek','lex:en:nova'],{verifiedPublic:false});
+ assert.equal(q.changed,true);assert.equal(q.observed,2);
+ assert.equal(growth.status().lexicalPending,2);
+ assert.equal(growth.status().pendingEvaluation,false,'a private word is not verified shared knowledge');
+ assert.equal(growth.reconcile().changed,false,'word observation must not rebuild unrelated legacy molecules');
+ assert.equal(rebuilds(),before);
+ const verified=growth.noteLexical(['lex:en:curated-concept'],{verifiedPublic:true});
+ assert.equal(verified.verifiedPublic,true);
+ assert.equal(growth.status().pendingEvaluation,true);
+ growth.acknowledgedEvaluation();
+ assert.equal(growth.status().pendingEvaluation,false);
+});
