@@ -70,3 +70,21 @@ test('verified relation proofs feed the single existing cognition coordinator',(
  assert.equal(r.provenance.length,2);
  assert.equal(r.verified,true);
 });
+
+test('unseen concepts in a single multi-sentence message are temporary and reasoned over',()=>{
+ const {state,fabric}=ready();
+ const result=fabric.answerNatural('A xeloria is a yanova. Every yanova is a zoroka. Is xeloria a zoroka?');
+ assert.equal(result?.ok,true,JSON.stringify(result));
+ assert.equal(result.hops,2);
+ assert.equal(result.verified,false);
+ assert.deepEqual(Object.keys(state.facts),[]);
+ assert.equal(fabric.answerNatural('Is xeloria a zoroka?'),null,'unverified conversation premises are not retained');
+});
+test('cyclic unfamiliar relation graph is bounded, unknown remains unknown',()=>{
+ const {fabric,add}=ready();
+ add('nadova','is-a','seruvi');add('seruvi','is-a','nadova');
+ assert.equal(fabric.infer({subject:'nadova',object:'seruvi'}).ok,true);
+ const out=fabric.infer({subject:'nadova',object:'unconnected'});
+ assert.equal(out.ok,false);
+ assert.ok(out.searched<=2);
+});
