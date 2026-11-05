@@ -70,3 +70,16 @@ test('conversation recall short-circuits other cognition backends, including unk
  assert.equal(calls,0);
  assert.equal(c.status().answered,2);
 });
+
+test('the same autonomous cycle persists newly discovered lexical atom curriculum',async()=>{
+ const d=fixtures(),counts={saved:0,reviewed:0};
+ d.curriculum={tick:()=>{counts.reviewed++;return {ok:true,processed:2,known:1,unknown:1};},inventory:()=>({pending:0})};
+ d.autonomous.save=async()=>{counts.saved++;};
+ const c=new UnifiedCognition(d);
+ const r=await c.tick({limit:24});
+ assert.equal(r.ok,true);
+ assert.equal(counts.reviewed,1);
+ assert.equal(counts.saved,1);
+ assert.equal(c.status().lastCycle.lexicalReviewed,2);
+ assert.equal(c.status().lastCycle.lexicalUnknown,1);
+});
