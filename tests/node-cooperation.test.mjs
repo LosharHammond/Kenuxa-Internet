@@ -86,6 +86,19 @@ test('rejected compute lease triggers a bounded signed rehandshake and peer-spec
   assert.equal(requests,1,'backoff prevents repeated denied calls');
  }finally{await w.stop();}
 });
+test('hosted HTTPS worker requests allow bounded Render wake-up without extra CPU',async()=>{
+ const peer={url:'https://remote.example',fingerprint:'kx'+'a'.repeat(30)};
+ let timeout=0;
+ const mesh={enabled:true,goodPeers:()=>[peer],
+  call:async(_url,_method,_route,_body,ms)=>{timeout=ms;return {text:'{"task":null,"retryAfterMs":5000}',status:200};},
+  verifyResponse:r=>({data:JSON.parse(r.text)})};
+ const worker=new NodeComputeWorker({mesh,state:{},env:{RENDER:'true'},now:()=>200000});
+ worker.capacity=()=>({ok:true});
+ try{
+  await worker.tick();
+  assert.equal(timeout,30000,'Render cold starts can exceed a 4.5s timeout');
+ }finally{await worker.stop();}
+});
 test('idle hosted worker fails over between peers and yields to human interaction',async()=>{
  const good={url:'https://peer2.example',fingerprint:'kx'+'b'.repeat(30)},
    bad={url:'https://peer1.example',fingerprint:'kx'+'a'.repeat(30)};
