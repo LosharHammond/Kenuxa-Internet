@@ -98,3 +98,37 @@ test('local language model requires a loopback endpoint and remote interpretatio
   KENUXA_FABRIC_MODEL_ID:'tiny-quantized',KENUXA_FABRIC_MODEL_URL:'https://example.org/v1/chat/completions'}});
  await assert.rejects(local.interpret('Question?'),/loopback/);
 });
+
+test('new fictional species, inherited properties and arithmetic transitions work without per-noun code',()=>{
+ let seed=9918;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+ const word=()=>Array.from({length:10},()=>String.fromCharCode(97+Math.floor(26*rnd()))).join('');
+ for(let i=0;i<25;i++){
+  const type=word(),animal=word(),property=word(),total=4+Math.floor(rnd()*15);
+  const lost=1+Math.floor(rnd()*3);
+  const q=type+' has '+total+' '+property+'. '+animal+' is a '+type+'. '+
+    animal+' loses '+lost+' '+property+'. How many '+property+' remain for '+animal+'?';
+  const frame={kind:'world-transition',
+   classes:[{name:type,properties:[{name:property,value:total,
+    quote:type+' has '+total+' '+property}]}],
+   entities:[{name:animal,class:type,quote:animal+' is a '+type}],
+   changes:[{entity:animal,property,operation:'subtract',amount:lost,
+    quote:animal+' loses '+lost+' '+property}],
+   query:{entity:animal,property}};
+  const result=executeSemanticFrame(frame,{question:q});
+  assert.equal(result?.operation.result,total-lost,JSON.stringify(result));
+  assert.equal(result.verified,false);
+  assert.equal(executeSemanticFrame({...frame,classes:[{...frame.classes[0],
+    properties:[{...frame.classes[0].properties[0],value:total+100}]}]},{question:q}),null);
+ }
+});
+test('unverified invented inheritance and wrong action polarity never become answers',()=>{
+ const q='Feluva has eight whiskers. Nori is a Feluva. Nori loses two whiskers. How many whiskers remain?';
+ const frame={kind:'world-transition',
+  classes:[{name:'Feluva',properties:[{name:'whiskers',value:8,quote:'Feluva has eight whiskers'}]}],
+  entities:[{name:'Nori',class:'Feluva',quote:'Nori is a Feluva'}],
+  changes:[{entity:'Nori',property:'whiskers',operation:'subtract',amount:2,quote:'Nori loses two whiskers'}],
+  query:{entity:'Nori',property:'whiskers'}};
+ assert.equal(executeSemanticFrame(frame,{question:q})?.operation.result,6);
+ assert.equal(executeSemanticFrame({...frame,changes:[{...frame.changes[0],operation:'add'}]},{question:q}),null);
+ assert.equal(executeSemanticFrame({...frame,entities:[]},{question:q}),null);
+});
