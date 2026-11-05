@@ -40,7 +40,7 @@ test('cached teacher content and teacher-derived methods never become independen
 
 test('owner and public HTTP use native methods, report teacher provenance, and respect research disable',async()=>{
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'kenuxa-basic-qa-')),token='basic-qa-isolated-test-owner-token-12345';
-  const node=await createNode({env:{HOST:'127.0.0.1',DATA_DIR:dir,ADMIN_TOKEN:token,TRANSFORMER_ENABLED:'false',KENUXA_NETWORK:'off',RESEARCH_ENABLED:'false',CRAWLER_ENABLED:'false',COMPUTE_PEERS:'off'},log:()=>{}});
+  const node=await createNode({env:{HOST:'127.0.0.1',DATA_DIR:dir,ADMIN_TOKEN:token,TRANSFORMER_ENABLED:'false',KENUXA_NETWORK:'off',RESEARCH_ENABLED:'false',CRAWLER_ENABLED:'false',COMPUTE_PEERS:'off',PUBLIC_TEACHER_COMPOSE:'true'},log:()=>{}});
   let calls=0;const original=node.teachers.list.bind(node.teachers);
   try{
     node.teachers.list=()=>[{id:'fixture',name:'Fixture',primary:true,configured:true}];
