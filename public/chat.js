@@ -103,7 +103,21 @@
     btn(ICON.redo, 'Regenerate', () => regenerate(m));
     return bar;
   }
-  async function post(url, body) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); const data = await r.json().catch(() => ({})); if (!r.ok) throw new Error(data.error || 'Something went wrong. Please try again.'); return data; }
+  async function post(url, body, { timeoutMs = 0 } = {}) {
+    const controller = new AbortController();
+    const timer = timeoutMs > 0 ? setTimeout(() => controller.abort(), timeoutMs) : null;
+    try {
+      const r = await fetch(url, { method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal, body: JSON.stringify(body) });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      return data;
+    } catch (e) {
+      if (controller.signal.aborted) throw new Error('KENUXA exceeded the 25-second answer limit. The request was stopped on this device. Please try again; this delay has been recorded for investigation.');
+      throw e;
+    } finally { if (timer) clearTimeout(timer); }
+  }
   function toast(text) { const t = $('#toast'); t.textContent = text; t.classList.remove('hidden'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.add('hidden'), 2600); }
   async function send(text, { refresh = false } = {}) {
     text = text.trim(); if (!text || busy) return; busy = true; updateSend();
@@ -113,7 +127,7 @@
     scrollDown(); const think = thinking(); scrollDown();
     const hist = []; for (let i = 0; i < current.messages.length - 1; i++) { const m = current.messages[i]; if (m.role === 'user') hist.push({ question: m.content, entityIds: current.messages[i + 1]?.entityIds || [], context: current.messages[i + 1]?.context || null }); }
     let msg;
-    try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) });
+    try { const r = await post('/chat/ask', { question: text, history: hist.slice(-8), refresh, conversation: current.id, ...(locOn() && lastLoc ? { location: lastLoc } : {}) }, { timeoutMs: 25000 });
       msg = { role: 'ai', content: r.answer, sources: r.sources, understanding: r.understanding, followups: r.followups, entityIds: r.entityIds, context: r.context || null, episode: r.episode || null, engine: r.engine || null, performance: r.performance || null, at: Date.now(), question: text };
     } catch (e) { msg = { role: 'ai', content: e.message, error: true, at: Date.now(), question: text }; }
     think.done(); if (!msg.error) current.messages.push(msg); current.updatedAt = Date.now(); persist(); renderHistory();
