@@ -63,11 +63,13 @@ const history=[],durations=[];
 const convId='smoke-'+(expected||String(Date.now())).slice(0,12);
 for(let i=0;i<cases.length;i++){
   const testcase=cases[i];
+  console.log('Live warm conversation test '+(i+1)+'/'+cases.length);
   const started=performance.now();
   const response=await request('/chat/ask',{method:'POST',
     headers:{'content-type':'application/json'},
     body:JSON.stringify({question:testcase.q,history:history.slice(-8),conversation:convId})});
   const wallMs=Math.round(performance.now()-started);
+  console.log('Live test '+(i+1)+' HTTP '+response.status+', wall='+wallMs+'ms, server='+response.data?.performance?.latencyMs+'ms');
   assert.equal(response.status,200,'live test '+(i+1)+': HTTP '+response.status+': '+response.body);
   const data=response.data;
   assert.ok(data&&testcase.check(data),'live test '+(i+1)+' unexpectedly answered: '+String(data?.answer).slice(0,650));
