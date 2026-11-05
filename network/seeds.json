@@ -1,5 +1,8 @@
 {
   "about": "Genesis contacts for the KENUXA network. Any online node joins through these, then learns the rest of the network by gossip. Add your node's URL by pull request to help others find the network — nodes do not depend on this list after first contact.",
-  "seeds": ["https://kenuxa-internet.onrender.com"],
+  "seeds": [
+    "https://kenuxa-internet.onrender.com",
+    "https://kenuxa-internet-pv00.onrender.com"
+  ],
   "directory": "https://raw.githubusercontent.com/LosharHammond/Kenuxa-Internet/main/network/seeds.json"
 }
