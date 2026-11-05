@@ -50,7 +50,8 @@ test('unknown, corrupted and impersonated snapshots cannot become trusted knowle
  await original.publish();
  const valid=saved.get('node-origin');
  trusted[0].reputation=0.1;
- let r=await survivor.recover();assert.equal(r.adopted.length,0);
+ let r=await survivor.recover();
+ assert.deepEqual(r.adopted,['proc:recovery-energy'],'signed offline source remains recoverable despite transport reputation');
  trusted[0].reputation=0.8;
  const modified=JSON.parse(valid.toString());
  modified.data.items[0].atom.body.steps[0].expr='1+1';
@@ -60,4 +61,18 @@ test('unknown, corrupted and impersonated snapshots cannot become trusted knowle
  saved.set('node-origin',valid);
  trusted[0].fingerprint='kx'+'f'.repeat(30);
  r=await survivor.recover();assert.equal(r.adopted.length,0);
+});
+
+test('reviewed core procedure is published with executable evidence without private data',async()=>{
+ const {A,original,survivor}=setup();
+ const initial=original.seedVerifiedCore();
+ assert.equal(initial.ok,true,JSON.stringify(initial));
+ assert.equal(initial.seeded,true);
+ const stored=A.get(initial.id);
+ assert.equal(stored.status,'promoted');
+ assert.equal(stored.visibility,'public');
+ const published=await original.publish();
+ assert.ok(published.items>0,'live recovery bundle must not be empty');
+ const recovery=await survivor.recover();
+ assert.equal(recovery.adopted.includes(initial.id),true,JSON.stringify(recovery));
 });
