@@ -28,4 +28,57 @@ const response=await request('/chat/ask',{method:'POST',headers:{'content-type':
 assert.equal(response.status,200,JSON.stringify(response));
 assert.ok(typeof response.data?.answer==='string'&&response.data.answer.length>20,'chatbot did not return a substantive answer');
 assert.match(String(response.data.engine||''),/foundation cognition|dictionary/i,'dictionary was not used by the deployed chatbot');
-console.log(JSON.stringify({ok:true,origin,commit:health.buildCommit,engine:response.data.engine,answerLength:response.data.answer.length}));
+
+// Verify an entire unseen reasoning conversation against the ACTUAL deployed chat
+// endpoint after warming the service. This catches regressions that a local
+// in-process test or a single dictionary lookup cannot detect.
+const cases=[
+  {
+    q:'My name is Arin. Use that name for this conversation.',
+    check:d=>/Arin/i.test(d.answer)
+  },
+  {q:'What is my name?',check:d=>/Arin/i.test(d.answer)},
+  {
+    q:'A fictional instrument called a Neralith has seven channels. Every Neralith can rotate. Io is a Neralith. How many channels does Io have, and can Io rotate? Explain.',
+    check:d=>/7 channels/i.test(d.answer)&&/can rotate/i.test(d.answer)
+  },
+  {
+    q:'If Io loses three channels, how many remain? Explain.',
+    check:d=>/4 channels remaining/i.test(d.answer)
+  },
+  {
+    q:'What did I tell you about the Neralith earlier?',
+    check:d=>/Neralith has 7 channels/i.test(d.answer)
+  },
+  {
+    q:'Which of your earlier conclusions were statements I supplied, which were deductions, and which remain uncertain?',
+    check:d=>/Neralith has 7 channels/i.test(d.answer)&&/Io inherits 7 channels/i.test(d.answer)&&/uncertain/i.test(d.answer)
+  },
+  {
+    q:'Correction: A Neralith has five channels, not seven. How many channels did I originally say it had, and can you identify the conflict?',
+    check:d=>/originally.*7 channels/i.test(d.answer)&&/latest.*5 channels/i.test(d.answer)&&/conflict/i.test(d.answer)
+  }
+];
+const history=[],durations=[];
+const convId='smoke-'+(expected||String(Date.now())).slice(0,12);
+for(let i=0;i<cases.length;i++){
+  const testcase=cases[i];
+  const started=performance.now();
+  const response=await request('/chat/ask',{method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({question:testcase.q,history:history.slice(-8),conversation:convId})});
+  const wallMs=Math.round(performance.now()-started);
+  assert.equal(response.status,200,'live test '+(i+1)+': HTTP '+response.status+': '+response.body);
+  const data=response.data;
+  assert.ok(data&&testcase.check(data),'live test '+(i+1)+' unexpectedly answered: '+String(data?.answer).slice(0,650));
+  assert.ok(/unified cognition/i.test(data.engine||''),'live test '+(i+1)+' used unexpected engine: '+data.engine);
+  assert.ok(Number.isFinite(data.performance?.latencyMs),'live test '+(i+1)+' has no measured server latency');
+  // This check measures WARM response latency, not Render cold-start time.
+  assert.ok(data.performance.latencyMs<10000,'live test '+(i+1)+' exceeded warm 10-second response budget: '+data.performance.latencyMs+'ms');
+  durations.push({n:i+1,wallMs,serverMs:data.performance.latencyMs,engine:data.engine});
+  history.push({question:testcase.q,answer:data.answer,entityIds:data.entityIds||[],context:data.context||null});
+}
+console.log(JSON.stringify({ok:true,origin,commit:health.buildCommit,
+  dictionary:{engine:response.data.engine,answerLength:response.data.answer.length},
+  conversation:{passed:cases.length,latency:durations}}));
+
