@@ -34,6 +34,24 @@ This sends current question and bounded history to the configured primary provid
 
 The semantic frame is a typed, declarative operation. It carries exact supporting quote spans, numeric premises, named entities, and permitted operations. The deterministic kernel rechecks the source spans, operands, inheritance and action polarity and refuses unsupported operations. No generated JavaScript is executed.
 
+## Dependency propagation and recoverability (v1.1)
+
+Reviewed public atom updates now invalidate dependent molecules, cells and
+declarative skills transitively through a bounded graph, with cycle detection.
+Changing a molecule's source atoms replaces its dependency edges rather than
+leaving obsolete references. The background worker processes ready
+invalidations in bounded batches and applies exponential retry delays after
+rebuild errors; a newer invalidation cannot be acknowledged by an older rebuild.
+
+When independent validated sources disagree, the answer kernel now returns
+an explicit conflict-withheld answer rather than accidentally falling into the
+legacy chatbot. Signed or owner-reviewed evidence is still required to promote
+a correction; the model's interpreted statements are conversation premises.
+
+Public Cognitive Fabric snapshots now check both the file digest and the
+internal event hash chain. This still is not a fully automatic model-weight
+restore or verified cross-node disaster-recovery mechanism.
+
 ## Current limitations
 
 - The model interface is real but a general pretrained model has not been deployed by this migration.
