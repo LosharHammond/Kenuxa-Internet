@@ -51,6 +51,18 @@ jobs:
       - name: End-to-end node smoke test
         run: node --test tests/autonomous-learning.test.mjs tests/foundation-cognition.test.mjs tests/developmental-learning-core.test.mjs
 
+  comprehension-benchmark:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independently test new concepts and followups on both live Render nodes
+        run: node scripts/benchmark-live-comprehension.mjs
+
   deployment-smoke:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: node-tests
