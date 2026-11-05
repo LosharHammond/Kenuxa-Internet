@@ -19,6 +19,7 @@ jobs:
       - name: Syntax and architecture
         run: |
           node --check lib/node.mjs
+          node --check public/chat.js
           node --check lib/mind/program-induction.mjs
           node --check lib/mind/unified-cognition.mjs
           node --check lib/mind/developmental-learning-core.mjs
