@@ -62,6 +62,30 @@ test('signed ATP peer may lease bounded public task only after reciprocal identi
    assert.equal(invalid.status,404,'peer must not execute arbitrary code');
  } finally {await A.stop();await B.stop();}
 });
+test('Render NODE_WORKER enabled is always a Boolean even when RENDER is a string',()=>{
+ const mesh={enabled:true,goodPeers:()=>[]};
+ const enabled=new NodeComputeWorker({mesh,state:{},env:{RENDER:'true'}});
+ assert.equal(enabled.enabled,true);assert.equal(typeof enabled.enabled,'boolean');
+ const disabled=new NodeComputeWorker({mesh,state:{},env:{RENDER:'true',KENUXA_NODE_WORKER:'off'}});
+ assert.equal(disabled.enabled,false);assert.equal(typeof disabled.enabled,'boolean');
+});
+test('rejected compute lease triggers a bounded signed rehandshake and peer-specific backoff',async()=>{
+ const p={url:'https://peer.example',fingerprint:'kx'+'f'.repeat(30),capabilities:['kunpp-coordinator']};
+ let handshake=0,requests=0;
+ const mesh={enabled:true,goodPeers:()=>[p],
+  call:async()=>{requests++;throw new Error('HTTP 403');},
+  contact:async()=>{handshake++;return p;}};
+ const w=new NodeComputeWorker({mesh,state:{},env:{RENDER:'true'},now:()=>200000});
+ w.capacity=()=>({ok:true});
+ try{
+  assert.equal((await w.tick()).skipped,true);
+  assert.equal(w.stats.failed,1);
+  assert.equal(handshake,1);
+  assert.equal((await w.tick()).skipped,true);
+  assert.equal(handshake,1);
+  assert.equal(requests,1,'backoff prevents repeated denied calls');
+ }finally{await w.stop();}
+});
 test('idle hosted worker fails over between peers and yields to human interaction',async()=>{
  const good={url:'https://peer2.example',fingerprint:'kx'+'b'.repeat(30)},
    bad={url:'https://peer1.example',fingerprint:'kx'+'a'.repeat(30)};

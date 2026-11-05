@@ -12,6 +12,28 @@ function ready(){
  };
  return {state,fabric,add};
 }
+test('hidden generated unfamiliar vocabularies infer across independent chains with no code per concept',()=>{
+ let seed=12581;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+ const word=()=>Array.from({length:8},()=>String.fromCharCode(97+Math.floor(rnd()*26))).join('');
+ for(let trial=0;trial<35;trial++){
+  const state={},fabric=new RelationFabric({state});
+  const relation='rel'+word(),length=2+Math.floor(rnd()*6);
+  const names=Array.from({length:length+1},word);
+  assert.equal(fabric.relation(relation,{authorized:true,transitive:true}).ok,true);
+  for(let i=0;i<length;i++){
+   const p=fabric.propose({subject:names[i],relation,object:names[i+1]});
+   assert.equal(p.status,'quarantined');
+   assert.equal(fabric.infer({subject:names[0],relation,object:names.at(-1)}).ok,false);
+   assert.equal(fabric.review(p.id,{authorized:true,approve:true,evidence:'trusted independent fixture check'}).ok,true);
+  }
+  const recovered=new RelationFabric({state:JSON.parse(JSON.stringify(state))});
+  const out=recovered.infer({subject:names[0],relation,object:names.at(-1)});
+  assert.equal(out.ok,true,JSON.stringify(out));
+  assert.equal(out.hops,length);
+  assert.equal(out.proof.length,length);
+  assert.equal(recovered.infer({subject:word(),relation,object:names.at(-1)}).ok,false);
+ }
+});
 test('arbitrary unseen symbols compose relations across 2 to 12 hops without new code',()=>{
  for(let size=2;size<=12;size++){
   const {fabric,add}=ready();

@@ -31,7 +31,9 @@ for(const origin of urls){
  const h=await get(origin,'/health');
  assert.equal(h.data.status,'ok','health status');
  assert.equal(h.data.publicUrl,origin,'public identity URL mismatch');
- assert.equal(h.data.nodeCompute?.enabled,true,'node worker not enabled');
+ assert.equal(h.data.nodeCompute?.enabled,true,
+  origin+' worker is disabled or sent a non-Boolean enabled value: '+
+  JSON.stringify(h.data.nodeCompute?.enabled));
  const response=await get(origin,'/atp/info');
  const who=verifySigned(response.headers,'RESPONSE','/atp/info',response.raw);
  assert.ok(who,'ATP info signature is invalid or absent');
@@ -41,6 +43,17 @@ for(const origin of urls){
  result.push({origin,nodeId:h.data.nodeId,fingerprint:who.fingerprint,
   peers:response.data.peers,build:h.data.buildCommit||null,
   workerCompleted:h.data.nodeCompute?.completed});
+}
+// A green deployment gate requires both accounts to deploy the same commit.
+// A secondary service that has not auto-deployed is an operational gap, not
+// evidence that CPU sharing works in both directions.
+if(process.env.EXPECTED_COMMIT){
+ const expected=process.env.EXPECTED_COMMIT.slice(0,12);
+ for(const node of result){
+  assert.ok(node.build&&expected.startsWith(node.build.slice(0,Math.min(node.build.length,12))),
+    node.origin+' is not serving main '+expected+' (serving '+node.build+
+    '); check secondary Render auto-deploy configuration');
+ }
 }
 assert.notEqual(result[0].nodeId,result[1].nodeId,'two hosts share one node namespace');
 assert.notEqual(result[0].fingerprint,result[1].fingerprint,'two hosts share one signing key');
