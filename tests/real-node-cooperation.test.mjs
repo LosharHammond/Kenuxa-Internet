@@ -60,6 +60,19 @@ test('two hosted cognitive nodes handshake, share an actual public task, and pre
    assert.ok(A.node.state.compute.metrics.accepted>=1,'the original coordinator checked/accepted the result');
    assert.equal(B.node.nodeWorker.status().completed>=1,true);
    assert.notEqual(A.node.state.identity.fingerprint,B.node.state.identity.fingerprint);
+   // Now reverse the exact same mechanism: A must execute work owned by B.
+   // This is a real two-process signed HTTP exchange, not a mocked coordinator.
+   A.node.nodeWorker.capacity=()=>({ok:true});
+   let reverse=false,lastReverse;
+   for(let i=0;i<4;i++){
+     lastReverse=await A.node.nodeWorker.tick();
+     if(lastReverse.worked&&lastReverse.accepted){reverse=true;break;}
+   }
+   assert.ok(reverse,JSON.stringify({
+     lastReverse,status:A.node.nodeWorker.status(),core:B.node.state.compute.metrics
+   }));
+   assert.ok(B.node.state.compute.metrics.accepted>=1,'reverse coordinator accepted peer job');
+   assert.ok(A.node.nodeWorker.status().completed>=1,'first node executed the reverse job');
    // The request owner remains authoritative: the remote CPU did not write to
    // B's private knowledge, A's canonical knowledge, or user conversations.
    assert.ok(!Object.values(B.node.state.compute?.peers||{}).some(p=>p.tokenHash==='exposed-secret'));
