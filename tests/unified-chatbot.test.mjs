@@ -39,6 +39,18 @@ test('new conversation routes name, fictional quantities, inheritance and lexica
   assert.ok(performance.now()-recallStarted<5000,'conversation recall must not fall into slow teacher or web cascade');
   assert.ok(Number.isFinite(e.performance?.latencyMs),'server must expose real latency for diagnostics');
   assert.match(e.answer,/Velon has 8 channels/);
+  const explainStarted=performance.now();
+  const explain=await ask('Which of your earlier conclusions were statements I supplied, which were deductions, and which remain uncertain?');
+  assert.ok(performance.now()-explainStarted<5000,'provenance must not enter slow research');
+  assert.match(explain.answer,/Velon has 8 channels/i);
+  assert.match(explain.answer,/Nova inherits 8 channels/i);
+  assert.match(explain.answer,/Nova has 6 channels remaining/i);
+  const correctionStarted=performance.now();
+  const correction=await ask('Correction: A Velon has five channels, not eight. How many channels did I originally say it had, and can you identify the conflict?');
+  assert.ok(performance.now()-correctionStarted<5000,'correction comparison must be fast and local');
+  assert.match(correction.answer,/originally.*8 channels/i);
+  assert.match(correction.answer,/latest.*5 channels/i);
+  assert.match(correction.answer,/conflict/i);
   const dictionary=await ask('Define dog',false);
   assert.match(dictionary.answer,/dog/i);assert.match(dictionary.engine,/unified cognition/);
   const relation=await ask('Is a python an animal?',false);
