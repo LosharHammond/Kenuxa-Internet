@@ -236,7 +236,14 @@ test('teacher answers are learned from in depth (words → atoms, claims → opi
   node.teachers.list = () => [{ id: 'mock', primary: true, configured: true }];
   node.teachers.generate = async (instr, input) => ({ data: /teacher of KENUXA/.test(instr) ? { answer: 'A quokka is a marsupial. Drought causes famine.', claims: [], sources: [] } : { unknown: true }, provider: 'mock', model: 'fixture' });
   node.atomRegistry().discover('quokkaish', { lang: 'en', node: 'x' });
-  await node.learnTick({ budgetMs: 60000, limit: 2 }); /* wall-clock budget: generous so parallel CPU-heavy suites cannot starve it */
+  await node.learnTick({ budgetMs: 60000, limit: 2,
+    // Isolate the teacher integration contract from unpredictable GitHub runner
+    // CPU pressure; production learning still uses measured load and heap gates.
+    resourceSample: ({teacherCallsLastHour,maxTeacherCallsPerHour})=>({
+      cpuLoad:0.01,heapUsed:0.1,activeRequests:0,
+      teacherCallsLastHour,teacherQuotaLeft:Math.max(0,maxTeacherCallsPerHour-teacherCallsLastHour)
+    })
+  });
   assert.ok(node.state.live.teacherLearning?.total >= 1, JSON.stringify(node.state.learning?.log?.slice(-2)));
   assert.ok(node.atomRegistry().has('lex:en:marsupial'));
   const C = node.claims(), q = C.assess(C.key('quokka', 'is a', 'marsupial')); assert.equal(q.verdict, 'insufficient-evidence', 'a teacher statement is recorded as opinion, not established');
